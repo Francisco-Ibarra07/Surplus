@@ -1,0 +1,3 @@
+rootProject.name = 'Surplus'
+
+include ':app'
