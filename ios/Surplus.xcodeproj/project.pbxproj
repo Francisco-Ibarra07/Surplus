@@ -38,6 +38,7 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		308414A6EC3E47CAA90B860C /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 083E27435B434A70963EF598 /* libRNFirebase.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		84CD88F6220FDF5D002E036C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84CD88CE220FDF5D002E036C /* GoogleService-Info.plist */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B1E31C8F282F90D7AA62EB4A /* libPods-Surplus-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C812A6E5EBF90DE4D0D438F5 /* libPods-Surplus-tvOSTests.a */; };
 		BD3D1A0F321162907163909C /* libPods-SurplusTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3439226163B0911F5FAAA1F7 /* libPods-SurplusTests.a */; };
@@ -375,6 +376,7 @@
 		78A162627C37DD3BC3E41D26 /* Pods-Surplus-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Surplus-tvOS/Pods-Surplus-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		84CD88CE220FDF5D002E036C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Surplus/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1B4CF7F5654C435D8B56928 /* Pods-SurplusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurplusTests.debug.xcconfig"; path = "Target Support Files/Pods-SurplusTests/Pods-SurplusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B4DB9E5731347425B581E508 /* Pods-Surplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.release.xcconfig"; path = "Target Support Files/Pods-Surplus/Pods-Surplus.release.xcconfig"; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 		13B07FAE1A68108700A75B9A /* Surplus */ = {
 			isa = PBXGroup;
 			children = (
+				84CD88CE220FDF5D002E036C /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1173,6 +1176,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				84CD88F6220FDF5D002E036C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
