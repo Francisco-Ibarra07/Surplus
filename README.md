@@ -33,3 +33,14 @@ The next step is to set the **Xcode command line tools**. This can be found in t
 
 The final step is to choose which iOS device to run the project on and hit the 'Play' button at the top left of the screen
 
+## Contributing
+Make sure you are always developing on the correct branch. To check which branch you are on you can do this command:
+```bash
+git branch
+```
+To switch between branches do:
+```bash
+git checkout [NAMEOFBRANCH]
+```
+
+Commit often and be sure the project builds on Xcode before pushing back to the repository!
