@@ -21,7 +21,7 @@ cd ~/Surplus
 npm install
 
 # Open XCode
-open ~/Surplus/ios/Surplus.xcodeproj
+open ~/Surplus/ios/Surplus.xcworkspace
 
 # Install Splash Screen dependencies
 #yarn add react-native-splash-screen@3.0.6
