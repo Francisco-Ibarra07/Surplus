@@ -23,9 +23,3 @@ npm install
 # Open XCode
 open ~/Surplus/ios/Surplus.xcworkspace
 
-# Install Splash Screen dependencies
-#yarn add react-native-splash-screen@3.0.6
-#react-native link react-native-splash-screen
-
-# Install Firebase Dependencies
-#npm install --save react-native-firebase
