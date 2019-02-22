@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 150
   },
   title: {
     fontSize: 25,
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#777777'
+    borderColor: '#777777',
+    marginBottom: 15
   }
 });

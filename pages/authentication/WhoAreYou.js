@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
     textAlign: 'center',
+    paddingBottom: 10
   },
   subtitle: {
     fontSize: 15,
