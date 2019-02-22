@@ -42,6 +42,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B1E31C8F282F90D7AA62EB4A /* libPods-Surplus-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C812A6E5EBF90DE4D0D438F5 /* libPods-Surplus-tvOSTests.a */; };
 		BD3D1A0F321162907163909C /* libPods-SurplusTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3439226163B0911F5FAAA1F7 /* libPods-SurplusTests.a */; };
+		BD5E462A221F8AED00D14C81 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5E4628221F8A1B00D14C81 /* libRNGestureHandler.a */; };
 		CB4E974623D34B2C1277ABE0 /* libPods-Surplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E8AE8C8A303AB4CB836CA5 /* libPods-Surplus.a */; };
 		D01A848F02C1436683D57554 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBF7878E89646DF99321D93 /* libSplashScreen.a */; };
 		D659372DD1AA00DB144D7EA1 /* libPods-Surplus-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57129980A682DB1A5501E264 /* libPods-Surplus-tvOS.a */; };
@@ -337,6 +338,13 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		BD5E4627221F8A1B00D14C81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD5E45FD221F8A1A00D14C81 /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNGestureHandler;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -380,6 +388,7 @@
 		A1B4CF7F5654C435D8B56928 /* Pods-SurplusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurplusTests.debug.xcconfig"; path = "Target Support Files/Pods-SurplusTests/Pods-SurplusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B4DB9E5731347425B581E508 /* Pods-Surplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.release.xcconfig"; path = "Target Support Files/Pods-Surplus/Pods-Surplus.release.xcconfig"; sourceTree = "<group>"; };
+		BD5E45FD221F8A1A00D14C81 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		C812A6E5EBF90DE4D0D438F5 /* libPods-Surplus-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Surplus-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA5B89AEB2558E44F23E592D /* Pods-Surplus-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Surplus-tvOSTests/Pods-Surplus-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D08E288D40CFD8CA5202B11E /* Pods-Surplus-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Surplus-tvOS/Pods-Surplus-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -401,6 +410,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5E462A221F8AED00D14C81 /* libRNGestureHandler.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -601,6 +611,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BD5E45FD221F8A1A00D14C81 /* RNGestureHandler.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -702,6 +713,14 @@
 				1CA8E35DE58F293261F3915A /* Pods-SurplusTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BD5E45FE221F8A1A00D14C81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD5E4628221F8A1B00D14C81 /* libRNGestureHandler.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -870,6 +889,10 @@
 				{
 					ProductGroup = 84CD88BB220FDC67002E036C /* Products */;
 					ProjectRef = 5E9127D40C454E4A9342B0D0 /* RNFirebase.xcodeproj */;
+				},
+				{
+					ProductGroup = BD5E45FE221F8A1A00D14C81 /* Products */;
+					ProjectRef = BD5E45FD221F8A1A00D14C81 /* RNGestureHandler.xcodeproj */;
 				},
 				{
 					ProductGroup = 84CD8869220FD2C6002E036C /* Products */;
@@ -1158,6 +1181,13 @@
 			fileType = archive.ar;
 			path = libRCTBlob.a;
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BD5E4628221F8A1B00D14C81 /* libRNGestureHandler.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNGestureHandler.a;
+			remoteRef = BD5E4627221F8A1B00D14C81 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1451,6 +1481,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/RNGestureHandler",
 				);
 				INFOPLIST_FILE = Surplus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1475,6 +1506,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/RNGestureHandler",
 				);
 				INFOPLIST_FILE = Surplus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

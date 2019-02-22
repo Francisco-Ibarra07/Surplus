@@ -8,6 +8,8 @@ target 'Surplus' do
   # Pods for Surplus
   pod 'Firebase/Core'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'SurplusTests' do
     inherit! :search_paths
     # Pods for testing
