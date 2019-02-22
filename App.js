@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import GetStarted from './authentication/GetStarted'
-import WhoAreYou from './authentication/WhoAreYou'
+import GetStarted from './pages/authentication/GetStarted'
+import WhoAreYou from './pages/authentication/WhoAreYou'
+
 
 export const Auth = createAppContainer(
   createStackNavigator({
