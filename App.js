@@ -8,6 +8,7 @@ import WhoAreYou from './authentication/WhoAreYou'
 import C_Signup from './authentication/C_Signup'
 import B_Signup from './authentication/B_Signup'
 import Signin from './authentication/Signin'
+import DummySignUp from './pages/authentication/DummySignUp'
 
 export const Auth = createAppContainer(
   createStackNavigator({
@@ -16,6 +17,7 @@ export const Auth = createAppContainer(
     C_Signup: { screen: C_Signup },
     B_Signup: { screen: B_Signup },
     Signin: { screen: Signin },
+    DummySignUp: { screen: DummySignUp },
   }, {
       navigationOptions: {
         header: null
