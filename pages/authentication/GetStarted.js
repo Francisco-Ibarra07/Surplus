@@ -10,7 +10,9 @@ import {
 } from 'react-native';
 
 export default class GetStarted extends Component {
-
+  static navigationOptions = {
+    header: null
+  }
   render() {
     return (
       <View style={styles.container}>

@@ -18,12 +18,7 @@ export const Auth = createAppContainer(
     B_Signup: { screen: B_Signup },
     Signin: { screen: Signin },
     DummySignUp: { screen: DummySignUp },
-  }, {
-      navigationOptions: {
-        header: null
-      }
-    }
-  ),
+  }),
 )
 
 type Props = {};

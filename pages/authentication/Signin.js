@@ -10,6 +10,11 @@ import {
 } from 'react-native';
 
 export default class Signin extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      borderBottomWidth: 0,
+    }
+  }
   render() {
     return (
       <View style={styles.container} >
