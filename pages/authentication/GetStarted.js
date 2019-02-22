@@ -30,11 +30,10 @@ export default class GetStarted extends Component {
          <Text style={{color: '#fff'}}> Get Started </Text>
        </TouchableOpacity>
 
-
-
        {/* White Button */}
        <TouchableOpacity
          style={styles.whiteButton}
+         onPress={() => this.props.navigation.navigate('DummySignUp')} 
        >
 
          <Text style={{color: '#000000'}}> Browse as guest </Text>
