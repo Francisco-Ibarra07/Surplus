@@ -13,6 +13,8 @@ export default class WhoAreYou extends Component {
       <View style={styles.container}>
         <Text style={styles.title}>Are you a</Text>
         <Text style={styles.subtitle}>Customer or a Business Owner?</Text>
+        <Button title="Customer" onPress={() => this.props.navigation.navigate('C_Signup')} />
+        <Button title="Business Owner" onPress={() => this.props.navigation.navigate('B_Signup')} />
       </View>
     );
   }
