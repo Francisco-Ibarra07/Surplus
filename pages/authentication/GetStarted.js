@@ -18,18 +18,26 @@ export default class GetStarted extends Component {
         <Text style={styles.title}>Save BIG on</Text>
         <Text style={styles.title}>your next meal!</Text>
         <Image 
-          style={{width: 300, height: 200}}
+          style={styles.image}
           source={{uri: 'https://i.imgur.com/gij49Cq.png'}} 
         />
-        {/* <Button title="Get Started" onPress={() => this.props.navigation.navigate('WhoAreYou')} /> */}
-        <Button title="Browse as Guest" />
 
-
+        {/* Red Button */}
         <TouchableOpacity
-         style={styles.button}
+         style={styles.redButton}
          onPress={() => this.props.navigation.navigate('WhoAreYou')} >
 
          <Text style={{color: '#fff'}}> Get Started </Text>
+       </TouchableOpacity>
+
+
+
+       {/* White Button */}
+       <TouchableOpacity
+         style={styles.whiteButton}
+       >
+
+         <Text style={{color: '#000000'}}> Browse as guest </Text>
        </TouchableOpacity>
 
       </View>
@@ -47,17 +55,34 @@ const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: 'center'
   },
-  button: {
+  image: {
+    marginBottom: 50,
+    width: 300,
+    height: 200
+  },
+  redButton: {
     alignItems: 'center',
     alignSelf: 'stretch',
     backgroundColor: '#ff2700',
-    color: '#fff',
+    height: 45,
+    justifyContent: 'center',
+    marginRight: 25,
+    marginLeft: 25,
+    marginBottom: 10,
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#fff'
+  },
+  whiteButton: {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    backgroundColor: '#fff',
     height: 45,
     justifyContent: 'center',
     marginRight: 25,
     marginLeft: 25,
     borderRadius:10,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#777777'
   }
 });
