@@ -16,11 +16,12 @@ export default class DummySignUp extends Component {
 
   render() {
 
-    // function validateSignUp(){
-    //   firebase.auth().createUserWithEmailAndPassword('Francisco', 123456)
-    //   .then(() => errorMessage = 'YES')
-    //   .catch(error => this.setState({ errorMessage: error.message }))
-    // }
+
+    function validateSignUp(){
+      firebase.auth().createUserWithEmailAndPassword('Francisco@email.com', '123456')
+      .then()
+      .catch()
+    }
 
     return (
       <View style={styles.container}>
@@ -35,7 +36,7 @@ export default class DummySignUp extends Component {
         />
 
 
-        {/* <Button title="Submit" color="#841584" onPress={validateSignUp}/> */}
+        <Button title="Submit" color="#841584" onPress={validateSignUp}/>
 
         <Text> {this.state.username} </Text>
         <Text> {this.state.password} </Text>
