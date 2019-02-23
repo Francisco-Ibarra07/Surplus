@@ -18,17 +18,17 @@ export default class Signin extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <Image style={styles.image} source={require('./surplus.jpg')} />
+        <Image style={styles.image} source={require('./AuthResources/surplus.jpg')} />
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="Email"
         />
-        <TextInput style={styles.input}
-          placeholder="Required"
+        <TextInput style={styles.input} secureTextEntry={true}
+          placeholder="Password"
         />
         <TouchableOpacity style={styles.button}>
           <Text style={{ color: 'white' }}>Sign In</Text>
         </TouchableOpacity>
-        <Button title="Forgot Password?" />
+        <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('Signin')}>Forgot Password?</Text>
       </View>
     );
   }
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: '85%',
-    textAlign: 'left',
+    textAlign: 'right',
     borderBottomWidth: 1
   },
   button: {
@@ -60,5 +60,9 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginTop: 70,
     marginBottom: 50
+  },
+  textButton: {
+    color: '#0645AD',
+    marginTop: 10,
   },
 });
