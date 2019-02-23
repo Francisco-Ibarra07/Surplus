@@ -17,31 +17,49 @@ export default class WhoAreYou extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <Image style={styles.image} source={require('./Logo.jpg')} />
+        <Image style={styles.image} source={require('./AuthResources/Logo.jpg')} />
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="First Name"
         />
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="Last Name"
         />
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="Email"
         />
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="Phone"
         />
         <TextInput style={styles.input} secureTextEntry={true}
-          placeholder="Minimum 8 Characters"
+          placeholder="Password"
         />
         <TouchableOpacity style={styles.button}>
           <Text style={{ color: 'white' }}>Sign Up</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={{ color: 'white' }}>Continue with Facebook</Text>
+        <TouchableOpacity style={styles.whiteButton}>
+          <Image
+            source={require('./AuthResources/facebooklogo.png')}
+            style={styles.ImageIconStyle}
+          />
+          <Text style={{ color: '#D33B32' }}>Continue with Facebook</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={{ color: 'white' }}>Continue with Google</Text>
+        <TouchableOpacity style={styles.whiteButton}>
+          <Image
+            source={require('./AuthResources/googlelogo.png')}
+            style={styles.ImageIconStyle}
+          />
+          <Text style={{ color: '#D33B32' }}>Continue with Google</Text>
         </TouchableOpacity>
+        <Text style={styles.condition}>By tapping the Faebook icon, Google icon, or Signup button, you agree to our{" "}
+          <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#0645AD' }}>
+            Terms and Conditions
+          </Text>
+          {" "}and
+          <Text onPress={() => this.props.navigation.navigate('PrivacyStatement')} style={{ color: '#0645AD' }}>
+            {" "}Privacy Statement
+          </Text>
+          .
+        </Text>
       </View>
     );
   }
@@ -56,7 +74,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: '85%',
-    textAlign: 'left',
+    textAlign: 'right',
     borderBottomWidth: 1
   },
   button: {
@@ -68,8 +86,32 @@ const styles = StyleSheet.create({
     padding: 10,
     width: '85%',
   },
+  whiteButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    marginTop: 10,
+    padding: 10,
+    width: '85%',
+    borderWidth: 1,
+    borderColor: '#777777',
+  },
   image: {
     height: 120,
     resizeMode: 'contain',
+  },
+  ImageIconStyle: {
+    padding: 10,
+    marginLeft: 20,
+    resizeMode: 'contain',
+    width: 5,
+    height: 10,
+    position: 'absolute',
+    left: 2,
+  },
+  condition: {
+    fontSize: 10,
+    width: '85%',
+    paddingTop: 15,
   },
 });
