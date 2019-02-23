@@ -8,8 +8,11 @@ import WhoAreYou from './pages/authentication/WhoAreYou'
 import C_Signup from './pages/authentication/C_Signup'
 import B_Signup from './pages/authentication/B_Signup'
 import Signin from './pages/authentication/Signin'
+import TermsAndConditions from './pages/authentication/TermsAndConditions'
+import PrivacyStatement from './pages/authentication/PrivacyStatement'
 import DummySignUp from './pages/authentication/DummySignUp'
 
+// Auth Navigation
 export const Auth = createAppContainer(
   createStackNavigator({
     GetStarted: { screen: GetStarted },
@@ -17,6 +20,8 @@ export const Auth = createAppContainer(
     C_Signup: { screen: C_Signup },
     B_Signup: { screen: B_Signup },
     Signin: { screen: Signin },
+    TermsAndConditions: { screen: TermsAndConditions },
+    PrivacyStatement: { screen: PrivacyStatement },
     DummySignUp: { screen: DummySignUp },
   }),
 )
