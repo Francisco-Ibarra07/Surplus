@@ -21,7 +21,7 @@ export default class WhoAreYou extends Component {
         <Text style={styles.subtitle}>Customer or a Business Owner?</Text>
         <TouchableOpacity style={styles.button} activeOpacity={0.5} onPress={() => this.props.navigation.navigate('C_Signup')}>
           <Image
-            source={require('./customer.jpg')}
+            source={require('./AuthResources/customer.jpg')}
             style={styles.ImageIconStyle}
           />
           <View style={styles.SeparatorLine} />
@@ -29,7 +29,7 @@ export default class WhoAreYou extends Component {
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} activeOpacity={0.5} onPress={() => this.props.navigation.navigate('B_Signup')}>
           <Image
-            source={require('./business.jpg')}
+            source={require('./AuthResources/business.jpg')}
             style={styles.ImageIconStyle}
           />
           <View style={styles.SeparatorLine} />
@@ -57,15 +57,19 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
   },
   TextStyle: {
+    color: 'white',
     textAlign: 'center',
-    paddingBottom: 20,
-    color: 'red'
+    paddingBottom: 15,
+    paddingTop: 15,
+    backgroundColor: '#D33B32',
+
   },
   button: {
     marginTop: 10,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: '#E7E8EC'
+    borderColor: '#E7E8EC',
+    overflow: 'hidden'
   },
   ImageIconStyle: {
     padding: 10,
