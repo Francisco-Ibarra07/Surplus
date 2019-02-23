@@ -36,7 +36,7 @@ export default class GetStarted extends Component {
           onPress={() => this.props.navigation.navigate('DummySignUp')}
         >
 
-          <Text style={{ color: '#000000' }}> Browse as guest </Text>
+          <Text style={{ color: '#000000' }}> Browse as Guest </Text>
         </TouchableOpacity>
         <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('Signin')}>Already have an account?</Text>
       </View>
