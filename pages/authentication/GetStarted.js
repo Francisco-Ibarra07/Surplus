@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import {
   Image,
   View,
-  TextInput,
   Text,
   TouchableOpacity,
   StyleSheet,
-  Button
 } from 'react-native';
 
 export default class GetStarted extends Component {
@@ -40,7 +38,7 @@ export default class GetStarted extends Component {
 
           <Text style={{ color: '#000000' }}> Browse as guest </Text>
         </TouchableOpacity>
-        <Button title="Already have an account?" onPress={() => this.props.navigation.navigate('Signin')} />
+        <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('Signin')}>Already have an account?</Text>
       </View>
     );
   }
@@ -65,7 +63,7 @@ const styles = StyleSheet.create({
   redButton: {
     alignItems: 'center',
     alignSelf: 'stretch',
-    backgroundColor: '#ff2700',
+    backgroundColor: '#D33B32',
     height: 45,
     justifyContent: 'center',
     marginRight: 25,
@@ -73,7 +71,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#D33B32'
   },
   whiteButton: {
     alignItems: 'center',
@@ -87,5 +85,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#777777',
     marginBottom: 15
-  }
+  },
+  textButton: {
+    color: '#0645AD',
+    marginTop: 10,
+  },
 });
