@@ -18,32 +18,41 @@ export default class B_SignUp extends Component {
       <View style={styles.container} >
         <Text style={styles.title}>Claim your business</Text>
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="Store Name"
         />
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="Phone Number"
         />
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="Address"
         />
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="City"
         />
         <View style={styles.container2}>
           <TextInput style={styles.input2}
-            placeholder="Required"
+            placeholder="State"
           />
           <TextInput style={styles.input2}
-            placeholder="Required"
+            placeholder="Zip"
           />
         </View>
         <TextInput style={styles.input}
-          placeholder="Required"
+          placeholder="Pick-up Time"
         />
         <TouchableOpacity style={styles.button}>
           <Text style={{ color: 'white' }}>Claim</Text>
         </TouchableOpacity>
-        <Text style={styles.condition}>By tapping the claim button, you agree to our Terms and Conditions and Privacy Statement.</Text>
+        <Text style={styles.condition}>By tapping the Faebook icon, Google icon, or Signup button, you agree to our{" "}
+          <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#0645AD' }}>
+            Terms and Conditions
+          </Text>
+          {" "}and
+          <Text onPress={() => this.props.navigation.navigate('PrivacyStatement')} style={{ color: '#0645AD' }}>
+            {" "}Privacy Statement
+          </Text>
+          .
+        </Text>
       </View>
     );
   }
@@ -61,12 +70,12 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: '85%',
-    textAlign: 'left',
+    textAlign: 'right',
     borderBottomWidth: 1
   },
   input2: {
     height: 40,
-    textAlign: 'left',
+    textAlign: 'right',
     width: '42.5%',
     borderBottomWidth: 1
   },
@@ -85,7 +94,7 @@ const styles = StyleSheet.create({
   },
   condition: {
     fontSize: 10,
-    width: '90%',
-    padding: 25
+    width: '85%',
+    paddingTop: 15,
   }
 });
