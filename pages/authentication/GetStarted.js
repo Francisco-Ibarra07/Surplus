@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   textButton: {
-    color: '#0645AD',
+    color: '#3366BB',
     marginTop: 10,
   },
 });
