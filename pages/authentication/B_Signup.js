@@ -43,7 +43,7 @@ export default class B_SignUp extends Component {
         <TouchableOpacity style={styles.button}>
           <Text style={{ color: 'white' }}>Claim</Text>
         </TouchableOpacity>
-        <Text style={styles.condition}>By tapping the Faebook icon, Google icon, or Signup button, you agree to our{" "}
+        <Text style={styles.condition}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
           <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
             Terms and Conditions
           </Text>
