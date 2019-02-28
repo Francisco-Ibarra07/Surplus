@@ -14,31 +14,35 @@ export default class GetStarted extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.containerA}>
+          <Text style={styles.title}>Save BIG on</Text>
+          <Text style={styles.title}>your next meal!</Text>
+          <Image
+            style={styles.image}
+            source={{ uri: 'https://i.imgur.com/gij49Cq.png' }}
+          />
+        </View>
 
-        <Text style={styles.title}>Save BIG on</Text>
-        <Text style={styles.title}>your next meal!</Text>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://i.imgur.com/gij49Cq.png' }}
-        />
+        <View style={styles.containerB}>
+          {/* Red Button */}
+          <TouchableOpacity
+            style={styles.redButton}
+            onPress={() => this.props.navigation.navigate('WhoAreYou')} >
 
-        {/* Red Button */}
-        <TouchableOpacity
-          style={styles.redButton}
-          onPress={() => this.props.navigation.navigate('WhoAreYou')} >
+            <Text style={{ color: '#fff' }}> Get Started </Text>
+          </TouchableOpacity>
 
-          <Text style={{ color: '#fff' }}> Get Started </Text>
-        </TouchableOpacity>
+          {/* White Button */}
+          <TouchableOpacity
+            style={styles.whiteButton}
+            onPress={() => this.props.navigation.navigate('DummySignUp')}
+          >
 
-        {/* White Button */}
-        <TouchableOpacity
-          style={styles.whiteButton}
-          onPress={() => this.props.navigation.navigate('DummySignUp')}
-        >
+            <Text style={{ color: '#000000' }}> Browse as Guest </Text>
+          </TouchableOpacity>
+          <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('Signin')}>Already have an account?</Text>
+        </View>
 
-          <Text style={{ color: '#000000' }}> Browse as Guest </Text>
-        </TouchableOpacity>
-        <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('Signin')}>Already have an account?</Text>
       </View>
     );
   }
@@ -48,15 +52,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'space-between',
+    // paddingTop: 150,
+    // borderWidth: 1,
+    // borderColor: 'red',
+  },
+  containerA: {
+    // borderWidth: 1,
+    paddingTop: 125,
+  },
+  containerB: {
+    // borderWidth: 1,
+    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 150
+    width: '100%',
   },
   title: {
     fontSize: 25,
     textAlign: 'center'
   },
   image: {
-    marginBottom: 50,
+    // marginBottom: 50,
     width: 300,
     height: 200
   },
@@ -88,6 +105,6 @@ const styles = StyleSheet.create({
   },
   textButton: {
     color: '#3366BB',
-    marginTop: 10,
+    // marginTop: 10,
   },
 });
