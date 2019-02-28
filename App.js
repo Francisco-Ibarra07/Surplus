@@ -3,17 +3,17 @@ import SplashScreen from 'react-native-splash-screen';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 // Auth Screens
-import GetStarted from './pages/authentication/GetStarted'
-import WhoAreYou from './pages/authentication/WhoAreYou'
-import C_Signup from './pages/authentication/C_Signup'
-import B_Signup from './pages/authentication/B_Signup'
-import Signin from './pages/authentication/Signin'
-import TermsAndConditions from './pages/authentication/TermsAndConditions'
-import PrivacyStatement from './pages/authentication/PrivacyStatement'
-import DummySignUp from './pages/authentication/DummySignUp'
+import GetStarted from './pages/authentication/GetStarted';
+import WhoAreYou from './pages/authentication/WhoAreYou';
+import C_Signup from './pages/authentication/C_Signup';
+import B_Signup from './pages/authentication/B_Signup';
+import Signin from './pages/authentication/Signin';
+import TermsAndConditions from './pages/authentication/TermsAndConditions';
+import PrivacyStatement from './pages/authentication/PrivacyStatement';
+import DummySignUp from './pages/authentication/DummySignUp';
 
 // Dash Screens
-import C_Dashboard from './pages/dashboard/C_Dashboard'
+import C_Dashboard from './pages/dashboard/C_Dashboard';
 
 // App Navigation
 export const Nav = createAppContainer(
