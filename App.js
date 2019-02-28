@@ -12,9 +12,13 @@ import TermsAndConditions from './pages/authentication/TermsAndConditions'
 import PrivacyStatement from './pages/authentication/PrivacyStatement'
 import DummySignUp from './pages/authentication/DummySignUp'
 
-// Auth Navigation
-export const Auth = createAppContainer(
+// Dash Screens
+import C_Dashboard from './pages/dashboard/C_Dashboard'
+
+// App Navigation
+export const Nav = createAppContainer(
   createStackNavigator({
+    // Auth Nav
     GetStarted: { screen: GetStarted },
     WhoAreYou: { screen: WhoAreYou },
     C_Signup: { screen: C_Signup },
@@ -23,6 +27,9 @@ export const Auth = createAppContainer(
     TermsAndConditions: { screen: TermsAndConditions },
     PrivacyStatement: { screen: PrivacyStatement },
     DummySignUp: { screen: DummySignUp },
+
+    // Dash Nav
+    C_Dashboard: { screen: C_Dashboard },
   }),
 )
 
@@ -35,7 +42,7 @@ export default class App extends Component<Props> {
 
   render() {
     return (
-      <Auth />
+      <Nav />
     );
   }
 }
