@@ -19,7 +19,7 @@ export default class GetStarted extends Component {
           <Text style={styles.title}>your next meal!</Text>
           <Image
             style={styles.image}
-            source={{ uri: 'https://i.imgur.com/gij49Cq.png' }}
+            source={require('../../resources/dummy_images/pizza_sharing.png')}
           />
         </View>
 
