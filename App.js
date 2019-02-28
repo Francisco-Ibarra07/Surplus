@@ -1,22 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
-
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
 import SplashScreen from 'react-native-splash-screen';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+// Auth Screens
+import GetStarted from './pages/authentication/GetStarted'
+import WhoAreYou from './pages/authentication/WhoAreYou'
+import C_Signup from './pages/authentication/C_Signup'
+import B_Signup from './pages/authentication/B_Signup'
+import Signin from './pages/authentication/Signin'
+import TermsAndConditions from './pages/authentication/TermsAndConditions'
+import PrivacyStatement from './pages/authentication/PrivacyStatement'
+import DummySignUp from './pages/authentication/DummySignUp'
+
+// Auth Navigation
+export const Auth = createAppContainer(
+  createStackNavigator({
+    GetStarted: { screen: GetStarted },
+    WhoAreYou: { screen: WhoAreYou },
+    C_Signup: { screen: C_Signup },
+    B_Signup: { screen: B_Signup },
+    Signin: { screen: Signin },
+    TermsAndConditions: { screen: TermsAndConditions },
+    PrivacyStatement: { screen: PrivacyStatement },
+    DummySignUp: { screen: DummySignUp },
+  }),
+)
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -27,30 +35,7 @@ export default class App extends Component<Props> {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Auth />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
