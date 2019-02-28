@@ -3,7 +3,6 @@ import {
   View,
   Text,
   ScrollView,
-  Image,
   StyleSheet,
 } from 'react-native';
 
@@ -19,7 +18,12 @@ export default class C_Dashboard extends Component {
           <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
         </View>
 
-        <FoodItem />
+        <FoodItem itemName="Dino Nuggets" />
+        <FoodItem itemName="Pho" />
+        <FoodItem itemName="Taco" />
+        <FoodItem itemName="Burrito" />
+        <FoodItem itemName="Fried Rice" />
+        <FoodItem itemName="Pizza" />
       </ScrollView>
     );
   }

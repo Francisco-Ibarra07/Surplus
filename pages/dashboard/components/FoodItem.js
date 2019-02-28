@@ -16,7 +16,7 @@ export default class FoodItem extends Component {
           </View>
           <View style={styles.foodDescription}>
             <View style={styles.foodTitle}>
-              <Text>Combo Pizza</Text>
+              <Text>{this.props.itemName}</Text>
               <Text>Pick-up 1AM - 3AM</Text>
             </View>
             <View style={styles.foodStock}>
