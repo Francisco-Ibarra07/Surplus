@@ -44,88 +44,92 @@ export default class WhoAreYou extends Component {
   render() {
     return (
       <View style={styles.container} >
+        <View style={styles.containerA}>
+          {/* Logo */}
+          <View style={styles.logo}>
+            <Image style={styles.image} source={require('./AuthResources/Logo.jpg')} />
+          </View>
 
-        {/* Logo */}
-        <View style={styles.logo}>
-          <Image style={styles.image} source={require('./AuthResources/Logo.jpg')} />
-          {/* Inputs */}
-        </View>
-
-        {/* Form */}
-        <View style={styles.form}>
-          <TextInput style={styles.input}
-            placeholder="First Name"
-            onChangeText={
-              f_name => this.setState({ f_name })
-            }
-          />
-          <TextInput style={styles.input}
-            placeholder="Last Name"
-            onChangeText={
-              l_name => this.setState({ l_name })
-            }
-          />
-          <TextInput style={styles.input}
-            placeholder="Email"
-            onChangeText={
-              email => this.setState({ email })
-            }
-          />
-          <TextInput style={styles.input}
-            placeholder="Phone"
-            onChangeText={
-              phone => this.setState({ phone })
-            }
-          />
-          <TextInput style={styles.input} secureTextEntry={true}
-            placeholder="Password"
-            onChangeText={
-              password => this.setState({ password })
-            }
-          />
-        </View>
-
-        {/* Buttons */}
-        <View style={styles.buttons} >
-          {/* Sign Up */}
-          <TouchableOpacity onPress={this.validate}
-            style={styles.button}
-          >
-            <Text style={{ color: 'white' }}>Sign Up</Text>
-          </TouchableOpacity>
-
-          {/* Sign up with FB */}
-          <TouchableOpacity style={styles.whiteButton}>
-            <Image
-              source={require('./AuthResources/facebooklogo.png')}
-              style={styles.ImageIconStyle}
+          {/* Form */}
+          <View style={styles.form}>
+            {/* Inputs */}
+            <TextInput style={styles.input}
+              placeholder="First Name"
+              onChangeText={
+                f_name => this.setState({ f_name })
+              }
             />
-            <Text style={{ color: '#D33B32' }}>Continue with Facebook</Text>
-          </TouchableOpacity>
-
-          {/* Sign up with G+ */}
-          <TouchableOpacity style={styles.whiteButton}>
-            <Image
-              source={require('./AuthResources/googlelogo.png')}
-              style={styles.ImageIconStyle}
+            <TextInput style={styles.input}
+              placeholder="Last Name"
+              onChangeText={
+                l_name => this.setState({ l_name })
+              }
             />
-            <Text style={{ color: '#D33B32' }}>Continue with Google</Text>
-          </TouchableOpacity>
+            <TextInput style={styles.input}
+              placeholder="Email"
+              onChangeText={
+                email => this.setState({ email })
+              }
+            />
+            <TextInput style={styles.input}
+              placeholder="Phone"
+              onChangeText={
+                phone => this.setState({ phone })
+              }
+            />
+            <TextInput style={styles.input} secureTextEntry={true}
+              placeholder="Password"
+              onChangeText={
+                password => this.setState({ password })
+              }
+            />
+          </View>
         </View>
 
-        {/* Condition Statement */}
-        <View style={styles.condition}>
-          <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
-            <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
-              Terms and Conditions
+        <View style={styles.containerB}>
+          {/* Buttons */}
+          <View style={styles.buttons} >
+            {/* Sign Up */}
+            <TouchableOpacity onPress={this.validate}
+              style={styles.button}
+            >
+              <Text style={{ color: 'white' }}>Sign Up</Text>
+            </TouchableOpacity>
+
+            {/* Sign up with FB */}
+            <TouchableOpacity style={styles.whiteButton}>
+              <Image
+                source={require('./AuthResources/facebooklogo.png')}
+                style={styles.ImageIconStyle}
+              />
+              <Text style={{ color: '#D33B32' }}>Continue with Facebook</Text>
+            </TouchableOpacity>
+
+            {/* Sign up with G+ */}
+            <TouchableOpacity style={styles.whiteButton}>
+              <Image
+                source={require('./AuthResources/googlelogo.png')}
+                style={styles.ImageIconStyle}
+              />
+              <Text style={{ color: '#D33B32' }}>Continue with Google</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Condition Statement */}
+          <View style={styles.condition}>
+            <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
+              <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
+                Terms and Conditions
           </Text>
-            {" "}and
+              {" "}and
           <Text onPress={() => this.props.navigation.navigate('PrivacyStatement')} style={{ color: '#3366BB' }}>
-              {" "}Privacy Statement
+                {" "}Privacy Statement
           </Text>
-            .
+              .
         </Text>
+          </View>
         </View>
+
       </View>
     );
   }
@@ -135,19 +139,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     // borderWidth: 1,
     // borderColor: 'blue',
     // height: '100%',
+    marginBottom: 25,
     marginLeft: 25,
     marginRight: 25,
   },
-  input: {
+  containerA: {
     width: '100%',
+
+  },
+  containerB: {
+    width: '100%',
+
+  },
+  input: {
+    // width: '100%',
     textAlign: 'right',
     borderBottomWidth: 1,
     paddingTop: 12,
     paddingBottom: 8,
+    // borderWidth: 1,
+    // borderColor: 'blue',
+    width: '100%',
     // height: 45,
   },
   buttons: {
@@ -179,7 +195,7 @@ const styles = StyleSheet.create({
     borderColor: '#777777',
   },
   image: {
-    height: 100,
+    height: 80,
     resizeMode: 'contain',
     // borderWidth: 1,
     // borderColor: 'orange',
