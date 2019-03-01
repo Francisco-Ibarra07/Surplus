@@ -9,7 +9,7 @@ import {
   Button
 } from 'react-native';
 
-export default class Signin extends Component {
+export default class SignIn extends Component {
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
