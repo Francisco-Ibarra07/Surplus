@@ -12,6 +12,7 @@ import Signin from './pages/authentication/Signin';
 import TermsAndConditions from './pages/authentication/TermsAndConditions';
 import PrivacyStatement from './pages/authentication/PrivacyStatement';
 import DummySignUp from './pages/authentication/DummySignUp';
+import BusinessDash from './pages/dashboard/BusinessDash';
 
 // Dash Screens
 import C_Dashboard from './pages/dashboard/C_Dashboard';
@@ -29,7 +30,8 @@ export const Nav = createAppContainer(
     Signin: { screen: Signin },
     TermsAndConditions: { screen: TermsAndConditions },
     PrivacyStatement: { screen: PrivacyStatement },
-    DummySignUp: { screen: DummySignUp },
+    DummySignUp: { screen: DummySignUp },  
+    BusinessDash: { screen: BusinessDash },
 
     // Dash Nav
     C_Dashboard: {
@@ -47,6 +49,8 @@ export const Nav = createAppContainer(
         )
       })
     },
+
+
   }),
 )
 
