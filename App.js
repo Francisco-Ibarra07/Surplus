@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SplashScreen from 'react-native-splash-screen';
+import { TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 // Auth Screens
@@ -15,6 +16,8 @@ import DummySignUp from './pages/authentication/DummySignUp';
 // Dash Screens
 import C_Dashboard from './pages/dashboard/C_Dashboard';
 
+// Customer Dash Nav Style
+
 // App Navigation
 export const Nav = createAppContainer(
   createStackNavigator({
@@ -29,7 +32,21 @@ export const Nav = createAppContainer(
     DummySignUp: { screen: DummySignUp },
 
     // Dash Nav
-    C_Dashboard: { screen: C_Dashboard },
+    C_Dashboard: {
+      screen: C_Dashboard,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image style={styles.hamburgerLogo} source={require('./pages/dashboard/DashboardResources/logo.jpg')} />
+          </TouchableOpacity>
+        ),
+        headerRight: (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image style={styles.rightLogos} source={require('./pages/dashboard/DashboardResources/shoppingcart.png')} />
+          </TouchableOpacity>
+        )
+      })
+    },
   }),
 )
 
@@ -46,3 +63,22 @@ export default class App extends Component<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  hamburgerLogo: {
+    resizeMode: 'contain',
+    height: 30,
+    width: 30,
+    // borderWidth: 1,
+    // borderColor: 'blue',
+    marginLeft: 25,
+  },
+  rightLogos: {
+    resizeMode: 'contain',
+    height: 30,
+    width: 30,
+    // borderWidth: 1,
+    // borderColor: 'blue',
+    marginRight: 25,
+  },
+});
