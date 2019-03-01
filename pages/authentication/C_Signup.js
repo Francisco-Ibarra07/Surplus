@@ -44,75 +44,92 @@ export default class WhoAreYou extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <Image style={styles.image} source={require('./AuthResources/Logo.jpg')} />
-        {/* Inputs */}
-        <TextInput style={styles.input}
-          placeholder="First Name"
-          onChangeText={
-            f_name => this.setState({ f_name })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Last Name"
-          onChangeText={
-            l_name => this.setState({ l_name })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Email"
-          onChangeText={
-            email => this.setState({ email })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Phone"
-          onChangeText={
-            phone => this.setState({ phone })
-          }
-        />
-        <TextInput style={styles.input} secureTextEntry={true}
-          placeholder="Password"
-          onChangeText={
-            password => this.setState({ password })
-          }
-        />
+        <View style={styles.containerA}>
+          {/* Logo */}
+          <View style={styles.logo}>
+            <Image style={styles.image} source={require('./AuthResources/Logo.jpg')} />
+          </View>
 
-        {/* Sign Up */}
-        <TouchableOpacity onPress={this.validate}
-          style={styles.button}
-        >
-          <Text style={{ color: 'white' }}>Sign Up</Text>
-        </TouchableOpacity>
+          {/* Form */}
+          <View style={styles.form}>
+            {/* Inputs */}
+            <TextInput style={styles.input}
+              placeholder="First Name"
+              onChangeText={
+                f_name => this.setState({ f_name })
+              }
+            />
+            <TextInput style={styles.input}
+              placeholder="Last Name"
+              onChangeText={
+                l_name => this.setState({ l_name })
+              }
+            />
+            <TextInput style={styles.input}
+              placeholder="Email"
+              onChangeText={
+                email => this.setState({ email })
+              }
+            />
+            <TextInput style={styles.input}
+              placeholder="Phone"
+              onChangeText={
+                phone => this.setState({ phone })
+              }
+            />
+            <TextInput style={styles.input} secureTextEntry={true}
+              placeholder="Password"
+              onChangeText={
+                password => this.setState({ password })
+              }
+            />
+          </View>
+        </View>
 
-        {/* Sign up with FB */}
-        <TouchableOpacity style={styles.whiteButton}>
-          <Image
-            source={require('./AuthResources/facebooklogo.png')}
-            style={styles.ImageIconStyle}
-          />
-          <Text style={{ color: '#D33B32' }}>Continue with Facebook</Text>
-        </TouchableOpacity>
+        <View style={styles.containerB}>
+          {/* Buttons */}
+          <View style={styles.buttons} >
+            {/* Sign Up */}
+            <TouchableOpacity onPress={this.validate}
+              style={styles.button}
+            >
+              <Text style={{ color: 'white' }}>Sign Up</Text>
+            </TouchableOpacity>
 
-        {/* Sign up with G+ */}
-        <TouchableOpacity style={styles.whiteButton}>
-          <Image
-            source={require('./AuthResources/googlelogo.png')}
-            style={styles.ImageIconStyle}
-          />
-          <Text style={{ color: '#D33B32' }}>Continue with Google</Text>
-        </TouchableOpacity>
+            {/* Sign up with FB */}
+            <TouchableOpacity style={styles.whiteButton}>
+              <Image
+                source={require('./AuthResources/facebooklogo.png')}
+                style={styles.ImageIconStyle}
+              />
+              <Text style={{ color: '#D33B32' }}>Continue with Facebook</Text>
+            </TouchableOpacity>
 
-        {/* Condition Statement */}
-        <Text style={styles.condition}>By tapping the Faebook icon, Google icon, or Signup button, you agree to our{" "}
-          <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
-            Terms and Conditions
+            {/* Sign up with G+ */}
+            <TouchableOpacity style={styles.whiteButton}>
+              <Image
+                source={require('./AuthResources/googlelogo.png')}
+                style={styles.ImageIconStyle}
+              />
+              <Text style={{ color: '#D33B32' }}>Continue with Google</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Condition Statement */}
+          <View style={styles.condition}>
+            <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
+              <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
+                Terms and Conditions
           </Text>
-          {" "}and
+              {" "}and
           <Text onPress={() => this.props.navigation.navigate('PrivacyStatement')} style={{ color: '#3366BB' }}>
-            {" "}Privacy Statement
+                {" "}Privacy Statement
           </Text>
-          .
+              .
         </Text>
+          </View>
+        </View>
+
       </View>
     );
   }
@@ -122,13 +139,39 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    // borderWidth: 1,
+    // borderColor: 'blue',
+    // height: '100%',
+    marginBottom: 25,
+    marginLeft: 25,
+    marginRight: 25,
+  },
+  containerA: {
+    width: '100%',
+
+  },
+  containerB: {
+    width: '100%',
+
   },
   input: {
-    height: 40,
-    width: '85%',
+    // width: '100%',
     textAlign: 'right',
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    paddingTop: 12,
+    paddingBottom: 8,
+    // borderWidth: 1,
+    // borderColor: 'blue',
+    width: '100%',
+    // height: 45,
+  },
+  buttons: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   button: {
     justifyContent: 'center',
@@ -136,22 +179,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#D33B32',
     borderRadius: 10,
     marginTop: 10,
-    padding: 10,
-    width: '85%',
+    // padding: 10,
+    height: 45,
+    width: '100%',
   },
   whiteButton: {
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     marginTop: 10,
-    padding: 10,
-    width: '85%',
+    // padding: 10,
+    height: 45,
+    width: '100%',
     borderWidth: 1,
     borderColor: '#777777',
   },
   image: {
-    height: 120,
+    height: 80,
     resizeMode: 'contain',
+    // borderWidth: 1,
+    // borderColor: 'orange',
   },
   ImageIconStyle: {
     padding: 10,
@@ -163,8 +210,26 @@ const styles = StyleSheet.create({
     left: 2,
   },
   condition: {
+    width: '100%',
+    paddingTop: 10,
+    // borderWidth: 1,
+    // borderColor: '#777777',
+  },
+  conditionText: {
     fontSize: 10,
-    width: '85%',
-    paddingTop: 15,
+  },
+
+  form: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    width: '100%',
+    alignItems: 'center',
   },
 });
