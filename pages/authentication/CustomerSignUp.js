@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import firebase from 'react-native-firebase';
 
 export default class WhoAreYou extends Component {
   static navigationOptions = {
@@ -26,19 +27,50 @@ export default class WhoAreYou extends Component {
     }
   }
 
-  validate = () => {
+  /*  
+  TODO:
+    1) Put stuff in catch() method 
+    2) Validate input. Figure out how to call a function from inside a function
+    3)  Attempt login
+    4) Sign out button/functionality
+    5) When the user opens up the app, if they were signed in before, take them to the home page
+
+  */
+  // Create an account: Validates user input and if correct, sends info to Firebase
+  handleSignUp = () => {
+
+    // Get user input variables
+    const { f_name, l_name, email, phone, password } = this.state;
+
+
+    // Sends user input to Firebase. If successful, routes user to customer home page
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(() => this.props.navigation.navigate('CustomerDashboard'))
+    .catch()
+  }
+
+  // Validate credentials
+  validate1 = () => {
     const { f_name, l_name, email, phone, password } = this.state;
     if (f_name == "") {
       alert('Please fill in your first name.')
+      return false;
     } else if (l_name == "") {
       alert('Please fill in your last name.')
+      return false;
     } else if (email == "") {
       alert('Please fill in your email.')
+      return false;
     } else if (phone == "") {
       alert('Please fill in your phone.')
+      return false;
     } else if (password == "") {
       alert('Please fill in your password.')
+      return false;
     }
+
+    // Return true if everthing was filled properly
+    return true;
   }
 
   render() {
@@ -77,8 +109,8 @@ export default class WhoAreYou extends Component {
           }
         />
 
-        {/* Sign Up */}
-        <TouchableOpacity onPress={this.validate}
+        {/* Sign Up Button*/}
+        <TouchableOpacity onPress={this.handleSignUp}
           style={styles.button}
         >
           <Text style={{ color: 'white' }}>Sign Up</Text>
