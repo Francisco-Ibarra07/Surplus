@@ -39,12 +39,12 @@ export const Nav = createAppContainer(
       navigationOptions: ({ navigation }) => ({
         headerLeft: (
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image style={styles.hamburgerLogo} source={require('./pages/dashboard/DashboardResources/logo.jpg')} />
+            <Image style={styles.hamburgerLogo} source={require('./pages/dashboard/resources/logo.jpg')} />
           </TouchableOpacity>
         ),
         headerRight: (
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image style={styles.rightLogos} source={require('./pages/dashboard/DashboardResources/shoppingcart.png')} />
+            <Image style={styles.rightLogos} source={require('./pages/dashboard/resources/shoppingcart.png')} />
           </TouchableOpacity>
         )
       })

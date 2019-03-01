@@ -12,7 +12,7 @@ export default class FoodItem extends Component {
       <View style={styles.foodContainer}>
         <View style={styles.foodItem}>
           <View style={styles.foodImage}>
-            <Image style={styles.foodImageChild} source={require('../DashboardResources/pizza.jpg')} />
+            <Image style={styles.foodImageChild} source={require('../resources/pizza.jpg')} />
           </View>
           <View style={styles.foodDescription}>
             <View style={styles.foodTitle}>
