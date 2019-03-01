@@ -10,25 +10,54 @@ import {
   Image,
   Button
 } from 'react-native';
+import firebase from 'react-native-firebase';
 
 export default class SignIn extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+    }
+  }
+  
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
     }
   }
   
+  handleSignIn = () => {
+
+    // Get user input variables
+    const { email, password } = this.state;
+
+    // Sign in
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(() => this.props.navigation.navigate('CustomerDashboard'))
+      .catch()
+
+  }
+
+
   render() {
     return (
       <View style={styles.container} >
         <Image style={styles.image} source={require('./resources/surplus.jpg')} />
         <TextInput style={styles.input}
           placeholder="Email"
+          onChangeText={
+            email => this.setState({ email })
+          }
         />
         <TextInput style={styles.input} secureTextEntry={true}
           placeholder="Password"
+          onChangeText={
+            password => this.setState({ password })
+          }
         />
-        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('CustomerDashboard')}>
+        <TouchableOpacity style={styles.button} onPress={this.handleSignIn}>
           <Text style={{ color: 'white' }}>Sign In</Text>
         </TouchableOpacity>
         <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Forgot Password?</Text>
