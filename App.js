@@ -49,8 +49,6 @@ export const Nav = createAppContainer(
         )
       })
     },
-
-
   }),
 )
 

@@ -41,7 +41,8 @@ export default class B_SignUp extends Component {
           placeholder="Pick-up Time"
         />
         <TouchableOpacity style={styles.button}>
-          <Text style={{ color: 'white' }}>Claim</Text>
+          <Text style={{ color: 'white' }} onPress={() => this.props.navigation.navigate('BusinessDash')}>Claim</Text>
+
         </TouchableOpacity>
         <Text style={styles.condition}>By tapping the Faebook icon, Google icon, or Signup button, you agree to our{" "}
           <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
