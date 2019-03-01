@@ -38,7 +38,7 @@ export default class GetStarted extends Component {
 
           <Text style={{ color: '#000000' }}> Browse as Guest </Text>
         </TouchableOpacity>
-        <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('Signin')}>Already have an account?</Text>
+        <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Already have an account?</Text>
       </View>
     );
   }

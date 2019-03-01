@@ -9,7 +9,7 @@ import {
   Button
 } from 'react-native';
 
-export default class Signin extends Component {
+export default class SignIn extends Component {
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
@@ -28,7 +28,7 @@ export default class Signin extends Component {
         <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('C_Dashboard')}>
           <Text style={{ color: 'white' }}>Sign In</Text>
         </TouchableOpacity>
-        <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('Signin')}>Forgot Password?</Text>
+        <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Forgot Password?</Text>
       </View>
     );
   }

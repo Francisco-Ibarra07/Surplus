@@ -6,9 +6,9 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 // Auth Screens
 import GetStarted from './pages/authentication/GetStarted';
 import WhoAreYou from './pages/authentication/WhoAreYou';
-import C_Signup from './pages/authentication/C_Signup';
-import B_Signup from './pages/authentication/B_Signup';
-import Signin from './pages/authentication/Signin';
+import CustomerSignUp from './pages/authentication/CustomerSignUp';
+import BusinessSignUp from './pages/authentication/BusinessSignUp';
+import SignIn from './pages/authentication/SignIn';
 import TermsAndConditions from './pages/authentication/TermsAndConditions';
 import PrivacyStatement from './pages/authentication/PrivacyStatement';
 import DummySignUp from './pages/authentication/DummySignUp';
@@ -25,9 +25,9 @@ export const Nav = createAppContainer(
     // Auth Nav
     GetStarted: { screen: GetStarted },
     WhoAreYou: { screen: WhoAreYou },
-    C_Signup: { screen: C_Signup },
-    B_Signup: { screen: B_Signup },
-    Signin: { screen: Signin },
+    CustomerSignUp: { screen: CustomerSignUp },
+    BusinessSignUp: { screen: BusinessSignUp },
+    SignIn: { screen: SignIn },
     TermsAndConditions: { screen: TermsAndConditions },
     PrivacyStatement: { screen: PrivacyStatement },
     DummySignUp: { screen: DummySignUp },  

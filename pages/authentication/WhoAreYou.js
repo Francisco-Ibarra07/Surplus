@@ -19,7 +19,7 @@ export default class WhoAreYou extends Component {
       <View style={styles.container}>
         <Text style={styles.title}>Are you a</Text>
         <Text style={styles.subtitle}>Customer or a Business Owner?</Text>
-        <TouchableOpacity style={styles.button} activeOpacity={0.5} onPress={() => this.props.navigation.navigate('C_Signup')}>
+        <TouchableOpacity style={styles.button} activeOpacity={0.5} onPress={() => this.props.navigation.navigate('CustomerSignUp')}>
           <Image
             source={require('./resources/customer.jpg')}
             style={styles.ImageIconStyle}
@@ -27,7 +27,7 @@ export default class WhoAreYou extends Component {
           <View style={styles.SeparatorLine} />
           <Text style={styles.TextStyle}> Customer </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} activeOpacity={0.5} onPress={() => this.props.navigation.navigate('B_Signup')}>
+        <TouchableOpacity style={styles.button} activeOpacity={0.5} onPress={() => this.props.navigation.navigate('BusinessSignUp')}>
           <Image
             source={require('./resources/business.jpg')}
             style={styles.ImageIconStyle}

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default class B_SignUp extends Component {
+export default class BusinessSignUp extends Component {
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
