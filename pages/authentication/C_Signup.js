@@ -44,7 +44,7 @@ export default class WhoAreYou extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <Image style={styles.image} source={require('./AuthResources/Logo.jpg')} />
+        <Image style={styles.image} source={require('./resources/Logo.jpg')} />
         {/* Inputs */}
         <TextInput style={styles.input}
           placeholder="First Name"
@@ -87,7 +87,7 @@ export default class WhoAreYou extends Component {
         {/* Sign up with FB */}
         <TouchableOpacity style={styles.whiteButton}>
           <Image
-            source={require('./AuthResources/facebooklogo.png')}
+            source={require('./resources/facebooklogo.png')}
             style={styles.ImageIconStyle}
           />
           <Text style={{ color: '#D33B32' }}>Continue with Facebook</Text>
@@ -96,7 +96,7 @@ export default class WhoAreYou extends Component {
         {/* Sign up with G+ */}
         <TouchableOpacity style={styles.whiteButton}>
           <Image
-            source={require('./AuthResources/googlelogo.png')}
+            source={require('./resources/googlelogo.png')}
             style={styles.ImageIconStyle}
           />
           <Text style={{ color: '#D33B32' }}>Continue with Google</Text>

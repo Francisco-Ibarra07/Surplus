@@ -18,7 +18,7 @@ export default class Signin extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <Image style={styles.image} source={require('./AuthResources/surplus.jpg')} />
+        <Image style={styles.image} source={require('./resources/surplus.jpg')} />
         <TextInput style={styles.input}
           placeholder="Email"
         />
