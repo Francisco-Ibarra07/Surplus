@@ -1,5 +1,3 @@
-// General Sign In page
-// Both the Business Owner and Customer will use this page to sign in
 import React, { Component } from 'react';
 import {
   View,
@@ -10,10 +8,11 @@ import {
   Image,
   Button
 } from 'react-native';
+
 import firebase from 'react-native-firebase';
 
 export default class SignIn extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -21,13 +20,13 @@ export default class SignIn extends Component {
       password: '',
     }
   }
-  
+
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
     }
   }
-  
+
   handleSignIn = () => {
 
     // Get user input variables
@@ -40,27 +39,29 @@ export default class SignIn extends Component {
 
   }
 
-
   render() {
     return (
       <View style={styles.container} >
-        <Image style={styles.image} source={require('./resources/surplus.jpg')} />
-        <TextInput style={styles.input}
-          placeholder="Email"
-          onChangeText={
-            email => this.setState({ email })
-          }
-        />
-        <TextInput style={styles.input} secureTextEntry={true}
-          placeholder="Password"
-          onChangeText={
-            password => this.setState({ password })
-          }
-        />
-        <TouchableOpacity style={styles.button} onPress={this.handleSignIn}>
-          <Text style={{ color: 'white' }}>Sign In</Text>
-        </TouchableOpacity>
-        <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Forgot Password?</Text>
+
+        <View style={styles.containerA}>
+          <Image style={styles.image} source={require('./resources/surplus.jpg')} />
+        </View>
+
+        <View style={styles.form}>
+          <TextInput style={styles.input}
+            placeholder="Email"
+          />
+          <TextInput style={styles.input} secureTextEntry={true}
+            placeholder="Password"
+          />
+        </View>
+
+        <View style={styles.buttons}>
+          <TouchableOpacity onPress={this.handleSignIn} style={styles.button} >
+            <Text style={{ color: 'white' }}>Sign In</Text>
+          </TouchableOpacity>
+          <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Forgot Password?</Text>
+        </View>
       </View>
     );
   }
@@ -70,31 +71,55 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    // borderWidth: 1,
+    // borderColor: 'blue',
+    margin: 25,
   },
   input: {
-    height: 40,
-    width: '85%',
+    // height: 40,
+    paddingTop: 10,
+    paddingBottom: 8,
+    width: '100%',
     textAlign: 'right',
     borderBottomWidth: 1
   },
+  form: {
+    width: '100%',
+    // borderWidth: 1,
+    // borderColor: 'orange',
+  },
   button: {
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#D33B32',
     borderRadius: 10,
-    marginTop: 200,
-    marginBottom: 15,
-    padding: 10,
-    width: '85%',
+    // marginTop: 200,
+    marginBottom: 10,
+    // marginTop: 15,
+    // padding: 10,
+    height: 45,
+    width: '100%',
+  },
+  buttons: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    // borderWidth: 1,
+    // borderColor: 'orange',
   },
   image: {
     height: 60,
     resizeMode: 'contain',
-    marginTop: 70,
-    marginBottom: 50
+    alignItems: 'center',
+    justifyContent: 'center',
+    // borderWidth: 1,
+    // borderColor: 'red',
+    marginTop: 30,
+    // marginBottom: 50
   },
   textButton: {
     color: '#0645AD',
-    marginTop: 10,
+    // marginTop: 10,
   },
 });
