@@ -1,3 +1,5 @@
+// General Sign In page
+// Both the Business Owner and Customer will use this page to sign in
 import React, { Component } from 'react';
 import {
   View,
@@ -15,6 +17,7 @@ export default class SignIn extends Component {
       borderBottomWidth: 0,
     }
   }
+  
   render() {
     return (
       <View style={styles.container} >
