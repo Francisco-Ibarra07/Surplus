@@ -8,7 +8,7 @@ import {
 
 import FoodItem from './components/FoodItem';
 
-export default class C_Dashboard extends Component {
+export default class CustomerDashboard extends Component {
   render() {
     return (
       <ScrollView>

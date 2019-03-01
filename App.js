@@ -15,7 +15,7 @@ import DummySignUp from './pages/authentication/DummySignUp';
 import BusinessDash from './pages/dashboard/BusinessDash';
 
 // Dash Screens
-import C_Dashboard from './pages/dashboard/C_Dashboard';
+import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 
 // Customer Dash Nav Style
 
@@ -34,8 +34,8 @@ export const Nav = createAppContainer(
     BusinessDash: { screen: BusinessDash },
 
     // Dash Nav
-    C_Dashboard: {
-      screen: C_Dashboard,
+    CustomerDashboard: {
+      screen: CustomerDashboard,
       navigationOptions: ({ navigation }) => ({
         headerLeft: (
           <TouchableOpacity onPress={() => navigation.goBack()}>

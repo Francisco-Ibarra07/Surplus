@@ -25,7 +25,7 @@ export default class SignIn extends Component {
         <TextInput style={styles.input} secureTextEntry={true}
           placeholder="Password"
         />
-        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('C_Dashboard')}>
+        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('CustomerDashboard')}>
           <Text style={{ color: 'white' }}>Sign In</Text>
         </TouchableOpacity>
         <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Forgot Password?</Text>
