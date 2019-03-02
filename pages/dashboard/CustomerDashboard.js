@@ -12,6 +12,24 @@ import firebase from 'react-native-firebase';
 
 export default class CustomerDashboard extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      //f_name: '',
+    }
+
+    // Query firebase for user's firstname
+    user_id = firebase.auth().currentUser.uid;
+    const ref = firebase.database().ref('customers/users/' + user_id);
+
+    // With the reference, query firebase to get a snapshot
+    // Snapshot object contains structure of user's information
+    ref.on('value', function (snapshot) {
+      userObject = snapshot.val();
+      console.log(userObject.email);
+    });
+  }
+
   signOut = () => {
     // Firebase log off
     firebase.auth().signOut();
