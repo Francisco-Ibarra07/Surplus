@@ -52,7 +52,7 @@ export default class BusinessSignUp extends Component {
         </View>
 
         <View style={styles.condition}>
-          <TouchableOpacity style={styles.button}> 
+          <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('BusinessVerify')}>
             <Text style={{ color: 'white' }}>Claim</Text>
           </TouchableOpacity>
           <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
