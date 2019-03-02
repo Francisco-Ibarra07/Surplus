@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   },
   input: {
     // width: '100%',
-    textAlign: 'right',
+    textAlign: 'left',
     borderBottomWidth: 1,
     paddingTop: 12,
     paddingBottom: 8,

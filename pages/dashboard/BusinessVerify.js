@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default class BusinessSignUp extends Component {
+export default class BusinessVerify extends Component {
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
@@ -19,7 +19,7 @@ export default class BusinessSignUp extends Component {
       <View style={styles.container} >
         <View style={styles.containerChild}>
           <View style={styles.title}>
-            <Text style={styles.titleText}>Claim your business</Text>
+            <Text style={styles.titleText}>Almost done!</Text>
           </View>
 
           {/* Form */}
@@ -52,7 +52,7 @@ export default class BusinessSignUp extends Component {
         </View>
 
         <View style={styles.condition}>
-          <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('BusinessVerify')}>
+          <TouchableOpacity style={styles.button}>
             <Text style={{ color: 'white' }}>Claim</Text>
           </TouchableOpacity>
           <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     // marginBottom: 50,
-    fontSize: 25
+    fontSize: 30
   },
   condition: {
     fontSize: 10,
