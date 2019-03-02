@@ -53,8 +53,13 @@ export default class CustomerSignUp extends Component {
         user_id = firebase.auth().currentUser.uid;
 
         // Get database reference to correct foler
-        const ref = firebase.database().ref('customers/users');
-        ref.update({ foo: 'bar' });
+        const ref = firebase.database().ref('customers/users/' + user_id);
+        ref.update({
+          'email': email,
+          'first_name': f_name,
+          'last_name': l_name,
+          'phone_number': phone,
+        });
       })
       .catch((error) => {
         console.log('error ', error)
