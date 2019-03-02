@@ -29,7 +29,7 @@ export default class BusinessVerify extends Component {
           />
 
           <View style={styles.condition}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('BusinessSignUp')}>
               <Text style={{ color: 'white', fontSize: 18 }}>Got it!</Text>
             </TouchableOpacity>
           </View>

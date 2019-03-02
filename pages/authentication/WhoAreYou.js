@@ -27,7 +27,7 @@ export default class WhoAreYou extends Component {
           <View style={styles.SeparatorLine} />
           <Text style={styles.TextStyle}> Customer </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} activeOpacity={0.5} onPress={() => this.props.navigation.navigate('BusinessSignUp')}>
+        <TouchableOpacity style={styles.button} activeOpacity={0.5} onPress={() => this.props.navigation.navigate('BusinessVerify')}>
           <Image
             source={require('./resources/business.jpg')}
             style={styles.ImageIconStyle}
