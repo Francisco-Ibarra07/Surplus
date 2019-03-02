@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import {
+  Image,
   View,
   Text,
   StyleSheet,
@@ -22,49 +23,16 @@ export default class BusinessVerify extends Component {
             <Text style={styles.titleText}>Almost done!</Text>
           </View>
 
-          {/* Form */}
-          <View style={styles.form}>
-            <TextInput style={styles.input}
-              placeholder="Store Name"
-            />
-            <TextInput style={styles.input}
-              placeholder="Phone Number"
-            />
-            <TextInput style={styles.input}
-              placeholder="Address"
-            />
-            <TextInput style={styles.input}
-              placeholder="City"
-            />
-            <View style={styles.container2}>
-              <TextInput style={styles.input2}
-                placeholder="State"
-              />
-              <TextInput style={styles.input2}
-                placeholder="Zip"
-              />
-            </View>
-            <TextInput style={styles.input}
-              placeholder="Pick-up Time"
-            />
+          <Image
+            source={require('./resources/Verify.jpg')}
+            style={styles.VerifyStyle}
+          />
+
+          <View style={styles.condition}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={{ color: 'white', fontSize: 18 }}>Got it!</Text>
+            </TouchableOpacity>
           </View>
-
-        </View>
-
-        <View style={styles.condition}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={{ color: 'white' }}>Claim</Text>
-          </TouchableOpacity>
-          <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
-            <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
-              Terms and Conditions
-          </Text>
-            {" "}and
-          <Text onPress={() => this.props.navigation.navigate('PrivacyStatement')} style={{ color: '#3366BB' }}>
-              {" "}Privacy Statement
-          </Text>
-            .
-        </Text>
         </View>
       </View>
     );
@@ -72,6 +40,11 @@ export default class BusinessVerify extends Component {
 }
 
 const styles = StyleSheet.create({
+  VerifyStyle: {
+    height: 450,
+    width: 400,
+    resizeMode: 'contain',
+  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -80,32 +53,13 @@ const styles = StyleSheet.create({
     // borderColor: 'pink',
     margin: 25,
   },
-  container2: {
-    flexDirection: 'row'
-  },
-  input: {
-    // height: 40,
-    paddingTop: 10,
-    paddingBottom: 8,
-    width: '100%',
-    textAlign: 'left',
-    borderBottomWidth: 1
-  },
-  input2: {
-    // height: 40,
-    paddingTop: 10,
-    paddingBottom: 8,
-    textAlign: 'left',
-    width: '20%',
-    borderBottomWidth: 1
-  },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#D33B32',
     borderRadius: 10,
-    height: 45,
-    // marginTop: 100,
+    height: 55,
+    marginTop: 20,
     // padding: 10,
     width: '100%',
   },
@@ -114,14 +68,9 @@ const styles = StyleSheet.create({
     // borderColor: 'blue',
     paddingBottom: 50,
   },
-  form: {
-    // borderWidth: 1,
-    // borderColor: 'orange',
-    width: '100%',
-  },
   titleText: {
     // marginBottom: 50,
-    fontSize: 30
+    fontSize: 35
   },
   condition: {
     fontSize: 10,
