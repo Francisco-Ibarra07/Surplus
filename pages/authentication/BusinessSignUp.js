@@ -52,7 +52,7 @@ export default class BusinessSignUp extends Component {
         </View>
 
         <View style={styles.condition}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button}> 
             <Text style={{ color: 'white' }}>Claim</Text>
           </TouchableOpacity>
           <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
@@ -88,15 +88,15 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 8,
     width: '100%',
-    textAlign: 'right',
+    textAlign: 'left',
     borderBottomWidth: 1
   },
   input2: {
     // height: 40,
     paddingTop: 10,
     paddingBottom: 8,
-    textAlign: 'right',
-    width: '50%',
+    textAlign: 'left',
+    width: '20%',
     borderBottomWidth: 1
   },
   button: {
