@@ -52,8 +52,8 @@ export default class BusinessSignUp extends Component {
         </View>
 
         <View style={styles.condition}>
-          <TouchableOpacity style={styles.button}> 
-            <Text style={{ color: 'white' }}>Claim </Text>
+          <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('BusinessHomePage')}> 
+            <Text style={{ color: 'white', fontSize: 18}}> Claim </Text>
           </TouchableOpacity>
           <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
             <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 8,
     textAlign: 'left',
-    width: '20%',
+    width: '30%',
     borderBottomWidth: 1
   },
   button: {
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     // marginBottom: 50,
-    fontSize: 25
+    fontSize: 30
   },
   condition: {
     fontSize: 10,

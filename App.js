@@ -17,6 +17,7 @@ import BusinessDash from './pages/dashboard/BusinessDash';
 // Dash Screens
 import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 import BusinessVerify from './pages/dashboard/BusinessVerify';
+import BusinessHomePage from './pages/dashboard/BusinessHomePage';
 
 // Customer Dash Nav Style
 
@@ -51,6 +52,7 @@ export const Nav = createAppContainer(
       })
     }, 
     BusinessVerify: {screen: BusinessVerify},
+    BusinessHomePage: {screen: BusinessHomePage},
   }),
 )
 
