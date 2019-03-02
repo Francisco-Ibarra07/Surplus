@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import firebase from 'react-native-firebase';
 
-
 export default class CustomerSignUp extends Component {
   static navigationOptions = {
     headerStyle: {
@@ -30,9 +29,14 @@ export default class CustomerSignUp extends Component {
 
   /*  
   TODO:
+  Today:
+    Put customer in correct group
+
+
+
     1) Put stuff in catch() method 
     2) Validate input. Figure out how to call a function from inside a function
-    3)  Attempt login
+    [DONE] 3)  Attempt login
     4) Sign out button/functionality
     5) When the user opens up the app, if they were signed in before, take them to the home page
   */
@@ -44,8 +48,17 @@ export default class CustomerSignUp extends Component {
 
     // Sends user input to Firebase. If successful, routes user to customer home page
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('CustomerDashboard'))
-      .catch()
+      .then(() => {
+        this.props.navigation.navigate('CustomerDashboard');
+        user_id = firebase.auth().currentUser.uid;
+
+        // Get database reference to correct foler
+        const ref = firebase.database().ref('customers/users');
+        ref.update({ foo: 'bar' });
+      })
+      .catch((error) => {
+        console.log('error ', error)
+      })
   }
 
   // Validate credentials
