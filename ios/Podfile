@@ -8,6 +8,7 @@ target 'Surplus' do
   # Pods for Surplus
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'SurplusTests' do
     inherit! :search_paths
