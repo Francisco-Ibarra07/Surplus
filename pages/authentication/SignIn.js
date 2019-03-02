@@ -35,8 +35,7 @@ export default class SignIn extends Component {
     // Sign in
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => this.props.navigation.navigate('CustomerDashboard'))
-      .catch()
-
+      .catch(error => { console.log(error); })
   }
 
   render() {
@@ -48,11 +47,9 @@ export default class SignIn extends Component {
         </View>
 
         <View style={styles.form}>
-          <TextInput style={styles.input}
-            placeholder="Email"
+          <TextInput style={styles.input} onChangeText={email => this.setState({ email })} placeholder="Email"
           />
-          <TextInput style={styles.input} secureTextEntry={true}
-            placeholder="Password"
+          <TextInput style={styles.input} secureTextEntry={true} onChangeText={password => this.setState({ password })} placeholder="Password"
           />
         </View>
 
