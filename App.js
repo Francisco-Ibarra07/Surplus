@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import { TouchableOpacity, Image, StyleSheet } from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import {
+  TouchableOpacity,
+  Image,
+  StyleSheet
+} from 'react-native';
+import {
+  createStackNavigator,
+  createBottomTabNavigator,
+  createDrawerNavigator,
+  createAppContainer
+} from 'react-navigation';
 
 // Auth Screens
 import GetStarted from './pages/authentication/GetStarted';
