@@ -17,7 +17,7 @@ export default class BusinessHome extends Component {
   }
   render() {
     return (
-      <View style={styles.container} >
+      <View>
         <Text>Home</Text>
       </View>
     );
