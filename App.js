@@ -12,19 +12,21 @@ import SignIn from './pages/authentication/SignIn';
 import TermsAndConditions from './pages/authentication/TermsAndConditions';
 import PrivacyStatement from './pages/authentication/PrivacyStatement';
 import DummySignUp from './pages/authentication/DummySignUp';
-import BusinessDash from './pages/dashboard/BusinessDash';
 
 // Dash Screens
 import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 import BusinessVerify from './pages/dashboard/BusinessVerify';
-import BusinessHomePage from './pages/dashboard/BusinessHomePage';
+import BusinessHome from './pages/dashboard/BusinessHome';
+import BusinessMenu from './pages/dashboard/BusinessMenu';
 
-// Customer Dash Nav Style
+// Customer Drawer Navigation
+
+// Business Tab Navigation
 
 // App Navigation
 export const Nav = createAppContainer(
   createStackNavigator({
-    // Auth Nav
+    // Auth Navigation
     GetStarted: { screen: GetStarted },
     WhoAreYou: { screen: WhoAreYou },
     CustomerSignUp: { screen: CustomerSignUp },
@@ -32,10 +34,9 @@ export const Nav = createAppContainer(
     SignIn: { screen: SignIn },
     TermsAndConditions: { screen: TermsAndConditions },
     PrivacyStatement: { screen: PrivacyStatement },
-    DummySignUp: { screen: DummySignUp },  
-    BusinessDash: { screen: BusinessDash },
+    DummySignUp: { screen: DummySignUp },
 
-    // Dash Nav
+    // Customer Navigation
     CustomerDashboard: {
       screen: CustomerDashboard,
       navigationOptions: ({ navigation }) => ({
@@ -50,9 +51,12 @@ export const Nav = createAppContainer(
           </TouchableOpacity>
         )
       })
-    }, 
-    BusinessVerify: {screen: BusinessVerify},
-    BusinessHomePage: {screen: BusinessHomePage},
+    },
+
+    // Business Navigation
+    BusinessVerify: { screen: BusinessVerify },
+    BusinessHome: { screen: BusinessHome },
+    BusinessMenu: { screen: BusinessMenu },
   }),
 )
 
