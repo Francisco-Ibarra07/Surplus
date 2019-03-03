@@ -27,6 +27,8 @@ import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 import BusinessVerify from './pages/dashboard/BusinessVerify';
 import BusinessHome from './pages/dashboard/BusinessHome';
 import BusinessMenu from './pages/dashboard/BusinessMenu';
+import BusinessQueue from './pages/dashboard/BusinessQueue';
+import BusinessWallet from './pages/dashboard/BusinessWallet';
 
 // Customer Drawer Navigation
 
@@ -66,6 +68,8 @@ export const Nav = createAppContainer(
     BusinessVerify: { screen: BusinessVerify },
     BusinessHome: { screen: BusinessHome },
     BusinessMenu: { screen: BusinessMenu },
+    BusinessQueue: { screen: BusinessQueue },
+    BusinessWallet: { screen: BusinessWallet },
   }),
 )
 
