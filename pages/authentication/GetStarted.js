@@ -6,11 +6,26 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import firebase from 'react-native-firebase';
 
 export default class GetStarted extends Component {
   static navigationOptions = {
     header: null
   }
+
+  handleAnonymousSignUp = () => {
+    console.log("Start signInAnonmyously()");
+    // Call Firebase anonymous sign in
+    firebase.auth().signInAnonymously().catch(function (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorMessage, errorCode);
+    });
+
+    this.props.navigation.navigate('CustomerDashboard');
+  }
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -24,7 +39,8 @@ export default class GetStarted extends Component {
         </View>
 
         <View style={styles.containerB}>
-          {/* Red Button */}
+
+          {/* Get Started Button */}
           <TouchableOpacity
             style={styles.redButton}
             onPress={() => this.props.navigation.navigate('WhoAreYou')} >
@@ -32,13 +48,14 @@ export default class GetStarted extends Component {
             <Text style={{ color: '#fff' }}> Get Started </Text>
           </TouchableOpacity>
 
-          {/* White Button */}
+          {/* Browse as Guest Button */}
           <TouchableOpacity
             style={styles.whiteButton}
-            onPress={() => this.props.navigation.navigate('DummySignUp')}
+            onPress={this.handleAnonymousSignUp}
           >
-
             <Text style={{ color: '#000000' }}> Browse as Guest </Text>
+            {/* Already have an account Button */}
+
           </TouchableOpacity>
           <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Already have an account?</Text>
         </View>
