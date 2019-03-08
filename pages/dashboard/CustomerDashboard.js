@@ -15,18 +15,25 @@ export default class CustomerDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //f_name: '',
+      userFirstName: 'temp',
+      hi: 'Ice cream'
     }
 
-    // Query firebase for user's firstname
-    user_id = firebase.auth().currentUser.uid;
+    const user_id = firebase.auth().currentUser.uid;
     const ref = firebase.database().ref('customers/users/' + user_id);
+    let userObject = '';
 
     // With the reference, query firebase to get a snapshot
     // Snapshot object contains structure of user's information
+    const activity = this;
     ref.on('value', function (snapshot) {
       userObject = snapshot.val();
-      console.log(userObject.email);
+      console.log(userObject);
+      console.log(userObject.first_name);
+
+      activity.setState({
+        userFirstName: userObject.first_name
+      });
     });
   }
 
@@ -46,13 +53,13 @@ export default class CustomerDashboard extends Component {
           <Button title="Log off" onPress={this.signOut} />
         </View>
 
+        <FoodItem itemName={this.state.userFirstName} />
         <FoodItem itemName="Dino Nuggets" />
         <FoodItem itemName="Pho" />
         <FoodItem itemName="Taco" />
         <FoodItem itemName="Burrito" />
         <FoodItem itemName="Fried Rice" />
         <FoodItem itemName="Pizza" />
-
 
       </ScrollView>
     );
