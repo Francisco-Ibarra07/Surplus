@@ -121,7 +121,7 @@ export default class CustomerSignUp extends Component {
             <TextInput style={styles.input}
               placeholder="Email"
               autoCorrect={false}
-              autoCapitalize={false}
+              autoCapitalize='none'
               onChangeText={
                 email => this.setState({ email })
               }

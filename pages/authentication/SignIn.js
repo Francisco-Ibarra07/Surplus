@@ -47,9 +47,9 @@ export default class SignIn extends Component {
         </View>
 
         <View style={styles.form}>
-          <TextInput style={styles.input} onChangeText={email => this.setState({ email })} placeholder="Email" autoCorrect={false} autoCapitalize={false}
+          <TextInput style={styles.input} onChangeText={email => this.setState({ email })} placeholder="Email" autoCorrect={false} autoCapitalize='none'
           />
-          <TextInput style={styles.input} secureTextEntry={true} onChangeText={password => this.setState({ password })} placeholder="Password" autoCorrect={false} autoCapitalize={false}
+          <TextInput style={styles.input} secureTextEntry={true} onChangeText={password => this.setState({ password })} placeholder="Password" autoCorrect={false} autoCapitalize='none'
           />
         </View>
 
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 8,
     width: '100%',
-    textAlign: 'right',
+    textAlign: 'left',
     borderBottomWidth: 1
   },
   form: {
