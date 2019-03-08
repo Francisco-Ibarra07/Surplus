@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   Image,
@@ -19,20 +18,23 @@ export default class BusinessVerify extends Component {
     return (
       <View style={styles.container} >
         <View style={styles.containerChild}>
+
+          {/* Title */}
           <View style={styles.title}>
             <Text style={styles.titleText}>Almost done!</Text>
           </View>
 
           <Image
+            style={styles.verifyStyle}
             source={require('./resources/Verify.jpg')}
-            style={styles.VerifyStyle}
+
           />
 
-          <View style={styles.condition}>
-            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('BusinessHome')}>
-              <Text style={{ color: 'white', fontSize: 18 }}>Got it!</Text>
-            </TouchableOpacity>
-          </View>
+          {/* <View style={styles.condition}> */}
+          <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('BusinessHome')}>
+            <Text style={{ color: 'white', fontSize: 18 }}>Got it!</Text>
+          </TouchableOpacity>
+          {/* </View> */}
         </View>
       </View>
     );
@@ -40,15 +42,18 @@ export default class BusinessVerify extends Component {
 }
 
 const styles = StyleSheet.create({
-  VerifyStyle: {
+  verifyStyle: {
     height: 450,
     width: 400,
     resizeMode: 'contain',
+    position: 'relative',
+    bottom: 50,
   },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
+    // height: '100%',
     // borderWidth: 1,
     // borderColor: 'pink',
     margin: 25,
@@ -60,6 +65,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 55,
     marginTop: 20,
+    position: 'absolute',
+    bottom: 0,
     // padding: 10,
     width: '100%',
   },
@@ -83,7 +90,9 @@ const styles = StyleSheet.create({
   },
   containerChild: {
     width: '100%',
+    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    // borderWidth: 1,
   },
 });
