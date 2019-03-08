@@ -27,48 +27,13 @@ export default class CustomerSignUp extends Component {
     }
   }
 
-  /*  
-  TODO:
-  Today:
-    Put customer in correct group
-
-
-
-    1) Put stuff in catch() method 
-    2) Validate input. Figure out how to call a function from inside a function
-    [DONE] 3)  Attempt login
-    4) Sign out button/functionality
-    5) When the user opens up the app, if they were signed in before, take them to the home page
-  */
   // Create an account: Validates user input and if correct, sends info to Firebase
   handleSignUp = () => {
 
     // Get user input variables
     const { f_name, l_name, email, phone, password } = this.state;
 
-    // Sends user input to Firebase. If successful, routes user to customer home page
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        this.props.navigation.navigate('CustomerDashboard');
-        user_id = firebase.auth().currentUser.uid;
-
-        // Get database reference to correct foler
-        const ref = firebase.database().ref('customers/users/' + user_id);
-        ref.update({
-          'email': email,
-          'first_name': f_name,
-          'last_name': l_name,
-          'phone_number': phone,
-        });
-      })
-      .catch((error) => {
-        console.log('error ', error)
-      })
-  }
-
-  // Validate credentials
-  validate = () => {
-    const { f_name, l_name, email, phone, password } = this.state;
+    // Make sure all fields are filled in
     if (f_name == "") {
       alert('Please fill in your first name.')
       return false;
@@ -86,8 +51,45 @@ export default class CustomerSignUp extends Component {
       return false;
     }
 
-    // Return true if everthing was filled properly
-    return true;
+    // Sends user input to Firebase. If successful, routes user to customer home page
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        this.props.navigation.navigate('CustomerDashboard');
+        user_id = firebase.auth().currentUser.uid;
+
+        // Get database reference to correct folder
+        const ref = firebase.database().ref('customers/users/' + user_id);
+
+        // Update user properties
+        ref.update({
+          'email': email,
+          'first_name': f_name,
+          'last_name': l_name,
+          'phone_number': phone,
+        });
+
+        return true;
+      })
+      .catch((error) => {
+        // Handle error code
+        switch (error.code) {
+          case "auth/invalid-email":
+            alert("Your email is formatted incorrectly");
+            break;
+          case "auth/weak-password":
+            alert("Your password needs to be a minimum of 6 characters");
+            break;
+          case "auth/email-already-in-use":
+            alert("That email already exists");
+            break;
+          default:
+            alert("Unhandled error case. Developers fucked up");
+            console.log(error.code);
+            break;
+        }
+
+        return false;
+      })
   }
 
   render() {
@@ -104,30 +106,36 @@ export default class CustomerSignUp extends Component {
             {/* Inputs */}
             <TextInput style={styles.input}
               placeholder="First Name"
+              autoCorrect={false}
               onChangeText={
                 f_name => this.setState({ f_name })
               }
             />
             <TextInput style={styles.input}
               placeholder="Last Name"
+              autoCorrect={false}
               onChangeText={
                 l_name => this.setState({ l_name })
               }
             />
             <TextInput style={styles.input}
               placeholder="Email"
+              autoCorrect={false}
+              autoCapitalize={false}
               onChangeText={
                 email => this.setState({ email })
               }
             />
             <TextInput style={styles.input}
               placeholder="Phone"
+              autoCorrect={false}
               onChangeText={
                 phone => this.setState({ phone })
               }
             />
             <TextInput style={styles.input} secureTextEntry={true}
               placeholder="Password"
+              autoCorrect={false}
               onChangeText={
                 password => this.setState({ password })
               }
