@@ -34,8 +34,19 @@ export default class SignIn extends Component {
 
     // Sign in
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('CustomerDashboard'))
-      .catch(error => { console.log(error); })
+      .then(() => this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: false, }))
+      .catch((error) => {
+
+        switch (error.code) {
+          case "auth/invalid-email":
+            alert("Your email or password is incorrect");
+            break;
+          default:
+            alert("Unhandled error");
+            console.log(error.code);
+            break;
+        }
+      })
   }
 
   render() {

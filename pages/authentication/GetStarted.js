@@ -11,6 +11,7 @@ import RedButton from '../components/RedButton';
 import WhiteButton from '../components/WhiteButton';
 
 export default class GetStarted extends Component {
+
   static navigationOptions = {
     header: null
   }
@@ -24,7 +25,7 @@ export default class GetStarted extends Component {
       console.log(errorMessage, errorCode);
     });
 
-    this.props.navigation.navigate('CustomerDashboard');
+    this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: true, });
   }
 
 

@@ -16,12 +16,12 @@ export default class CustomerDashboard extends Component {
     super(props);
     this.state = {
       userFirstName: '',
-      isAnonymousUser: true,
+      isAnonymousUser: false,
     }
 
-    if (!this.state.isAnonymousUser) {
-
-      console.log("INSIDE");
+    // Check if there was an anonymous flag that was set
+    const isAnonymous = props.navigation.state.params.anonymousFlag;
+    if (!isAnonymous) {
       const user_id = firebase.auth().currentUser.uid;
       const ref = firebase.database().ref('customers/users/' + user_id);
       let userObject = '';
@@ -38,10 +38,10 @@ export default class CustomerDashboard extends Component {
           userFirstName: userObject.first_name
         });
       });
+      console.log("NOT ANONYMOUS");
     }
     else {
-      console.log("OUTSIDE");
-
+      console.log("Logged in as Guest");
     }
   }
 
