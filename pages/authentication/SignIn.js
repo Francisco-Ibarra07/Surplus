@@ -34,7 +34,55 @@ export default class SignIn extends Component {
 
     // Sign in
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: false, }))
+      .then(() => {
+
+        let user_id = firebase.auth().currentUser.uid;
+        let customerRef = firebase.database().ref('customers/users/' + user_id);
+        let userObject = '';
+
+
+        // With the reference, query firebase to get a snapshot
+        // Snapshot object contains structure of user's information
+        const activity = this;
+        customerRef.on('value', function (snapshot) {
+          userObject = snapshot.val();
+
+          // If userObject is null that means the user_id that we are looking for is NOT in the customer folder
+          if (userObject != null) {
+
+            // If the user_id matches an ID in the customer folder, the user is a customer
+            if (userObject.account_type == 'CUSTOMER') {
+              activity.props.navigation.navigate('CustomerDashboard', { anonymousFlag: false, });
+            }
+            else {
+              console.log("CUSTOMER ACCOUNT TYPE INVALID");
+            }
+          }
+          else {
+
+            // Change reference to business folder
+            let businessRef = firebase.database().ref('business/owners/' + user_id);
+
+            // Get a snapshot of the business folder
+            businessRef.on('value', function (snapshot) {
+              userObject = snapshot.val();
+
+              // If userObject is not null, then the user is a business account user
+              if (userObject != null) {
+                // Take user to business home page
+                if (userObject.account_type == 'BUSINESS') {
+                  activity.props.navigation.navigate('BusinessHome');
+                }
+                else {
+                  console.log("BUSINESS ACCOUNT TYPE INVALID");
+                }
+              }
+            });
+          }
+        });
+
+        return true;
+      })
       .catch((error) => {
 
         switch (error.code) {
