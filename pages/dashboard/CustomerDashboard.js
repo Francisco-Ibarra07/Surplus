@@ -20,28 +20,29 @@ export default class CustomerDashboard extends Component {
     }
 
     // Check if there was an anonymous flag that was set
-    const anonymousFlag = props.navigation.state.params.anonymousFlag;
-    if (anonymousFlag == null) {
-      return;
-    }
+    const isAnonymous = props.navigation.state.params.anonymousFlag;
+    if (!isAnonymous) {
+      const user_id = firebase.auth().currentUser.uid;
+      const ref = firebase.database().ref('customers/users/' + user_id);
+      let userObject = '';
 
-    const user_id = firebase.auth().currentUser.uid;
-    const ref = firebase.database().ref('customers/users/' + user_id);
-    let userObject = '';
+      // With the reference, query firebase to get a snapshot
+      // Snapshot object contains structure of user's information
+      const activity = this;
+      ref.on('value', function (snapshot) {
+        userObject = snapshot.val();
+        console.log(userObject);
+        console.log(userObject.first_name);
 
-    // With the reference, query firebase to get a snapshot
-    // Snapshot object contains structure of user's information
-    const activity = this;
-    ref.on('value', function (snapshot) {
-      userObject = snapshot.val();
-      console.log(userObject);
-      console.log(userObject.first_name);
-
-      activity.setState({
-        userFirstName: userObject.first_name
+        activity.setState({
+          userFirstName: userObject.first_name
+        });
       });
-    });
-
+      console.log("NOT ANONYMOUS");
+    }
+    else {
+      console.log("Logged in as Guest");
+    }
   }
 
   signOut = () => {

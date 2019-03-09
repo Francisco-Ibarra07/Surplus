@@ -54,7 +54,7 @@ export default class CustomerSignUp extends Component {
     // Sends user input to Firebase. If successful, routes user to customer home page
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.props.navigation.navigate('CustomerDashboard');
+        this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: false, });
         user_id = firebase.auth().currentUser.uid;
 
         // Get database reference to correct folder
