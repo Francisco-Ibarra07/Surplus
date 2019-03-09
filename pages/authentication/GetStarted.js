@@ -7,6 +7,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import firebase from 'react-native-firebase';
+import RedButton from '../components/RedButton';
+import WhiteButton from '../components/WhiteButton';
 
 export default class GetStarted extends Component {
   static navigationOptions = {
@@ -41,14 +43,17 @@ export default class GetStarted extends Component {
         <View style={styles.containerBottom}>
 
           {/* Get Started Button */}
-          <TouchableOpacity style={styles.redButton} onPress={() => this.props.navigation.navigate('WhoAreYou')}>
-            <Text style={{ color: '#fff' }}> Get Started </Text>
-          </TouchableOpacity>
+          <RedButton
+            buttonText='Get Started'
+            onPress={() => this.props.navigation.navigate('WhoAreYou')}
+          />
 
           {/* Browse as Guest Button */}
-          <TouchableOpacity style={styles.whiteButton} onPress={this.handleAnonymousSignUp}>
-            <Text style={{ color: '#505050' }}> Browse as Guest </Text>
-          </TouchableOpacity>
+          <WhiteButton
+            style={{ marginBottom: 15 }}
+            buttonText='Browse as Guest'
+            onPress={this.handleAnonymousSignUp}
+          />
 
           {/* Already have an account Button */}
           <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Already have an account?</Text>
@@ -85,28 +90,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'center',
     width: '100%',
-  },
-  redButton: {
-    alignItems: 'center',
-    alignSelf: 'stretch',
-    backgroundColor: '#D33B32',
-    borderColor: '#D33B32',
-    borderRadius: 10,
-    borderWidth: 1,
-    height: 45,
-    marginBottom: 10,
-    justifyContent: 'center',
-  },
-  whiteButton: {
-    alignItems: 'center',
-    alignSelf: 'stretch',
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#656565',
-    height: 45,
-    justifyContent: 'center',
-    marginBottom: 15,
   },
   textButton: {
     color: '#3366BB',
