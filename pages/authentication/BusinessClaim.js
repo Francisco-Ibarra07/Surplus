@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import firebase from 'react-native-firebase';
 
 export default class BusinessClaim extends Component {
 
@@ -18,6 +19,7 @@ export default class BusinessClaim extends Component {
       city: '',
       state: '',
       zipcode: '',
+      isVerified: false,
       businessOwner: props.navigation.state.params.signUpInfo,
     }
   }
@@ -29,7 +31,7 @@ export default class BusinessClaim extends Component {
   }
 
   handleBusinessClaim = () => {
-    const { store_name, store_phone, address, city, state, zipcode, businessOwner } = this.state;
+    const { store_name, store_phone, address, city, state, zipcode } = this.state;
 
     // Make sure all fields are filled in
     if (store_name == "") {
@@ -52,9 +54,62 @@ export default class BusinessClaim extends Component {
       return false;
     }
 
-    // Email all inputted fields to admin
     console.log(this.state);
-    this.props.navigation.navigate('BusinessVerify');
+
+    // Sign up user
+    firebase.auth().createUserWithEmailAndPassword(this.state.businessOwner.email_address, this.state.businessOwner.pwd)
+      .then(() => {
+
+        // Get database reference to correct folder
+        const user_id = firebase.auth().currentUser.uid;
+        const owner = firebase.database().ref('business/owners/' + user_id);
+        const restaurant = firebase.database().ref('business/owners/' + user_id + '/restaurant');
+
+        // Update user properties
+        owner.update({
+          'email': this.state.businessOwner.email,
+          'first_name': this.state.businessOwner.first_name,
+          'last_name': this.state.businessOwner.last_name,
+          'phone_number': this.state.businessOwner.phone_number,
+        });
+
+        // Update store properties
+        restaurant.update({
+          'store_name': this.state.store_name,
+          'store_phone': this.state.store_phone,
+          'address': this.state.address,
+          'city': this.state.city,
+          'state': this.state.state,
+          'zipcode': this.state.zipcode,
+          'isVerified': this.state.isVerified,
+        })
+
+        // Email notification to admin
+        //firebase.auth.sendPasswordResetEmail("koltokaspi@desoz.com");
+
+        this.props.navigation.navigate('BusinessVerify');
+        return true;
+      })
+      .catch((error) => {
+        // Handle error code
+        switch (error.code) {
+          case "auth/invalid-email":
+            alert("Your email is formatted incorrectly");
+            break;
+          case "auth/weak-password":
+            alert("Your password needs to be a minimum of 6 characters");
+            break;
+          case "auth/email-already-in-use":
+            alert("That email already exists");
+            break;
+          default:
+            alert("Unhandled error case. Developers fucked up");
+            console.log(error.code);
+            break;
+        }
+
+        return false;
+      })
   }
 
   render() {
@@ -127,8 +182,7 @@ export default class BusinessClaim extends Component {
           <Text onPress={() => this.props.navigation.navigate('PrivacyStatement')} style={{ color: '#3366BB' }}>
               {" "}Privacy Statement
           </Text>
-            .
-        </Text>
+          </Text>
         </View>
       </View>
     );
