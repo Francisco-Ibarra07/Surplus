@@ -9,6 +9,7 @@ import {
 import firebase from 'react-native-firebase';
 
 export default class GetStarted extends Component {
+
   static navigationOptions = {
     header: null
   }
@@ -22,7 +23,7 @@ export default class GetStarted extends Component {
       console.log(errorMessage, errorCode);
     });
 
-    this.props.navigation.navigate('CustomerDashboard');
+    this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: true, });
   }
 
 
