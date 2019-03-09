@@ -8,11 +8,55 @@ import {
 } from 'react-native';
 
 export default class BusinessClaim extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      store_name: '',
+      store_phone: '',
+      address: '',
+      city: '',
+      state: '',
+      zipcode: '',
+      businessOwner: props.navigation.state.params.signUpInfo,
+    }
+  }
+
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
     }
   }
+
+  handleBusinessClaim = () => {
+    const { store_name, store_phone, address, city, state, zipcode, businessOwner } = this.state;
+
+    // Make sure all fields are filled in
+    if (store_name == "") {
+      alert('Please fill the store name.');
+      return false;
+    } else if (store_phone == "") {
+      alert('Please fill in the store phone number.');
+      return false;
+    } else if (address == "") {
+      alert('Please fill in the store address.');
+      return false;
+    } else if (city == "") {
+      alert('Please fill in the city location');
+      return false;
+    } else if (state == "") {
+      alert('Please fill in the state.');
+      return false;
+    } else if (zipcode == "") {
+      alert('Please fill in the zipcode.');
+      return false;
+    }
+
+    // Email all inputted fields to admin
+    console.log(this.state);
+    this.props.navigation.navigate('BusinessVerify');
+  }
+
   render() {
     return (
       <View style={styles.container} >
@@ -25,33 +69,54 @@ export default class BusinessClaim extends Component {
           <View style={styles.form}>
             <TextInput style={styles.input}
               placeholder="Store Name"
+              autoCorrect={false}
+              onChangeText={
+                store_name => this.setState({ store_name })
+              }
             />
             <TextInput style={styles.input}
               placeholder="Phone Number"
+              autoCorrect={false}
+              onChangeText={
+                store_phone => this.setState({ store_phone })
+              }
             />
             <TextInput style={styles.input}
               placeholder="Address"
+              autoCorrect={false}
+              onChangeText={
+                address => this.setState({ address })
+              }
             />
             <TextInput style={styles.input}
               placeholder="City"
+              autoCorrect={false}
+              onChangeText={
+                city => this.setState({ city })
+              }
             />
             <View style={styles.container2}>
               <TextInput style={styles.input2}
                 placeholder="State"
+                autoCorrect={false}
+                onChangeText={
+                  state => this.setState({ state })
+                }
               />
               <TextInput style={styles.input2}
                 placeholder="Zip"
+                autoCorrect={false}
+                onChangeText={
+                  zipcode => this.setState({ zipcode })
+                }
               />
             </View>
-            <TextInput style={styles.input}
-              placeholder="Pick-up Time"
-            />
           </View>
 
         </View>
 
         <View style={styles.condition}>
-          <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('BusinessVerify')}>
+          <TouchableOpacity style={styles.button} onPress={this.handleBusinessClaim}>
             <Text style={{ color: 'white' }}>Claim</Text>
           </TouchableOpacity>
           <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}

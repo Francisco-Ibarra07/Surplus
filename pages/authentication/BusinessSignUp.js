@@ -51,45 +51,24 @@ export default class BusinessSignUp extends Component {
       return false;
     }
 
-    // Sends user input to Firebase. If successful, routes user to customer home page
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        this.props.navigation.navigate('BusinessClaim');
-        user_id = firebase.auth().currentUser.uid;
+    // Check if email already exists
+    // firebase.auth().fetchSignInMethodsForEmail(email)
+    //   .then(() => {
+    //     console.log("Email is unique");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.code);
+    //   })
 
-        // Get database reference to correct folder
-        const ref = firebase.database().ref('customers/users/' + user_id);
+    const businessOwnerInformation = {
+      first_name: f_name,
+      last_name: l_name,
+      email_address: email,
+      phone_number: phone,
+      pwd: password,
+    }
 
-        // Update user properties
-        ref.update({
-          'email': email,
-          'first_name': f_name,
-          'last_name': l_name,
-          'phone_number': phone,
-        });
-
-        return true;
-      })
-      .catch((error) => {
-        // Handle error code
-        switch (error.code) {
-          case "auth/invalid-email":
-            alert("Your email is formatted incorrectly");
-            break;
-          case "auth/weak-password":
-            alert("Your password needs to be a minimum of 6 characters");
-            break;
-          case "auth/email-already-in-use":
-            alert("That email already exists");
-            break;
-          default:
-            alert("Unhandled error case. Developers fucked up");
-            console.log(error.code);
-            break;
-        }
-
-        return false;
-      })
+    this.props.navigation.navigate('BusinessClaim', { signUpInfo: businessOwnerInformation, });
   }
 
   render() {
@@ -107,6 +86,7 @@ export default class BusinessSignUp extends Component {
             <TextInput style={styles.input}
               placeholder="Business Owner's First Name"
               autoCorrect={false}
+              autoCapitalize='none'
               onChangeText={
                 f_name => this.setState({ f_name })
               }
@@ -114,6 +94,7 @@ export default class BusinessSignUp extends Component {
             <TextInput style={styles.input}
               placeholder="Business Owner's Last Name"
               autoCorrect={false}
+              autoCapitalize='none'
               onChangeText={
                 l_name => this.setState({ l_name })
               }
@@ -129,6 +110,7 @@ export default class BusinessSignUp extends Component {
             <TextInput style={styles.input}
               placeholder="Phone"
               autoCorrect={false}
+              autoCapitalize='none'
               onChangeText={
                 phone => this.setState({ phone })
               }
@@ -136,6 +118,7 @@ export default class BusinessSignUp extends Component {
             <TextInput style={styles.input} secureTextEntry={true}
               placeholder="Password"
               autoCorrect={false}
+              autoCapitalize='none'
               onChangeText={
                 password => this.setState({ password })
               }
