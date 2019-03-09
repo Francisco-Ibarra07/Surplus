@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import firebase from 'react-native-firebase';
+import RedButton from '../components/RedButton';
 
 export default class CustomerSignUp extends Component {
   static navigationOptions = {
@@ -146,12 +147,12 @@ export default class CustomerSignUp extends Component {
         <View style={styles.containerB}>
           {/* Buttons */}
           <View style={styles.buttons} >
+
             {/* Sign Up */}
-            <TouchableOpacity onPress={this.handleSignUp}
-              style={styles.button}
-            >
-              <Text style={{ color: 'white' }}>Sign Up</Text>
-            </TouchableOpacity>
+            <RedButton
+              buttonText='Sign Up'
+              onPress={this.handleSignUp}
+            />
 
             {/* Sign up with FB */}
             <TouchableOpacity style={styles.whiteButton}>
@@ -235,7 +236,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#D33B32',
     borderRadius: 10,
-    marginTop: 10,
+    // marginTop: 10,
     // padding: 10,
     height: 45,
     width: '100%',
