@@ -29,99 +29,86 @@ export default class GetStarted extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.containerA}>
+
+        {/* Title and Spash Image */}
+        <View style={styles.containerTop}>
           <Text style={styles.title}>Save BIG on</Text>
           <Text style={styles.title}>your next meal!</Text>
-          <Image
-            style={styles.image}
-            source={{ uri: 'https://i.imgur.com/gij49Cq.png' }}
-          />
+          <Image style={styles.image} source={{ uri: 'https://i.imgur.com/gij49Cq.png' }} />
         </View>
 
-        <View style={styles.containerB}>
+        {/* All the buttons */}
+        <View style={styles.containerBottom}>
 
           {/* Get Started Button */}
-          <TouchableOpacity
-            style={styles.redButton}
-            onPress={() => this.props.navigation.navigate('WhoAreYou')} >
-
+          <TouchableOpacity style={styles.redButton} onPress={() => this.props.navigation.navigate('WhoAreYou')}>
             <Text style={{ color: '#fff' }}> Get Started </Text>
           </TouchableOpacity>
 
           {/* Browse as Guest Button */}
-          <TouchableOpacity
-            style={styles.whiteButton}
-            onPress={this.handleAnonymousSignUp}
-          >
-            <Text style={{ color: '#000000' }}> Browse as Guest </Text>
-            {/* Already have an account Button */}
-
+          <TouchableOpacity style={styles.whiteButton} onPress={this.handleAnonymousSignUp}>
+            <Text style={{ color: '#505050' }}> Browse as Guest </Text>
           </TouchableOpacity>
+
+          {/* Already have an account Button */}
           <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Already have an account?</Text>
         </View>
-
       </View>
     );
   }
 }
 
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    // paddingTop: 150,
-    // borderWidth: 1,
-    // borderColor: 'red',
-  },
-  containerA: {
-    // borderWidth: 1,
-    paddingTop: 125,
-  },
-  containerB: {
-    // borderWidth: 1,
     flex: 1,
-    alignItems: 'center',
+    padding: '5%',
     justifyContent: 'center',
-    width: '100%',
+  },
+  containerTop: {
+    marginBottom: 50,
   },
   title: {
+    color: '#505050',
     fontSize: 25,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   image: {
-    // marginBottom: 50,
+    height: 200,
     width: 300,
-    height: 200
+  },
+  containerBottom: {
+    alignItems: 'center',
+    bottom: '4%',
+    flex: 1,
+    position: 'absolute',
+    justifyContent: 'center',
+    width: '100%',
   },
   redButton: {
     alignItems: 'center',
     alignSelf: 'stretch',
     backgroundColor: '#D33B32',
-    height: 45,
-    justifyContent: 'center',
-    marginRight: 25,
-    marginLeft: 25,
-    marginBottom: 10,
+    borderColor: '#D33B32',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#D33B32'
+    height: 45,
+    marginBottom: 10,
+    justifyContent: 'center',
   },
   whiteButton: {
     alignItems: 'center',
     alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    height: 45,
-    justifyContent: 'center',
-    marginRight: 25,
-    marginLeft: 25,
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#777777',
-    marginBottom: 15
+    borderColor: '#656565',
+    height: 45,
+    justifyContent: 'center',
+    marginBottom: 15,
   },
   textButton: {
     color: '#3366BB',
-    // marginTop: 10,
   },
 });
