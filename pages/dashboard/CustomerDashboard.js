@@ -15,26 +15,34 @@ export default class CustomerDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userFirstName: 'temp',
-      hi: 'Ice cream'
+      userFirstName: '',
+      isAnonymousUser: true,
     }
 
-    const user_id = firebase.auth().currentUser.uid;
-    const ref = firebase.database().ref('customers/users/' + user_id);
-    let userObject = '';
+    if (!this.state.isAnonymousUser) {
 
-    // With the reference, query firebase to get a snapshot
-    // Snapshot object contains structure of user's information
-    const activity = this;
-    ref.on('value', function (snapshot) {
-      userObject = snapshot.val();
-      console.log(userObject);
-      console.log(userObject.first_name);
+      console.log("INSIDE");
+      const user_id = firebase.auth().currentUser.uid;
+      const ref = firebase.database().ref('customers/users/' + user_id);
+      let userObject = '';
 
-      activity.setState({
-        userFirstName: userObject.first_name
+      // With the reference, query firebase to get a snapshot
+      // Snapshot object contains structure of user's information
+      const activity = this;
+      ref.on('value', function (snapshot) {
+        userObject = snapshot.val();
+        console.log(userObject);
+        console.log(userObject.first_name);
+
+        activity.setState({
+          userFirstName: userObject.first_name
+        });
       });
-    });
+    }
+    else {
+      console.log("OUTSIDE");
+
+    }
   }
 
   signOut = () => {
