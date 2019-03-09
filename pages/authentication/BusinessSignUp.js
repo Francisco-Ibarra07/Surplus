@@ -105,14 +105,14 @@ export default class BusinessSignUp extends Component {
           <View style={styles.form}>
             {/* Inputs */}
             <TextInput style={styles.input}
-              placeholder="First Name"
+              placeholder="Business Owner's First Name"
               autoCorrect={false}
               onChangeText={
                 f_name => this.setState({ f_name })
               }
             />
             <TextInput style={styles.input}
-              placeholder="Last Name"
+              placeholder="Business Owner's Last Name"
               autoCorrect={false}
               onChangeText={
                 l_name => this.setState({ l_name })
