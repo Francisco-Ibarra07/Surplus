@@ -66,6 +66,7 @@ export default class BusinessSignUp extends Component {
       email_address: email,
       phone_number: phone,
       pwd: password,
+      account_type: 'BUSINESS',
     }
 
     this.props.navigation.navigate('BusinessClaim', { signUpInfo: businessOwnerInformation, });

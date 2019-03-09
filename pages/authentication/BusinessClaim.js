@@ -67,10 +67,11 @@ export default class BusinessClaim extends Component {
 
         // Update user properties
         owner.update({
-          'email': this.state.businessOwner.email,
+          'email': this.state.businessOwner.email_address,
           'first_name': this.state.businessOwner.first_name,
           'last_name': this.state.businessOwner.last_name,
           'phone_number': this.state.businessOwner.phone_number,
+          'account_type': this.state.businessOwner.account_type,
         });
 
         // Update store properties

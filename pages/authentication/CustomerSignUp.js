@@ -25,6 +25,7 @@ export default class CustomerSignUp extends Component {
       email: '',
       phone: '',
       password: '',
+      account_type: 'CUSTOMER',
     }
   }
 
@@ -32,7 +33,7 @@ export default class CustomerSignUp extends Component {
   handleSignUp = () => {
 
     // Get user input variables
-    const { f_name, l_name, email, phone, password } = this.state;
+    const { f_name, l_name, email, phone, password, account_type } = this.state;
 
     // Make sure all fields are filled in
     if (f_name == "") {
@@ -55,10 +56,9 @@ export default class CustomerSignUp extends Component {
     // Sends user input to Firebase. If successful, routes user to customer home page
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: false, });
-        user_id = firebase.auth().currentUser.uid;
 
         // Get database reference to correct folder
+        user_id = firebase.auth().currentUser.uid;
         const ref = firebase.database().ref('customers/users/' + user_id);
 
         // Update user properties
@@ -67,8 +67,10 @@ export default class CustomerSignUp extends Component {
           'first_name': f_name,
           'last_name': l_name,
           'phone_number': phone,
+          'account_type': account_type,
         });
 
+        this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: false, });
         return true;
       })
       .catch((error) => {
