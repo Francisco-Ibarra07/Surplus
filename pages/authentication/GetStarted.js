@@ -45,6 +45,7 @@ export default class GetStarted extends Component {
 
           {/* Get Started Button */}
           <RedButton
+            style={{ marginBottom: 10 }}
             buttonText='Get Started'
             onPress={() => this.props.navigation.navigate('WhoAreYou')}
           />

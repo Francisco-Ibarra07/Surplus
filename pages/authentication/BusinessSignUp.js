@@ -150,25 +150,7 @@ export default class BusinessSignUp extends Component {
             <TouchableOpacity onPress={this.handleSignUp}
               style={styles.button}
             >
-              <Text style={{ color: 'white' }}>Sign Up</Text>
-            </TouchableOpacity>
-
-            {/* Sign up with FB */}
-            <TouchableOpacity style={styles.whiteButton}>
-              <Image
-                source={require('./resources/facebooklogo.png')}
-                style={styles.ImageIconStyle}
-              />
-              <Text style={{ color: '#D33B32' }}>Continue with Facebook</Text>
-            </TouchableOpacity>
-
-            {/* Sign up with G+ */}
-            <TouchableOpacity style={styles.whiteButton}>
-              <Image
-                source={require('./resources/googlelogo.png')}
-                style={styles.ImageIconStyle}
-              />
-              <Text style={{ color: '#D33B32' }}>Continue with Google</Text>
+              <Text style={{ color: 'white' }}>Next</Text>
             </TouchableOpacity>
           </View>
 
