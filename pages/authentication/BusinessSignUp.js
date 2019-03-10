@@ -87,7 +87,7 @@ export default class BusinessSignUp extends Component {
             <TextInput style={styles.input}
               placeholder="Business Owner's First Name"
               autoCorrect={false}
-              autoCapitalize='none'
+              // autoCapitalize='none'
               onChangeText={
                 f_name => this.setState({ f_name })
               }
@@ -95,12 +95,13 @@ export default class BusinessSignUp extends Component {
             <TextInput style={styles.input}
               placeholder="Business Owner's Last Name"
               autoCorrect={false}
-              autoCapitalize='none'
+              // autoCapitalize='none'
               onChangeText={
                 l_name => this.setState({ l_name })
               }
             />
             <TextInput style={styles.input}
+              keyboardType="email-address"
               placeholder="Email"
               autoCorrect={false}
               autoCapitalize='none'
@@ -109,14 +110,16 @@ export default class BusinessSignUp extends Component {
               }
             />
             <TextInput style={styles.input}
+              keyboardType="number-pad"
               placeholder="Phone"
               autoCorrect={false}
-              autoCapitalize='none'
+              // autoCapitalize='none'
               onChangeText={
                 phone => this.setState({ phone })
               }
             />
-            <TextInput style={styles.input} secureTextEntry={true}
+            <TextInput style={styles.input}
+              secureTextEntry={true}
               placeholder="Password"
               autoCorrect={false}
               autoCapitalize='none'

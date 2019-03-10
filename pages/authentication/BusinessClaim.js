@@ -131,6 +131,7 @@ export default class BusinessClaim extends Component {
               }
             />
             <TextInput style={styles.input}
+              keyboardType="number-pad"
               placeholder="Phone Number"
               autoCorrect={false}
               onChangeText={
@@ -160,6 +161,7 @@ export default class BusinessClaim extends Component {
                 }
               />
               <TextInput style={styles.input2}
+                keyboardType="number-pad"
                 placeholder="Zip"
                 autoCorrect={false}
                 onChangeText={

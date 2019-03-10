@@ -122,6 +122,7 @@ export default class CustomerSignUp extends Component {
               }
             />
             <TextInput style={styles.input}
+              keyboardType="email-address"
               placeholder="Email"
               autoCorrect={false}
               autoCapitalize='none'
@@ -130,13 +131,15 @@ export default class CustomerSignUp extends Component {
               }
             />
             <TextInput style={styles.input}
+              keyboardType="number-pad"
               placeholder="Phone"
               autoCorrect={false}
               onChangeText={
                 phone => this.setState({ phone })
               }
             />
-            <TextInput style={styles.input} secureTextEntry={true}
+            <TextInput style={styles.input}
+              secureTextEntry={true}
               placeholder="Password"
               autoCorrect={false}
               onChangeText={
