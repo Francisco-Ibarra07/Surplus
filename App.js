@@ -22,6 +22,7 @@ import SignIn from './pages/authentication/SignIn';
 import TermsAndConditions from './pages/authentication/TermsAndConditions';
 import PrivacyStatement from './pages/authentication/PrivacyStatement';
 import DummySignUp from './pages/authentication/DummySignUp';
+import ForgotPassword from './pages/authentication/ForgotPassword';
 
 // Dash Screens
 // Customer's
@@ -111,6 +112,7 @@ export const Nav = createAppContainer(
     TermsAndConditions: { screen: TermsAndConditions },
     PrivacyStatement: { screen: PrivacyStatement },
     DummySignUp: { screen: DummySignUp },
+    ForgotPassword: { screen: ForgotPassword },
 
     // Customer Navigation
     Drawer: CustomerDrawer,

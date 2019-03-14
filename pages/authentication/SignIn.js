@@ -80,14 +80,19 @@ export default class SignIn extends Component {
             });
           }
         });
-
         return true;
       })
       .catch((error) => {
-
+        // Handle errors
         switch (error.code) {
           case "auth/invalid-email":
             alert("Your email or password is incorrect");
+            break;
+          case "auth/wrong-password":
+            alert("Your email or password is incorrect");
+            break;
+          case "auth/user-not-found":
+            alert("That email does not exist");
             break;
           default:
             alert("Unhandled error");
@@ -126,7 +131,8 @@ export default class SignIn extends Component {
           <TouchableOpacity onPress={this.handleSignIn} style={styles.button} >
             <Text style={{ color: 'white' }}>Sign In</Text>
           </TouchableOpacity>
-          <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Forgot Password?</Text>
+
+          <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('ForgotPassword')}>Forgot Password?</Text>
         </View>
       </View>
     );
