@@ -80,7 +80,7 @@ export default class CustomerSignUp extends Component {
             alert("Your email is formatted incorrectly");
             break;
           case "auth/weak-password":
-            alert("Your password needs to be a minimum of 6 characters");
+            alert("Strong passwords have at least 6 characters and a mix of letters and numbers");
             break;
           case "auth/email-already-in-use":
             alert("That email already exists");

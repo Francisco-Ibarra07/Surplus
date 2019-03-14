@@ -27,6 +27,11 @@ export default class ForgotPassword extends Component {
 
         const { email } = this.state;
 
+        if (email == "") {
+            alert("Please fill in an email");
+            return;
+        }
+
         // Send link through email to reset password
         // The link itself handles the password reset
         firebase.auth().sendPasswordResetEmail(email)
