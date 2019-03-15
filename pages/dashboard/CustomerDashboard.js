@@ -15,34 +15,54 @@ export default class CustomerDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userFirstName: '',
-      isAnonymousUser: false,
+      userId: '',
+      isAnonymousUser: '',
+      userFolderRef: '',
+      onlineOwnersRefList: [],
+      globalArray: [],
     }
+    this.checkIfAnonymousUser = this.checkIfAnonymousUser.bind(this);
+    this.populateRestaurantList = this.populateRestaurantList.bind(this);
+    this.signOut = this.signOut.bind(this);
+  }
 
+  checkIfAnonymousUser = () => {
     // Check if there was an anonymous flag that was set
     const isAnonymous = props.navigation.state.params.anonymousFlag;
     if (!isAnonymous) {
-      const user_id = firebase.auth().currentUser.uid;
-      const ref = firebase.database().ref('customers/users/' + user_id);
-      let userObject = '';
+      this.setState({ isAnonymous: false });
+      this.setState({ userId: firebase.auth().currentUser.uid });
+      this.setState({ userFolderRef: firebase.database().ref('customers/users/' + this.state.userId) });
 
-      // With the reference, query firebase to get a snapshot
-      // Snapshot object contains structure of user's information
-      const activity = this;
-      ref.on('value', function (snapshot) {
-        userObject = snapshot.val();
-        console.log(userObject);
-        console.log(userObject.first_name);
-
-        activity.setState({
-          userFirstName: userObject.first_name
-        });
-      });
       console.log("NOT ANONYMOUS");
     }
     else {
-      console.log("Logged in as Guest");
+      this.setState({ isAnonymous: true });
+      console.log("Browsing as guest");
     }
+  }
+
+  // Reads the 'online' folder and populates an array with all the ID's of owners that have food for sale
+  populateRestaurantList = () => {
+
+    // Grab reference to 'online' folder
+    const ref = firebase.database().ref('/online');
+    const activity = this;
+    var tempArray = [];
+    ref.on('value', function (snapshot) {
+
+      // Once we have all the names of available restaurants, look up each owner's id inside the '/business/owners/' folder
+      let ownersFolderRef = '';
+      const innerRef = snapshot.val();
+      for (ownerId in innerRef) {
+
+        // Grab reference to the current owner's ID folder and store in array
+        ownersFolderRef = firebase.database().ref('/business/owners/' + ownerId);
+        tempArray.push(ownersFolderRef);
+      }
+
+      return tempArray;
+    });
   }
 
   signOut = () => {
@@ -52,6 +72,10 @@ export default class CustomerDashboard extends Component {
   }
 
   render() {
+    // const items = [];
+    // for (var i = 0; i < 20; i++) {
+    //   items.push(<FoodItem key={i} itemName={i + ' food'} />);
+    // }
     return (
       <ScrollView>
         {/* Food Title */}
@@ -61,13 +85,7 @@ export default class CustomerDashboard extends Component {
           <Button title="Log off" onPress={this.signOut} />
         </View>
 
-        <FoodItem itemName={this.state.userFirstName} />
-        <FoodItem itemName="Dino Nuggets" />
-        <FoodItem itemName="Pho" />
-        <FoodItem itemName="Taco" />
-        <FoodItem itemName="Burrito" />
-        <FoodItem itemName="Fried Rice" />
-        <FoodItem itemName="Pizza" />
+        {/* {items} */}
 
       </ScrollView>
     );
