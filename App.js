@@ -28,6 +28,7 @@ import ForgotPassword from './pages/authentication/ForgotPassword';
 // Customer's
 import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 // Business Owner's
+import AddFood from './pages/dashboard/AddFood';
 import BusinessVerify from './pages/dashboard/BusinessVerify';
 import BusinessHome from './pages/dashboard/BusinessHome';
 import BusinessMenu from './pages/dashboard/BusinessMenu';
@@ -116,6 +117,9 @@ export const Nav = createAppContainer(
 
     // Customer Navigation
     Drawer: CustomerDrawer,
+
+    // Business screens
+    AddFood: { screen: AddFood },
 
     // Business Navigation
     BusinessVerify: { screen: BusinessVerify },
