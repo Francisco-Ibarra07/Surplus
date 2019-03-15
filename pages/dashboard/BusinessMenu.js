@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  ScrollView,
-  StyleSheet,
+  Button,
 } from 'react-native';
 
 export default class BusinessMenu extends Component {
@@ -11,8 +10,8 @@ export default class BusinessMenu extends Component {
     return (
       <View>
         <Text>Menu</Text>
+        <Text onPress={() => this.props.navigation.navigate('AddFood')}> Add Item </Text>
       </View>
-
     );
   }
 }
