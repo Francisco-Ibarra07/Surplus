@@ -44,9 +44,9 @@ const CustomerDrawer = createDrawerNavigator({
   },
 },
   {
-    navigationOptions: () => ({
+    navigationOptions: ({ navigation }) => ({
       headerLeft: (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
           <Image style={styles.hamburgerLogo} source={require('./pages/dashboard/resources/logo.jpg')} />
         </TouchableOpacity>
       ),
