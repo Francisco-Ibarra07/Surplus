@@ -49,15 +49,18 @@ export default class AddFood extends Component {
 
     // Get user id
     user_id = firebase.auth().currentUser.uid;
-    const ref = firebase.database().ref('/business/owners/' + user_id + '/restaurant/foods/' + itemName);
+    const ref = firebase.database().ref('/online/' + user_id + '/' + itemName);
 
-    // Update user properties
+    // Update user properties onto online folder
     ref.update({
       'description': description,
       'category': category,
       'quantity': quantity,
       'picture': picture,
     });
+
+    alert("New food item added");
+    this.props.navigation.navigate('BusinessHome');
   }
 
   render() {
