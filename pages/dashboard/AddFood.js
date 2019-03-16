@@ -18,7 +18,9 @@ export default class AddFood extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemName: '',
+      ownersUid: '',
+      ownersAccountInfo: '',
+      foodItemName: '',
       description: '',
       category: '',
       quantity: '',
@@ -28,9 +30,9 @@ export default class AddFood extends Component {
 
   handleNewFoodItem = () => {
 
-    const { itemName, description, category, quantity, picture } = this.state;
+    const { foodItemName, description, category, quantity, picture } = this.state;
     // Check for good inputs
-    if (itemName == "") {
+    if (foodItemName == "") {
       alert('Please fill in your first name.')
       return false;
     } else if (description == "") {
@@ -47,20 +49,47 @@ export default class AddFood extends Component {
       return false;
     }
 
-    // Get user id
-    user_id = firebase.auth().currentUser.uid;
-    const ref = firebase.database().ref('/online/' + user_id + '/' + itemName);
+    // Initialize auth variables
+    const user_id = firebase.auth().currentUser.uid;
+    this.setState({ ownersUid: user_id });
+    const refToOwnersAccountInfo = firebase.database().ref('/business/owners/' + user_id);
+    const activity = this;
 
-    // Update user properties onto online folder
-    ref.update({
-      'description': description,
-      'category': category,
-      'quantity': quantity,
-      'picture': picture,
+    refToOwnersAccountInfo.on('value', function (snapshot) {
+      activity.setState({ ownersAccountInfo: snapshot.val() });
+      const storeName = activity.state.ownersAccountInfo.restaurant.store_name;
+      // Place in store information folder in correct folder
+      const refToPlaceInOnlineFolder = firebase.database().ref('/online/' + storeName);
+      refToPlaceInOnlineFolder.update({
+        'store_info': activity.state.ownersAccountInfo.restaurant,
+      });
+
+      // Place new item into 'items' folder
+      const refToNewItemFolder = firebase.database().ref('/online/' + storeName + '/items/' + foodItemName);
+      refToNewItemFolder.update({
+        'item_name': foodItemName,
+        'item_description': description,
+        'item_category': category,
+        'item_quantity': quantity,
+        'item_image': picture,
+      });
+
+      alert("New food item added");
+      activity.props.navigation.navigate('BusinessHome');
     });
 
-    alert("New food item added");
-    this.props.navigation.navigate('BusinessHome');
+
+    // Get reference to the folder in which the food item will appear
+    // const ref = firebase.database().ref('/online/' + this.state.refOwnersAccountInfo.restaurant.store_name);
+
+    // Update user properties onto online folder
+    // ref.update({
+    //   'description': description,
+    //   'category': category,
+    //   'quantity': quantity,
+    //   'picture': picture,
+    // });
+
   }
 
   render() {
@@ -70,7 +99,7 @@ export default class AddFood extends Component {
           placeholder="Item name"
           autoCorrect={false}
           onChangeText={
-            itemName => this.setState({ itemName })
+            foodItemName => this.setState({ foodItemName })
           }
         />
         <TextInput style={styles.input}
