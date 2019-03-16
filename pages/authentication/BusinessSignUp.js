@@ -51,6 +51,7 @@ export default class BusinessSignUp extends Component {
       return false;
     }
 
+    // TODO: Send notification to admin. Can be done by sending an email verification to bother admin and user
     // Check if email already exists
     // firebase.auth().fetchSignInMethodsForEmail(email)
     //   .then(() => {
