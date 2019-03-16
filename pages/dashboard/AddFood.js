@@ -77,19 +77,6 @@ export default class AddFood extends Component {
       alert("New food item added");
       activity.props.navigation.navigate('BusinessHome');
     });
-
-
-    // Get reference to the folder in which the food item will appear
-    // const ref = firebase.database().ref('/online/' + this.state.refOwnersAccountInfo.restaurant.store_name);
-
-    // Update user properties onto online folder
-    // ref.update({
-    //   'description': description,
-    //   'category': category,
-    //   'quantity': quantity,
-    //   'picture': picture,
-    // });
-
   }
 
   render() {
