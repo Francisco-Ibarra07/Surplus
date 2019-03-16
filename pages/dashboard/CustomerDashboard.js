@@ -18,8 +18,7 @@ export default class CustomerDashboard extends Component {
       userId: '',
       isAnonymousUser: '',
       userFolderRef: '',
-      onlineOwnersRefList: [],
-      globalArray: [],
+      listOfAvailableMerchants: [],
     }
     this.checkIfAnonymousUser = this.checkIfAnonymousUser.bind(this);
     this.populateRestaurantList = this.populateRestaurantList.bind(this);
@@ -48,20 +47,21 @@ export default class CustomerDashboard extends Component {
     // Grab reference to 'online' folder
     const ref = firebase.database().ref('/online');
     const activity = this;
-    var tempArray = [];
+
+    // Grab all restaurants in the 'online' folder
     ref.on('value', function (snapshot) {
+      activity.setState({ listOfAvailableMerchants: snapshot.val() });
 
-      // Once we have all the names of available restaurants, look up each owner's id inside the '/business/owners/' folder
-      let ownersFolderRef = '';
-      const innerRef = snapshot.val();
-      for (ownerId in innerRef) {
-
-        // Grab reference to the current owner's ID folder and store in array
-        ownersFolderRef = firebase.database().ref('/business/owners/' + ownerId);
-        tempArray.push(ownersFolderRef);
+      storeNames = [];
+      for (storeName in activity.state.listOfAvailableMerchants) {
+        storeNames.push(storeName);
+        console.log("IEHIEHI:", storeNames[0]);
       }
 
-      return tempArray;
+      for (var i = 0; i < storeNames.length; i++) {
+        var thingie = activity.state.listOfAvailableMerchants[storeNames[i]];
+        console.log(thingie.items);
+      }
     });
   }
 
@@ -72,10 +72,6 @@ export default class CustomerDashboard extends Component {
   }
 
   render() {
-    // const items = [];
-    // for (var i = 0; i < 20; i++) {
-    //   items.push(<FoodItem key={i} itemName={i + ' food'} />);
-    // }
     return (
       <ScrollView>
         {/* Food Title */}
@@ -83,10 +79,8 @@ export default class CustomerDashboard extends Component {
           <Text style={styles.title}>Popular Now</Text>
           <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
           <Button title="Log off" onPress={this.signOut} />
+          <Button title="Test" onPress={this.populateRestaurantList} />
         </View>
-
-        {/* {items} */}
-
       </ScrollView>
     );
   }
