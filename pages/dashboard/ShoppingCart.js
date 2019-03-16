@@ -78,7 +78,7 @@ export default class ShoppingCart extends Component {
             </View>
           </View>
 
-          {/* Bottom */}
+          {/* Bottom Section: Graph and Savings */}
           <View style={styles.cartSaving}>
             <Image style={styles.pointsImage}
               source={require('./resources/points.jpg')}
@@ -89,6 +89,7 @@ export default class ShoppingCart extends Component {
             </View>
           </View>
 
+          {/* TODO: Navigation */}
           <RedButton buttonText='Done' />
         </View>
 
@@ -96,6 +97,7 @@ export default class ShoppingCart extends Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -106,8 +108,6 @@ const styles = StyleSheet.create({
 
   // TOP SECTION
   top: {
-    // borderWidth: 1,
-    // borderColor: 'red',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -126,8 +126,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   topImage: {
-    // borderWidth: 1,
-    // borderColor: 'red',
     position: 'relative',
     top: 1,
     resizeMode: 'contain',
@@ -154,8 +152,6 @@ const styles = StyleSheet.create({
     height: 100,
     width: 150,
     borderRadius: 10,
-    // borderWidth: 1,
-    // borderColor: 'red',
   },
 
   // Pick Up
@@ -180,7 +176,6 @@ const styles = StyleSheet.create({
     borderColor: '#D33B32',
   },
   summaryText: {
-    // fontSize: 15,
     fontWeight: 'bold',
     marginTop: 5,
     marginBottom: 5,
@@ -233,9 +228,6 @@ const styles = StyleSheet.create({
   },
   savings: {
     width: '50%',
-    // borderWidth: 1,
-    // borderColor: 'blue',
-    // paddingTop: 15,
   },
   savingsText: {
     fontSize: 12,
