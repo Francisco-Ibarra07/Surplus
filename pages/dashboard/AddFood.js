@@ -58,6 +58,7 @@ export default class AddFood extends Component {
     refToOwnersAccountInfo.on('value', function (snapshot) {
       activity.setState({ ownersAccountInfo: snapshot.val() });
       const storeName = activity.state.ownersAccountInfo.restaurant.store_name;
+
       // Place in store information folder in correct folder
       const refToPlaceInOnlineFolder = firebase.database().ref('/online/' + storeName);
       refToPlaceInOnlineFolder.update({
@@ -65,7 +66,7 @@ export default class AddFood extends Component {
       });
 
       // Place new item into 'items' folder
-      const refToNewItemFolder = firebase.database().ref('/online/' + storeName + '/items/' + foodItemName);
+      const refToNewItemFolder = firebase.database().ref('/online/' + storeName + '/' + foodItemName);
       refToNewItemFolder.update({
         'item_name': foodItemName,
         'item_description': description,
