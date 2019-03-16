@@ -27,6 +27,7 @@ import ForgotPassword from './pages/authentication/ForgotPassword';
 // Dash Screens
 // Customer's
 import CustomerDashboard from './pages/dashboard/CustomerDashboard';
+import ShoppingCart from './pages/dashboard/ShoppingCart';
 // Business Owner's
 import AddFood from './pages/dashboard/AddFood';
 import BusinessVerify from './pages/dashboard/BusinessVerify';
@@ -43,16 +44,22 @@ const CustomerDrawer = createDrawerNavigator({
       title: 'Dashboard',
     }),
   },
+  ShoppingCart: {
+    screen: ShoppingCart,
+    navigationOptions: () => ({
+      title: 'Shopping Cart',
+    }),
+  },
 },
   {
-    navigationOptions: () => ({
+    navigationOptions: ({ navigation }) => ({
       headerLeft: (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
           <Image style={styles.hamburgerLogo} source={require('./pages/dashboard/resources/logo.jpg')} />
         </TouchableOpacity>
       ),
       headerRight: (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('ShoppingCart')}>
           <Image style={styles.rightLogos} source={require('./pages/dashboard/resources/shoppingcart.png')} />
         </TouchableOpacity>
       ),
