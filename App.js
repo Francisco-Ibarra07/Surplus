@@ -63,6 +63,8 @@ const CustomerDrawer = createDrawerNavigator({
           <Image style={styles.rightLogos} source={require('./pages/dashboard/resources/shoppingcart.png')} />
         </TouchableOpacity>
       ),
+      title: 'surplus',
+      headerTintColor: '#D33B32',
     }),
   }
 )
