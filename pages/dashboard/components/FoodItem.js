@@ -12,7 +12,8 @@ export default class FoodItem extends Component {
       <View style={styles.foodContainer}>
         <View style={styles.foodItem}>
           <View style={styles.foodImage}>
-            <Image style={styles.foodImageChild} source={require('../resources/pizza.jpg')} />
+            {/* <Image style={styles.foodImageChild} source={require(this.props.imageLink)} /> */}
+            <Image style={styles.foodImageChild} source={{ uri: this.props.imageLink }} />
           </View>
           <View style={styles.foodDescription}>
             <View style={styles.foodTitle}>
