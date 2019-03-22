@@ -68,19 +68,24 @@ export default class CustomerDashboard extends Component {
       for (var i = 0; i < storeNames.length; i++) {
         storeObjectList.push({
           name: storeNames[i],
-          storeInfo: snapOfOnlineRestaurantList[storeNames[0]].store_info,
+          storeInfo: snapOfOnlineRestaurantList[storeNames[i]].store_info,
         })
       }
 
+      let storeName;
+      let storeImage;
       // Populate FoodItem array
       for (var i = 0; i < storeObjectList.length; i++) {
-        foodItems.push(<FoodItem key={i} itemName={storeObjectList[i].name} imageLink='https://i.imgur.com/tvlRLOm.jpg' />);
+        storeName = storeObjectList[i].name;
+        storeImage = storeObjectList[i].storeInfo.image;
+
+        foodItems.push(<FoodItem key={i} itemName={storeName} imageLink={storeImage} />);
       }
 
       // Store restaurant lists in 'state' variable
       activity.setState({ itemsView: foodItems, restaurantObjects: storeObjectList });
-      console.log(activity.state.itemsView);
-      console.log(activity.state.restaurantObjects);
+      // console.log(activity.state.itemsView);
+      // console.log("Store objects", activity.state.restaurantObjects);
     });
   }
 
@@ -98,7 +103,7 @@ export default class CustomerDashboard extends Component {
           <Text style={styles.title}>Popular Now</Text>
           <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
           <Button title="Log off" onPress={this.signOut} />
-          <Button title="Test" onPress={this.populateRestaurantList} />
+          {/* <Button title="Test" onPress={this.populateRestaurantList} /> */}
 
         </View>
 
