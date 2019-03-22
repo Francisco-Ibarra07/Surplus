@@ -7,7 +7,7 @@ import {
   Button,
 } from 'react-native';
 
-import FoodItem from './components/FoodItem';
+import RestaurantItem from './components/RestaurantItem';
 import firebase from 'react-native-firebase';
 
 export default class CustomerDashboard extends Component {
@@ -56,7 +56,7 @@ export default class CustomerDashboard extends Component {
       const snapOfOnlineRestaurantList = snapshot.val();
       var storeNames = [];
       var storeObjectList = [];
-      var foodItems = [];
+      var restaurantItems = [];
 
       // Store all the names of the stores in the 'online' folder as keys in an array
       for (store in snapOfOnlineRestaurantList) {
@@ -69,21 +69,22 @@ export default class CustomerDashboard extends Component {
         storeObjectList.push({
           name: storeNames[i],
           storeInfo: snapOfOnlineRestaurantList[storeNames[i]].store_info,
+          // items: snapOfOnlineRestaurantList[storeNames[i]].items,  // <-- can store a list of available items
         })
       }
 
       let storeName;
       let storeImage;
-      // Populate FoodItem array
+      // Populate RestaurantItem array
       for (var i = 0; i < storeObjectList.length; i++) {
         storeName = storeObjectList[i].name;
         storeImage = storeObjectList[i].storeInfo.image;
 
-        foodItems.push(<FoodItem key={i} itemName={storeName} imageLink={storeImage} />);
+        restaurantItems.push(<RestaurantItem key={i} storeName={storeName} imageLink={storeImage} />);
       }
 
       // Store restaurant lists in 'state' variable
-      activity.setState({ itemsView: foodItems, restaurantObjects: storeObjectList });
+      activity.setState({ itemsView: restaurantItems, restaurantObjects: storeObjectList });
       // console.log(activity.state.itemsView);
       // console.log("Store objects", activity.state.restaurantObjects);
     });
