@@ -19,8 +19,7 @@ export default class CustomerDashboard extends Component {
       isAnonymousUser: '',
       userFolderRef: '',
       itemsView: [],
-      listOfOnlineStoreNameKeys: [],
-      listOfAvailableMerchants: [],
+      restaurantObjects: [],
     }
     this.checkIfAnonymousUser = this.checkIfAnonymousUser.bind(this);
     this.populateRestaurantList = this.populateRestaurantList.bind(this);
@@ -56,48 +55,39 @@ export default class CustomerDashboard extends Component {
     ref.on('value', function (snapshot) {
       const snapOfOnlineRestaurantList = snapshot.val();
       var storeNames = [];
+      var storeObjectList = [];
+      var foodItems = [];
 
       // Store all the names of the stores in the 'online' folder as keys in an array
       for (store in snapOfOnlineRestaurantList) {
+        // Contains just a list of strings of store names
         storeNames.push(store);
-        // console.log(store);
       }
 
-      activity.setState({ listOfAvailableMerchants: [] });
+      // Populate store name and store information into an array
       for (var i = 0; i < storeNames.length; i++) {
-        activity.state.listOfAvailableMerchants.push({
+        storeObjectList.push({
           name: storeNames[i],
           storeInfo: snapOfOnlineRestaurantList[storeNames[0]].store_info,
         })
       }
 
-      console.log(activity.state.listOfAvailableMerchants);
-    }).setTim;
+      // Populate FoodItem array
+      for (var i = 0; i < storeObjectList.length; i++) {
+        foodItems.push(<FoodItem key={i} itemName={storeObjectList[i].name} />);
+      }
+
+      // Store restaurant lists in 'state' variable
+      activity.setState({ itemsView: foodItems, restaurantObjects: storeObjectList });
+      console.log(activity.state.itemsView);
+      console.log(activity.state.restaurantObjects);
+    });
   }
 
+  // Firebase log off
   signOut = () => {
-    // Firebase log off
     firebase.auth().signOut();
     this.props.navigation.navigate('GetStarted');
-  }
-
-  componentDidMount = () => {
-
-    const activity = this;
-    setTimeout(function () {
-
-      console.log("before", activity.state.itemsView);
-
-      for (var i = 0; i < 3; i++) {
-        activity.state.itemsView.push(<FoodItem key={i} itemName={activity.state.listOfAvailableMerchants[i].name} />);
-      }
-      console.log("after", activity.state.itemsView);
-      console.log("done loop");
-      activity.forceUpdate();
-    }, 2000);
-
-    console.log("done timeout");
-
   }
 
   render() {
