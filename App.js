@@ -3,14 +3,21 @@ import SplashScreen from 'react-native-splash-screen';
 import {
   TouchableOpacity,
   Image,
-  StyleSheet
+  StyleSheet,
+  SafeAreaView,
+  View,
+  Button,
+  Text,
+  Alert
 } from 'react-native';
 import {
   createStackNavigator,
   createBottomTabNavigator,
   createDrawerNavigator,
-  createAppContainer
+  createAppContainer,
+  DrawerItems,
 } from 'react-navigation';
+import firebase from 'react-native-firebase';
 
 // Auth Screens
 import GetStarted from './pages/authentication/GetStarted';
@@ -66,6 +73,30 @@ const CustomerDrawer = createDrawerNavigator({
       title: 'surplus',
       headerTintColor: '#D33B32',
     }),
+    contentComponent: (props) => (
+      <View style={{ flex: 1 }}>
+        <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+          <DrawerItems {...props} />
+          <TouchableOpacity onPress={() =>
+            Alert.alert(
+              'Log out',
+              'Do you want to logout?',
+              [
+                { text: 'Cancel', onPress: () => { return null } },
+                {
+                  text: 'Confirm', onPress: () => {
+                    props.navigation.navigate('GetStarted')
+                  }
+                },
+              ],
+              { cancelable: false }
+            )
+          }>
+            <Text style={{ margin: 15, fontWeight: 'bold' }}>Logout</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+      </View>
+    ),
   }
 )
 
