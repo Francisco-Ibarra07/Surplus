@@ -92,7 +92,7 @@ const CustomerDrawer = createDrawerNavigator({
               { cancelable: false }
             )
           }>
-            <Text style={{ margin: 15, fontWeight: 'bold' }}>Logout</Text>
+            <Text style={{ margin: 15, fontWeight: 'bold' }}>Log Off</Text>
           </TouchableOpacity>
         </SafeAreaView>
       </View>
