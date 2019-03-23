@@ -169,7 +169,17 @@ export const Nav = createAppContainer(
 
     // Customer Navigation
     Drawer: CustomerDrawer,
-    RestaurantFoods: { screen: RestaurantFoods },
+    RestaurantFoods: {
+      screen: RestaurantFoods,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: (
+          <TouchableOpacity onPress={() => navigation.navigate('ShoppingCart')}>
+            <Image style={styles.rightLogos} source={require('./pages/dashboard/resources/shoppingcart.png')} />
+          </TouchableOpacity>
+        ),
+        headerTintColor: '#D33B32',
+      }),
+    },
 
     // Business screens
     AddFood: { screen: AddFood },
