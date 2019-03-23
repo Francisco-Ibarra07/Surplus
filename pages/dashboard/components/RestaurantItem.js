@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default class RestaurantItem extends Component {
   render() {
     return (
       <View style={styles.restaurantContainer}>
-        <View style={styles.restaurantItem}>
+        <TouchableOpacity style={styles.restaurantItem} >
+
           <View style={styles.restaurantImage}>
             <Image style={styles.restaurantImageChild} source={{ uri: this.props.imageLink }} />
           </View>
+
           <View style={styles.foodDescription}>
             <View style={styles.foodTitle}>
               <Text>{this.props.storeName}</Text>
+              <Text>{this.props.storeAddress}</Text>
             </View>
           </View>
-        </View>
+
+        </TouchableOpacity>
       </View>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   random: {
