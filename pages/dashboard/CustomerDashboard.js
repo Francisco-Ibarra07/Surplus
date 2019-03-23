@@ -75,12 +75,14 @@ export default class CustomerDashboard extends Component {
 
       let storeName;
       let storeImage;
+      let storeAddress;
       // Populate RestaurantItem array
       for (var i = 0; i < storeObjectList.length; i++) {
         storeName = storeObjectList[i].name;
         storeImage = storeObjectList[i].storeInfo.image;
+        storeAddress = storeObjectList[i].storeInfo.address;
 
-        restaurantItems.push(<RestaurantItem key={i} storeName={storeName} imageLink={storeImage} />);
+        restaurantItems.push(<RestaurantItem key={i} storeName={storeName} imageLink={storeImage} storeAddress={storeAddress} />);
       }
 
       // Store restaurant lists in 'state' variable
