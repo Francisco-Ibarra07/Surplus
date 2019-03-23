@@ -1,14 +1,22 @@
+/**
+ * ------------------------------------------------------ /
+ * The main container for imports and navigation
+ * Default page is GetStarted.js
+ * ------------------------------------------------------ /
+ */
+
+// Main Imports ----------------------------------------- /
 import React, { Component } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import {
-  TouchableOpacity,
+  Alert,
+  Button,
   Image,
   StyleSheet,
   SafeAreaView,
-  View,
-  Button,
   Text,
-  Alert
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import {
   createStackNavigator,
@@ -19,7 +27,7 @@ import {
 } from 'react-navigation';
 import firebase from 'react-native-firebase';
 
-// Auth Screens
+// Auth Screens Import ---------------------------------- /
 import GetStarted from './pages/authentication/GetStarted';
 import WhoAreYou from './pages/authentication/WhoAreYou';
 import CustomerSignUp from './pages/authentication/CustomerSignUp';
@@ -31,7 +39,7 @@ import PrivacyStatement from './pages/authentication/PrivacyStatement';
 import DummySignUp from './pages/authentication/DummySignUp';
 import ForgotPassword from './pages/authentication/ForgotPassword';
 
-// Dash Screens
+// Dash Screens ----------------------------------------- /
 // Customer's
 import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 import ShoppingCart from './pages/dashboard/ShoppingCart';
@@ -45,7 +53,8 @@ import BusinessMenu from './pages/dashboard/BusinessMenu';
 import BusinessQueue from './pages/dashboard/BusinessQueue';
 import BusinessWallet from './pages/dashboard/BusinessWallet';
 
-// Customer Drawer Navigation
+
+// Customer Drawer Navigation --------------------------- /
 const CustomerDrawer = createDrawerNavigator({
   CustomerDashboard: {
     screen: CustomerDashboard,
@@ -143,7 +152,7 @@ const BusinessTab = createBottomTabNavigator({
     }
   })
 
-// App Navigation
+// App Navigation --------------------------------------- /
 export const Nav = createAppContainer(
   createStackNavigator({
     // Auth Navigation
@@ -187,22 +196,24 @@ export default class App extends Component<Props> {
   }
 }
 
+
+// Styles ----------------------------------------------- /
 const styles = StyleSheet.create({
   hamburgerLogo: {
-    resizeMode: 'contain',
-    height: 30,
-    width: 30,
     // borderWidth: 1,
     // borderColor: 'blue',
+    height: 30,
+    resizeMode: 'contain',
+    width: 30,
     marginLeft: 25,
   },
   rightLogos: {
-    resizeMode: 'contain',
-    height: 30,
-    width: 30,
-    // borderWidth: 1,
     // borderColor: 'blue',
+    // borderWidth: 1,
+    height: 30,
     marginRight: 25,
+    resizeMode: 'contain',
+    width: 30,
   },
 });
 
