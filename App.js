@@ -79,8 +79,8 @@ const CustomerDrawer = createDrawerNavigator({
           <DrawerItems {...props} />
           <TouchableOpacity onPress={() =>
             Alert.alert(
-              'Log out',
-              'Do you want to logout?',
+              'Log Off',
+              'Do you want to log off?',
               [
                 { text: 'Cancel', onPress: () => { return null } },
                 {
