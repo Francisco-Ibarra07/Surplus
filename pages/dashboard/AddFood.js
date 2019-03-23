@@ -66,7 +66,7 @@ export default class AddFood extends Component {
       });
 
       // Place new item into 'items' folder
-      const refToNewItemFolder = firebase.database().ref('/online/' + storeName + '/' + foodItemName);
+      const refToNewItemFolder = firebase.database().ref('/online/' + storeName + '/items/' + foodItemName);
       refToNewItemFolder.update({
         'item_name': foodItemName,
         'item_description': description,
