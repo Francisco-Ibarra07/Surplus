@@ -15,6 +15,7 @@ export default class RestaurantItem extends Component {
   render() {
     return (
       <View style={styles.restaurantContainer}>
+        {/* FIXED: Using navigation inside a functional component https://github.com/react-navigation/react-navigation/issues/2115 */}
         <TouchableOpacity style={styles.restaurantItem} onPress={this.handleItemPress}>
           <View style={styles.restaurantImage}>
             <Image style={styles.restaurantImageChild} source={{ uri: this.props.imageLink }} />
