@@ -1,14 +1,11 @@
 
 import React, { Component } from 'react';
 import {
-  Image,
   Button,
   View,
   Text,
   StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
+  ScrollView
 } from 'react-native';
 import firebase from 'react-native-firebase';
 import ActiveItem from './components/ActiveItem';
