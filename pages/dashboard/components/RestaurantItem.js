@@ -18,13 +18,13 @@ export default class RestaurantItem extends Component {
         {/* FIXED: Using navigation inside a functional component https://github.com/react-navigation/react-navigation/issues/2115 */}
         <TouchableOpacity style={styles.restaurantItem} onPress={this.handleItemPress}>
           <View style={styles.restaurantImage}>
-            <Image style={styles.restaurantImageChild} source={{ uri: this.props.imageLink }} />
+            <Image style={styles.restaurantImageChild} source={{ uri: this.props.storeObject.store_info.image }} />
           </View>
 
           <View style={styles.foodDescription}>
             <View style={styles.foodTitle}>
-              <Text>{this.props.storeName}</Text>
-              <Text>{this.props.storeAddress}</Text>
+              <Text>{this.props.storeObject.store_info.store_name}</Text>
+              <Text>{this.props.storeObject.store_info.address}</Text>
             </View>
           </View>
 
