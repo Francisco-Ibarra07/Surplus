@@ -17,7 +17,7 @@ export default class CustomerDashboard extends Component {
     this.state = {
       userId: '',
       isAnonymousUser: '',
-      userFolderRef: '',
+      userObject: '',
       restaurantItemsView: [],
       restaurantObjects: [],
     }
@@ -31,13 +31,17 @@ export default class CustomerDashboard extends Component {
     this.populateRestaurantList();
   }
 
+  /**
+   * Checks if a user is browsing as guest
+   * If browsing guest, don't attempt to grab the user id and build the user object
+   */
   checkIfAnonymousUser = () => {
     // Check if there was an anonymous flag that was set
     const isAnonymous = this.props.navigation.state.params.anonymousFlag;
     if (!isAnonymous) {
       this.setState({ isAnonymous: false });
       this.setState({ userId: firebase.auth().currentUser.uid });
-      this.setState({ userFolderRef: firebase.database().ref('customers/users/' + this.state.userId) });
+      this.setState({ userObject: firebase.database().ref('customers/users/' + this.state.userId) });
 
       console.log("NOT ANONYMOUS");
     }
