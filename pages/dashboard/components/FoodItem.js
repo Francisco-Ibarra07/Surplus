@@ -7,14 +7,29 @@ export default class FoodItem extends Component {
     super(props);
   }
 
-  handleItemPress = () => {
+  handleFoodItemPress = () => {
 
   }
 
   render() {
     return (
+
       <View style={styles.foodItemContainer}>
-        <Text>{this.props.foodItemName}</Text>
+        <TouchableOpacity style={styles.foodItem}>
+
+          <Text>{this.props.foodItemName}</Text>
+          <View style={styles.foodItemImage}>
+            <Image style={styles.foodItemImageChild} source={{ uri: this.props.foodItemImage }} />
+          </View>
+
+          <View style={styles.foodItemDescription}>
+            <View style={styles.foodTitle}>
+              <Text>Description: {this.props.foodItemDescription}</Text>
+              <Text>Quantity: {this.props.foodItemQuantity}</Text>
+            </View>
+          </View>
+
+        </TouchableOpacity>
       </View>
     );
   }
