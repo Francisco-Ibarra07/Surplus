@@ -82,7 +82,14 @@ export default class CustomerDashboard extends Component {
         storeImage = storeObjectList[i].storeInfo.image;
         storeAddress = storeObjectList[i].storeInfo.address;
 
-        restaurantItems.push(<RestaurantItem key={i} storeName={storeName} imageLink={storeImage} storeAddress={storeAddress} />);
+        restaurantItems.push(
+          <RestaurantItem
+            key={i}
+            storeName={storeName}
+            imageLink={storeImage}
+            storeAddress={storeAddress}
+          />
+        );
       }
 
       // Store restaurant lists in 'state' variable
@@ -101,7 +108,7 @@ export default class CustomerDashboard extends Component {
       <ScrollView>
         {/* Food Title */}
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Popular Now</Text>
+          <Text style={styles.title} onPress={() => this.props.naviagtion.navigate('RestaurantFoods')}>Popular Now</Text>
           <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
           <Button title="Log off" onPress={this.signOut} />
         </View>

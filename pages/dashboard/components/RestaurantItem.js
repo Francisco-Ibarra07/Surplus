@@ -10,6 +10,7 @@ export default class RestaurantItem extends Component {
   render() {
     return (
       <View style={styles.restaurantContainer}>
+        {/* <TouchableOpacity style={styles.restaurantItem} onPress={this.props.onPress}> */}
         <TouchableOpacity style={styles.restaurantItem}>
           <View style={styles.restaurantImage}>
             <Image style={styles.restaurantImageChild} source={{ uri: this.props.imageLink }} />
