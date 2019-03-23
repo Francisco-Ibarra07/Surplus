@@ -14,7 +14,7 @@ export default class FoodItem extends Component {
   render() {
     return (
       <View style={styles.foodItemContainer}>
-
+        <Text>{this.props.foodItemName}</Text>
       </View>
     );
   }

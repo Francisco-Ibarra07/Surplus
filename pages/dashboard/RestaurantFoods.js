@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, StyleSheet, Button } from 'react-native';
-import firebase from 'react-native-firebase';
+import { View, Text, ScrollView } from 'react-native';
+import FoodItem from './components/FoodItem';
 
 export default class RestaurantFoods extends Component {
 
@@ -8,7 +8,39 @@ export default class RestaurantFoods extends Component {
     super(props);
     this.state = {
       foodItemsView: [],
+      foodItemsList: [],
     }
+
+    this.populateFoodItemsList = this.populateFoodItemsList.bind(this);
+  }
+
+  componentDidMount() {
+
+    const foodList = this.props.navigation.state.params.storeItemsList;
+    this.populateFoodItemsList(foodList);
+  }
+
+  populateFoodItemsList = (foodList) => {
+
+    var foodItems = [];
+    for (food in foodList) {
+      foodItems.push(foodList[food]);
+    }
+
+    console.log(foodItems);
+    var listView = [];
+    for (var i = 0; i < foodItems.length; i++) {
+      listView.push(
+        <FoodItem
+          key={i}
+          foodItemName={foodItems[i].item_name}
+        />
+      );
+    }
+
+    console.log(listView);
+    this.setState({ foodItemsView: listView });
+    console.log(this.state.foodItemsView);
   }
 
   render() {
