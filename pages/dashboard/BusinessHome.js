@@ -51,28 +51,31 @@ export default class BusinessHome extends Component {
     });
   }
 
+  /**
+   * This method populates a variable called 'activeItemsView' which is used as the list for the View to use.
+   */
   populateActiveItems = (storeName, activity) => {
 
-    console.log(storeName);
+    // Get reference to correct folder (reference by store name inside the 'online' database folder)
     const onlineItemsRef = firebase.database().ref('/online/' + storeName + '/items');
 
     onlineItemsRef.on('value', function (snapshot) {
       const snap = snapshot.val();
       console.log("Items:", snap);
 
+      // Get string names of available food items
       var foodNames = [];
-      var individualFoodObjects = [];
-
       for (food in snap) {
         foodNames.push(food);
       }
 
+      // Grab objects and use the string names as the key
+      var individualFoodObjects = [];
       for (var i = 0; i < foodNames.length; i++) {
         individualFoodObjects.push(snap[foodNames[i]]);
       }
-      console.log(individualFoodObjects);
 
-
+      // Create a list of ActiveItem's to be shown by the View
       var activeItems = [];
       var currentFood;
       for (var i = 0; i < individualFoodObjects.length; i++) {
@@ -88,7 +91,6 @@ export default class BusinessHome extends Component {
       }
 
       activity.setState({ activeItemsView: activeItems });
-
     });
   }
 
@@ -97,7 +99,6 @@ export default class BusinessHome extends Component {
       <ScrollView style={styles.container}>
         <View style={styles.title}>
           <Text>Active Items</Text>
-
         </View>
 
         {this.state.activeItemsView}
