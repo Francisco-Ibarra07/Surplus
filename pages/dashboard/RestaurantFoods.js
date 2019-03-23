@@ -11,4 +11,17 @@ export default class RestaurantFoods extends Component {
     }
   }
 
+  render() {
+    return (
+      <ScrollView>
+        {/* Food Title */}
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>New page</Text>
+        </View>
+
+      </ScrollView>
+    );
+  }
+
+
 }

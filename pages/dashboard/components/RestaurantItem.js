@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default class RestaurantItem extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <View style={styles.restaurantContainer}>
-        <TouchableOpacity style={styles.restaurantItem} >
-
+        <TouchableOpacity style={styles.restaurantItem}>
           <View style={styles.restaurantImage}>
             <Image style={styles.restaurantImageChild} source={{ uri: this.props.imageLink }} />
           </View>

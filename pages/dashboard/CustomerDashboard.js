@@ -87,8 +87,6 @@ export default class CustomerDashboard extends Component {
 
       // Store restaurant lists in 'state' variable
       activity.setState({ itemsView: restaurantItems, restaurantObjects: storeObjectList });
-      // console.log(activity.state.itemsView);
-      // console.log("Store objects", activity.state.restaurantObjects);
     });
   }
 
@@ -106,8 +104,6 @@ export default class CustomerDashboard extends Component {
           <Text style={styles.title}>Popular Now</Text>
           <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
           <Button title="Log off" onPress={this.signOut} />
-          {/* <Button title="Test" onPress={this.populateRestaurantList} /> */}
-
         </View>
 
         {this.state.itemsView}
