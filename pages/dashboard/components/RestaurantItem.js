@@ -7,11 +7,15 @@ export default class RestaurantItem extends Component {
     super(props);
   }
 
+  handleItemPress = () => {
+
+    this.props.navigation.navigate('RestaurantFoods');
+  }
+
   render() {
     return (
       <View style={styles.restaurantContainer}>
-        {/* <TouchableOpacity style={styles.restaurantItem} onPress={this.props.onPress}> */}
-        <TouchableOpacity style={styles.restaurantItem}>
+        <TouchableOpacity style={styles.restaurantItem} onPress={this.handleItemPress}>
           <View style={styles.restaurantImage}>
             <Image style={styles.restaurantImageChild} source={{ uri: this.props.imageLink }} />
           </View>

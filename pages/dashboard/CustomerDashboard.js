@@ -85,6 +85,7 @@ export default class CustomerDashboard extends Component {
         restaurantItems.push(
           <RestaurantItem
             key={i}
+            navigation={activity.props.navigation}
             storeName={storeName}
             imageLink={storeImage}
             storeAddress={storeAddress}
@@ -108,7 +109,7 @@ export default class CustomerDashboard extends Component {
       <ScrollView>
         {/* Food Title */}
         <View style={styles.titleContainer}>
-          <Text style={styles.title} onPress={() => this.props.naviagtion.navigate('RestaurantFoods')}>Popular Now</Text>
+          <Text>Online Restaurants</Text>
           <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
           <Button title="Log off" onPress={this.signOut} />
         </View>

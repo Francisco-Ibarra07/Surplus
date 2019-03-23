@@ -16,7 +16,7 @@ export default class RestaurantFoods extends Component {
       <ScrollView>
         {/* Food Title */}
         <View>
-          <Text>New page</Text>
+          <Text>New foods</Text>
         </View>
 
       </ScrollView>
