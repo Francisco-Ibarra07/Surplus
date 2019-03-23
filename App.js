@@ -85,6 +85,7 @@ const CustomerDrawer = createDrawerNavigator({
                 { text: 'Cancel', onPress: () => { return null } },
                 {
                   text: 'Confirm', onPress: () => {
+                    firebase.auth().signOut();
                     props.navigation.navigate('GetStarted')
                   }
                 },
