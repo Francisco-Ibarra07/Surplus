@@ -62,7 +62,6 @@ export default class CustomerDashboard extends Component {
     ref.on('value', function (snapshot) {
       const snapOfOnlineRestaurantList = snapshot.val();
       var storeNames = [];
-      var storeObjectList = [];
       var restaurantItems = [];
 
       // Store all the names of the stores in the 'online' folder as keys in an array
@@ -72,12 +71,18 @@ export default class CustomerDashboard extends Component {
       }
 
       // Populate store name and store information into an array
+      // Also populate an array containing all the food items that are up for sale by this store
+      var storeObjectList = [];
+      var storeItemsList = [];
+
       for (var i = 0; i < storeNames.length; i++) {
         storeObjectList.push({
           store_name: storeNames[i],
           store_info: snapOfOnlineRestaurantList[storeNames[i]].store_info,
           store_owner_id: snapOfOnlineRestaurantList[storeNames[i]].store_owner_id,
-        })
+        });
+
+        storeItemsList.push(snapOfOnlineRestaurantList[storeNames[i]].items);
       }
 
       // Populate RestaurantItem array
@@ -87,8 +92,10 @@ export default class CustomerDashboard extends Component {
             key={i}
             navigation={activity.props.navigation}
             storeObject={storeObjectList[i]}
+            storeItemsList={storeItemsList[i]}
           />
         );
+
       }
 
       // Store restaurant lists in 'state' variable

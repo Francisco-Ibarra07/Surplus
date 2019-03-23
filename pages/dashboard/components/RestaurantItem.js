@@ -7,9 +7,12 @@ export default class RestaurantItem extends Component {
     super(props);
   }
 
+  /**
+   * When an item in the list is pressed, we pass in the food list for this specific restaurant that was clicked on onto the next screen
+   */
   handleItemPress = () => {
-
-    this.props.navigation.navigate('RestaurantFoods');
+    const list = this.props.storeItemsList;
+    this.props.navigation.navigate('RestaurantFoods', { storeItemsList: list });
   }
 
   render() {
