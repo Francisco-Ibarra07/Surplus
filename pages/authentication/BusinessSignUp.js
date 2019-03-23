@@ -7,7 +7,6 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import firebase from 'react-native-firebase';
 
 export default class BusinessSignUp extends Component {
   static navigationOptions = {

@@ -6,7 +6,6 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-  Button
 } from 'react-native';
 
 import firebase from 'react-native-firebase';
