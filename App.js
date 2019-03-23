@@ -43,6 +43,8 @@ import ForgotPassword from './pages/authentication/ForgotPassword';
 // Customer's
 import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 import ShoppingCart from './pages/dashboard/ShoppingCart';
+import RestaurantFoods from './pages/dashboard/RestaurantFoods';
+
 // Business Owner's
 import AddFood from './pages/dashboard/AddFood';
 import BusinessVerify from './pages/dashboard/BusinessVerify';
@@ -167,6 +169,17 @@ export const Nav = createAppContainer(
 
     // Customer Navigation
     Drawer: CustomerDrawer,
+    RestaurantFoods: {
+      screen: RestaurantFoods,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: (
+          <TouchableOpacity onPress={() => navigation.navigate('ShoppingCart')}>
+            <Image style={styles.rightLogos} source={require('./pages/dashboard/resources/shoppingcart.png')} />
+          </TouchableOpacity>
+        ),
+        headerTintColor: '#D33B32',
+      }),
+    },
 
     // Business screens
     AddFood: { screen: AddFood },
