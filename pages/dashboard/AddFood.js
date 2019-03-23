@@ -63,6 +63,7 @@ export default class AddFood extends Component {
       const refToPlaceInOnlineFolder = firebase.database().ref('/online/' + storeName);
       refToPlaceInOnlineFolder.update({
         'store_info': activity.state.ownersAccountInfo.restaurant,
+        'store_owner_id': user_id,
       });
 
       // Place new item into 'items' folder

@@ -18,7 +18,7 @@ export default class CustomerDashboard extends Component {
       userId: '',
       isAnonymousUser: '',
       userFolderRef: '',
-      itemsView: [],
+      restaurantItemsView: [],
       restaurantObjects: [],
     }
     this.checkIfAnonymousUser = this.checkIfAnonymousUser.bind(this);
@@ -67,34 +67,27 @@ export default class CustomerDashboard extends Component {
       // Populate store name and store information into an array
       for (var i = 0; i < storeNames.length; i++) {
         storeObjectList.push({
-          name: storeNames[i],
-          storeInfo: snapOfOnlineRestaurantList[storeNames[i]].store_info,
-          // items: snapOfOnlineRestaurantList[storeNames[i]].items,  // <-- can store a list of available items
+          store_name: storeNames[i],
+          store_info: snapOfOnlineRestaurantList[storeNames[i]].store_info,
+          store_owner_id: snapOfOnlineRestaurantList[storeNames[i]].store_owner_id,
         })
       }
 
-      let storeName;
-      let storeImage;
-      let storeAddress;
       // Populate RestaurantItem array
       for (var i = 0; i < storeObjectList.length; i++) {
-        storeName = storeObjectList[i].name;
-        storeImage = storeObjectList[i].storeInfo.image;
-        storeAddress = storeObjectList[i].storeInfo.address;
-
         restaurantItems.push(
           <RestaurantItem
             key={i}
             navigation={activity.props.navigation}
-            storeName={storeName}
-            imageLink={storeImage}
-            storeAddress={storeAddress}
+            storeObject={storeObjectList[i]}
           />
         );
+
+        console.log(storeObjectList[i]);
       }
 
       // Store restaurant lists in 'state' variable
-      activity.setState({ itemsView: restaurantItems, restaurantObjects: storeObjectList });
+      activity.setState({ restaurantItemsView: restaurantItems, restaurantObjects: storeObjectList });
     });
   }
 
@@ -114,7 +107,7 @@ export default class CustomerDashboard extends Component {
           <Button title="Log off" onPress={this.signOut} />
         </View>
 
-        {this.state.itemsView}
+        {this.state.restaurantItemsView}
       </ScrollView>
     );
   }
