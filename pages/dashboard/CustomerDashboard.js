@@ -24,13 +24,16 @@ export default class CustomerDashboard extends Component {
     this.checkIfAnonymousUser = this.checkIfAnonymousUser.bind(this);
     this.populateRestaurantList = this.populateRestaurantList.bind(this);
     this.signOut = this.signOut.bind(this);
+  }
 
+  componentDidMount() {
+    this.checkIfAnonymousUser();
     this.populateRestaurantList();
   }
 
   checkIfAnonymousUser = () => {
     // Check if there was an anonymous flag that was set
-    const isAnonymous = props.navigation.state.params.anonymousFlag;
+    const isAnonymous = this.props.navigation.state.params.anonymousFlag;
     if (!isAnonymous) {
       this.setState({ isAnonymous: false });
       this.setState({ userId: firebase.auth().currentUser.uid });
@@ -82,8 +85,6 @@ export default class CustomerDashboard extends Component {
             storeObject={storeObjectList[i]}
           />
         );
-
-        console.log(storeObjectList[i]);
       }
 
       // Store restaurant lists in 'state' variable
