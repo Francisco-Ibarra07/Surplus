@@ -4,10 +4,10 @@ import firebase from 'react-native-firebase';
 
 export default class RestaurantFoods extends Component {
 
-
   constructor(props) {
     super(props);
     this.state = {
+      foodItemsView: [],
     }
   }
 
@@ -16,8 +16,10 @@ export default class RestaurantFoods extends Component {
       <ScrollView>
         {/* Food Title */}
         <View>
-          <Text>New foods</Text>
+          <Text>Available Foods</Text>
         </View>
+
+        {this.state.foodItemsView}
 
       </ScrollView>
     );
