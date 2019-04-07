@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity
+} from 'react-native';
 
 export default class ActiveItem extends Component {
 
@@ -22,12 +28,13 @@ export default class ActiveItem extends Component {
 
 const styles = StyleSheet.create({
   activeItemContainer: {
-    borderWidth: 1,
-    height: 75,
-    marginBottom: 20,
+    // borderWidth: 1,
+    // height: 75,
+    marginBottom: 5,
   },
   flexRow: {
-    borderWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: 'lightgray',
     flex: 1,
     flexDirection: 'row',
     fontSize: 8,
@@ -37,5 +44,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginRight: 8,
+    marginTop: 5,
+    marginBottom: 5,
   }
 });
