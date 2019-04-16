@@ -43,11 +43,12 @@ const styles = StyleSheet.create({
   },
   restaurantContainer: {
     //borderWidth: 1,
-    height: 75,
+    height: 100,
     marginBottom: 20,
   },
   restaurantItem: {
     borderColor: 'black',
+    borderRadius: 10,
     borderWidth: 1,
 
     marginLeft: 25,
@@ -65,13 +66,15 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   restaurantImageChild: {
-    height: '100%',
-    width: '100%'
+    height: 100,
+    // marginLeft: 5,
+    resizeMode: 'contain',
+    width: '100%',
   },
   foodDescription: {
     height: '100%',
     // borderWidth: 1,
-    paddingLeft: 10,
+    paddingLeft: 15,
     width: '60%',
     flex: 1,
     // alignItems: 'center',
