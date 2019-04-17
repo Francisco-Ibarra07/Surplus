@@ -84,7 +84,7 @@ export default class AddFood extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Add New Item</Text>
+        {/* <Text style={styles.title}>Add New Item</Text> */}
         {/* Form */}
         <View style={styles.form}>
 
@@ -109,7 +109,7 @@ export default class AddFood extends Component {
               multiline={true}
               editable={true}
               maxLength={200}
-              placeholder="Max 200 characters"
+              placeholder="Optional"
               autoCorrect={false}
               onChangeText={
                 description => this.setState({ description })
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 12,
     width: '100%',
-    height: 100,
+    height: 75,
     // textAlignVertical: 'top',
     borderRadius: 10,
   },

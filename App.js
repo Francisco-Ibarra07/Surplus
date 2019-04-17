@@ -182,7 +182,16 @@ export const Nav = createAppContainer(
     },
 
     // Business screens
-    AddFood: { screen: AddFood },
+    AddFood: {
+      screen: AddFood,
+      navigationOptions: () => ({
+        headerStyle: {
+          borderBottomWidth: 0,
+        },
+        title: 'Add New Item',
+        headerTintColor: '#D33B32',
+      }),
+    },
 
     // Business Navigation
     BusinessVerify: { screen: BusinessVerify },
