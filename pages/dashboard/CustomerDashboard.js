@@ -125,7 +125,7 @@ export default class CustomerDashboard extends Component {
         <View>
           <SearchBar
             platform="ios"
-            placeholder="Type Here..."
+            placeholder="What to eat, what to eat?"
             onChangeText={this.updateSearch}
             value={search}
             lightTheme={true}
