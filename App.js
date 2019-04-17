@@ -26,6 +26,7 @@ import {
   DrawerItems,
 } from 'react-navigation';
 import firebase from 'react-native-firebase';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // Auth Screens Import ---------------------------------- /
 import GetStarted from './pages/authentication/GetStarted';
@@ -118,24 +119,36 @@ const BusinessTab = createBottomTabNavigator({
     screen: BusinessHome,
     navigationOptions: () => ({
       title: 'Home',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name='home' size={20} color={tintColor} />
+      )
     }),
   },
   BusinessMenu: {
     screen: BusinessMenu,
     navigationOptions: () => ({
       title: 'Menu',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name='th-large' size={20} color={tintColor} />
+      )
     }),
   },
   BusinessQueue: {
     screen: BusinessQueue,
     navigationOptions: () => ({
       title: 'Queue',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name='list-ul' size={20} color={tintColor} />
+      )
     }),
   },
   BusinessWallet: {
     screen: BusinessWallet,
     navigationOptions: () => ({
       title: 'Wallet',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name='credit-card' size={20} color={tintColor} />
+      )
     }),
   },
 }, {
