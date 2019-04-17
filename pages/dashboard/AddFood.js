@@ -83,44 +83,64 @@ export default class AddFood extends Component {
 
   render() {
     return (
-      <View>
-        <TextInput style={styles.input}
-          placeholder="Item name"
-          autoCorrect={false}
-          onChangeText={
-            foodItemName => this.setState({ foodItemName })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Item Description"
-          autoCorrect={false}
-          onChangeText={
-            description => this.setState({ description })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Category"
-          autoCorrect={false}
-          onChangeText={
-            category => this.setState({ category })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Quantity"
-          autoCorrect={false}
-          onChangeText={
-            quantity => this.setState({ quantity })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Picture"
-          autoCorrect={false}
-          onChangeText={
-            picture => this.setState({ picture })
-          }
-        />
+      <View style={styles.container}>
+        <Text style={styles.title}>Add New Item</Text>
+        {/* Form */}
+        <View style={styles.form}>
 
-        <Text onPress={this.handleNewFoodItem}> Submit </Text>
+          <View style={styles.form1}>
+            <View style={styles.form1a}>
+
+            </View>
+            <View style={styles.form1b}>
+              <Text>Item Name</Text>
+              <TextInput style={styles.input}
+                placeholder="Required"
+                autoCorrect={false}
+                onChangeText={
+                  foodItemName => this.setState({ foodItemName })
+                } />
+            </View>
+          </View>
+
+          <View style={styles.form2}>
+            <Text style={styles.form2description}>Description</Text>
+            <TextInput style={styles.input2}
+              multiline={true}
+              editable={true}
+              maxLength={200}
+              placeholder="Max 200 characters"
+              autoCorrect={false}
+              onChangeText={
+                description => this.setState({ description })
+              }
+            />
+          </View>
+
+          <TextInput style={styles.input}
+            placeholder="Category"
+            autoCorrect={false}
+            onChangeText={
+              category => this.setState({ category })
+            }
+          />
+          <TextInput style={styles.input}
+            placeholder="Quantity"
+            autoCorrect={false}
+            onChangeText={
+              quantity => this.setState({ quantity })
+            }
+          />
+          <TextInput style={styles.input}
+            placeholder="Picture"
+            autoCorrect={false}
+            onChangeText={
+              picture => this.setState({ picture })
+            }
+          />
+          <Text onPress={this.handleNewFoodItem}> Submit </Text>
+        </View>
+
       </View>
 
     );
@@ -132,7 +152,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     // borderWidth: 1,
     // borderColor: 'blue',
     // height: '100%',
@@ -140,13 +160,34 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     marginRight: 25,
   },
-  containerA: {
+  form1: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    flexDirection: 'row',
     width: '100%',
-
   },
-  containerB: {
+  form1a: {
+    borderWidth: 1,
+    height: '100%',
+    width: '18%',
+  },
+  form1b: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    width: '82%',
+    paddingLeft: 10,
+  },
+  form2: {
     width: '100%',
-
+  },
+  form2description: {
+    marginTop: 15,
+    marginBottom: 5,
+  },
+  title: {
+    color: '#D33B32',
+    fontWeight: 'bold',
+    paddingBottom: 15,
   },
   input: {
     // width: '100%',
@@ -158,6 +199,15 @@ const styles = StyleSheet.create({
     // borderColor: 'blue',
     width: '100%',
     // height: 45,
+  },
+  input2: {
+    textAlign: 'left',
+    borderWidth: 1,
+    padding: 12,
+    width: '100%',
+    height: 100,
+    // textAlignVertical: 'top',
+    borderRadius: 10,
   },
   buttons: {
     // borderWidth: 1,
