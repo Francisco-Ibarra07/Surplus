@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Button,
 } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 
 import RestaurantItem from './components/RestaurantItem';
 import firebase from 'react-native-firebase';
@@ -109,18 +110,50 @@ export default class CustomerDashboard extends Component {
     this.props.navigation.navigate('GetStarted');
   }
 
-  render() {
-    return (
-      <ScrollView>
-        {/* Food Title */}
-        <View style={styles.titleContainer}>
-          <Text>Online Restaurants</Text>
-          <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
-          <Button title="Log off" onPress={this.signOut} />
-        </View>
+  state = {
+    search: '',
+  };
 
-        {this.state.restaurantItemsView}
-      </ScrollView>
+  updateSearch = search => {
+    this.setState({ search });
+  };
+
+  render() {
+    const { search } = this.state;
+    return (
+      <View>
+        <View>
+          <SearchBar
+            platform="ios"
+            placeholder="Type Here..."
+            onChangeText={this.updateSearch}
+            value={search}
+            lightTheme={true}
+            round={true}
+            containerStyle={{
+              backgroundColor: 'transparent',
+              borderTopWidth: 0,
+              borderBottomWidth: 0
+            }}
+            inputStyle={{
+              color: 'black'
+            }}
+            cancelButtonProps={{
+              color: '#D33B32'
+            }}
+          />
+        </View>
+        <ScrollView>
+          {/* Food Title */}
+          <View style={styles.titleContainer}>
+            <Text>Online Restaurants</Text>
+            <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
+            {/* <Button title="Log off" onPress={this.signOut} /> */}
+          </View>
+
+          {this.state.restaurantItemsView}
+        </ScrollView>
+      </View>
     );
   }
 }

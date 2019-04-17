@@ -10,6 +10,8 @@ target 'Surplus' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'SurplusTests' do
     inherit! :search_paths
     # Pods for testing
