@@ -6,6 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import firebase from 'react-native-firebase';
+import RedButton from '../components/RedButton';
 
 export default class AddFood extends Component {
 
@@ -138,7 +139,7 @@ export default class AddFood extends Component {
               picture => this.setState({ picture })
             }
           />
-          <Text onPress={this.handleNewFoodItem}> Submit </Text>
+          <RedButton onPress={this.handleNewFoodItem} buttonText='Done' />
         </View>
 
       </View>
@@ -169,12 +170,12 @@ const styles = StyleSheet.create({
   form1a: {
     borderWidth: 1,
     height: '100%',
-    width: '18%',
+    width: '20%',
   },
   form1b: {
     // borderWidth: 1,
     // borderColor: 'red',
-    width: '82%',
+    width: '80%',
     paddingLeft: 10,
   },
   form2: {
@@ -198,6 +199,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: 'blue',
     width: '100%',
+    marginBottom: 10,
     // height: 45,
   },
   input2: {
@@ -208,6 +210,7 @@ const styles = StyleSheet.create({
     height: 75,
     // textAlignVertical: 'top',
     borderRadius: 10,
+    marginBottom: 10,
   },
   buttons: {
     // borderWidth: 1,
