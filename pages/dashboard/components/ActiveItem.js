@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import firebase from 'react-native-firebase';
 
 export default class ActiveItem extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  // This method deletes the active item that was clicked on from the database 
+  handleDelete = () => {
+    const key = this.props.indexInList;
+    const activeItemsRef = this.props.onlineItemsRef;
+    console.log('ref:', activeItemsRef);
+    console.log('key val:', key);
+    console.log('item name:', this.props.itemName);
+    activeItemsRef.child(this.props.itemName).remove();
   }
 
   render() {
@@ -14,6 +25,7 @@ export default class ActiveItem extends Component {
         <View style={styles.flexRow}>
           <Text style={styles.text}>Active Orders: {this.props.activeOrders}</Text>
           <Text style={styles.text}>Quantity Left: {this.props.quantityLeft}</Text>
+          <Button title="Delete" onPress={this.handleDelete} />
         </View>
       </View>
     );

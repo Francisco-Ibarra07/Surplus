@@ -81,6 +81,8 @@ export default class BusinessHome extends Component {
         activeItems.push(
           <ActiveItem
             key={i}
+            indexInList={i}
+            onlineItemsRef={onlineItemsRef}
             quantityLeft={currentFood.item_quantity}
             itemName={currentFood.item_name}
             activeOrders='8'
