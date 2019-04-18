@@ -11,26 +11,17 @@ import {
 import { CheckBox } from 'react-native-elements';
 
 export default class BusinessMenu extends Component {
-  static navigationOptions = {
-    headerRight: (
-      <Button
-        onPress={() => alert('This is a button!')}
-        title='Info'
-        color='blue'
-      />
-    ),
-  };
 
   constructor() {
     super();
 
     this.state = {
-      checked: false
+      checked1: false,
+      checked2: false,
     };
   }
 
   render() {
-    const { checked } = this.state;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.props.navigation.navigate('AddFood')}>
@@ -47,6 +38,10 @@ export default class BusinessMenu extends Component {
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             title='Order #80: Julie Foster'
+            // checked={this.state.checked}
+            // onPress={() => this.setState({ checked: !this.state.checked })}
+            checked={this.state.checked1}
+            onPress={() => this.setState({ checked1: !this.state.checked1 })}
             checkedColor='#D33B32'
             containerStyle={{
               backgroundColor: 'transparent',
@@ -59,6 +54,10 @@ export default class BusinessMenu extends Component {
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             title='Order #81: Pamela McDonald '
+            // checked={this.state.checked}
+            // onPress={() => this.setState({ checked: !this.state.checked })}
+            checked={this.state.checked2}
+            onPress={() => this.setState({ checked2: !this.state.checked2 })}
             checkedColor='#D33B32'
             containerStyle={{
               backgroundColor: 'transparent',
