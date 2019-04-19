@@ -91,6 +91,17 @@ export default class AddFood extends Component {
       console.log("Response:", response);
       if (response.uri) {
         this.setState({ photo: response });
+
+        const storage = firebase.storage();
+        const sessionId = new Date().getTime();
+        const imageFolderRef = storage.ref('images').child(`${sessionId}`);
+        let returned = imageFolderRef.putFile(response.uri);
+        const uploadedImageRef = returned['ref'];
+        uploadedImageRef.getDownloadURL()
+          .then((url) => {
+            console.log(url);
+          });
+        // return x;
       }
     });
   }
