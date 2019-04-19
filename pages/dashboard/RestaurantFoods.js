@@ -9,8 +9,8 @@ export default class RestaurantFoods extends Component {
     this.state = {
       foodItemsView: [],
       foodItemsList: [],
+      currentStoreName: this.props.navigation.state.params.storeChosen,
     }
-
     this.populateFoodItemsList = this.populateFoodItemsList.bind(this);
   }
 
@@ -44,6 +44,7 @@ export default class RestaurantFoods extends Component {
           foodItemDescription={foodItems[i].item_description}
           foodItemImage={foodItems[i].item_image}
           foodItemQuantity={foodItems[i].item_quantity}
+          foodItemPrice={foodItems[i].item_price}
         />
       );
     }
@@ -57,7 +58,7 @@ export default class RestaurantFoods extends Component {
       <ScrollView>
         {/* Food Title */}
         <View style={styles.titleContainer}>
-          <Text>Available Foods</Text>
+          <Text>Available Foods by {this.state.currentStoreName} </Text>
         </View>
 
         {this.state.foodItemsView}

@@ -12,7 +12,9 @@ export default class RestaurantItem extends Component {
    */
   handleItemPress = () => {
     const list = this.props.storeItemsList;
-    this.props.navigation.navigate('RestaurantFoods', { storeItemsList: list });
+    const storeName = this.props.storeObject.store_info.store_name;
+    console.log(storeName);
+    this.props.navigation.navigate('RestaurantFoods', { storeItemsList: list, storeChosen: storeName });
   }
 
   render() {
