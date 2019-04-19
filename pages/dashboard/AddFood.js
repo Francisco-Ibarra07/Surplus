@@ -30,12 +30,13 @@ export default class AddFood extends Component {
       quantity: '',
       photo: null, // The photo object given by ImagePicker which was grabbed from inside the phone's PhotoGallery
       photoFolderRef: null, // A reference to the FOLDER of where the image is located
+      photoDownloadURL: '',
     }
   }
 
   handleNewFoodItem = () => {
 
-    const { foodItemName, description, category, quantity, photo, photoFolderRef } = this.state;
+    const { foodItemName, description, category, quantity, photo, photoDownloadURL } = this.state;
     // Check for good inputs
     if (foodItemName == "") {
       alert('Please fill in your first name.')
@@ -61,17 +62,17 @@ export default class AddFood extends Component {
     const activity = this;
 
     // Upload the desired photo onto Firebase Storage
-    let photoDownloadURL = 'conon';
-    photoFolderRef.putFile(photo.uri)
-      .then((msg) => {
-        photoDownloadURL = msg.downloadURL;
-        console.log(photoDownloadURL);
-      })
-      .catch((error) => {
-        console.log("error:", error);
-        alert("Failed to upload image");
-        return;
-      })
+    // let photoDownloadURL = 'conon';
+    // photoFolderRef.putFile(photo.uri)
+    //   .then((msg) => {
+    //     photoDownloadURL = msg.downloadURL;
+    //     console.log(photoDownloadURL);
+    //   })
+    //   .catch((error) => {
+    //     console.log("error:", error);
+    //     alert("Failed to upload image");
+    //     return;
+    //   })
 
     // Update all variables of this food item on the database
     refToOwnersAccountInfo.on('value', function (snapshot) {
@@ -112,6 +113,17 @@ export default class AddFood extends Component {
         const sessionId = new Date().getTime();
         const imageFolderRef = storage.ref('images').child(`${sessionId}`);
         this.setState({ photoFolderRef: imageFolderRef });
+
+        imageFolderRef.putFile(response.uri)
+          .then((msg) => {
+            this.setState({ photoDownloadURL: msg.downloadURL });
+            console.log(this.state.photoDownloadURL);
+          })
+          .catch((error) => {
+            console.log("error:", error);
+            alert("Failed to upload image");
+            return;
+          })
       }
     });
   }
