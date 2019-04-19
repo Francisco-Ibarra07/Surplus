@@ -18,6 +18,7 @@ export default class BusinessHome extends Component {
       userId: '',
       businessOwnerObject: '',
       activeItemsView: [],
+      emptyTextView: false,
     }
 
     this.initializeUserObjects = this.initializeUserObjects.bind(this);
@@ -60,37 +61,46 @@ export default class BusinessHome extends Component {
       const snap = snapshot.val();
       console.log("Items:", snap);
 
-      // Get string names of available food items
-      var foodNames = [];
-      for (food in snap) {
-        foodNames.push(food);
+      // If there are no active items for this restaurant, delete it from the 'online' folder
+      if (snap === null) {
+        activity.setState({ emptyTextView: true });
+        const onlineFolder = firebase.database().ref('/online');
+        onlineFolder.child(storeName).remove();
       }
+      else {
+        activity.setState({ emptyTextView: false });
+        // Get string names of available food items
+        var foodNames = [];
+        for (food in snap) {
+          foodNames.push(food);
+        }
 
-      // Grab objects and use the string names as the key
-      var individualFoodObjects = [];
-      for (var i = 0; i < foodNames.length; i++) {
-        individualFoodObjects.push(snap[foodNames[i]]);
-      }
+        // Grab objects and use the string names as the key
+        var individualFoodObjects = [];
+        for (var i = 0; i < foodNames.length; i++) {
+          individualFoodObjects.push(snap[foodNames[i]]);
+        }
 
-      // Create a list of ActiveItem's to be shown by the View
-      var activeItems = [];
-      var currentFood;
-      for (var i = 0; i < individualFoodObjects.length; i++) {
-        currentFood = individualFoodObjects[i];
+        // Create a list of ActiveItem's to be shown by the View
+        var activeItems = [];
+        var currentFood;
+        for (var i = 0; i < individualFoodObjects.length; i++) {
+          currentFood = individualFoodObjects[i];
 
-        activeItems.push(
-          <ActiveItem
-            key={i}
-            indexInList={i}
-            onlineItemsRef={onlineItemsRef}
-            quantityLeft={currentFood.item_quantity}
-            itemName={currentFood.item_name}
-            activeOrders='8'
-          />)
-      }
+          activeItems.push(
+            <ActiveItem
+              key={i}
+              indexInList={i}
+              onlineItemsRef={onlineItemsRef}
+              quantityLeft={currentFood.item_quantity}
+              itemName={currentFood.item_name}
+              activeOrders='8'
+            />)
+        }
 
-      activity.setState({ activeItemsView: activeItems });
-    });
+        activity.setState({ activeItemsView: activeItems });
+      } // End of else
+    }); // End of onlineItemsRef.on()
   }
 
   render() {
@@ -99,8 +109,10 @@ export default class BusinessHome extends Component {
         <View style={styles.title}>
           <Text>Active Items</Text>
         </View>
-
-        {this.state.activeItemsView}
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          {this.state.emptyTextView && (<Text> You currently have no active items </Text>)}
+        </View>
+        {!this.state.emptyTextView && this.state.activeItemsView}
         <Button title="Log off" onPress={() => {
           // Firebase log off
           firebase.auth().signOut();
