@@ -28,13 +28,14 @@ export default class AddFood extends Component {
       description: '',
       category: '',
       quantity: '',
-      photo: null,
+      photo: null, // The photo object given by ImagePicker which was grabbed from inside the phone's PhotoGallery
+      photoFolderRef: null, // A reference to the FOLDER of where the image is located
     }
   }
 
   handleNewFoodItem = () => {
 
-    const { foodItemName, description, category, quantity, photo } = this.state;
+    const { foodItemName, description, category, quantity, photo, photoFolderRef } = this.state;
     // Check for good inputs
     if (foodItemName == "") {
       alert('Please fill in your first name.')
@@ -59,6 +60,20 @@ export default class AddFood extends Component {
     const refToOwnersAccountInfo = firebase.database().ref('/business/owners/' + user_id);
     const activity = this;
 
+    // Upload the desired photo onto Firebase Storage
+    let photoDownloadURL = 'conon';
+    photoFolderRef.putFile(photo.uri)
+      .then((msg) => {
+        photoDownloadURL = msg.downloadURL;
+        console.log(photoDownloadURL);
+      })
+      .catch((error) => {
+        console.log("error:", error);
+        alert("Failed to upload image");
+        return;
+      })
+
+    // Update all variables of this food item on the database
     refToOwnersAccountInfo.on('value', function (snapshot) {
       activity.setState({ ownersAccountInfo: snapshot.val() });
       const storeName = activity.state.ownersAccountInfo.restaurant.store_name;
@@ -72,12 +87,13 @@ export default class AddFood extends Component {
 
       // Place new item into 'items' folder
       const refToNewItemFolder = firebase.database().ref('/online/' + storeName + '/items/' + foodItemName);
+
       refToNewItemFolder.update({
         'item_name': foodItemName,
+        'item_image': photoDownloadURL,
         'item_description': description,
         'item_category': category,
         'item_quantity': quantity,
-        // 'item_image': picture,
       });
 
       alert("New food item added");
@@ -95,13 +111,7 @@ export default class AddFood extends Component {
         const storage = firebase.storage();
         const sessionId = new Date().getTime();
         const imageFolderRef = storage.ref('images').child(`${sessionId}`);
-        let returned = imageFolderRef.putFile(response.uri);
-        const uploadedImageRef = returned['ref'];
-        uploadedImageRef.getDownloadURL()
-          .then((url) => {
-            console.log(url);
-          });
-        // return x;
+        this.setState({ photoFolderRef: imageFolderRef });
       }
     });
   }
