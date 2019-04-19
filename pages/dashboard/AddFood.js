@@ -28,6 +28,7 @@ export default class AddFood extends Component {
       description: '',
       category: '',
       quantity: '',
+      price: '',
       photo: null, // The photo object given by ImagePicker which was grabbed from inside the phone's PhotoGallery
       photoFolderRef: null, // A reference to the FOLDER of where the image is located
       photoDownloadURL: '',
@@ -36,13 +37,13 @@ export default class AddFood extends Component {
 
   handleNewFoodItem = () => {
 
-    const { foodItemName, description, category, quantity, photo, photoDownloadURL } = this.state;
+    const { foodItemName, description, category, quantity, price, photo, photoDownloadURL } = this.state;
     // Check for good inputs
     if (foodItemName == "") {
-      alert('Please fill in your first name.')
+      alert('Please fill in the food item name.')
       return false;
     } else if (description == "") {
-      alert('Please fill in your last name.')
+      alert('Please fill in a description for the item.')
       return false;
     } else if (category == "") {
       alert('Please fill in your email.')
@@ -52,6 +53,9 @@ export default class AddFood extends Component {
       return false;
     } else if (photo === null) {
       alert('Please add a photo for this item')
+      return false;
+    } else if (price == "") {
+      alert('Please add a price for this item')
       return false;
     }
 
@@ -95,6 +99,7 @@ export default class AddFood extends Component {
         'item_description': description,
         'item_category': category,
         'item_quantity': quantity,
+        'item_price': price,
       });
 
       alert("New food item added");
@@ -176,6 +181,13 @@ export default class AddFood extends Component {
             autoCorrect={false}
             onChangeText={
               quantity => this.setState({ quantity })
+            }
+          />
+          <TextInput style={styles.input}
+            placeholder="Price"
+            autoCorrect={false}
+            onChangeText={
+              price => this.setState({ price })
             }
           />
 

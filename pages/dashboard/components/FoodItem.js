@@ -29,7 +29,8 @@ export default class FoodItem extends Component {
             <View style={styles.foodItemDescription}>
               <View style={styles.foodTitle}>
                 <Text>Description: {this.props.foodItemDescription}</Text>
-                <Text>Quantity: {this.props.foodItemQuantity}</Text>
+                <Text>Quantity Left: {this.props.foodItemQuantity}</Text>
+                <Text>Price: ${this.props.foodItemPrice}</Text>
               </View>
             </View>
           </View>

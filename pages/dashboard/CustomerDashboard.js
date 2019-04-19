@@ -102,7 +102,6 @@ export default class CustomerDashboard extends Component {
               storeItemsList={storeItemsList[i]}
             />
           );
-
         }
 
         // Store restaurant lists in 'state' variable
@@ -156,7 +155,6 @@ export default class CustomerDashboard extends Component {
           <View style={styles.titleContainer}>
             <Text>Online Restaurants</Text>
             <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
-            {/* <Button title="Log off" onPress={this.signOut} /> */}
           </View>
 
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
