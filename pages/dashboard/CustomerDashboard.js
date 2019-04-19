@@ -4,7 +4,6 @@ import {
   Text,
   ScrollView,
   StyleSheet,
-  Button,
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
@@ -21,6 +20,7 @@ export default class CustomerDashboard extends Component {
       userObject: '',
       restaurantItemsView: [],
       restaurantObjects: [],
+      emptyTextView: false,
     }
     this.checkIfAnonymousUser = this.checkIfAnonymousUser.bind(this);
     this.populateRestaurantList = this.populateRestaurantList.bind(this);
@@ -65,42 +65,50 @@ export default class CustomerDashboard extends Component {
       var storeNames = [];
       var restaurantItems = [];
 
-      // Store all the names of the stores in the 'online' folder as keys in an array
-      for (store in snapOfOnlineRestaurantList) {
-        // Contains just a list of strings of store names
-        storeNames.push(store);
+      // Check if there are any restaurants offering food
+      if (snapOfOnlineRestaurantList === null) {
+        activity.setState({ emptyTextView: true });
+      }
+      else {
+        activity.setState({ emptyTextView: false });
+        // Store all the names of the stores in the 'online' folder as keys in an array
+        for (store in snapOfOnlineRestaurantList) {
+          // Contains just a list of strings of store names
+          storeNames.push(store);
+        }
+
+        // Populate store name and store information into an array
+        // Also populate an array containing all the food items that are up for sale by this store
+        var storeObjectList = [];
+        var storeItemsList = [];
+
+        for (var i = 0; i < storeNames.length; i++) {
+          storeObjectList.push({
+            store_name: storeNames[i],
+            store_info: snapOfOnlineRestaurantList[storeNames[i]].store_info,
+            store_owner_id: snapOfOnlineRestaurantList[storeNames[i]].store_owner_id,
+          });
+
+          storeItemsList.push(snapOfOnlineRestaurantList[storeNames[i]].items);
+        }
+
+        // Populate RestaurantItem array
+        for (var i = 0; i < storeObjectList.length; i++) {
+          restaurantItems.push(
+            <RestaurantItem
+              key={i}
+              navigation={activity.props.navigation}
+              storeObject={storeObjectList[i]}
+              storeItemsList={storeItemsList[i]}
+            />
+          );
+
+        }
+
+        // Store restaurant lists in 'state' variable
+        activity.setState({ restaurantItemsView: restaurantItems, restaurantObjects: storeObjectList });
       }
 
-      // Populate store name and store information into an array
-      // Also populate an array containing all the food items that are up for sale by this store
-      var storeObjectList = [];
-      var storeItemsList = [];
-
-      for (var i = 0; i < storeNames.length; i++) {
-        storeObjectList.push({
-          store_name: storeNames[i],
-          store_info: snapOfOnlineRestaurantList[storeNames[i]].store_info,
-          store_owner_id: snapOfOnlineRestaurantList[storeNames[i]].store_owner_id,
-        });
-
-        storeItemsList.push(snapOfOnlineRestaurantList[storeNames[i]].items);
-      }
-
-      // Populate RestaurantItem array
-      for (var i = 0; i < storeObjectList.length; i++) {
-        restaurantItems.push(
-          <RestaurantItem
-            key={i}
-            navigation={activity.props.navigation}
-            storeObject={storeObjectList[i]}
-            storeItemsList={storeItemsList[i]}
-          />
-        );
-
-      }
-
-      // Store restaurant lists in 'state' variable
-      activity.setState({ restaurantItemsView: restaurantItems, restaurantObjects: storeObjectList });
     });
   }
 
@@ -151,7 +159,11 @@ export default class CustomerDashboard extends Component {
             {/* <Button title="Log off" onPress={this.signOut} /> */}
           </View>
 
-          {this.state.restaurantItemsView}
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            {this.state.emptyTextView && (<Text> There are currently no restaurants available </Text>)}
+          </View>
+
+          {!this.state.emptyTextView && this.state.restaurantItemsView}
         </ScrollView>
       </View>
     );
