@@ -4,8 +4,11 @@ import {
   TextInput,
   Text,
   StyleSheet,
+  Image,
+  Button
 } from 'react-native';
 import firebase from 'react-native-firebase';
+import ImagePicker from 'react-native-image-picker'
 import RedButton from '../components/RedButton';
 
 export default class AddFood extends Component {
@@ -25,13 +28,13 @@ export default class AddFood extends Component {
       description: '',
       category: '',
       quantity: '',
-      picture: '',
+      photo: null,
     }
   }
 
   handleNewFoodItem = () => {
 
-    const { foodItemName, description, category, quantity, picture } = this.state;
+    const { foodItemName, description, category, quantity, photo } = this.state;
     // Check for good inputs
     if (foodItemName == "") {
       alert('Please fill in your first name.')
@@ -45,8 +48,8 @@ export default class AddFood extends Component {
     } else if (quantity == "") {
       alert('Please fill in your phone.')
       return false;
-    } else if (picture == "") {
-      alert('Please fill in your password.')
+    } else if (photo === null) {
+      alert('Please add a photo for this item')
       return false;
     }
 
@@ -74,7 +77,7 @@ export default class AddFood extends Component {
         'item_description': description,
         'item_category': category,
         'item_quantity': quantity,
-        'item_image': picture,
+        // 'item_image': picture,
       });
 
       alert("New food item added");
@@ -82,16 +85,26 @@ export default class AddFood extends Component {
     });
   }
 
+  handlePhotoUpload = () => {
+    const options = {};
+    ImagePicker.launchImageLibrary(options, response => {
+      console.log("Response:", response);
+      if (response.uri) {
+        this.setState({ photo: response });
+      }
+    });
+  }
+
   render() {
+    const { photo } = this.state;
     return (
       <View style={styles.container}>
         {/* <Text style={styles.title}>Add New Item</Text> */}
         {/* Form */}
         <View style={styles.form}>
-
           <View style={styles.form1}>
-            <View style={styles.form1a}>
-
+            <View style={styles.form1a} onPress={this.handlePhotoUpload}>
+              {photo && (<Image source={{ uri: photo.uri }} style={{ width: 65, height: 65 }} />)}
             </View>
             <View style={styles.form1b}>
               <Text>Item Name</Text>
@@ -132,13 +145,8 @@ export default class AddFood extends Component {
               quantity => this.setState({ quantity })
             }
           />
-          <TextInput style={styles.input}
-            placeholder="Picture"
-            autoCorrect={false}
-            onChangeText={
-              picture => this.setState({ picture })
-            }
-          />
+
+          <Button title="Upload photo" onPress={this.handlePhotoUpload} />
           <RedButton onPress={this.handleNewFoodItem} buttonText='Done' />
         </View>
 
