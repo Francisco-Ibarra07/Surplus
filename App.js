@@ -45,6 +45,7 @@ import ForgotPassword from './pages/authentication/ForgotPassword';
 import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 import ShoppingCart from './pages/dashboard/ShoppingCart';
 import RestaurantFoods from './pages/dashboard/RestaurantFoods';
+import EditCusomterInfo from './pages/dashboard/EditCustomerInfo';
 
 // Business Owner's
 import AddFood from './pages/dashboard/AddFood';
@@ -54,6 +55,7 @@ import BusinessMenu from './pages/dashboard/BusinessMenu';
 import BusinessSettings from './pages/dashboard/BusinessSettings';
 import BusinessWallet from './pages/dashboard/BusinessWallet';
 import EditBusinessInfo from './pages/dashboard/EditBusinessInfo';
+import EditCustomerInfo from './pages/dashboard/EditCustomerInfo';
 
 
 // Customer Drawer Navigation --------------------------- /
@@ -68,6 +70,12 @@ const CustomerDrawer = createDrawerNavigator({
     screen: ShoppingCart,
     navigationOptions: () => ({
       title: 'Shopping Cart',
+    }),
+  },
+  EditCusomterInfo: {
+    screen: EditCustomerInfo,
+    navigationOptions: () => ({
+      title: 'Edit My Info',
     }),
   },
 },
