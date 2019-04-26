@@ -3,17 +3,26 @@ import {
   View,
   ScrollView,
   Text,
+  Button,
   StyleSheet,
 } from 'react-native';
 import { CheckBox } from 'react-native-elements'
 
-export default class BusinessQueue extends Component {
+export default class BusinessSettings extends Component {
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.title}>
-          <Text>Active Orders</Text>
+          <Text>Settings</Text>
         </View>
+        <Button title="Edit Your Information" onPress={() => {
+          this.props.navigation.navigate('EditBusinessInfo');
+        }} />
+        <Button title="Log Off" onPress={() => {
+          // Firebase log off
+          firebase.auth().signOut();
+          this.props.navigation.navigate('GetStarted');
+        }} />
       </View>
 
     );

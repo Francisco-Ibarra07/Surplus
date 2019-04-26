@@ -113,11 +113,6 @@ export default class BusinessHome extends Component {
           {this.state.emptyTextView && (<Text> You currently have no active items </Text>)}
         </View>
         {!this.state.emptyTextView && this.state.activeItemsView}
-        <Button title="Log off" onPress={() => {
-          // Firebase log off
-          firebase.auth().signOut();
-          this.props.navigation.navigate('GetStarted');
-        }} />
       </ScrollView>
     );
   }

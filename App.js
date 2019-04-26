@@ -51,8 +51,9 @@ import AddFood from './pages/dashboard/AddFood';
 import BusinessVerify from './pages/dashboard/BusinessVerify';
 import BusinessHome from './pages/dashboard/BusinessHome';
 import BusinessMenu from './pages/dashboard/BusinessMenu';
-import BusinessQueue from './pages/dashboard/BusinessQueue';
+import BusinessSettings from './pages/dashboard/BusinessSettings';
 import BusinessWallet from './pages/dashboard/BusinessWallet';
+import EditBusinessInfo from './pages/dashboard/EditBusinessInfo';
 
 
 // Customer Drawer Navigation --------------------------- /
@@ -133,21 +134,21 @@ const BusinessTab = createBottomTabNavigator({
       )
     }),
   },
-  BusinessQueue: {
-    screen: BusinessQueue,
-    navigationOptions: () => ({
-      title: 'Queue',
-      tabBarIcon: ({ tintColor }) => (
-        <Icon name='list-ul' size={20} color={tintColor} />
-      )
-    }),
-  },
   BusinessWallet: {
     screen: BusinessWallet,
     navigationOptions: () => ({
       title: 'Wallet',
       tabBarIcon: ({ tintColor }) => (
         <Icon name='credit-card' size={20} color={tintColor} />
+      )
+    }),
+  },
+  BusinessSettings: {
+    screen: BusinessSettings,
+    navigationOptions: () => ({
+      title: 'Settings',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name='cog' size={20} color={tintColor} />
       )
     }),
   },
@@ -208,6 +209,7 @@ export const Nav = createAppContainer(
 
     // Business Navigation
     BusinessVerify: { screen: BusinessVerify },
+    EditBusinessInfo: { screen: EditBusinessInfo },
     // BusinessHome: { screen: BusinessHome },
     // BusinessMenu: { screen: BusinessMenu },
     Tab: BusinessTab,
