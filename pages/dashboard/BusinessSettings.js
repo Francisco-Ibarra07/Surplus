@@ -16,7 +16,10 @@ export default class BusinessSettings extends Component {
         <View style={styles.title}>
           <Text>Settings</Text>
         </View>
-        <Button title="Edit Your Information" onPress={() => {
+        <Button title="Edit Your Personal Information" onPress={() => {
+          this.props.navigation.navigate('EditBusinessPersonal');
+        }} />
+        <Button title="Edit Your Business Information" onPress={() => {
           this.props.navigation.navigate('EditBusinessInfo');
         }} />
         <Button title="Log Off" onPress={() => {

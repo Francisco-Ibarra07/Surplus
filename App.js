@@ -45,7 +45,7 @@ import ForgotPassword from './pages/authentication/ForgotPassword';
 import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 import ShoppingCart from './pages/dashboard/ShoppingCart';
 import RestaurantFoods from './pages/dashboard/RestaurantFoods';
-import EditCusomterInfo from './pages/dashboard/EditCustomerInfo';
+import EditCustomerInfo from './pages/dashboard/EditCustomerInfo';
 
 // Business Owner's
 import AddFood from './pages/dashboard/AddFood';
@@ -55,7 +55,7 @@ import BusinessMenu from './pages/dashboard/BusinessMenu';
 import BusinessSettings from './pages/dashboard/BusinessSettings';
 import BusinessWallet from './pages/dashboard/BusinessWallet';
 import EditBusinessInfo from './pages/dashboard/EditBusinessInfo';
-import EditCustomerInfo from './pages/dashboard/EditCustomerInfo';
+import EditBusinessPersonal from './pages/dashboard/EditBusinessPersonal';
 
 
 // Customer Drawer Navigation --------------------------- /
@@ -219,6 +219,7 @@ export const Nav = createAppContainer(
     // Business Navigation
     BusinessVerify: { screen: BusinessVerify },
     EditBusinessInfo: { screen: EditBusinessInfo },
+    EditBusinessPersonal: { screen: EditBusinessPersonal },
     // BusinessHome: { screen: BusinessHome },
     // BusinessMenu: { screen: BusinessMenu },
     Tab: BusinessTab,

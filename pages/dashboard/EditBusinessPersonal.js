@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import RedButton from '../components/RedButton';
 
-export default class EditBusinessInfo extends Component {
+export default class EditBusinessPersonal extends Component {
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
@@ -18,12 +18,12 @@ export default class EditBusinessInfo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.h1}>Your Business Information</Text>
+        <Text style={styles.h1}>Your Personal Information</Text>
 
         <View style={styles.form}>
-          <Text style={styles.p}>Store Name</Text>
+          <Text style={styles.p}>Business Owner's First Name</Text>
           <TextInput style={styles.input}
-            placeholder="McDonalds"
+            placeholder="Nhat"
             autoCorrect={false}
           // autoCapitalize='none'
           // onChangeText={
@@ -31,41 +31,32 @@ export default class EditBusinessInfo extends Component {
           // }
           />
 
-          <Text style={styles.p}>Phone Number</Text>
+          <Text style={styles.p}>Business Owner's Last Name</Text>
+          <TextInput style={styles.input}
+            placeholder="Nguyen"
+            autoCorrect={false}
+          />
+
+          <Text style={styles.p}>Email</Text>
+          <TextInput style={styles.input}
+            keyboardType="email-address"
+            placeholder="n@g.com"
+            autoCorrect={false}
+          />
+
+          <Text style={styles.p}>Phone</Text>
           <TextInput style={styles.input}
             keyboardType="number-pad"
             placeholder="1234567890"
             autoCorrect={false}
           />
 
-          <Text style={styles.p}>Adress</Text>
+          <Text style={styles.p}>Password</Text>
           <TextInput style={styles.input}
-            placeholder="123 abc"
+            secureTextEntry={true}
+            placeholder="******"
             autoCorrect={false}
-          />
-
-          <Text style={styles.p}>City</Text>
-          <TextInput style={styles.input}
-            placeholder="San Jose"
-            autoCorrect={false}
-          />
-
-          <Text style={styles.p}>State</Text>
-          <TextInput style={styles.input}
-            placeholder="CA"
-            autoCorrect={false}
-          />
-
-          <Text style={styles.p}>Zip</Text>
-          <TextInput style={styles.input}
-            keyboardType="number-pad"
-            placeholder="12345"
-            autoCorrect={false}
-          />
-
-          <RedButton
-            style={{ marginBottom: 16 }}
-            buttonText='Upload New Logo'
+            autoCapitalize='none'
           />
 
           <RedButton
