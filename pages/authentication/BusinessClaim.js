@@ -111,6 +111,9 @@ export default class BusinessClaim extends Component {
           case "auth/email-already-in-use":
             alert("That email already exists");
             break;
+          case "auth/network-request-failed":
+            alert("No internet connection");
+            break;
           default:
             alert("pages/dashboard/BC.js#default");
             console.log(error.code);

@@ -85,6 +85,9 @@ export default class CustomerSignUp extends Component {
           case "auth/email-already-in-use":
             alert("That email already exists");
             break;
+          case "auth/network-request-failed":
+            alert("No internet connection");
+            break;
           default:
             alert("Unhandled error case. Developers fucked up");
             console.log(error.code);

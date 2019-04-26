@@ -93,8 +93,12 @@ export default class SignIn extends Component {
           case "auth/user-not-found":
             alert("That email does not exist");
             break;
+          case "auth/network-request-failed":
+            alert("No internet connection");
+            break;
           default:
-            alert("Unhandled error");
+            alert("pages/auth/SI.js#default");
+            // alert(error.code)
             console.log(error.code);
             break;
         }
