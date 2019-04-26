@@ -114,9 +114,9 @@ export default class AddFood extends Component {
       if (response.uri) {
         this.setState({ photo: response });
 
+        const user_id = firebase.auth().currentUser.uid;
         const storage = firebase.storage();
-        const sessionId = new Date().getTime();
-        const imageFolderRef = storage.ref('images').child(`${sessionId}`);
+        const imageFolderRef = storage.ref('images' + user_id).child(this.state.foodItemName);
         this.setState({ photoFolderRef: imageFolderRef });
 
         imageFolderRef.putFile(response.uri)
