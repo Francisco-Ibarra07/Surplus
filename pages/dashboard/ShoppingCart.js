@@ -55,11 +55,6 @@ export default class ShoppingCart extends Component {
               <Text style={styles.itemText}>$4.00</Text>
             </View>
 
-            <View style={styles.items}>
-              <Text style={styles.itemText}>Chicken Pad Thai (Qnty: 2)</Text>
-              <Text style={styles.itemText}>$9.00</Text>
-            </View>
-
             {/* Convenience Fee */}
             <View style={styles.convenienceFee}>
               <Text style={styles.feeText}>Convenience Fee</Text>
@@ -69,17 +64,17 @@ export default class ShoppingCart extends Component {
             {/* Tax */}
             <View style={styles.tax}>
               <Text style={styles.taxText}>Tax (9.25%)</Text>
-              <Text style={styles.taxText}>$1.20</Text>
+              <Text style={styles.taxText}>$0.42</Text>
             </View>
 
             {/* Total */}
             <View style={styles.total}>
-              <Text style={styles.totalCost}> <Text style={{ fontWeight: 'bold' }}>Total: </Text> $14.20</Text>
+              <Text style={styles.totalCost}> <Text style={{ fontWeight: 'bold' }}>Total: </Text> $4.92</Text>
             </View>
           </View>
 
           {/* Bottom Section: Graph and Savings */}
-          <View style={styles.cartSaving}>
+          {/* <View style={styles.cartSaving}>
             <Image style={styles.pointsImage}
               source={require('./resources/points.jpg')}
             />
@@ -87,11 +82,15 @@ export default class ShoppingCart extends Component {
               <Text style={styles.savingsText}><Text style={{ fontWeight: 'bold' }}>Today's Savings:</Text> $14.00</Text>
               <Text style={styles.savingsText}>5 more points until your next reward!</Text>
             </View>
-          </View>
+          </View> */}
 
           {/* TODO: Navigation */}
-          <RedButton buttonText='Done' />
+
         </View>
+
+        <RedButton
+          style={{ marginTop: 16 }} buttonText='Done'
+        />
 
       </ScrollView>
     );
@@ -138,7 +137,7 @@ const styles = StyleSheet.create({
     borderWidth: .50,
     borderColor: 'red',
     borderRadius: 10,
-    height: 450,
+    height: 260,
     backgroundColor: 'white',
     padding: 15,
   },
