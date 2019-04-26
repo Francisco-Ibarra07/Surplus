@@ -165,6 +165,7 @@ const BusinessTab = createBottomTabNavigator({
       headerStyle: {
         borderBottomWidth: 0,
       },
+      gesturesEnabled: false,
       headerLeft: null,
       title: 'surplus',
       headerTintColor: '#D33B32',
