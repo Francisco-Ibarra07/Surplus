@@ -8,13 +8,52 @@ import {
   StyleSheet,
 } from 'react-native';
 import RedButton from '../components/RedButton';
+import firebase from 'react-native-firebase'
 
 export default class EditBusinessInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+    }
+  }
+
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
     }
   }
+
+  populateUserInfo = () => {
+
+    const user_id = firebase.auth().currentUser.uid;
+    const refToOwnersAccountInfo = firebase.database().ref('/business/owners/' + user_id);
+    const activity = this
+
+    refToOwnersAccountInfo.on('value', function (snapshot) {
+      const snap = snapshot.val();
+
+      activity.setState({
+        firstName: snap['first_name'],
+        lastName: snap['last_name'],
+        email: snap['email'],
+        phone: snap['phone_number']
+      })
+    });
+
+  }
+
+  componentDidMount() {
+    this.populateUserInfo();
+  }
+
+  updateUserInfo = () => {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -23,7 +62,7 @@ export default class EditBusinessInfo extends Component {
         <View style={styles.form}>
           <Text style={styles.p}>Business Owner's First Name</Text>
           <TextInput style={styles.input}
-            placeholder="Nhat"
+            placeholder={this.state.firstName}
             autoCorrect={false}
           // autoCapitalize='none'
           // onChangeText={
@@ -33,39 +72,27 @@ export default class EditBusinessInfo extends Component {
 
           <Text style={styles.p}>Business Owner's Last Name</Text>
           <TextInput style={styles.input}
-            placeholder="Nguyen"
+            placeholder={this.state.lastName}
             autoCorrect={false}
           />
 
           <Text style={styles.p}>Email</Text>
           <TextInput style={styles.input}
             keyboardType="email-address"
-            placeholder="n@g.com"
+            placeholder={this.state.email}
             autoCorrect={false}
           />
 
           <Text style={styles.p}>Phone</Text>
           <TextInput style={styles.input}
             keyboardType="number-pad"
-            placeholder="1234567890"
+            placeholder={this.state.phone}
             autoCorrect={false}
-          />
-
-          <Text style={styles.p}>Password</Text>
-          <TextInput style={styles.input}
-            secureTextEntry={true}
-            placeholder="******"
-            autoCorrect={false}
-            autoCapitalize='none'
-          />
-
-          <RedButton
-            style={{ marginBottom: 16 }}
-            buttonText='Upload New Logo'
           />
 
           <RedButton
             buttonText='Save Changes'
+          // onPress={this.updateUserInfo}
           />
 
         </View>
