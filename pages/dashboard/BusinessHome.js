@@ -94,7 +94,7 @@ export default class BusinessHome extends Component {
               onlineItemsRef={onlineItemsRef}
               quantityLeft={currentFood.item_quantity}
               itemName={currentFood.item_name}
-              activeOrders='8'
+              activeOrderNumber={i + 1}
             />)
         }
 

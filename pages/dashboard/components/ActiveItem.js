@@ -23,7 +23,7 @@ export default class ActiveItem extends Component {
       <View style={styles.activeItemContainer}>
         <Text style={styles.title}>{this.props.itemName}</Text>
         <View style={styles.flexRow}>
-          <Text style={styles.text}>Active Orders: {this.props.activeOrders}</Text>
+          <Text style={styles.text}>Active Order #{this.props.activeOrderNumber}</Text>
           <Text style={styles.text}>Quantity Left: {this.props.quantityLeft}</Text>
           <Button title="Delete" onPress={this.handleDelete} />
         </View>
