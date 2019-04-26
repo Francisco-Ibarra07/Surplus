@@ -93,6 +93,7 @@ const CustomerDrawer = createDrawerNavigator({
       ),
       title: 'surplus',
       headerTintColor: '#D33B32',
+      gesturesEnabled: false,
     }),
     contentComponent: (props) => (
       <View style={{ flex: 1 }}>
