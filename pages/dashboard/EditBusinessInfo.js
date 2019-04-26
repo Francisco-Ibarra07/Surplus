@@ -103,10 +103,10 @@ export default class EditBusinessInfo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.h1}>Your Information</Text>
+        <Text style={styles.h1}>Your Business Information</Text>
 
         <View style={styles.form}>
-          <Text style={styles.p}>Business Owner's First Name</Text>
+          <Text style={styles.p}>Store Name</Text>
           <TextInput style={styles.input}
             onChangeText={updatedFirstName => this.setState({ updatedFirstName })}
             placeholder={this.state.firstName}
@@ -117,14 +117,14 @@ export default class EditBusinessInfo extends Component {
           // }
           />
 
-          <Text style={styles.p}>Business Owner's Last Name</Text>
+          <Text style={styles.p}>Phone Number</Text>
           <TextInput style={styles.input}
             onChangeText={updatedLastName => this.setState({ updatedLastName })}
             placeholder={this.state.lastName}
             autoCorrect={false}
           />
 
-          <Text style={styles.p}>Email</Text>
+          <Text style={styles.p}>Adress</Text>
           <TextInput style={styles.input}
             onChangeText={updatedEmail => this.setState({ updatedEmail })}
             keyboardType="email-address"
@@ -132,7 +132,7 @@ export default class EditBusinessInfo extends Component {
             autoCorrect={false}
           />
 
-          <Text style={styles.p}>Phone</Text>
+          <Text style={styles.p}>City</Text>
           <TextInput style={styles.input}
             onChangeText={updatedPhone => this.setState({ updatedPhone })}
             keyboardType="number-pad"
