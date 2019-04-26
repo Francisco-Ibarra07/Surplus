@@ -116,13 +116,14 @@ export default class AddFood extends Component {
 
         const user_id = firebase.auth().currentUser.uid;
         const storage = firebase.storage();
-        const imageFolderRef = storage.ref('images' + user_id).child(this.state.foodItemName);
+        const imageFolderRef = storage.ref('images/' + user_id).child(this.state.foodItemName);
         this.setState({ photoFolderRef: imageFolderRef });
 
         imageFolderRef.putFile(response.uri)
           .then((msg) => {
             this.setState({ photoDownloadURL: msg.downloadURL });
             console.log(this.state.photoDownloadURL);
+            alert('Photo successfully uploaded!');
           })
           .catch((error) => {
             console.log("error:", error);

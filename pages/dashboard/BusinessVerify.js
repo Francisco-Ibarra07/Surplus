@@ -6,13 +6,52 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import firebase from 'react-native-firebase';
 
 export default class BusinessVerify extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
     }
   }
+
+  handleButtonPress = () => {
+
+    // Grab the photo that was passed by the previous page
+    const photo = this.props.navigation.state.params.photo;
+
+    // Grab a reference to the restaurant folder
+    const user_id = firebase.auth().currentUser.uid;
+    const restaurant = firebase.database().ref('business/owners/' + user_id + '/restaurant');
+
+    // Grab a reference to the storage location of where the image will be placed
+    const storage = firebase.storage();
+    const sessionId = new Date().getTime();
+    const imageFolderRef = storage.ref('signup_logos/' + user_id).child(`${sessionId}`);
+
+    // Upload the image to Firebase Storage and store the download URL link of that image onto the restaurant folder in the database
+    imageFolderRef.putFile(photo.uri)
+      .then((msg) => {
+        console.log('Image uploaded:', msg.downloadURL);
+        restaurant.update({
+          'image': msg.downloadURL
+        })
+      })
+      .catch((error) => {
+        console.log("error:", error);
+        alert("Failed to upload image");
+        return;
+      })
+
+    // Take user to their home page
+    this.props.navigation.navigate('BusinessHome')
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -33,11 +72,9 @@ export default class BusinessVerify extends Component {
         </View>
 
         {/* Button */}
-        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('BusinessHome')}>
+        <TouchableOpacity style={styles.button} onPress={this.handleButtonPress}>
           <Text style={{ color: 'white' }}>Got it!</Text>
         </TouchableOpacity>
-
-
       </View>
     );
   }

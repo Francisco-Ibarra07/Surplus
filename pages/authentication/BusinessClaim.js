@@ -5,8 +5,12 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Button,
+  ImageBackground,
 } from 'react-native';
 import firebase from 'react-native-firebase';
+// import { Button } from 'react-native-elements';
+import ImagePicker from 'react-native-image-picker'
 
 export default class BusinessClaim extends Component {
 
@@ -21,6 +25,8 @@ export default class BusinessClaim extends Component {
       zipcode: '',
       isVerified: false,
       businessOwner: props.navigation.state.params.signUpInfo,
+      photo: null,
+      photoDownloadURL: '',
     }
   }
 
@@ -31,7 +37,7 @@ export default class BusinessClaim extends Component {
   }
 
   handleBusinessClaim = () => {
-    const { store_name, store_phone, address, city, state, zipcode } = this.state;
+    const { store_name, store_phone, address, city, state, zipcode, photo } = this.state;
 
     // Make sure all fields are filled in
     if (store_name == "") {
@@ -52,8 +58,10 @@ export default class BusinessClaim extends Component {
     } else if (zipcode == "") {
       alert('Please fill in the zipcode.');
       return false;
+    } else if (photo === null) {
+      alert('Please add a photo of your restaurant logo');
+      return false;
     }
-
     console.log(this.state);
 
     // Sign up user
@@ -88,7 +96,7 @@ export default class BusinessClaim extends Component {
         // Email notification to admin
         //firebase.auth.sendPasswordResetEmail("koltokaspi@desoz.com");
 
-        this.props.navigation.navigate('BusinessVerify');
+        this.props.navigation.navigate('BusinessVerify', { photo: photo });
         return true;
       })
       .catch((error) => {
@@ -104,7 +112,7 @@ export default class BusinessClaim extends Component {
             alert("That email already exists");
             break;
           default:
-            alert("Unhandled error case. Developers fucked up");
+            alert("pages/dashboard/BC.js#default");
             console.log(error.code);
             break;
         }
@@ -113,7 +121,20 @@ export default class BusinessClaim extends Component {
       })
   }
 
+  handlePhotoUpload = () => {
+    const options = {};
+    ImagePicker.launchImageLibrary(options, response => {
+      console.log("Response:", response);
+      if (response.uri) {
+        this.setState({ photo: response });
+        alert('Photo successfully uploaded!');
+      }
+    });
+  }
+
   render() {
+    const { photo } = this.state;
+
     return (
       <View style={styles.container} >
         <View style={styles.containerChild}>
@@ -171,6 +192,14 @@ export default class BusinessClaim extends Component {
             </View>
           </View>
 
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Button title="Upload restaurant logo" onPress={this.handlePhotoUpload} />
+            {/* {photo &&
+              (<ImageBackground>
+                source={{ uri: photo.uri }}
+                style={{ width: '100%', height: '100%' }}
+              </ImageBackground>)} */}
+          </View>
         </View>
 
         <View style={styles.condition}>
