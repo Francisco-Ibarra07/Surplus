@@ -54,8 +54,8 @@ import BusinessHome from './pages/dashboard/BusinessHome';
 import BusinessMenu from './pages/dashboard/BusinessMenu';
 import BusinessSettings from './pages/dashboard/BusinessSettings';
 import BusinessWallet from './pages/dashboard/BusinessWallet';
-import EditBusinessInfo from './pages/dashboard/EditBusinessInfo';
-import EditBusinessPersonal from './pages/dashboard/EditBusinessPersonal';
+import EditRestaurantInfo from './pages/dashboard/EditRestaurantInfo';
+import EditOwnersInfo from './pages/dashboard/EditOwnersInfo';
 
 
 // Customer Drawer Navigation --------------------------- /
@@ -219,8 +219,8 @@ export const Nav = createAppContainer(
 
     // Business Navigation
     BusinessVerify: { screen: BusinessVerify },
-    EditBusinessInfo: { screen: EditBusinessInfo },
-    EditBusinessPersonal: { screen: EditBusinessPersonal },
+    EditRestaurantInfo: { screen: EditRestaurantInfo },
+    EditOwnersInfo: { screen: EditOwnersInfo },
     // BusinessHome: { screen: BusinessHome },
     // BusinessMenu: { screen: BusinessMenu },
     Tab: BusinessTab,

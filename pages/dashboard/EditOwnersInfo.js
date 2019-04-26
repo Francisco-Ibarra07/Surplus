@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import RedButton from '../components/RedButton';
 
-export default class EditBusinessPersonal extends Component {
+export default class EditOwnersInfo extends Component {
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,

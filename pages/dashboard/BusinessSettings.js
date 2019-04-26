@@ -18,10 +18,10 @@ export default class BusinessSettings extends Component {
           <Text>Settings</Text>
         </View>
         <Button title="Edit Your Personal Information" onPress={() => {
-          this.props.navigation.navigate('EditBusinessPersonal');
+          this.props.navigation.navigate('EditOwnersInfo');
         }} />
-        <Button title="Edit Your Business Information" onPress={() => {
-          this.props.navigation.navigate('EditBusinessInfo');
+        <Button title="Edit Your Restaurant Information" onPress={() => {
+          this.props.navigation.navigate('EditRestaurantInfo');
         }} />
         <Button title="Log Off" onPress={() => {
           // Firebase log off

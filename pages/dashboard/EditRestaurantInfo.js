@@ -10,7 +10,7 @@ import {
 import RedButton from '../components/RedButton';
 import firebase from 'react-native-firebase'
 
-export default class EditBusinessInfo extends Component {
+export default class EditRestaurantInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
