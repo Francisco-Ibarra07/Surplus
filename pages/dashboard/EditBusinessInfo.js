@@ -18,6 +18,10 @@ export default class EditBusinessInfo extends Component {
       lastName: '',
       email: '',
       phone: '',
+      updatedFirstName: '',
+      updatedLastName: '',
+      updatedEmail: '',
+      updatedPhone: ''
     }
   }
 
@@ -52,6 +56,48 @@ export default class EditBusinessInfo extends Component {
 
   updateUserInfo = () => {
 
+    const { updatedFirstName, updatedLastName, updatedEmail, updatedPhone } = this.state;
+    const user_id = firebase.auth().currentUser.uid;
+    const refToOwnersAccountInfo = firebase.database().ref('/business/owners/' + user_id);
+
+    if (updatedFirstName === '' && updatedLastName === '' && updatedEmail === '' && updatedPhone === '') {
+      alert('Make a change to save changes!');
+      return;
+    }
+
+    if (updatedFirstName !== '') {
+      refToOwnersAccountInfo.update({
+        'first_name': updatedFirstName
+      })
+
+      this.setState({ firstName: updatedFirstName, updatedFirstName: '' });
+    }
+
+    if (updatedLastName !== '') {
+      refToOwnersAccountInfo.update({
+        'last_name': updatedLastName
+      })
+
+      this.setState({ lastName: updatedLastName, updatedLastName: '' });
+    }
+
+    if (updatedEmail !== '') {
+      refToOwnersAccountInfo.update({
+        'email': updatedEmail
+      })
+
+      this.setState({ email: updatedEmail, updatedEmail: '' });
+    }
+
+    if (updatedPhone !== '') {
+      refToOwnersAccountInfo.update({
+        'phone': updatedPhone
+      })
+
+      this.setState({ phone: updatedPhone, updatedPhone: '' });
+    }
+
+    alert('Information was updated!');
   }
 
   render() {
@@ -62,6 +108,7 @@ export default class EditBusinessInfo extends Component {
         <View style={styles.form}>
           <Text style={styles.p}>Business Owner's First Name</Text>
           <TextInput style={styles.input}
+            onChangeText={updatedFirstName => this.setState({ updatedFirstName })}
             placeholder={this.state.firstName}
             autoCorrect={false}
           // autoCapitalize='none'
@@ -72,12 +119,14 @@ export default class EditBusinessInfo extends Component {
 
           <Text style={styles.p}>Business Owner's Last Name</Text>
           <TextInput style={styles.input}
+            onChangeText={updatedLastName => this.setState({ updatedLastName })}
             placeholder={this.state.lastName}
             autoCorrect={false}
           />
 
           <Text style={styles.p}>Email</Text>
           <TextInput style={styles.input}
+            onChangeText={updatedEmail => this.setState({ updatedEmail })}
             keyboardType="email-address"
             placeholder={this.state.email}
             autoCorrect={false}
@@ -85,6 +134,7 @@ export default class EditBusinessInfo extends Component {
 
           <Text style={styles.p}>Phone</Text>
           <TextInput style={styles.input}
+            onChangeText={updatedPhone => this.setState({ updatedPhone })}
             keyboardType="number-pad"
             placeholder={this.state.phone}
             autoCorrect={false}
@@ -92,7 +142,7 @@ export default class EditBusinessInfo extends Component {
 
           <RedButton
             buttonText='Save Changes'
-          // onPress={this.updateUserInfo}
+            onPress={this.updateUserInfo}
           />
 
         </View>
