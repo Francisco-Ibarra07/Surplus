@@ -7,8 +7,10 @@ import {
   StyleSheet,
 } from 'react-native';
 import { CheckBox } from 'react-native-elements'
+import firebase from 'react-native-firebase'
 
 export default class BusinessSettings extends Component {
+
   render() {
     return (
       <View style={styles.container}>
