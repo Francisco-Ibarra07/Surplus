@@ -11,6 +11,7 @@ import {
   ScrollView,
 } from 'react-native';
 import RedButton from '../components/RedButton';
+import CartItem from './components/CartItem';
 
 export default class ShoppingCart extends Component {
   render() {
@@ -21,78 +22,31 @@ export default class ShoppingCart extends Component {
         <View style={styles.top}>
           <View style={styles.title}>
             <Text style={styles.h1}>Yum! Enjoy your meal!</Text>
-            <Text style={styles.h2}>You order helped save 0.8 grams of CO2!</Text>
+            <Text style={styles.h2}>Order Summary</Text>
           </View>
           <Image style={styles.topImage}
             source={require('./resources/tree.jpg')}
           />
         </View>
 
-        {/* Shopping Cart Main Section */}
-        <View style={styles.cart}>
+        <CartItem name='Taco' quantity='2' price='5.00' />
+        <CartItem name='Chicken' quantity='1' price='2.00' />
+        <CartItem name='Sandwich' quantity='2' price='8.00' />
+        <CartItem name='Taco' quantity='2' price='5.00' />
+        <CartItem name='Taco' quantity='2' price='5.00' />
 
-          {/* Top Part of Section */}
-          <View style={styles.cartPreview}>
-            <Image style={styles.foodImage}
-              source={require('./resources/burrito.jpg')}
-            />
-            <View style={styles.pickUp}>
-              <Text style={styles.pickUpText}>Pick-up by:</Text>
-              <Text style={styles.pickUpTime}>8:00PM</Text>
-            </View>
-          </View>
-
-          {/* Middle Section: Order Summary to Total */}
-          <View style={styles.cartList}>
-            <View style={styles.summary}>
-              <Text style={styles.summaryText}>Order Summary</Text>
-              <Text style={styles.summaryText}>For: Jane Doe</Text>
-            </View>
-
-            {/* Items List */}
-            <View style={styles.items}>
-              <Text style={styles.itemText}>Burrito (Qnty: 1)</Text>
-              <Text style={styles.itemText}>$4.00</Text>
-            </View>
-
-            {/* Convenience Fee */}
-            <View style={styles.convenienceFee}>
-              <Text style={styles.feeText}>Convenience Fee</Text>
-              <Text style={styles.feeText}>$0.50</Text>
-            </View>
-
-            {/* Tax */}
-            <View style={styles.tax}>
-              <Text style={styles.taxText}>Tax (9.25%)</Text>
-              <Text style={styles.taxText}>$0.42</Text>
-            </View>
-
-            {/* Total */}
-            <View style={styles.total}>
-              <Text style={styles.totalCost}> <Text style={{ fontWeight: 'bold' }}>Total: </Text> $4.92</Text>
-            </View>
-          </View>
-
-          {/* Bottom Section: Graph and Savings */}
-          {/* <View style={styles.cartSaving}>
-            <Image style={styles.pointsImage}
-              source={require('./resources/points.jpg')}
-            />
-            <View style={styles.savings}>
-              <Text style={styles.savingsText}><Text style={{ fontWeight: 'bold' }}>Today's Savings:</Text> $14.00</Text>
-              <Text style={styles.savingsText}>5 more points until your next reward!</Text>
-            </View>
-          </View> */}
-
-          {/* TODO: Navigation */}
-
+        <View style={styles.totalBox}>
+          <Text style={styles.total}>Convenience Fee: $0.50</Text>
+          <Text style={styles.total}>Tax: $1.20</Text>
+          <Text style={styles.total}>Total: $7.70</Text>
         </View>
 
         <RedButton
-          style={{ marginTop: 16 }} buttonText='Done'
+          style={{ marginBottom: 16 }}
+          buttonText='Done'
         />
 
-      </ScrollView>
+      </ScrollView >
     );
   }
 }
@@ -137,34 +91,45 @@ const styles = StyleSheet.create({
     borderWidth: .50,
     borderColor: 'red',
     borderRadius: 10,
-    height: 260,
+    height: 150,
     backgroundColor: 'white',
     padding: 15,
+    marginBottom: 16,
+    flexDirection: 'row',
   },
   cartPreview: {
+    // borderWidth: 1,
+    // borderColor: 'orange',
+    flex: 1,
+    width: '50%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 15,
+    alignItems: 'center',
   },
   foodImage: {
+    // borderWidth: 1,
+    // borderColor: 'blue',
     resizeMode: 'contain',
-    height: 100,
-    width: 150,
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#F3F3F3',
     borderRadius: 10,
   },
-
-  // Pick Up
-  pickUp: {
-    width: '35%',
+  description: {
+    width: '50%',
+    padding: 15,
   },
-  pickUpText: {
-    color: 'gray',
+  totalBox: {
+    marginBottom: 16,
+  },
+  total: {
+    textAlign: 'right',
+    // borderWidth: 1,
+    // borderColor: 'blue',
     marginBottom: 5,
   },
-  pickUpTime: {
-    color: '#D33B32',
-    fontSize: 24,
-    fontWeight: 'bold',
+  descriptionText: {
+    marginBottom: 5,
   },
 
   // SUMMARY SECTION
@@ -213,26 +178,26 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 
-  // SAVINGS SECTION
-  cartSaving: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 5,
-  },
-  pointsImage: {
-    resizeMode: 'contain',
-    height: 100,
-    width: 100,
-  },
-  savings: {
-    width: '50%',
-  },
-  savingsText: {
-    fontSize: 12,
-  },
-  totalSavings: {
-    fontSize: 12,
-    textAlign: 'right',
-  },
+  // // SAVINGS SECTION
+  // cartSaving: {
+  //   flex: 1,
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   marginTop: 5,
+  // },
+  // pointsImage: {
+  //   resizeMode: 'contain',
+  //   height: 100,
+  //   width: 100,
+  // },
+  // savings: {
+  //   width: '50%',
+  // },
+  // savingsText: {
+  //   fontSize: 12,
+  // },
+  // totalSavings: {
+  //   fontSize: 12,
+  //   textAlign: 'right',
+  // },
 })
