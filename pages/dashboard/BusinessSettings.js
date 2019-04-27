@@ -39,15 +39,18 @@ export default class BusinessSettings extends Component {
     const list = [
       {
         title: 'Edit Personal Information',
-        icon: 'chevron-right'
+        right: 'chevron-right',
+        left: 'portrait'
       },
       {
         title: 'Edit Business Information',
-        icon: 'chevron-right'
+        right: 'chevron-right',
+        left: 'store'
       },
       {
         title: 'Log Off',
-        icon: 'chevron-right',
+        right: 'chevron-right',
+        left: 'call-end'
       },
     ]
 
@@ -62,7 +65,8 @@ export default class BusinessSettings extends Component {
               <ListItem
                 key={i}
                 title={item.title}
-                rightIcon={{ name: item.icon }}
+                rightIcon={{ name: item.right }}
+                leftIcon={{ name: item.left }}
                 onPress={() => this.goToOtherScreen(i)}
               />
             ))
