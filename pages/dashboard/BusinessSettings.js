@@ -3,31 +3,71 @@ import {
   View,
   ScrollView,
   Text,
+  Alert,
   Button,
   StyleSheet,
 } from 'react-native';
-import { CheckBox } from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
 import firebase from 'react-native-firebase';
 
 export default class BusinessSettings extends Component {
-
+  goToOtherScreen(i) {
+    if (i === 0) {
+      this.props.navigation.navigate('EditBusinessPersonal');
+    } else if (i === 1) {
+      this.props.navigation.navigate('EditBusinessInfo')
+    } else if (i === 2) {
+      // Firebase log off
+      Alert.alert(
+        'Log Off',
+        'Do you want to log off?',
+        [
+          { text: 'Cancel', onPress: () => { return null } },
+          {
+            text: 'Confirm', onPress: () => {
+              firebase.auth().signOut();
+              props.navigation.navigate('GetStarted')
+            }
+          },
+        ],
+        { cancelable: false }
+      )
+    }
+  }
   render() {
+
+    const list = [
+      {
+        title: 'Edit Personal Information',
+        icon: 'chevron-right'
+      },
+      {
+        title: 'Edit Business Information',
+        icon: 'chevron-right'
+      },
+      {
+        title: 'Log Off',
+        icon: 'chevron-right',
+      },
+    ]
+
     return (
       <View style={styles.container}>
         <View style={styles.title}>
           <Text>Settings</Text>
         </View>
-        <Button title="Edit Your Personal Information" onPress={() => {
-          this.props.navigation.navigate('EditBusinessPersonal');
-        }} />
-        <Button title="Edit Your Business Information" onPress={() => {
-          this.props.navigation.navigate('EditBusinessInfo');
-        }} />
-        <Button title="Log Off" onPress={() => {
-          // Firebase log off
-          firebase.auth().signOut();
-          this.props.navigation.navigate('GetStarted');
-        }} />
+        <View>
+          {
+            list.map((item, i) => (
+              <ListItem
+                key={i}
+                title={item.title}
+                rightIcon={{ name: item.icon }}
+                onPress={() => this.goToOtherScreen(i)}
+              />
+            ))
+          }
+        </View>
       </View>
 
     );
