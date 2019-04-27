@@ -885,11 +885,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = F9ZX8H86N9;
+						DevelopmentTeam = 2W73N3D2X7;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = F9ZX8H86N9;
+						DevelopmentTeam = 2W73N3D2X7;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1516,7 +1516,7 @@
 			baseConfigurationReference = A1B4CF7F5654C435D8B56928 /* Pods-SurplusTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = F9ZX8H86N9;
+				DEVELOPMENT_TEAM = 2W73N3D2X7;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1550,7 +1550,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = F9ZX8H86N9;
+				DEVELOPMENT_TEAM = 2W73N3D2X7;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
@@ -1581,7 +1581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = F9ZX8H86N9;
+				DEVELOPMENT_TEAM = 2W73N3D2X7;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
@@ -1595,7 +1595,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SurplusFoods;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Surplus-Foods";
 				PRODUCT_NAME = Surplus;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1607,7 +1607,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F9ZX8H86N9;
+				DEVELOPMENT_TEAM = 2W73N3D2X7;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
@@ -1621,7 +1621,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SurplusFoods;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Surplus-Foods";
 				PRODUCT_NAME = Surplus;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
