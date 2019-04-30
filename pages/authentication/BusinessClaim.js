@@ -198,15 +198,12 @@ export default class BusinessClaim extends Component {
 
           <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Button title="Upload restaurant logo" onPress={this.handlePhotoUpload} />
-            {/* {photo &&
-              (<ImageBackground>
-                source={{ uri: photo.uri }}
-                style={{ width: '100%', height: '100%' }}
-              </ImageBackground>)} */}
           </View>
-          <View style={styles.imageBox}>
-            <Image style={{ width: '100%', height: '100%' }} source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }} />
-          </View>
+          {photo && (
+            <View style={styles.imageBox}>
+              <Image style={{ width: '100%', height: '100%' }} source={{ uri: photo.uri }} />
+            </View>
+          )}
         </View>
 
         <View style={styles.condition}>
