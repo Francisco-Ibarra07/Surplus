@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Button,
+  Image,
   ImageBackground,
 } from 'react-native';
 import firebase from 'react-native-firebase';
@@ -203,6 +204,9 @@ export default class BusinessClaim extends Component {
                 style={{ width: '100%', height: '100%' }}
               </ImageBackground>)} */}
           </View>
+          <View style={styles.imageBox}>
+            <Image style={{ width: '100%', height: '100%' }} source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }} />
+          </View>
         </View>
 
         <View style={styles.condition}>
@@ -289,5 +293,11 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  imageBox: {
+    height: 100,
+    width: 100,
+    borderWidth: 1,
+    borderColor: 'black',
   },
 });
