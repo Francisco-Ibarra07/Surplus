@@ -18,6 +18,11 @@ export default class ActiveItem extends Component {
     activeItemsRef.child(this.props.itemName).remove();
   }
 
+  // Takes the user back to that "Food Item" page where he first added an item. The information on that page will be filled out with was previously there similar to the "Edit personl info" on the business settings page
+  handleEdit = () => {
+
+  }
+
   render() {
     return (
       <View style={styles.activeItemContainer}>
@@ -25,6 +30,7 @@ export default class ActiveItem extends Component {
         <View style={styles.flexRow}>
           <Text style={styles.text}>Active Order #{this.props.activeOrderNumber}</Text>
           <Text style={styles.text}>Quantity Left: {this.props.quantityLeft}</Text>
+          <Button title="Edit" onPress={this.handleEdit} />
           <Button title="Delete" onPress={this.handleDelete} />
         </View>
       </View>
