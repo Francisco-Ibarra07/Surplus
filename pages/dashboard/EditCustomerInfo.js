@@ -51,14 +51,6 @@ export default class EditCustomerInfo extends Component {
             autoCorrect={false}
           />
 
-          <Text style={styles.p}>Password</Text>
-          <TextInput style={styles.input}
-            secureTextEntry={true}
-            placeholder="******"
-            autoCorrect={false}
-            autoCapitalize='none'
-          />
-
           <RedButton
             buttonText='Save Changes'
           />

@@ -142,10 +142,11 @@ export default class EditRestaurantInfo extends Component {
           <TextInput style={styles.input}
             onChangeText={updatedPhone => this.setState({ updatedPhone })}
             placeholder={this.state.phone}
+            keyboardType="number-pad"
             autoCorrect={false}
           />
 
-          <Text style={styles.p}>Adress</Text>
+          <Text style={styles.p}>Address</Text>
           <TextInput style={styles.input}
             onChangeText={updatedAddress => this.setState({ updatedAddress })}
             keyboardType="email-address"
@@ -156,7 +157,6 @@ export default class EditRestaurantInfo extends Component {
           <Text style={styles.p}>City</Text>
           <TextInput style={styles.input}
             onChangeText={updatedCity => this.setState({ updatedCity })}
-            keyboardType="number-pad"
             placeholder={this.state.city}
             autoCorrect={false}
           />

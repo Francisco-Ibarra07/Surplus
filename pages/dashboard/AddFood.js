@@ -180,6 +180,7 @@ export default class AddFood extends Component {
           <TextInput style={styles.input}
             placeholder="Quantity"
             autoCorrect={false}
+            keyboardType="number-pad"
             onChangeText={
               quantity => this.setState({ quantity })
             }
@@ -187,6 +188,7 @@ export default class AddFood extends Component {
           <TextInput style={styles.input}
             placeholder="Price"
             autoCorrect={false}
+            keyboardType="decimal-pad"
             onChangeText={
               price => this.setState({ price })
             }
