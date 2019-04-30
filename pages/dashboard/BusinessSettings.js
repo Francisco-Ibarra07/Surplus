@@ -13,9 +13,9 @@ import firebase from 'react-native-firebase';
 export default class BusinessSettings extends Component {
   goToOtherScreen(i) {
     if (i === 0) {
-      this.props.navigation.navigate('EditBusinessPersonal');
+      this.props.navigation.navigate('EditOwnersInfo');
     } else if (i === 1) {
-      this.props.navigation.navigate('EditBusinessInfo')
+      this.props.navigation.navigate('EditRestaurantInfo');
     } else if (i === 2) {
       // Firebase log off
       Alert.alert(
@@ -26,7 +26,7 @@ export default class BusinessSettings extends Component {
           {
             text: 'Confirm', onPress: () => {
               firebase.auth().signOut();
-              props.navigation.navigate('GetStarted')
+              this.props.navigation.navigate('GetStarted')
             }
           },
         ],
@@ -43,7 +43,7 @@ export default class BusinessSettings extends Component {
         left: 'portrait'
       },
       {
-        title: 'Edit Business Information',
+        title: 'Edit Restaurant Information',
         right: 'chevron-right',
         left: 'store'
       },
