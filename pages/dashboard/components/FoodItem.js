@@ -15,11 +15,11 @@ export default class FoodItem extends Component {
     return (
 
       <View style={styles.foodItemContainer}>
-        <TouchableOpacity style={styles.foodItem}>
-
+        <View style={styles.foodItem}>
+          {/*
           <View style={styles.foodName}>
             <Text style={styles.itemName}>{this.props.foodItemName}</Text>
-          </View>
+          </View> */}
 
           <View style={styles.desciption}>
             <View style={styles.foodItemImage}>
@@ -28,14 +28,18 @@ export default class FoodItem extends Component {
 
             <View style={styles.foodItemDescription}>
               <View style={styles.foodTitle}>
+                <Text style={styles.itemName}>Name: {this.props.foodItemName}</Text>
                 <Text>Description: {this.props.foodItemDescription}</Text>
                 <Text>Quantity Left: {this.props.foodItemQuantity}</Text>
                 <Text>Price: ${this.props.foodItemPrice}</Text>
+                <View style={styles.button}>
+                  <Text style={{ color: '#D33B32', fontSize: 16 }} onPress={() => alert('Add')}>Add</Text>
+                </View>
               </View>
             </View>
           </View>
 
-        </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -45,17 +49,12 @@ const styles = StyleSheet.create({
   random: {
     color: 'blue',
   },
-  foodName: {
-    padding: 5,
-    // borderWidth: 1,
-    // borderColor: 'red',
-  },
   itemName: {
     // fontSize: 16,
   },
   foodItemContainer: {
     //borderWidth: 1,
-    height: 125,
+    height: 135,
     marginBottom: 20,
     flex: 1,
   },
@@ -64,6 +63,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
 
+    paddingTop: 5,
     marginLeft: 25,
     marginRight: 25,
     // marginBottom: 20,
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
   foodItemDescription: {
     height: '100%',
     // borderWidth: 1,
+    // borderColor: 'blue',
     paddingLeft: 15,
     // width: '60%',
     flex: 1,
@@ -105,5 +106,8 @@ const styles = StyleSheet.create({
   },
   foodItemStock2: {
     flexDirection: 'row',
+  },
+  button: {
+    marginTop: 10,
   },
 });
