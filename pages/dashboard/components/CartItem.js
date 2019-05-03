@@ -32,11 +32,11 @@ export default class CartItem extends Component {
           <Text style={styles.descriptionText}>Quantity: {this.props.quantity}</Text>
           <Text style={styles.descriptionText}>Price: ${this.props.price}</Text>
           <View style={styles.buttonBox}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={{ color: '#D33B32', fontSize: 16 }} onPress={() => alert('Edit')}>Edit</Text>
+            </TouchableOpacity>
             <View style={styles.button}>
-              <Button onPress={() => alert('Edit')} title='Edit' />
-            </View>
-            <View style={styles.button}>
-              <Button onPress={() => alert('Delete')} title='Delete' />
+              <Text style={{ color: '#D33B32', fontSize: 16 }} onPress={() => alert('Delete')}>Delete</Text>
             </View>
           </View>
         </View>
@@ -100,12 +100,12 @@ const styles = StyleSheet.create({
   },
   buttonBox: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 21,
     // borderWidth: 1,
     // borderColor: 'blue',
   },
-  button: {
-    // borderWidth: 1,
-    // borderColor: 'blue',
-    margin: 5,
-  },
+  // buttonText: {
+  //   color: '#D33B32',
+  // },
 })
