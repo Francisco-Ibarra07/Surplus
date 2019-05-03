@@ -5,7 +5,9 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  TouchableOpacity,
+  Image,
 } from 'react-native';
 import firebase from 'react-native-firebase';
 import ActiveItem from './components/ActiveItem';
@@ -105,15 +107,24 @@ export default class BusinessHome extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('AddFood')}>
+          <Image style={styles.addButton}
+            source={require('./resources/plus.png')}
+          />
+        </TouchableOpacity>
         <View style={styles.title}>
           <Text>Active Items</Text>
         </View>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          {this.state.emptyTextView && (<Text> You currently have no active items </Text>)}
-        </View>
-        {!this.state.emptyTextView && this.state.activeItemsView}
-      </ScrollView>
+
+        <ScrollView>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            {this.state.emptyTextView && (<Text> You currently have no active items </Text>)}
+          </View>
+          {!this.state.emptyTextView && this.state.activeItemsView}
+        </ScrollView>
+
+      </View>
     );
   }
 }
@@ -134,5 +145,12 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 8,
     marginBottom: 8,
+  },
+  addButton: {
+    height: 40,
+    width: 40,
+    borderWidth: 2,
+    borderRadius: 20,
+    borderColor: 'black'
   },
 })

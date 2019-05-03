@@ -51,7 +51,7 @@ import EditCustomerInfo from './pages/dashboard/EditCustomerInfo';
 import AddFood from './pages/dashboard/AddFood';
 import BusinessVerify from './pages/dashboard/BusinessVerify';
 import BusinessHome from './pages/dashboard/BusinessHome';
-import BusinessMenu from './pages/dashboard/BusinessMenu';
+import BusinessOrders from './pages/dashboard/BusinessOrder';
 import BusinessSettings from './pages/dashboard/BusinessSettings';
 import BusinessWallet from './pages/dashboard/BusinessWallet';
 import EditRestaurantInfo from './pages/dashboard/EditRestaurantInfo';
@@ -134,12 +134,12 @@ const BusinessTab = createBottomTabNavigator({
       )
     }),
   },
-  BusinessMenu: {
-    screen: BusinessMenu,
+  BusinessOrders: {
+    screen: BusinessOrders,
     navigationOptions: () => ({
-      title: 'Menu',
+      title: 'Orders',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name='th-large' size={20} color={tintColor} />
+        <Icon name='list-ol' size={20} color={tintColor} />
       )
     }),
   },
@@ -222,7 +222,7 @@ export const Nav = createAppContainer(
     EditRestaurantInfo: { screen: EditRestaurantInfo },
     EditOwnersInfo: { screen: EditOwnersInfo },
     // BusinessHome: { screen: BusinessHome },
-    // BusinessMenu: { screen: BusinessMenu },
+    // BusinessOrders: { screen: BusinessOrders },
     Tab: BusinessTab,
   }),
 )
@@ -261,4 +261,3 @@ const styles = StyleSheet.create({
     width: 30,
   },
 });
-
