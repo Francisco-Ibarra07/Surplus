@@ -17,8 +17,8 @@ export default class RedButton extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={[this.state.style, styles.button]} onPress={this.props.onPress}>
-          <Text style={{ color: '#ffffff' }}>{this.props.buttonText}</Text>
+        <TouchableOpacity style={[this.state.style, styles.button]} onPress={this.props.onPress} disabled={this.props.disabled}>
+          <Text style={{ color: this.props.disabled ? 'pink' : 'white' }}>{this.props.buttonText}</Text>
         </TouchableOpacity>
       </View>
     );
