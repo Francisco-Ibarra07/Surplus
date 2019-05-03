@@ -5,7 +5,8 @@ import {
   Text,
   StyleSheet,
   Image,
-  Button
+  Button,
+  ActivityIndicator,
 } from 'react-native';
 import firebase from 'react-native-firebase';
 import ImagePicker from 'react-native-image-picker'
@@ -32,6 +33,7 @@ export default class AddFood extends Component {
       photo: null, // The photo object given by ImagePicker which was grabbed from inside the phone's PhotoGallery
       photoFolderRef: null, // A reference to the FOLDER of where the image is located
       photoDownloadURL: '',
+      formIsCompleted: false,
     }
   }
 
@@ -121,8 +123,10 @@ export default class AddFood extends Component {
 
         imageFolderRef.putFile(response.uri)
           .then((msg) => {
+
             this.setState({ photoDownloadURL: msg.downloadURL });
             console.log(this.state.photoDownloadURL);
+            this.setState({ formIsCompleted: true });
             alert('Photo successfully uploaded!');
           })
           .catch((error) => {
@@ -156,6 +160,7 @@ export default class AddFood extends Component {
             </View>
           </View>
 
+          {/* Add Food Form */}
           <View style={styles.form2}>
             <Text style={styles.form2description}>Description</Text>
             <TextInput style={styles.input2}
@@ -195,7 +200,8 @@ export default class AddFood extends Component {
           />
 
           <Button title="Upload photo" onPress={this.handlePhotoUpload} />
-          <RedButton onPress={this.handleNewFoodItem} buttonText='Done' />
+          <RedButton buttonText='Done' onPress={this.handleNewFoodItem} disabled={!this.state.formIsCompleted} />
+
         </View>
 
       </View>
