@@ -32,7 +32,6 @@ export default class BusinessMenu extends Component {
         <View style={styles.title}>
           <Text>Active Items</Text>
         </View>
-        {/* <Text onPress={() => this.props.navigation.navigate('AddFood')}>Add Item</Text> */}
         <ScrollView>
           <CheckBox
             checkedIcon='dot-circle-o'

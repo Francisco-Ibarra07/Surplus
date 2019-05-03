@@ -10,17 +10,14 @@ export default class ActiveItem extends Component {
 
   // This method deletes the active item that was clicked on from the database 
   handleDelete = () => {
-    const key = this.props.indexInList;
     const activeItemsRef = this.props.onlineItemsRef;
-    console.log('ref:', activeItemsRef);
-    console.log('key val:', key);
-    console.log('item name:', this.props.itemName);
     activeItemsRef.child(this.props.itemName).remove();
   }
 
   // Takes the user back to that "Food Item" page where he first added an item. The information on that page will be filled out with was previously there similar to the "Edit personal info" on the business settings page
   handleEdit = () => {
-    this.props.navigation.navigate('BusinessEditFood')
+    const ref = this.props.onlineItemsRef.path + '/' + this.props.itemName
+    this.props.navigation.navigate('BusinessEditFood', { refToFoodItem: ref });
   }
 
   render() {

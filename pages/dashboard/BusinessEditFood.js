@@ -8,21 +8,24 @@ import {
   Button
 } from 'react-native';
 import firebase from 'react-native-firebase';
-import ImagePicker from 'react-native-image-picker'
 import RedButton from '../components/RedButton';
 
 export default class BusinessEditFood extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      updatedFirstName: '',
-      updatedLastName: '',
-      updatedEmail: '',
-      updatedPhone: ''
+      itemName: '',
+      foodDescription: '',
+      category: '',
+      quantity: '',
+      price: '',
+      photoURL: null,
+      updatedItemName: '',
+      updatedDescription: '',
+      updatedCategory: '',
+      updatedQuantity: '',
+      updatedPrice: '',
+      updatedPhoto: null,
     }
   }
 
@@ -37,14 +40,35 @@ export default class BusinessEditFood extends Component {
   }
 
   populateFoodInfo = () => {
+    const str = this.props.navigation.state.params.refToFoodItem
+    console.log("str", str)
 
+    const ref = firebase.database().ref(str);
+    console.log("ref:", ref)
+    const activity = this;
+
+    ref.on('value', function (snapshot) {
+
+      const snap = snapshot.val()
+      if (snap === null) { return } // Means item was already deleted
+      console.log("snap:", snap)
+      activity.setState({
+        itemName: snap['item_name'],
+        foodDescription: snap['item_description'],
+        category: snap['item_category'],
+        quantity: snap['item_quantity'],
+        price: snap['item_price'],
+        photoURL: snap['item_image'],
+      })
+    });
   }
 
   componentDidMount() {
     this.populateFoodInfo();
   }
+
   render() {
-    const { photo } = this.state;
+    const { photoURL } = this.state;
     return (
       <View style={styles.container}>
         {/* <Text style={styles.title}>Add New Item</Text> */}
@@ -52,12 +76,12 @@ export default class BusinessEditFood extends Component {
         <View style={styles.form}>
           <View style={styles.form1}>
             <View style={styles.form1a} onPress={this.handlePhotoUpload}>
-              {photo && (<Image source={{ uri: photo.uri }} style={{ width: 65, height: 65 }} />)}
+              {photoURL && (<Image source={{ uri: photoURL }} style={{ width: 65, height: 65 }} />)}
             </View>
             <View style={styles.form1b}>
               <Text>Item Name</Text>
               <TextInput style={styles.input}
-                placeholder="Required"
+                placeholder={this.state.itemName}
                 autoCorrect={false}
                 onChangeText={
                   foodItemName => this.setState({ foodItemName })
@@ -68,26 +92,26 @@ export default class BusinessEditFood extends Component {
           <View style={styles.form2}>
             <Text style={styles.form2description}>Description</Text>
             <TextInput style={styles.input2}
+              placeholder={this.state.foodDescription}
               multiline={true}
               editable={true}
               maxLength={200}
-              placeholder="Optional"
               autoCorrect={false}
               onChangeText={
-                description => this.setState({ description })
+                updatedDescription => this.setState({ updatedDescription })
               }
             />
           </View>
 
           <TextInput style={styles.input}
-            placeholder="Category"
+            placeholder={this.state.category}
             autoCorrect={false}
             onChangeText={
               category => this.setState({ category })
             }
           />
           <TextInput style={styles.input}
-            placeholder="Quantity"
+            placeholder={this.state.quantity}
             autoCorrect={false}
             keyboardType="number-pad"
             onChangeText={
@@ -95,7 +119,7 @@ export default class BusinessEditFood extends Component {
             }
           />
           <TextInput style={styles.input}
-            placeholder="Price"
+            placeholder={this.state.price}
             autoCorrect={false}
             keyboardType="decimal-pad"
             onChangeText={
@@ -103,7 +127,7 @@ export default class BusinessEditFood extends Component {
             }
           />
 
-          <Button title="Upload photo" onPress={this.handlePhotoUpload} />
+          {/* <Button title="Upload photo" onPress={this.handlePhotoUpload} /> */}
           <RedButton onPress={this.updateFoodInfo} buttonText='Save Changes' />
         </View>
 

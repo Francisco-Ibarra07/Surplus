@@ -90,6 +90,7 @@ export default class BusinessHome extends Component {
           activeItems.push(
             <ActiveItem
               key={i}
+              navigation={activity.props.navigation}
               indexInList={i}
               onlineItemsRef={onlineItemsRef}
               quantityLeft={currentFood.item_quantity}

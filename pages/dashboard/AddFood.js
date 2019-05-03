@@ -65,19 +65,6 @@ export default class AddFood extends Component {
     const refToOwnersAccountInfo = firebase.database().ref('/business/owners/' + user_id);
     const activity = this;
 
-    // Upload the desired photo onto Firebase Storage
-    // let photoDownloadURL = 'conon';
-    // photoFolderRef.putFile(photo.uri)
-    //   .then((msg) => {
-    //     photoDownloadURL = msg.downloadURL;
-    //     console.log(photoDownloadURL);
-    //   })
-    //   .catch((error) => {
-    //     console.log("error:", error);
-    //     alert("Failed to upload image");
-    //     return;
-    //   })
-
     // Update all variables of this food item on the database
     refToOwnersAccountInfo.on('value', function (snapshot) {
       activity.setState({ ownersAccountInfo: snapshot.val() });
