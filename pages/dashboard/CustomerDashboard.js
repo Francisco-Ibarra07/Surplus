@@ -65,16 +65,18 @@ export default class CustomerDashboard extends Component {
       var storeNames = [];
       var restaurantItems = [];
 
-      // Check if there are any restaurants offering food
-      if (snapOfOnlineRestaurantList === null) {
-        activity.setState({ emptyTextView: true });
+      // Check if there are any restaurants offering food besides the _PLACEHOLDER_
+      if (snapshot._childKeys.length === 1) {
+        activity.setState({ emptyTextView: true }); // If the Placeholder is the only one, there are no available restaurants
       }
       else {
         activity.setState({ emptyTextView: false });
         // Store all the names of the stores in the 'online' folder as keys in an array
         for (store in snapOfOnlineRestaurantList) {
-          // Contains just a list of strings of store names
-          storeNames.push(store);
+          // Add all store names 
+          if (store !== '_PLACEHOLDER_') {
+            storeNames.push(store); // Contains just a list of strings of store names     
+          }
         }
 
         // Populate store name and store information into an array
