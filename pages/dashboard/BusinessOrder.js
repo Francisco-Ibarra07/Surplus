@@ -24,15 +24,12 @@ export default class BusinessMenu extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('AddFood')}>
-          <Image style={styles.addButton}
-            source={require('./resources/plus.png')}
-          />
-        </TouchableOpacity>
-        <View style={styles.title}>
-          <Text>Active Items</Text>
-        </View>
+        {/* <Text onPress={() => this.props.navigation.navigate('AddFood')}>Add Item</Text> */}
         <ScrollView>
+          {/* Pending Items */}
+          <View style={styles.title}>
+            <Text>Pending Items</Text>
+          </View>
           <CheckBox
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
@@ -65,7 +62,14 @@ export default class BusinessMenu extends Component {
               borderBottomColor: 'lightgray'
             }}
           />
+
+          {/* Fulfilled Items */}
+          <View style={styles.title2}>
+            <Text>Fulfilled Items</Text>
+          </View>
+
         </ScrollView>
+
       </View>
     );
   }
@@ -88,11 +92,11 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     // marginBottom: 8,
   },
-  addButton: {
-    height: 40,
-    width: 40,
-    borderWidth: 2,
-    borderRadius: 20,
-    borderColor: 'black'
+  title2: {
+    borderBottomWidth: 1,
+    borderColor: 'lightgray',
+    paddingTop: 8,
+    paddingBottom: 8,
+    marginTop: 16,
   },
 })

@@ -154,7 +154,7 @@ export default class CustomerDashboard extends Component {
           {/* Food Title */}
           <View style={styles.titleContainer}>
             <Text>Online Restaurants</Text>
-            <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text>
+            {/* <Text style={{ color: '#D33B32', fontSize: 10 }}>See All</Text> */}
           </View>
 
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

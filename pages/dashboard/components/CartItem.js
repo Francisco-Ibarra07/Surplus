@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Button } from 'react-native';
 
 export default class CartItem extends Component {
 
@@ -31,6 +31,14 @@ export default class CartItem extends Component {
           <Text style={styles.descriptionText}>{this.props.name}</Text>
           <Text style={styles.descriptionText}>Quantity: {this.props.quantity}</Text>
           <Text style={styles.descriptionText}>Price: ${this.props.price}</Text>
+          <View style={styles.buttonBox}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={{ color: '#D33B32', fontSize: 16 }} onPress={() => alert('Edit')}>Edit</Text>
+            </TouchableOpacity>
+            <View style={styles.button}>
+              <Text style={{ color: '#D33B32', fontSize: 16 }} onPress={() => alert('Delete')}>Delete</Text>
+            </View>
+          </View>
         </View>
 
       </View>
@@ -90,4 +98,14 @@ const styles = StyleSheet.create({
   descriptionText: {
     marginBottom: 5,
   },
+  buttonBox: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 21,
+    // borderWidth: 1,
+    // borderColor: 'blue',
+  },
+  // buttonText: {
+  //   color: '#D33B32',
+  // },
 })
