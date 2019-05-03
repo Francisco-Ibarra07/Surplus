@@ -24,7 +24,6 @@ export default class BusinessMenu extends Component {
   render() {
     return (
       <View style={styles.container}>
-
         {/* <Text onPress={() => this.props.navigation.navigate('AddFood')}>Add Item</Text> */}
         <ScrollView>
           {/* Pending Items */}

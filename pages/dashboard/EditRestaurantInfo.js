@@ -41,10 +41,10 @@ export default class EditRestaurantInfo extends Component {
   populateUserInfo = () => {
 
     const user_id = firebase.auth().currentUser.uid;
-    const refToOwnersAccountInfo = firebase.database().ref('/business/owners/' + user_id + '/restaurant');
+    const refToRestaurantInfo = firebase.database().ref('/business/owners/' + user_id + '/restaurant');
     const activity = this
 
-    refToOwnersAccountInfo.on('value', function (snapshot) {
+    refToRestaurantInfo.on('value', function (snapshot) {
       const snap = snapshot.val();
 
       activity.setState({
@@ -67,7 +67,7 @@ export default class EditRestaurantInfo extends Component {
 
     const { updatedstoreName, updatedAddress, updatedPhone, updatedZipcode, updatedState, updatedCity } = this.state;
     const user_id = firebase.auth().currentUser.uid;
-    const refToOwnersAccountInfo = firebase.database().ref('/business/owners/' + user_id);
+    const refToRestaurantInfo = firebase.database().ref('/business/owners/' + user_id + '/restaurant');
 
     if (updatedstoreName === '' && updatedAddress === '' && updatedPhone === '' && updatedZipcode === '' && updatedState === '' && updatedCity === '') {
       alert('Make a change to save changes!');
@@ -75,7 +75,7 @@ export default class EditRestaurantInfo extends Component {
     }
 
     if (updatedstoreName !== '') {
-      refToOwnersAccountInfo.update({
+      refToRestaurantInfo.update({
         'store_name': updatedstoreName
       })
       this.setState({ storeName: updatedstoreName, updatedstoreName: '' });
@@ -83,35 +83,35 @@ export default class EditRestaurantInfo extends Component {
 
     if (updatedAddress !== '') {
       console.log("new address", updatedAddress)
-      refToOwnersAccountInfo.update({
+      refToRestaurantInfo.update({
         'address': updatedAddress
       })
       this.setState({ address: updatedAddress, updatedAddress: '' });
     }
 
     if (updatedPhone !== '') {
-      refToOwnersAccountInfo.update({
+      refToRestaurantInfo.update({
         'store_phone': updatedPhone
       })
       this.setState({ phone: updatedPhone, updatedPhone: '' });
     }
 
     if (updatedZipcode !== '') {
-      refToOwnersAccountInfo.update({
+      refToRestaurantInfo.update({
         'zipcode': updatedZipcode
       })
       this.setState({ zipcode: updatedZipcode, updatedZipcode: '' });
     }
 
     if (updatedState !== '') {
-      refToOwnersAccountInfo.update({
+      refToRestaurantInfo.update({
         'state': updatedState
       })
       this.setState({ state: updatedState, updatedState: '' });
     }
 
     if (updatedCity !== '') {
-      refToOwnersAccountInfo.update({
+      refToRestaurantInfo.update({
         'city': updatedState
       })
       this.setState({ city: updatedCity, updatedCity: '' });

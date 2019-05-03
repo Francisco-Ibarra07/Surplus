@@ -49,8 +49,8 @@
 		53B3658418D340A58EBBCC6E /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04E0A77CE5C84BC2BBDC5BB8 /* Ionicons.ttf */; };
 		617709D8122644EB83533A71 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3277F2A7D50B4AD4A74DD2B3 /* AntDesign.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		840F517D2272D9D500DF9522 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 840F517C2272D9D500DF9522 /* GoogleService-Info.plist */; };
 		840F51CF2272E9D600DF9522 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 840F51CE2272E9CB00DF9522 /* libRNImagePicker.a */; };
+		846FB682227CD9BA00FA711A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846FB681227CD9BA00FA711A /* GoogleService-Info.plist */; };
 		86D748FDF60941E39D7752C3 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57A7134D9709462CA9D618B3 /* SimpleLineIcons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B1E31C8F282F90D7AA62EB4A /* libPods-Surplus-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C812A6E5EBF90DE4D0D438F5 /* libPods-Surplus-tvOSTests.a */; };
@@ -417,8 +417,8 @@
 		78A162627C37DD3BC3E41D26 /* Pods-Surplus-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Surplus-tvOS/Pods-Surplus-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		840F517C2272D9D500DF9522 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Surplus/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		840F51C62272E9CB00DF9522 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
+		846FB681227CD9BA00FA711A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/FranciscosAppleID/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DCD0C6F4BD246B584D6A511 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		A1B4CF7F5654C435D8B56928 /* Pods-SurplusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurplusTests.debug.xcconfig"; path = "Target Support Files/Pods-SurplusTests/Pods-SurplusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -603,7 +603,7 @@
 		13B07FAE1A68108700A75B9A /* Surplus */ = {
 			isa = PBXGroup;
 			children = (
-				840F517C2272D9D500DF9522 /* GoogleService-Info.plist */,
+				846FB681227CD9BA00FA711A /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -885,11 +885,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 2W73N3D2X7;
+						DevelopmentTeam = F9ZX8H86N9;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 2W73N3D2X7;
+						DevelopmentTeam = F9ZX8H86N9;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -907,6 +907,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1302,7 +1303,7 @@
 				C630E9C81F47454DAACB8D56 /* FontAwesome5_Regular.ttf in Resources */,
 				1416649B4E934154924B8546 /* FontAwesome5_Solid.ttf in Resources */,
 				B2E47F4EDE21493EA7B80E66 /* Foundation.ttf in Resources */,
-				840F517D2272D9D500DF9522 /* GoogleService-Info.plist in Resources */,
+				846FB682227CD9BA00FA711A /* GoogleService-Info.plist in Resources */,
 				53B3658418D340A58EBBCC6E /* Ionicons.ttf in Resources */,
 				11290885AA394A17ABCA490E /* MaterialCommunityIcons.ttf in Resources */,
 				285EE1E0C489457C913E3561 /* MaterialIcons.ttf in Resources */,
@@ -1516,7 +1517,7 @@
 			baseConfigurationReference = A1B4CF7F5654C435D8B56928 /* Pods-SurplusTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 2W73N3D2X7;
+				DEVELOPMENT_TEAM = F9ZX8H86N9;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1550,7 +1551,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 2W73N3D2X7;
+				DEVELOPMENT_TEAM = F9ZX8H86N9;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
@@ -1581,7 +1582,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 2W73N3D2X7;
+				DEVELOPMENT_TEAM = F9ZX8H86N9;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
@@ -1595,8 +1596,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Surplus-Foods";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SurplusFoods;
 				PRODUCT_NAME = Surplus;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1607,7 +1609,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2W73N3D2X7;
+				DEVELOPMENT_TEAM = F9ZX8H86N9;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
@@ -1621,8 +1623,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Surplus-Foods";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SurplusFoods;
 				PRODUCT_NAME = Surplus;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
