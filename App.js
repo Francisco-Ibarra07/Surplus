@@ -49,6 +49,7 @@ import EditCustomerInfo from './pages/dashboard/EditCustomerInfo';
 
 // Business Owner's
 import AddFood from './pages/dashboard/AddFood';
+import BusinessEditFood from './pages/dashboard/BusinessEditFood'
 import BusinessVerify from './pages/dashboard/BusinessVerify';
 import BusinessHome from './pages/dashboard/BusinessHome';
 import BusinessMenu from './pages/dashboard/BusinessMenu';
@@ -213,6 +214,16 @@ export const Nav = createAppContainer(
           borderBottomWidth: 0,
         },
         title: 'Add New Item',
+        headerTintColor: '#D33B32',
+      }),
+    },
+    BusinessEditFood: {
+      screen: BusinessEditFood,
+      navigationOptions: () => ({
+        headerStyle: {
+          borderBottomWidth: 0,
+        },
+        title: 'Editing Food Item',
         headerTintColor: '#D33B32',
       }),
     },
