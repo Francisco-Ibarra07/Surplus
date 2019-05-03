@@ -25,7 +25,7 @@ export default class BusinessEditFood extends Component {
       updatedCategory: '',
       updatedQuantity: '',
       updatedPrice: '',
-      updatedPhoto: null,
+      updatedPhotoURL: null,
     }
   }
 
@@ -36,15 +36,81 @@ export default class BusinessEditFood extends Component {
   }
 
   updateFoodInfo = () => {
+    const { updatedItemName, updatedDescription, updatedCategory, updatedQuantity, updatedPrice, updatedPhotoURL } = this.state;
+
+    // Make sure there were changes that were actually made. Return if there weren't any changes
+    if (updatedItemName === '' && updatedDescription === '' && updatedCategory === '' && updatedQuantity === '' && updatedPrice === '' && updatedPhotoURL === null) {
+      alert('Make a change to save changes!');
+      return
+    }
+
+    let refPath = ''
+
+    // If the name of the item was renamed, we need to change the folder name
+    if (updatedItemName !== '') {
+
+      // Delete the old folder
+      const originalItemName = this.props.navigation.state.params.originalItemName;
+      const refToThisRestaurantsOnlineFolder = this.props.navigation.state.params.activeItemsRef;
+      refToThisRestaurantsOnlineFolder.child(originalItemName).remove();
+
+      // New reference path
+      refPath = refToThisRestaurantsOnlineFolder.path + '/' + updatedItemName
+      console.log("new ref path:", refPath)
+    }
+    else {
+      refPath = this.props.navigation.state.params.refToFoodItem
+      console.log("Stays the same: ", refPath)
+    }
+
+    // Get a reference to the folder of this food item
+    const refToFoodItem = firebase.database().ref(refPath)
+    console.log("Result:", refToFoodItem)
+
+    // If the name was updated, update the whole folder as well because the previous folder was deleted
+    if (updatedItemName !== '') {
+      refToFoodItem.update({
+        'item_name': updatedItemName,
+        'item_description': this.state.foodDescription,
+        'item_category': this.state.category,
+        'item_quantity': this.state.quantity,
+        'item_price': this.state.price,
+        'item_image': this.state.photoURL
+      })
+      this.setState({ itemName: updatedItemName, updatedItemName: '' })
+    }
+    if (updatedDescription !== '') {
+      refToFoodItem.update({ 'item_description': updatedDescription })
+      this.setState({ foodDescription: updatedDescription, updatedDescription: '' })
+    }
+    if (updatedCategory !== '') {
+      refToFoodItem.update({ 'item_category': updatedCategory })
+      this.setState({ category: updatedCategory, updatedCategory: '' })
+    }
+    if (updatedQuantity !== '') {
+      refToFoodItem.update({ 'item_quantity': updatedQuantity })
+      this.setState({ quantity: updatedQuantity, updatedQuantity: '' })
+    }
+    if (updatedPrice !== '') {
+      refToFoodItem.update({ 'item_price': updatedPrice })
+      this.setState({ price: updatedPrice, updatedPrice: '' })
+    }
+    // if (updatedPhotoURL !== '') {
+    //   refToFoodItem.update({ 'item_image': updatedPhotoURL })
+    //   this.setState({ photoURL: updatedPhotoURL, updatedPhotoURL: '' })
+    // }
+
+    alert('Information was updated!');
+    this.props.navigation.navigate('BusinessHome')
+  }
+
+  handlePhotoUpload = () => {
 
   }
 
   populateFoodInfo = () => {
-    const str = this.props.navigation.state.params.refToFoodItem
-    console.log("str", str)
-
+    const str = this.props.navigation.state.params.refToFoodItem // String path to the active item
     const ref = firebase.database().ref(str);
-    console.log("ref:", ref)
     const activity = this;
 
     ref.on('value', function (snapshot) {
@@ -76,7 +142,7 @@ export default class BusinessEditFood extends Component {
         <View style={styles.form}>
           <View style={styles.form1}>
             <View style={styles.form1a} onPress={this.handlePhotoUpload}>
-              {photoURL && (<Image source={{ uri: photoURL }} style={{ width: 65, height: 65 }} />)}
+              {(photoURL !== null) && (<Image source={{ uri: photoURL }} style={{ width: 65, height: 65 }} />)}
             </View>
             <View style={styles.form1b}>
               <Text>Item Name</Text>
@@ -84,7 +150,7 @@ export default class BusinessEditFood extends Component {
                 placeholder={this.state.itemName}
                 autoCorrect={false}
                 onChangeText={
-                  foodItemName => this.setState({ foodItemName })
+                  updatedItemName => this.setState({ updatedItemName })
                 } />
             </View>
           </View>
@@ -107,7 +173,7 @@ export default class BusinessEditFood extends Component {
             placeholder={this.state.category}
             autoCorrect={false}
             onChangeText={
-              category => this.setState({ category })
+              updatedCategory => this.setState({ updatedCategory })
             }
           />
           <TextInput style={styles.input}
@@ -115,7 +181,7 @@ export default class BusinessEditFood extends Component {
             autoCorrect={false}
             keyboardType="number-pad"
             onChangeText={
-              quantity => this.setState({ quantity })
+              updatedQuantity => this.setState({ updatedQuantity })
             }
           />
           <TextInput style={styles.input}
@@ -123,11 +189,11 @@ export default class BusinessEditFood extends Component {
             autoCorrect={false}
             keyboardType="decimal-pad"
             onChangeText={
-              price => this.setState({ price })
+              updatedPrice => this.setState({ updatedPrice })
             }
           />
 
-          {/* <Button title="Upload photo" onPress={this.handlePhotoUpload} /> */}
+          <Button title="Upload New Photo" onPress={this.handlePhotoUpload} />
           <RedButton onPress={this.updateFoodInfo} buttonText='Save Changes' />
         </View>
 
