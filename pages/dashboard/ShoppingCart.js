@@ -72,14 +72,14 @@ export default class ShoppingCart extends Component {
           currentItem = individualCartItems[i]
 
           // sum = sum + (price * quantity)
-          sumOfAllPrices = Math.round((sumOfAllPrices + (parseInt(currentItem.item_price) * parseInt(currentItem.item_quantity))) * 100) / 100
+          sumOfAllPrices = Math.round((sumOfAllPrices + (parseInt(currentItem.item_price) * parseInt(currentItem.item_quantity_desired))) * 100) / 100
 
           // name, quantity, price
           cartItemComponents.push(
             <CartItem
               key={i}
               name={currentItem.item_name}
-              quantity={currentItem.item_quantity}
+              quantity={currentItem.item_quantity_desired}
               price={currentItem.item_price}
               imageURL={currentItem.item_image}
               refToShoppingCart={refToShoppingCart}
@@ -87,7 +87,6 @@ export default class ShoppingCart extends Component {
             />
           )
         }
-        console.log(cartItemComponents)
 
         const salesTax = 0.095
         const convenienceFee = 0.02

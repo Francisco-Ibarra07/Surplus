@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, Button } from 'react-native';
+import { View, Text, Image, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import firebase from 'react-native-firebase'
 
 export default class FoodItem extends Component {
@@ -8,6 +8,7 @@ export default class FoodItem extends Component {
     super(props);
     this.state = {
       cartItemIsAdded: false,
+      quantityDesired: 0
     }
   }
 
@@ -51,10 +52,29 @@ export default class FoodItem extends Component {
       'item_image': this.props.foodItemImage,
       'item_description': this.props.foodItemDescription,
       'item_category': this.props.foodItemCategory,
-      'item_quantity': this.props.foodItemQuantity,
+      'item_quantity_desired': this.state.quantityDesired,
+      'item_quantity_original': this.props.foodItemQuantity,
       'item_price': this.props.foodItemPrice,
     })
+  }
 
+  incrementQuantity = () => {
+    const max = parseInt(this.props.foodItemQuantity)
+    if (this.state.quantityDesired === max) {
+      return
+    }
+    else {
+      this.setState({ quantityDesired: this.state.quantityDesired + 1 })
+    }
+  }
+
+  decrementQuantity = () => {
+    if (this.state.quantityDesired === 0) {
+      return
+    }
+    else {
+      this.setState({ quantityDesired: this.state.quantityDesired - 1 })
+    }
   }
 
   componentDidMount() {
@@ -84,6 +104,17 @@ export default class FoodItem extends Component {
                 <Text style={styles.itemDescription1}>{this.props.foodItemDescription}</Text>
                 <Text style={styles.itemDescription}>Quantity Left: {this.props.foodItemQuantity}</Text>
                 <Text style={styles.itemDescription}>Price: ${this.props.foodItemPrice}</Text>
+
+                <TouchableOpacity style={styles.button} onPress={this.incrementQuantity}>
+                  <Text style={{ fontSize: 15 }}>+</Text>
+                </TouchableOpacity>
+
+                <Text style={{ alignItems: 'center' }}>Quantity desired: {this.state.quantityDesired}</Text>
+
+                <TouchableOpacity style={styles.button} onPress={this.decrementQuantity}>
+                  <Text style={{ fontSize: 15 }}>-</Text>
+                </TouchableOpacity>
+
                 <View style={styles.button}>
                   {!cartItemIsAdded && (<Button title="Add to cart" onPress={this.addItemToCartFolder} />)}
                   {cartItemIsAdded && (<Text style={{ color: '#D33B32', fontSize: 16 }} >Added to cart!</Text>)}
