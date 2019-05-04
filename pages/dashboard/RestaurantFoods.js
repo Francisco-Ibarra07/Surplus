@@ -40,11 +40,13 @@ export default class RestaurantFoods extends Component {
       listView.push(
         <FoodItem
           key={i}
+          navigation={this.props.navigation}
           foodItemName={foodItems[i].item_name}
           foodItemDescription={foodItems[i].item_description}
           foodItemImage={foodItems[i].item_image}
           foodItemQuantity={foodItems[i].item_quantity}
           foodItemPrice={foodItems[i].item_price}
+          foodItemCategory={foodItems[i].item_category}
         />
       );
     }
