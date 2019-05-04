@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     height: '100%',
     // marginLeft: 5,
     resizeMode: 'contain',
-    backgroundColor: '#f3f3f3',
     width: '100%',
     borderRadius: 10,
   },
