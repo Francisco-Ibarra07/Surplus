@@ -73,9 +73,9 @@ export default class CustomerDashboard extends Component {
         activity.setState({ emptyTextView: false });
         // Store all the names of the stores in the 'online' folder as keys in an array
         for (store in snapOfOnlineRestaurantList) {
-          // Add all store names 
+          // Add all store names
           if (store !== '_PLACEHOLDER_') {
-            storeNames.push(store); // Contains just a list of strings of store names     
+            storeNames.push(store); // Contains just a list of strings of store names
           }
         }
 
@@ -174,7 +174,6 @@ const styles = StyleSheet.create({
   // Title
   titleContainer: {
     alignItems: 'center',
-    //borderWidth: 1,
     flex: 1,
     flexDirection: 'row',
     margin: 25,
