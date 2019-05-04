@@ -131,7 +131,7 @@ export default class CustomerDashboard extends Component {
     const { search } = this.state;
     return (
       <View>
-        <View>
+        <ScrollView>
           <SearchBar
             platform="ios"
             placeholder="What to eat, what to eat?"
@@ -151,8 +151,6 @@ export default class CustomerDashboard extends Component {
               color: '#D33B32'
             }}
           />
-        </View>
-        <ScrollView>
           {/* Food Title */}
           <View style={styles.titleContainer}>
             <Text>Online Restaurants</Text>
