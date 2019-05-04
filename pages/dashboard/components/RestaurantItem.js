@@ -13,8 +13,9 @@ export default class RestaurantItem extends Component {
   handleItemPress = () => {
     const list = this.props.storeItemsList;
     const storeName = this.props.storeObject.store_info.store_name;
+    const anonymousFlag = this.props.navigation.state.params.anonymousFlag;
     console.log(storeName);
-    this.props.navigation.navigate('RestaurantFoods', { storeItemsList: list, storeChosen: storeName });
+    this.props.navigation.navigate('RestaurantFoods', { storeItemsList: list, storeChosen: storeName, anonymousFlag: anonymousFlag });
   }
 
   render() {

@@ -99,6 +99,7 @@ export default class CustomerDashboard extends Component {
           restaurantItems.push(
             <RestaurantItem
               key={i}
+              anonymousFlag={activity.props.navigation.state.params.anonymousFlag}
               navigation={activity.props.navigation}
               storeObject={storeObjectList[i]}
               storeItemsList={storeItemsList[i]}
