@@ -1,14 +1,43 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, Button } from 'react-native';
+import firebase from 'react-native-firebase'
 
 export default class FoodItem extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      cartItemIsAdded: false,
+    }
   }
 
   handleFoodItemPress = () => {
 
+  }
+
+  addItemToCartFolder = () => {
+
+    // If the item is already added in the cart, return
+    if (this.state.cartItemIsAdded) {
+      return
+    }
+
+    // Mark this item as 'Added'
+    this.setState({ cartItemIsAdded: true })
+
+    // Create a folder for this new food item into the user's shopping cart
+    const userId = firebase.auth().currentUser.uid;
+    const foodItemName = this.props.foodItemName;
+    const refToItemInCart = firebase.database().ref('/customers/' + userId + '/shoppingcart/' + foodItemName)
+
+    refToItemInCart.update({
+      'item_name': foodItemName,
+      'item_image': this.props.foodItemImage,
+      'item_description': this.props.foodItemDescription,
+      'item_category': this.props.foodItemCategory,
+      'item_quantity': this.props.foodItemQuantity,
+      'item_price': this.props.foodItemPrice,
+    })
   }
 
   render() {
@@ -33,7 +62,8 @@ export default class FoodItem extends Component {
                 <Text>Quantity Left: {this.props.foodItemQuantity}</Text>
                 <Text>Price: ${this.props.foodItemPrice}</Text>
                 <View style={styles.button}>
-                  <Text style={{ color: '#D33B32', fontSize: 16 }} onPress={() => alert('Add')}>Add</Text>
+                  <Button title="Add to cart" onPress={this.addItemToCartFolder} />
+                  {/* <Text style={{ color: '#D33B32', fontSize: 16 }} onPress={() => this.addItemToCartFolder}>Add to cart</Text> */}
                 </View>
               </View>
             </View>
