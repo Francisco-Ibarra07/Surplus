@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, TouchableOpacity, TouchableHighlight } from 'react-native';
 import firebase from 'react-native-firebase';
+import Swipeout from 'react-native-swipeout';
 
 export default class ActiveItem extends Component {
 
@@ -8,7 +9,7 @@ export default class ActiveItem extends Component {
     super(props);
   }
 
-  // This method deletes the active item that was clicked on from the database 
+  // This method deletes the active item that was clicked on from the database
   handleDelete = () => {
     const activeItemsRef = this.props.onlineItemsRef;
     activeItemsRef.child(this.props.itemName).remove();
@@ -24,15 +25,32 @@ export default class ActiveItem extends Component {
   }
 
   render() {
+
+    // Buttons
+    var swipeoutBtns = [
+      {
+        text: 'Edit',
+        backgroundColor: '#0078D7',
+        onPress: () => { this.handleEdit() }
+      },
+      {
+        text: 'Delete',
+        backgroundColor: '#D33B32',
+        onPress: () => { this.handleDelete() },
+      }
+    ]
+
     return (
       <View style={styles.activeItemContainer}>
-        <Text style={styles.title}>{this.props.itemName}</Text>
-        <View style={styles.flexRow}>
-          <Text style={styles.text}>Active Order #{this.props.activeOrderNumber}</Text>
-          <Text style={styles.text}>Quantity Left: {this.props.quantityLeft}</Text>
-          <Button title="Edit" onPress={this.handleEdit} />
-          <Button title="Delete" onPress={this.handleDelete} />
-        </View>
+        <Swipeout right={swipeoutBtns}>
+          <View style={styles.list}>
+            <Text style={styles.title}>{this.props.itemName}</Text>
+            <View style={styles.flexRow}>
+              <Text style={styles.text}>Active Order #{this.props.activeOrderNumber}</Text>
+              <Text style={styles.text}>Quantity Left: {this.props.quantityLeft}</Text>
+            </View>
+          </View>
+        </Swipeout>
       </View>
     );
   }
@@ -41,8 +59,9 @@ export default class ActiveItem extends Component {
 const styles = StyleSheet.create({
   activeItemContainer: {
     // borderWidth: 1,
-    // height: 75,
-    marginBottom: 5,
+    height: 60,
+    paddingBottom: 8,
+    justifyContent: 'center',
   },
   flexRow: {
     borderBottomWidth: 1,
@@ -52,11 +71,19 @@ const styles = StyleSheet.create({
     fontSize: 8,
   },
   title: {
+    fontSize: 16,
     fontWeight: 'bold',
   },
   text: {
     marginRight: 8,
     marginTop: 5,
-    marginBottom: 5,
-  }
+    // marginBottom: 5,
+  },
+  list: {
+    height: '100%',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderBottomWidth: .5,
+    borderColor: 'lightgray',
+  },
 });
