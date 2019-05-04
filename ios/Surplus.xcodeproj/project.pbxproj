@@ -50,13 +50,13 @@
 		617709D8122644EB83533A71 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3277F2A7D50B4AD4A74DD2B3 /* AntDesign.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		840F51CF2272E9D600DF9522 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 840F51CE2272E9CB00DF9522 /* libRNImagePicker.a */; };
-		846FB682227CD9BA00FA711A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846FB681227CD9BA00FA711A /* GoogleService-Info.plist */; };
 		86D748FDF60941E39D7752C3 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57A7134D9709462CA9D618B3 /* SimpleLineIcons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B1E31C8F282F90D7AA62EB4A /* libPods-Surplus-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C812A6E5EBF90DE4D0D438F5 /* libPods-Surplus-tvOSTests.a */; };
 		B2E47F4EDE21493EA7B80E66 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 036E473D55DB4701A2A598A6 /* Foundation.ttf */; };
 		BD3D1A0F321162907163909C /* libPods-SurplusTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3439226163B0911F5FAAA1F7 /* libPods-SurplusTests.a */; };
 		BD5E462A221F8AED00D14C81 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5E4628221F8A1B00D14C81 /* libRNGestureHandler.a */; };
+		BDB487D5227D29350018F9AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDB487AB227D29350018F9AC /* GoogleService-Info.plist */; };
 		C630E9C81F47454DAACB8D56 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6876E00DD53540559A90C018 /* FontAwesome5_Regular.ttf */; };
 		CB4E974623D34B2C1277ABE0 /* libPods-Surplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E8AE8C8A303AB4CB836CA5 /* libPods-Surplus.a */; };
 		D01A848F02C1436683D57554 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBF7878E89646DF99321D93 /* libSplashScreen.a */; };
@@ -418,13 +418,13 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		840F51C62272E9CB00DF9522 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
-		846FB681227CD9BA00FA711A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/FranciscosAppleID/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DCD0C6F4BD246B584D6A511 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		A1B4CF7F5654C435D8B56928 /* Pods-SurplusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurplusTests.debug.xcconfig"; path = "Target Support Files/Pods-SurplusTests/Pods-SurplusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B1626A8412D1494397C35731 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		B4DB9E5731347425B581E508 /* Pods-Surplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.release.xcconfig"; path = "Target Support Files/Pods-Surplus/Pods-Surplus.release.xcconfig"; sourceTree = "<group>"; };
 		BD5E45FD221F8A1A00D14C81 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
+		BDB487AB227D29350018F9AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C812A6E5EBF90DE4D0D438F5 /* libPods-Surplus-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Surplus-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA5B89AEB2558E44F23E592D /* Pods-Surplus-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Surplus-tvOSTests/Pods-Surplus-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D08E288D40CFD8CA5202B11E /* Pods-Surplus-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Surplus-tvOS/Pods-Surplus-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -603,7 +603,7 @@
 		13B07FAE1A68108700A75B9A /* Surplus */ = {
 			isa = PBXGroup;
 			children = (
-				846FB681227CD9BA00FA711A /* GoogleService-Info.plist */,
+				BDB487AB227D29350018F9AC /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1303,7 +1303,7 @@
 				C630E9C81F47454DAACB8D56 /* FontAwesome5_Regular.ttf in Resources */,
 				1416649B4E934154924B8546 /* FontAwesome5_Solid.ttf in Resources */,
 				B2E47F4EDE21493EA7B80E66 /* Foundation.ttf in Resources */,
-				846FB682227CD9BA00FA711A /* GoogleService-Info.plist in Resources */,
+				BDB487D5227D29350018F9AC /* GoogleService-Info.plist in Resources */,
 				53B3658418D340A58EBBCC6E /* Ionicons.ttf in Resources */,
 				11290885AA394A17ABCA490E /* MaterialCommunityIcons.ttf in Resources */,
 				285EE1E0C489457C913E3561 /* MaterialIcons.ttf in Resources */,

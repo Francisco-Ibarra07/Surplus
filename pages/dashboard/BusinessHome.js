@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import firebase from 'react-native-firebase';
 import ActiveItem from './components/ActiveItem';
+import Swipeout from 'react-native-swipeout';
 
 export default class BusinessHome extends Component {
 
@@ -106,6 +107,20 @@ export default class BusinessHome extends Component {
   }
 
   render() {
+
+    // Buttons
+    var swipeoutBtns = [
+      {
+        text: 'Edit',
+        backgroundColor: '#0078D7',
+        onPress: () => { this.handleEdit }
+      },
+      {
+        text: 'Delete',
+        backgroundColor: '#D33B32',
+      }
+    ]
+
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.props.navigation.navigate('AddFood')}>
@@ -122,6 +137,12 @@ export default class BusinessHome extends Component {
             {this.state.emptyTextView && (<Text> You currently have no active items </Text>)}
           </View>
           {!this.state.emptyTextView && this.state.activeItemsView}
+
+          {/* <Swipeout right={swipeoutBtns}>
+            <View style={styles.list}>
+              <Text>Swipe me left</Text>
+            </View>
+          </Swipeout> */}
         </ScrollView>
 
       </View>
@@ -147,10 +168,17 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   addButton: {
-    height: 40,
-    width: 40,
-    borderWidth: 2,
-    borderRadius: 20,
+    height: 30,
+    width: 30,
+    // borderWidth: 2,
+    // borderRadius: 20,
     borderColor: 'black'
+  },
+  list: {
+    height: 60,
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderBottomWidth: .5,
+    borderColor: 'lightgray',
   },
 })

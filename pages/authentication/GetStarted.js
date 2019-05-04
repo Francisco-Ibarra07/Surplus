@@ -28,7 +28,6 @@ export default class GetStarted extends Component {
     this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: true, });
   }
 
-
   render() {
     return (
       <View style={styles.container}>
