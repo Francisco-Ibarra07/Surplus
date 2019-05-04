@@ -10,20 +10,13 @@ export default class CartItem extends Component {
     }
   }
 
-  handleCartItemPress = () => {
-
-  }
 
   render() {
     return (
       <View style={styles.cart}>
         {/* Image */}
         <View style={styles.cartPreview}>
-          <Image style={styles.foodImage}
-            source={require('../../dashboard/resources/burrito.jpg')}
-          // source={this.props.source}
-          // source={require(this.props.source)}
-          />
+          <Image style={styles.foodImage} source={{ uri: this.props.imageURL }} />
         </View>
 
         {/* Description */}

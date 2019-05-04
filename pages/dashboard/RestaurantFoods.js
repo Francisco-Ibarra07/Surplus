@@ -8,7 +8,6 @@ export default class RestaurantFoods extends Component {
     super(props);
     this.state = {
       foodItemsView: [],
-      foodItemsList: [],
       currentStoreName: this.props.navigation.state.params.storeChosen,
     }
     this.populateFoodItemsList = this.populateFoodItemsList.bind(this);

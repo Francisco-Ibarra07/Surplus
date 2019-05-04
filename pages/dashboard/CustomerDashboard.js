@@ -61,6 +61,7 @@ export default class CustomerDashboard extends Component {
 
     // Grab all restaurants in the 'online' folder
     ref.on('value', function (snapshot) {
+
       const snapOfOnlineRestaurantList = snapshot.val();
       var storeNames = [];
       var restaurantItems = [];

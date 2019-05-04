@@ -12,8 +12,81 @@ import {
 } from 'react-native';
 import RedButton from '../components/RedButton';
 import CartItem from './components/CartItem';
+import firebase from 'react-native-firebase'
 
 export default class ShoppingCart extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      emptyTextView: false,
+      cartItemsList: []
+    }
+  }
+
+  static navigationOptions = {
+    headerStyle: {
+      borderBottomWidth: 0,
+    }
+  }
+
+  populateShoppingCart = () => {
+    const userId = firebase.auth().currentUser.uid;
+    const refToShoppingCart = firebase.database().ref('/customers/users/' + userId + '/shoppingcart')
+    const activity = this
+    refToShoppingCart.on('value', function (snapshot) {
+
+      // If shopping cart is empty, display message and return
+      if (snapshot._childKeys.length === 0) {
+        activity.setState({ emptyTextView: true });
+        console.log("list is empty")
+        console.log("list:", snapshot)
+        console.log("refToShoppingCart:", refToShoppingCart)
+        console.log("id:", userId)
+      }
+      else {
+        activity.setState({ emptyTextView: false });
+
+        const snap = snapshot.val()
+
+        let keys = []
+        for (let item in snap) {
+          keys.push(item)
+        }
+
+        let individualCartItems = []
+        for (let i = 0; i < keys.length; i++) {
+          individualCartItems.push(snap[keys[i]])
+        }
+
+        let cartItemComponents = []
+        let currentItem = undefined
+        for (let i = 0; i < individualCartItems.length; i++) {
+          currentItem = individualCartItems[i]
+
+          // name, quantity, price
+          cartItemComponents.push(
+            <CartItem
+              key={i}
+              name={currentItem.item_name}
+              quantity={currentItem.item_quantity}
+              price={currentItem.item_price}
+              imageURL={currentItem.item_image}
+            ></CartItem>
+          )
+        }
+
+        console.log(cartItemComponents)
+
+        activity.setState({ cartItemsList: cartItemComponents })
+      } // end of 'else'
+    }) // end of 'on'
+  }
+
+  componentDidMount() {
+    this.populateShoppingCart()
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -29,11 +102,9 @@ export default class ShoppingCart extends Component {
           />
         </View>
 
-        <CartItem name='Taco' quantity='2' price='5.00' />
-        <CartItem name='Chicken' quantity='1' price='2.00' />
-        <CartItem name='Sandwich' quantity='2' price='8.00' />
-        <CartItem name='Taco' quantity='2' price='5.00' />
-        <CartItem name='Taco' quantity='2' price='5.00' />
+        {this.state.emptyTextView && (<Text> You currently have no items in your shopping cart </Text>)}
+
+        {!this.state.emptyTextView && this.state.cartItemsList}
 
         <View style={styles.totalBox}>
           <Text style={styles.total}>Convenience Fee: $0.50</Text>
