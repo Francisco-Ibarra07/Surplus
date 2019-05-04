@@ -10,6 +10,16 @@ export default class CartItem extends Component {
     }
   }
 
+  // This method deletes the cart item that was clicked on from the user's shopping cart folder
+  handleDelete = () => {
+    const refToShoppingCart = this.props.refToShoppingCart;
+    const itemName = this.props.name;
+    refToShoppingCart.child(itemName).remove()
+  }
+
+  handleEdit = () => {
+
+  }
 
   render() {
     return (
@@ -25,15 +35,12 @@ export default class CartItem extends Component {
           <Text style={styles.descriptionText}>Quantity: {this.props.quantity}</Text>
           <Text style={styles.descriptionText}>Price: ${this.props.price}</Text>
           <View style={styles.buttonBox}>
-            <TouchableOpacity style={styles.button}>
-              <Text style={{ color: '#D33B32', fontSize: 16 }} onPress={() => alert('Edit')}>Edit</Text>
-            </TouchableOpacity>
             <View style={styles.button}>
-              <Text style={{ color: '#D33B32', fontSize: 16 }} onPress={() => alert('Delete')}>Delete</Text>
+              {/* <Button title="Edit" onPress={this.handleEdit} /> */}
+              <Button title="Delete" onPress={this.handleDelete} />
             </View>
           </View>
         </View>
-
       </View>
     );
   }

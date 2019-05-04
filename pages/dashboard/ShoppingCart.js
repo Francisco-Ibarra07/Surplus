@@ -41,11 +41,13 @@ export default class ShoppingCart extends Component {
 
       // If shopping cart is empty, display message and return
       if (snapshot._childKeys.length === 0) {
-        activity.setState({ emptyTextView: true });
-        console.log("list is empty")
-        console.log("list:", snapshot)
-        console.log("refToShoppingCart:", refToShoppingCart)
-        console.log("id:", userId)
+        activity.setState({
+          emptyTextView: true,
+          convenienceFee: 0,
+          tax: 0,
+          total: 0,
+          cartItemsList: []
+        });
       }
       else {
         activity.setState({ emptyTextView: false });
@@ -72,8 +74,6 @@ export default class ShoppingCart extends Component {
           // sum = sum + (price * quantity)
           sumOfAllPrices = Math.round((sumOfAllPrices + (parseInt(currentItem.item_price) * parseInt(currentItem.item_quantity))) * 100) / 100
 
-          console.log(sumOfAllPrices)
-          console.log("typeof:", typeof (sumOfAllPrices))
           // name, quantity, price
           cartItemComponents.push(
             <CartItem
@@ -82,9 +82,12 @@ export default class ShoppingCart extends Component {
               quantity={currentItem.item_quantity}
               price={currentItem.item_price}
               imageURL={currentItem.item_image}
+              refToShoppingCart={refToShoppingCart}
+              navigation={activity.props.navigation}
             />
           )
         }
+        console.log(cartItemComponents)
 
         const salesTax = 0.095
         const convenienceFee = 0.02
@@ -134,10 +137,7 @@ export default class ShoppingCart extends Component {
           <Text style={styles.total}>Total: ${this.state.total}</Text>
         </View>
 
-        <RedButton
-          style={{ marginBottom: 16 }}
-          buttonText='Done'
-        />
+        <RedButton style={{ marginBottom: 16 }} buttonText='Done' />
 
       </ScrollView >
     );
