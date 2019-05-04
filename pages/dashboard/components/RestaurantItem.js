@@ -30,7 +30,7 @@ export default class RestaurantItem extends Component {
           <View style={styles.foodDescription}>
             <View style={styles.foodTitle}>
               <Text style={styles.restaurantName}>{this.props.storeObject.store_info.store_name}</Text>
-              <Text>Location: 234 N {this.props.storeObject.store_info.address}</Text>
+              <Text>Location: {this.props.storeObject.store_info.address}</Text>
             </View>
           </View>
 
