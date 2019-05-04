@@ -20,7 +20,10 @@ export default class ShoppingCart extends Component {
     super(props);
     this.state = {
       emptyTextView: false,
-      cartItemsList: []
+      cartItemsList: [],
+      tax: 0,
+      total: 0,
+      convenienceFee: 0,
     }
   }
 
@@ -61,9 +64,16 @@ export default class ShoppingCart extends Component {
 
         let cartItemComponents = []
         let currentItem = undefined
+        let sumOfAllPrices = 0
+
         for (let i = 0; i < individualCartItems.length; i++) {
           currentItem = individualCartItems[i]
 
+          // sum = sum + (price * quantity)
+          sumOfAllPrices = Math.round((sumOfAllPrices + (parseInt(currentItem.item_price) * parseInt(currentItem.item_quantity))) * 100) / 100
+
+          console.log(sumOfAllPrices)
+          console.log("typeof:", typeof (sumOfAllPrices))
           // name, quantity, price
           cartItemComponents.push(
             <CartItem
@@ -72,13 +82,23 @@ export default class ShoppingCart extends Component {
               quantity={currentItem.item_quantity}
               price={currentItem.item_price}
               imageURL={currentItem.item_image}
-            ></CartItem>
+            />
           )
         }
 
-        console.log(cartItemComponents)
+        const salesTax = 0.095
+        const convenienceFee = 0.02
 
-        activity.setState({ cartItemsList: cartItemComponents })
+        const taxAmount = Math.round((sumOfAllPrices * salesTax) * 100) / 100
+        const convenienceFeeAmount = Math.round((sumOfAllPrices * convenienceFee) * 100) / 100
+        const totalAmountDue = Math.round((sumOfAllPrices + taxAmount + convenienceFeeAmount) * 100) / 100
+
+        activity.setState({
+          cartItemsList: cartItemComponents,
+          total: totalAmountDue,
+          convenienceFee: convenienceFeeAmount,
+          tax: taxAmount
+        })
       } // end of 'else'
     }) // end of 'on'
   }
@@ -102,14 +122,16 @@ export default class ShoppingCart extends Component {
           />
         </View>
 
+        {/* This shows if the cart is empty */}
         {this.state.emptyTextView && (<Text> You currently have no items in your shopping cart </Text>)}
 
+        {/* This shows if the shopping cart folder is not empty */}
         {!this.state.emptyTextView && this.state.cartItemsList}
 
         <View style={styles.totalBox}>
-          <Text style={styles.total}>Convenience Fee: $0.50</Text>
-          <Text style={styles.total}>Tax: $1.20</Text>
-          <Text style={styles.total}>Total: $7.70</Text>
+          <Text style={styles.total}>Convenience Fee: ${this.state.convenienceFee}</Text>
+          <Text style={styles.total}>Tax: ${this.state.tax}</Text>
+          <Text style={styles.total}>Total: ${this.state.total}</Text>
         </View>
 
         <RedButton
