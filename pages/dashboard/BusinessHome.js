@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   Button,
@@ -72,21 +71,21 @@ export default class BusinessHome extends Component {
       else {
         activity.setState({ emptyTextView: false });
         // Get string names of available food items
-        var foodNames = [];
+        let foodNames = [];
         for (food in snap) {
           foodNames.push(food);
         }
 
         // Grab objects and use the string names as the key
-        var individualFoodObjects = [];
-        for (var i = 0; i < foodNames.length; i++) {
+        let individualFoodObjects = [];
+        for (let i = 0; i < foodNames.length; i++) {
           individualFoodObjects.push(snap[foodNames[i]]);
         }
 
         // Create a list of ActiveItem's to be shown by the View
-        var activeItems = [];
-        var currentFood;
-        for (var i = 0; i < individualFoodObjects.length; i++) {
+        let activeItems = [];
+        let currentFood;
+        for (let i = 0; i < individualFoodObjects.length; i++) {
           currentFood = individualFoodObjects[i];
 
           activeItems.push(
