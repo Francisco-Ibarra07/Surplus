@@ -22,7 +22,7 @@ export default class EditRestaurantInfo extends Component {
       city: '',
       state: '',
       logoURL: null,
-      updatedstoreName: '',
+      updatedStoreName: '',
       updatedAddress: '',
       updatedPhone: '',
       updatedZipcode: '',
@@ -65,20 +65,29 @@ export default class EditRestaurantInfo extends Component {
 
   updateUserInfo = () => {
 
-    const { updatedstoreName, updatedAddress, updatedPhone, updatedZipcode, updatedState, updatedCity } = this.state;
+    const { updatedStoreName, updatedAddress, updatedPhone, updatedZipcode, updatedState, updatedCity } = this.state;
     const user_id = firebase.auth().currentUser.uid;
     const refToRestaurantInfo = firebase.database().ref('/business/owners/' + user_id + '/restaurant');
 
-    if (updatedstoreName === '' && updatedAddress === '' && updatedPhone === '' && updatedZipcode === '' && updatedState === '' && updatedCity === '') {
+    if (updatedStoreName === '' && updatedAddress === '' && updatedPhone === '' && updatedZipcode === '' && updatedState === '' && updatedCity === '') {
       alert('Make a change to save changes!');
       return;
     }
 
-    if (updatedstoreName !== '') {
+    let name = updatedStoreName
+
+    if (name !== '') {
+      // Remove any illegal characters before updating
+      name = name.replace(".", "")
+      name = name.replace("#", "")
+      name = name.replace("$", "")
+      name = name.replace("[", "")
+      name = name.replace("]", "")
+
       refToRestaurantInfo.update({
-        'store_name': updatedstoreName
+        'store_name': name
       })
-      this.setState({ storeName: updatedstoreName, updatedstoreName: '' });
+      this.setState({ storeName: name, updatedStoreName: '' });
     }
 
     if (updatedAddress !== '') {
@@ -133,7 +142,7 @@ export default class EditRestaurantInfo extends Component {
         <View style={styles.form}>
           <Text style={styles.p}>Store Name</Text>
           <TextInput style={styles.input}
-            onChangeText={updatedstoreName => this.setState({ updatedstoreName })}
+            onChangeText={updatedStoreName => this.setState({ updatedStoreName })}
             placeholder={this.state.storeName}
             autoCorrect={false}
           />

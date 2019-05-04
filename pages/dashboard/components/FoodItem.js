@@ -80,10 +80,10 @@ export default class FoodItem extends Component {
 
             <View style={styles.foodItemDescription}>
               <View style={styles.foodTitle}>
-                <Text style={styles.itemName}>Name: {this.props.foodItemName}</Text>
-                <Text>Description: {this.props.foodItemDescription}</Text>
-                <Text>Quantity Left: {this.props.foodItemQuantity}</Text>
-                <Text>Price: ${this.props.foodItemPrice}</Text>
+                <Text style={styles.itemName}>{this.props.foodItemName}</Text>
+                <Text style={styles.itemDescription1}>{this.props.foodItemDescription}</Text>
+                <Text style={styles.itemDescription}>Quantity Left: {this.props.foodItemQuantity}</Text>
+                <Text style={styles.itemDescription}>Price: ${this.props.foodItemPrice}</Text>
                 <View style={styles.button}>
                   {!cartItemIsAdded && (<Button title="Add to cart" onPress={this.addItemToCartFolder} />)}
                   {cartItemIsAdded && (<Text style={{ color: '#D33B32', fontSize: 16 }} >Added to cart!</Text>)}
@@ -103,20 +103,20 @@ const styles = StyleSheet.create({
     color: 'blue',
   },
   itemName: {
-    // fontSize: 16,
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 2,
   },
   foodItemContainer: {
     //borderWidth: 1,
-    height: 135,
+    height: 150,
     marginBottom: 20,
     flex: 1,
   },
   foodItem: {
-    borderColor: 'black',
+    borderColor: 'gray',
     borderRadius: 10,
-    borderWidth: 1,
-
-    paddingTop: 5,
+    borderWidth: 0.5,
     marginLeft: 25,
     marginRight: 25,
     // marginBottom: 20,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
   foodItemImageChild: {
     height: '100%',
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     width: '100%',
     // borderWidth: 1,
     // borderColor: 'red',
@@ -143,24 +143,34 @@ const styles = StyleSheet.create({
   desciption: {
     flex: 1,
     flexDirection: 'row',
-
     // borderWidth: 1,
     // borderColor: 'red',
-    margin: 5,
+    paddingTop: 5,
+    paddingLeft: 5,
+    paddingBottom: 5,
   },
   foodItemDescription: {
     height: '100%',
     // borderWidth: 1,
     // borderColor: 'blue',
-    paddingLeft: 15,
+    paddingLeft: 10,
+    paddingRight: 10,
     // width: '60%',
     flex: 1,
-    // justifyContent: 'center',
+    justifyContent: 'center',
+  },
+  itemDescription1: {
+    fontSize: 12,
+    marginBottom: 5,
+  },
+  itemDescription: {
+    fontSize: 12,
+    marginBottom: 2,
   },
   foodItemStock2: {
     flexDirection: 'row',
   },
   button: {
-    marginTop: 10,
+    marginTop: 4,
   },
 });

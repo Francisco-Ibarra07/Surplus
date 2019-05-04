@@ -73,9 +73,9 @@ export default class CustomerDashboard extends Component {
         activity.setState({ emptyTextView: false });
         // Store all the names of the stores in the 'online' folder as keys in an array
         for (store in snapOfOnlineRestaurantList) {
-          // Add all store names 
+          // Add all store names
           if (store !== '_PLACEHOLDER_') {
-            storeNames.push(store); // Contains just a list of strings of store names     
+            storeNames.push(store); // Contains just a list of strings of store names
           }
         }
 
@@ -132,7 +132,7 @@ export default class CustomerDashboard extends Component {
     const { search } = this.state;
     return (
       <View>
-        <View>
+        <ScrollView>
           <SearchBar
             platform="ios"
             placeholder="What to eat, what to eat?"
@@ -152,8 +152,6 @@ export default class CustomerDashboard extends Component {
               color: '#D33B32'
             }}
           />
-        </View>
-        <ScrollView>
           {/* Food Title */}
           <View style={styles.titleContainer}>
             <Text>Online Restaurants</Text>
@@ -175,7 +173,6 @@ const styles = StyleSheet.create({
   // Title
   titleContainer: {
     alignItems: 'center',
-    //borderWidth: 1,
     flex: 1,
     flexDirection: 'row',
     margin: 25,
