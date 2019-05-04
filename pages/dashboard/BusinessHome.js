@@ -171,8 +171,8 @@ const styles = StyleSheet.create({
   addButton: {
     height: 40,
     width: 40,
-    borderWidth: 2,
-    borderRadius: 20,
+    // borderWidth: 2,
+    // borderRadius: 20,
     borderColor: 'black'
   },
   list: {
