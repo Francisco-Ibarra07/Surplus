@@ -169,8 +169,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   addButton: {
-    height: 40,
-    width: 40,
+    height: 30,
+    width: 30,
     // borderWidth: 2,
     // borderRadius: 20,
     borderColor: 'black'
