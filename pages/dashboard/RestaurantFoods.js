@@ -8,6 +8,7 @@ export default class RestaurantFoods extends Component {
     super(props);
     this.state = {
       foodItemsView: [],
+      isAnonymousUser: this.props.navigation.state.params.anonymousFlag,
       currentStoreName: this.props.navigation.state.params.storeChosen,
     }
     this.populateFoodItemsList = this.populateFoodItemsList.bind(this);
@@ -21,7 +22,6 @@ export default class RestaurantFoods extends Component {
     this.populateFoodItemsList(foodList);
   }
 
-
   /**
    * Iterates through a given food list array and turns the elements into 'FoodItem's so they can be displayed in View
    */
@@ -33,6 +33,9 @@ export default class RestaurantFoods extends Component {
       foodItems.push(foodList[food]);
     }
 
+    // Sort the array
+    foodItems.sort()
+
     // Populate an array of 'FoodItem's 
     var listView = [];
     for (var i = 0; i < foodItems.length; i++) {
@@ -40,6 +43,7 @@ export default class RestaurantFoods extends Component {
         <FoodItem
           key={i}
           navigation={this.props.navigation}
+          anonymousFlag={this.state.isAnonymousUser}
           foodItemName={foodItems[i].item_name}
           foodItemDescription={foodItems[i].item_description}
           foodItemImage={foodItems[i].item_image}

@@ -35,8 +35,8 @@ export default class CartItem extends Component {
           <Text style={styles.descriptionText}>Quantity: {this.props.quantity}</Text>
           <Text style={styles.descriptionText}>Price: ${this.props.price}</Text>
           <View style={styles.buttonBox}>
+            <Button title="Edit" onPress={this.handleEdit} />
             <View style={styles.button}>
-              {/* <Button title="Edit" onPress={this.handleEdit} /> */}
               <Button title="Delete" onPress={this.handleDelete} />
             </View>
           </View>

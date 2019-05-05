@@ -15,41 +15,18 @@ export default class CustomerDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: '',
-      isAnonymousUser: '',
-      userObject: '',
+      isAnonymousUser: this.props.navigation.state.params.anonymousFlag,
       restaurantItemsView: [],
       restaurantObjects: [],
       emptyTextView: false,
     }
-    this.checkIfAnonymousUser = this.checkIfAnonymousUser.bind(this);
+
     this.populateRestaurantList = this.populateRestaurantList.bind(this);
     this.signOut = this.signOut.bind(this);
   }
 
   componentDidMount() {
-    this.checkIfAnonymousUser();
     this.populateRestaurantList();
-  }
-
-  /**
-   * Checks if a user is browsing as guest
-   * If browsing guest, don't attempt to grab the user id and build the user object
-   */
-  checkIfAnonymousUser = () => {
-    // Check if there was an anonymous flag that was set
-    const isAnonymous = this.props.navigation.state.params.anonymousFlag;
-    if (!isAnonymous) {
-      this.setState({ isAnonymous: false });
-      this.setState({ userId: firebase.auth().currentUser.uid });
-      this.setState({ userObject: firebase.database().ref('customers/users/' + this.state.userId) });
-
-      console.log("NOT ANONYMOUS");
-    }
-    else {
-      this.setState({ isAnonymous: true });
-      console.log("Browsing as guest");
-    }
   }
 
   // Reads the 'online' folder and populates an array with all the ID's of owners that have food for sale
@@ -63,8 +40,8 @@ export default class CustomerDashboard extends Component {
     ref.on('value', function (snapshot) {
 
       const snapOfOnlineRestaurantList = snapshot.val();
-      var storeNames = [];
-      var restaurantItems = [];
+      let storeNames = [];
+      let restaurantItems = [];
 
       // Check if there are any restaurants offering food besides the _PLACEHOLDER_
       if (snapshot._childKeys.length === 1) {
@@ -79,13 +56,15 @@ export default class CustomerDashboard extends Component {
             storeNames.push(store); // Contains just a list of strings of store names
           }
         }
+        //Sort the list of names
+        storeNames.sort()
 
         // Populate store name and store information into an array
         // Also populate an array containing all the food items that are up for sale by this store
-        var storeObjectList = [];
-        var storeItemsList = [];
+        let storeObjectList = [];
+        let storeItemsList = [];
 
-        for (var i = 0; i < storeNames.length; i++) {
+        for (let i = 0; i < storeNames.length; i++) {
           storeObjectList.push({
             store_name: storeNames[i],
             store_info: snapOfOnlineRestaurantList[storeNames[i]].store_info,
@@ -96,11 +75,11 @@ export default class CustomerDashboard extends Component {
         }
 
         // Populate RestaurantItem array
-        for (var i = 0; i < storeObjectList.length; i++) {
+        for (let i = 0; i < storeObjectList.length; i++) {
           restaurantItems.push(
             <RestaurantItem
               key={i}
-              anonymousFlag={activity.props.navigation.state.params.anonymousFlag}
+              anonymousFlag={activity.state.isAnonymousUser}
               navigation={activity.props.navigation}
               storeObject={storeObjectList[i]}
               storeItemsList={storeItemsList[i]}

@@ -8,15 +8,19 @@ export default class FoodItem extends Component {
     super(props);
     this.state = {
       cartItemIsAdded: false,
+      isAnonymousUser: this.props.navigation.state.params.anonymousFlag,
       quantityDesired: 0
     }
   }
 
-  handleFoodItemPress = () => {
-
-  }
-
   checkIfItemIsInCart = () => {
+
+    // If a user is guest browsing, don't check if they have this item in their shopping car
+    if (this.state.isAnonymousUser) {
+      this.setState({ cartItemIsAdded: false })
+      return
+    }
+
     const userId = firebase.auth().currentUser.uid;
     const foodItemName = this.props.foodItemName;
     const refToItemInCart = firebase.database().ref('/customers/users/' + userId + '/shoppingcart/' + foodItemName)
@@ -33,8 +37,18 @@ export default class FoodItem extends Component {
 
   addItemToCartFolder = () => {
 
+    // Alert the user to create an account before adding this item to their cart
+    if (this.state.isAnonymousUser) {
+      alert('Create an account before adding items to your cart!')
+      return
+    }
     // If the item is already added in the cart, return
     if (this.state.cartItemIsAdded) {
+      return
+    }
+    // If the quantity chose is 0, alert user to choose a quantity
+    if (this.state.quantityDesired === 0) {
+      alert('Choose a quantity by using the "+" and "-" buttons')
       return
     }
 
@@ -88,11 +102,6 @@ export default class FoodItem extends Component {
 
       <View style={styles.foodItemContainer}>
         <View style={styles.foodItem}>
-          {/*
-          <View style={styles.foodName}>
-            <Text style={styles.itemName}>{this.props.foodItemName}</Text>
-          </View> */}
-
           <View style={styles.desciption}>
             <View style={styles.foodItemImage}>
               <Image style={styles.foodItemImageChild} source={{ uri: this.props.foodItemImage }} />
