@@ -36,9 +36,7 @@ export default class CartItem extends Component {
           <Text style={styles.descriptionText}>Price: ${this.props.price}</Text>
           <View style={styles.buttonBox}>
             <Button title="Edit" onPress={this.handleEdit} />
-            <View style={styles.button}>
-              <Button title="Delete" onPress={this.handleDelete} />
-            </View>
+            <Button title="Delete" onPress={this.handleDelete} />
           </View>
         </View>
       </View>
@@ -58,7 +56,7 @@ const styles = StyleSheet.create({
     borderWidth: .50,
     borderColor: 'red',
     borderRadius: 10,
-    height: 150,
+    height: 'auto',
     backgroundColor: 'white',
     padding: 15,
     marginBottom: 16,
@@ -101,7 +99,7 @@ const styles = StyleSheet.create({
   buttonBox: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 21,
+    // marginTop: 21,
     // borderWidth: 1,
     // borderColor: 'blue',
   },
