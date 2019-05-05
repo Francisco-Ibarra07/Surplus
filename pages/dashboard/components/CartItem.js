@@ -7,6 +7,7 @@ export default class CartItem extends Component {
     super(props);
     this.state = {
       style: this.props.style,
+      quantityDesired: 0,
     }
   }
 
@@ -21,6 +22,7 @@ export default class CartItem extends Component {
 
   }
 
+
   render() {
     return (
       <View style={styles.cart}>
@@ -32,10 +34,27 @@ export default class CartItem extends Component {
         {/* Description */}
         <View style={styles.description}>
           <Text style={styles.h1}>{this.props.name}</Text>
-          <Text style={styles.descriptionText}>Quantity: {this.props.quantity}</Text>
+
           <Text style={styles.descriptionText}>Price: ${this.props.price}</Text>
+
+          <View style={styles.quantityBox}>
+
+            <Text style={styles.itemDescription}>Quantity:</Text>
+
+            <TouchableOpacity style={styles.quantityCenter} onPress={this.decrementQuantity}>
+              <Text style={styles.quantity}>-</Text>
+            </TouchableOpacity>
+
+            <Text style={styles.itemDescription}>{this.props.quantity}</Text>
+
+            <TouchableOpacity style={styles.quantityCenter} onPress={this.incrementQuantity}>
+              <Text style={styles.quantity}>+</Text>
+            </TouchableOpacity>
+
+          </View>
+
           <View style={styles.buttonBox}>
-            <Button title="Edit" onPress={this.handleEdit} />
+            <Button title="Update" onPress={this.handleEdit} />
             <Button title="Delete" onPress={this.handleDelete} />
           </View>
         </View>
@@ -107,7 +126,28 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: 'blue',
   },
-  // buttonText: {
-  //   color: '#D33B32',
-  // },
+  quantityBox: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  quantityCenter: {
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#0078D7',
+    backgroundColor: '#0078D7',
+    borderRadius: 7.5,
+    color: 'white',
+  },
+  quantity: {
+    color: '#D33B32',
+    width: 15,
+    height: 15,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignItems: 'center',
+    color: 'white',
+    position: 'relative',
+    bottom: 2,
+  },
 })
