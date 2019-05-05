@@ -31,7 +31,6 @@ export default class AddFood extends Component {
       quantity: '',
       price: '',
       photo: null, // The photo object given by ImagePicker which was grabbed from inside the phone's PhotoGallery
-      photoFolderRef: null, // A reference to the FOLDER of where the image is located
       photoDownloadURL: '',
       formIsCompleted: false,
     }
@@ -106,7 +105,6 @@ export default class AddFood extends Component {
         const user_id = firebase.auth().currentUser.uid;
         const storage = firebase.storage();
         const imageFolderRef = storage.ref('images/' + user_id).child(this.state.foodItemName);
-        this.setState({ photoFolderRef: imageFolderRef });
 
         imageFolderRef.putFile(response.uri)
           .then((msg) => {

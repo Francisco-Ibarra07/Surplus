@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import RedButton from '../components/RedButton';
 import firebase from 'react-native-firebase'
+import ImagePicker from 'react-native-image-picker'
 
 export default class EditRestaurantInfo extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class EditRestaurantInfo extends Component {
       updatedZipcode: '',
       updatedCity: '',
       updatedState: '',
-      updatedlogoURL: null,
+      updatedLogoURL: null,
     }
   }
 
@@ -56,6 +57,12 @@ export default class EditRestaurantInfo extends Component {
         city: snap['city'],
         logoURL: snap['image']
       })
+
+      console.log("city:", snap['city'])
+      console.log(snap)
+      console.log(snapshot)
+
+
     });
   }
 
@@ -65,11 +72,11 @@ export default class EditRestaurantInfo extends Component {
 
   updateUserInfo = () => {
 
-    const { updatedStoreName, updatedAddress, updatedPhone, updatedZipcode, updatedState, updatedCity } = this.state;
+    const { updatedStoreName, updatedAddress, updatedPhone, updatedZipcode, updatedState, updatedCity, updatedLogoURL } = this.state;
     const user_id = firebase.auth().currentUser.uid;
     const refToRestaurantInfo = firebase.database().ref('/business/owners/' + user_id + '/restaurant');
 
-    if (updatedStoreName === '' && updatedAddress === '' && updatedPhone === '' && updatedZipcode === '' && updatedState === '' && updatedCity === '') {
+    if (updatedStoreName === '' && updatedAddress === '' && updatedPhone === '' && updatedZipcode === '' && updatedState === '' && updatedCity === '' && updatedLogoURL === null) {
       alert('Make a change to save changes!');
       return;
     }
@@ -121,16 +128,46 @@ export default class EditRestaurantInfo extends Component {
 
     if (updatedCity !== '') {
       refToRestaurantInfo.update({
-        'city': updatedState
+        'city': updatedCity
       })
       this.setState({ city: updatedCity, updatedCity: '' });
+    }
+
+    console.log(updatedLogoURL)
+    if (updatedLogoURL !== null) {
+      refToRestaurantInfo.update({
+        'image': updatedLogoURL
+      })
+      this.setState({ logoURL: updatedLogoURL, updatedLogoURL: null });
     }
 
     alert('Information was updated!');
   }
 
   handlePhotoUpload = () => {
+    const options = {};
+    ImagePicker.launchImageLibrary(options, response => {
+      console.log("Response:", response);
+      if (response.uri) {
 
+        const user_id = firebase.auth().currentUser.uid;
+        const storage = firebase.storage();
+        const sessionId = new Date().getTime();
+        const imageFolderRef = storage.ref('images/' + user_id).child(`${sessionId}`);
+
+        imageFolderRef.putFile(response.uri)
+          .then((msg) => {
+
+            alert('Photo successfully uploaded!');
+            this.setState({ updatedLogoURL: msg.downloadURL, logoURL: msg.downloadURL });
+          })
+          .catch((error) => {
+            console.log("error:", error);
+            alert("Failed to upload image");
+            return;
+          })
+      }
+    });
   }
 
   render() {
