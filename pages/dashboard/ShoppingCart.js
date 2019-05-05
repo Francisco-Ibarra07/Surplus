@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import RedButton from '../components/RedButton';
 import CartItem from './components/CartItem';
-import firebase from 'react-native-firebase'
+import firebase from 'react-native-firebase';
 
 export default class ShoppingCart extends Component {
 
@@ -120,7 +120,7 @@ export default class ShoppingCart extends Component {
   render() {
     const { isAnonymousUser } = this.state
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
 
         {/* Top part: Text and Tree Image only shows if user is not anonymous*/}
         {!isAnonymousUser && (<View style={styles.top}>
@@ -147,8 +147,15 @@ export default class ShoppingCart extends Component {
 
         {!isAnonymousUser && (<RedButton style={{ marginBottom: 16 }} onPress={this.handleReservation} buttonText='Reserve' />)}
 
-        {isAnonymousUser && (<Button title="Create an account to view a shopping cart!" onPress={() => this.props.navigation.navigate('GetStarted')}></Button>)}
-      </ScrollView >
+        <Text style={{
+          fontSize: 20,
+          margin: 15,
+          textAlign: 'center',
+        }}>
+          To add items and view shopping cart, create an account!
+        </Text>
+        {isAnonymousUser && (<RedButton buttonText="Create an account" onPress={() => this.props.navigation.navigate('GetStarted')} />)}
+      </View >
     );
   }
 }
@@ -159,6 +166,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 15,
     marginRight: 15,
+    justifyContent: 'center',
   },
 
   // TOP SECTION
