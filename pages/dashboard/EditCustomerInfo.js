@@ -37,7 +37,13 @@ export default class EditCustomerInfo extends Component {
 
     // Check if the user is anonymous
     if (firebase.auth().currentUser === null) {
-      this.setState({ isAnonymousUser: true })
+      this.setState({
+        isAnonymousUser: true,
+        firstName: 'James',
+        lastName: 'Smith',
+        email: 'James.Smith@mail.com',
+        phone: '555-454-9999'
+      })
       return
     }
 
@@ -108,9 +114,11 @@ export default class EditCustomerInfo extends Component {
   }
 
   render() {
+    const { isAnonymousUser } = this.state
     return (
       <View style={styles.container}>
-        <Text style={styles.h1}>Your Information</Text>
+        {!isAnonymousUser && (<Text style={styles.h1}>Your Information</Text>)}
+        {isAnonymousUser && (<Text style={styles.h1}>This could be your information... {"\n"}But you need to sign up!</Text>)}
 
         <View style={styles.form}>
           <Text style={styles.p}>First Name</Text>
@@ -143,10 +151,7 @@ export default class EditCustomerInfo extends Component {
             autoCorrect={false}
           />
 
-          <RedButton
-            buttonText='Save Changes'
-            onPress={this.updateUserInfo}
-          />
+          {!isAnonymousUser && (<RedButton buttonText='Save Changes' onPress={this.updateUserInfo} />)}
 
         </View>
       </View>
