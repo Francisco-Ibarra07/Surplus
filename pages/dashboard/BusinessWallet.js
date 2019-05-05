@@ -8,16 +8,38 @@ import {
 import RedButton from '../components/RedButton';
 
 export default class BusinessWallet extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      day: '',
+      month: '',
+      year: '',
+      moneyMadeToday: 5,
+    }
+  }
+
+  componentDidMount() {
+    const date = new Date().getDate()
+    const month = new Date().getMonth() + 1
+    const year = new Date().getFullYear(); //Current Year
+
+    this.setState({ day: date, month: month, year: year })
+  }
+
+  populateWalletInfo = () => {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.wallet}>
           <View style={styles.date}>
-            <Text style={styles.day}>09/23/2356</Text>
+            <Text style={styles.day}>{this.state.month}/{this.state.day}/{this.state.year}</Text>
           </View>
           <View style={styles.money}>
             <Text style={styles.h1}>Amount Made Today:</Text>
-            <Text style={styles.h2}>$978.00</Text>
+            <Text style={styles.h2}>${this.state.moneyMadeToday}</Text>
           </View>
         </View>
         <RedButton buttonText='Finish For Today' />
