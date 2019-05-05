@@ -92,17 +92,21 @@ export default class ShoppingCart extends Component {
         const convenienceFee = 0.02
 
         const taxAmount = Math.round((sumOfAllPrices * salesTax) * 100) / 100
-        const convenienceFeeAmount = Math.round((sumOfAllPrices * convenienceFee) * 100) / 100
-        const totalAmountDue = Math.round((sumOfAllPrices + taxAmount + convenienceFeeAmount) * 100) / 100
+        // const convenienceFeeAmount = Math.round((sumOfAllPrices * convenienceFee) * 100) / 100
+        const totalAmountDue = Math.round((sumOfAllPrices + taxAmount) * 100) / 100
 
         activity.setState({
           cartItemsList: cartItemComponents,
           total: totalAmountDue,
-          convenienceFee: convenienceFeeAmount,
           tax: taxAmount
         })
       } // end of 'else'
     }) // end of 'on'
+  }
+
+  handleReservation = () => {
+
+    this.props.navigation.navigate('ConfirmationPage')
   }
 
   componentDidMount() {
@@ -131,12 +135,12 @@ export default class ShoppingCart extends Component {
         {!this.state.emptyTextView && this.state.cartItemsList}
 
         <View style={styles.totalBox}>
-          <Text style={styles.total}>Convenience Fee: ${this.state.convenienceFee}</Text>
+          {/* <Text style={styles.total}>Convenience Fee: ${this.state.convenienceFee}</Text> */}
           <Text style={styles.total}>Tax: ${this.state.tax}</Text>
           <Text style={styles.total}>Total: ${this.state.total}</Text>
         </View>
 
-        <RedButton style={{ marginBottom: 16 }} buttonText='Done' />
+        <RedButton style={{ marginBottom: 16 }} onPress={this.handleReservation} buttonText='Reserve' />
 
       </ScrollView >
     );

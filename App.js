@@ -37,7 +37,6 @@ import BusinessClaim from './pages/authentication/BusinessClaim';
 import SignIn from './pages/authentication/SignIn';
 import TermsAndConditions from './pages/authentication/TermsAndConditions';
 import PrivacyStatement from './pages/authentication/PrivacyStatement';
-import DummySignUp from './pages/authentication/DummySignUp';
 import ForgotPassword from './pages/authentication/ForgotPassword';
 
 // Dash Screens ----------------------------------------- /
@@ -46,6 +45,7 @@ import CustomerDashboard from './pages/dashboard/CustomerDashboard';
 import ShoppingCart from './pages/dashboard/ShoppingCart';
 import RestaurantFoods from './pages/dashboard/RestaurantFoods';
 import EditCustomerInfo from './pages/dashboard/EditCustomerInfo';
+import ConfirmationPage from './pages/dashboard/ConfirmationPage';
 
 // Business Owner's
 import AddFood from './pages/dashboard/AddFood';
@@ -189,7 +189,6 @@ export const Nav = createAppContainer(
     SignIn: { screen: SignIn },
     TermsAndConditions: { screen: TermsAndConditions },
     PrivacyStatement: { screen: PrivacyStatement },
-    DummySignUp: { screen: DummySignUp },
     ForgotPassword: { screen: ForgotPassword },
 
     // Customer Navigation
@@ -205,6 +204,7 @@ export const Nav = createAppContainer(
         headerTintColor: '#D33B32',
       }),
     },
+    ConfirmationPage: { screen: ConfirmationPage },
 
     // Business screens
     AddFood: {
