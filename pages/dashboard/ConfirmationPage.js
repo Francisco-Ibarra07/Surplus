@@ -58,8 +58,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
   },
-
-  // TOP SECTION
   top: {
     flexDirection: 'row',
     justifyContent: 'space-between',
