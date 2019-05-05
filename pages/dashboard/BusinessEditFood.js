@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import firebase from 'react-native-firebase';
 import RedButton from '../components/RedButton';
+import ImagePicker from 'react-native-image-picker'
 
 export default class BusinessEditFood extends Component {
   constructor(props) {
@@ -44,23 +45,12 @@ export default class BusinessEditFood extends Component {
       return
     }
 
-    let refPath = ''
+    let refPath = this.props.navigation.state.params.refToFoodItem
 
     // If the name of the item was renamed, we need to change the folder name
     if (updatedItemName !== '') {
-
-      // Delete the old folder
-      const originalItemName = this.props.navigation.state.params.originalItemName;
-      const refToThisRestaurantsOnlineFolder = this.props.navigation.state.params.activeItemsRef;
-      refToThisRestaurantsOnlineFolder.child(originalItemName).remove();
-
-      // New reference path
-      refPath = refToThisRestaurantsOnlineFolder.path + '/' + updatedItemName
-      console.log("new ref path:", refPath)
-    }
-    else {
-      refPath = this.props.navigation.state.params.refToFoodItem
-      console.log("Stays the same: ", refPath)
+      alert("You cannot change the item name. If you wish to do so, delete this item and create a new one with the corrected name")
+      return
     }
 
     // Get a reference to the folder of this food item
@@ -95,17 +85,39 @@ export default class BusinessEditFood extends Component {
       refToFoodItem.update({ 'item_price': updatedPrice })
       this.setState({ price: updatedPrice, updatedPrice: '' })
     }
-    // if (updatedPhotoURL !== '') {
-    //   refToFoodItem.update({ 'item_image': updatedPhotoURL })
-    //   this.setState({ photoURL: updatedPhotoURL, updatedPhotoURL: '' })
-    // }
+    if (updatedPhotoURL !== '') {
+      refToFoodItem.update({ 'item_image': updatedPhotoURL })
+      this.setState({ photoURL: updatedPhotoURL, updatedPhotoURL: '' })
+    }
 
     alert('Information was updated!');
     this.props.navigation.navigate('BusinessHome')
   }
 
   handlePhotoUpload = () => {
+    const options = {};
+    ImagePicker.launchImageLibrary(options, response => {
+      console.log("Response:", response);
+      if (response.uri) {
 
+        const user_id = firebase.auth().currentUser.uid;
+        const storage = firebase.storage();
+        const sessionId = new Date().getTime();
+        const imageFolderRef = storage.ref('images/' + user_id).child(`${sessionId}`);
+
+        imageFolderRef.putFile(response.uri)
+          .then((msg) => {
+
+            alert('Photo successfully uploaded!');
+            this.setState({ updatedPhotoURL: msg.downloadURL, photoURL: msg.downloadURL });
+          })
+          .catch((error) => {
+            console.log("error:", error);
+            alert("Failed to upload image");
+            return;
+          })
+      }
+    });
   }
 
   populateFoodInfo = () => {
@@ -124,7 +136,7 @@ export default class BusinessEditFood extends Component {
         category: snap['item_category'],
         quantity: snap['item_quantity'],
         price: snap['item_price'],
-        photoURL: snap['item_image'],
+        photoURL: snap['item_image']
       })
     });
   }
@@ -141,7 +153,7 @@ export default class BusinessEditFood extends Component {
         {/* Form */}
         <View style={styles.form}>
           <View style={styles.form1}>
-            <View style={styles.form1a} onPress={this.handlePhotoUpload}>
+            <View style={styles.form1a}>
               {(photoURL !== null) && (<Image source={{ uri: photoURL }} style={{ width: 65, height: 65 }} />)}
             </View>
             <View style={styles.form1b}>
