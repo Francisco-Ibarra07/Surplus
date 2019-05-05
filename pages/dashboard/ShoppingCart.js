@@ -19,6 +19,7 @@ export default class ShoppingCart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isAnonymousUser: false,
       emptyTextView: false,
       cartItemsList: [],
       tax: 0,
@@ -34,6 +35,10 @@ export default class ShoppingCart extends Component {
   }
 
   populateShoppingCart = () => {
+    if (firebase.auth().currentUser === null) {
+      this.setState({ isAnonymousUser: true })
+      return
+    }
     const userId = firebase.auth().currentUser.uid;
     const refToShoppingCart = firebase.database().ref('/customers/users/' + userId + '/shoppingcart')
     const activity = this
@@ -51,7 +56,6 @@ export default class ShoppingCart extends Component {
       }
       else {
         activity.setState({ emptyTextView: false });
-
         const snap = snapshot.val()
 
         let keys = []
@@ -89,7 +93,7 @@ export default class ShoppingCart extends Component {
         }
 
         const salesTax = 0.095
-        const convenienceFee = 0.02
+        // const convenienceFee = 0.02
 
         const taxAmount = Math.round((sumOfAllPrices * salesTax) * 100) / 100
         // const convenienceFeeAmount = Math.round((sumOfAllPrices * convenienceFee) * 100) / 100

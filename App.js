@@ -73,7 +73,7 @@ const CustomerDrawer = createDrawerNavigator({
       title: 'Shopping Cart',
     }),
   },
-  EditCusomterInfo: {
+  EditCustomerInfo: {
     screen: EditCustomerInfo,
     navigationOptions: () => ({
       title: 'Edit My Info',
