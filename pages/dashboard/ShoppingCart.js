@@ -147,7 +147,7 @@ export default class ShoppingCart extends Component {
 
         {!isAnonymousUser && (<RedButton style={{ marginBottom: 16 }} onPress={this.handleReservation} buttonText='Reserve' />)}
 
-        {isAnonymousUser && (<Button title="Create an account to view a shopping cart!" onPress={() => this.props.navigation.navigate('CustomerSignUp')}></Button>)}
+        {isAnonymousUser && (<Button title="Create an account to view a shopping cart!" onPress={() => this.props.navigation.navigate('GetStarted')}></Button>)}
       </ScrollView >
     );
   }
