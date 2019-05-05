@@ -102,13 +102,16 @@ const CustomerDrawer = createDrawerNavigator({
           <DrawerItems {...props} />
           <TouchableOpacity onPress={() =>
             Alert.alert(
-              'Log Off',
-              'Do you want to log off?',
+              'Exit',
+              'Do you want to quit?',
               [
                 { text: 'Cancel', onPress: () => { return null } },
                 {
                   text: 'Confirm', onPress: () => {
-                    firebase.auth().signOut();
+                    const user = firebase.auth().currentUser
+                    if (user !== null) {
+                      firebase.auth().signOut();
+                    }
                     props.navigation.navigate('GetStarted')
                   }
                 },
@@ -116,7 +119,7 @@ const CustomerDrawer = createDrawerNavigator({
               { cancelable: false }
             )
           }>
-            <Text style={{ margin: 15, fontWeight: 'bold' }}>Log Off</Text>
+            <Text style={{ margin: 15, fontWeight: 'bold' }}>Exit</Text>
           </TouchableOpacity>
         </SafeAreaView>
       </View>
