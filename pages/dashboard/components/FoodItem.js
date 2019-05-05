@@ -108,30 +108,39 @@ export default class FoodItem extends Component {
             </View>
 
             <View style={styles.foodItemDescription}>
+
               <View style={styles.foodTitle}>
                 <Text style={styles.itemName}>{this.props.foodItemName}</Text>
                 <Text style={styles.itemDescription1}>{this.props.foodItemDescription}</Text>
                 <Text style={styles.itemDescription}>Quantity Left: {this.props.foodItemQuantity}</Text>
                 <Text style={styles.itemDescription}>Price: ${this.props.foodItemPrice}</Text>
 
-                <TouchableOpacity style={styles.button} onPress={this.incrementQuantity}>
-                  <Text style={{ fontSize: 15 }}>+</Text>
-                </TouchableOpacity>
+                <View style={styles.quantityBox}>
+                  <Text style={styles.itemDescription}>Quantity desired:</Text>
 
-                <Text style={{ alignItems: 'center' }}>Quantity desired: {this.state.quantityDesired}</Text>
+                  <TouchableOpacity style={styles.quantityCenter} onPress={this.decrementQuantity}>
+                    <Text style={styles.quantity}>-</Text>
+                  </TouchableOpacity>
+                  <Text style={styles.itemDescription}>{this.state.quantityDesired}</Text>
 
-                <TouchableOpacity style={styles.button} onPress={this.decrementQuantity}>
-                  <Text style={{ fontSize: 15 }}>-</Text>
-                </TouchableOpacity>
+                  <TouchableOpacity style={styles.quantityCenter} onPress={this.incrementQuantity}>
+                    <Text style={styles.quantity}>+</Text>
+                  </TouchableOpacity>
 
-                <View style={styles.button}>
+                </View>
+
+
+                {/* <View style={styles.button}>
                   {!cartItemIsAdded && (<Button title="Add to cart" onPress={this.addItemToCartFolder} />)}
                   {cartItemIsAdded && (<Text style={{ color: '#D33B32', fontSize: 16 }} >Added to cart!</Text>)}
-                </View>
+                </View> */}
               </View>
             </View>
           </View>
-
+          <View style={styles.button}>
+            {!cartItemIsAdded && <Text style={styles.addToCart} onPress={this.addItemToCartFolder}>Add to cart</Text>}
+            {cartItemIsAdded && (<Text style={{ color: 'white', fontSize: 16 }} >Added to cart!</Text>)}
+          </View>
         </View>
       </View>
     );
@@ -149,7 +158,7 @@ const styles = StyleSheet.create({
   },
   foodItemContainer: {
     //borderWidth: 1,
-    height: 150,
+    height: 'auto',
     marginBottom: 20,
     flex: 1,
   },
@@ -162,6 +171,7 @@ const styles = StyleSheet.create({
     // marginBottom: 20,
     flex: 1,
     flexDirection: 'column',
+    overflow: 'hidden',
   },
   foodItemImage: {
     // borderWidth: 1,
@@ -187,7 +197,6 @@ const styles = StyleSheet.create({
     // borderColor: 'red',
     paddingTop: 5,
     paddingLeft: 5,
-    paddingBottom: 5,
   },
   foodItemDescription: {
     height: '100%',
@@ -207,10 +216,43 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 2,
   },
+  quantityCenter: {
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#0078D7',
+    backgroundColor: '#0078D7',
+    borderRadius: 7.5,
+    color: 'white',
+  },
+  quantity: {
+    color: '#D33B32',
+    width: 15,
+    height: 15,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignItems: 'center',
+    color: 'white',
+    position: 'relative',
+    bottom: 2,
+  },
   foodItemStock2: {
     flexDirection: 'row',
   },
   button: {
     marginTop: 4,
+  },
+  addToCart: {
+    fontSize: 18,
+    // borderWidth: 1,
+    paddingTop: 10,
+    paddingBottom: 15,
+    color: 'white',
+    backgroundColor: '#D33B32',
+    textAlign: 'center',
+  },
+  quantityBox: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
