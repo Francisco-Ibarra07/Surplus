@@ -125,8 +125,8 @@ export default class ShoppingCart extends Component {
         {/* Top part: Text and Tree Image only shows if user is not anonymous*/}
         {!isAnonymousUser && (<View style={styles.top}>
           <View style={styles.title}>
-            <Text style={styles.h1}>Yum! Enjoy your meal!</Text>
-            <Text style={styles.h2}>Order Summary</Text>
+            <Text style={styles.h1}>Shopping Cart</Text>
+            <Text style={styles.h2}>Your saved items</Text>
           </View>
           <Image style={styles.topImage}
             source={require('./resources/tree.jpg')}

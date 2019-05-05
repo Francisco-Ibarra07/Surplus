@@ -31,7 +31,7 @@ export default class CartItem extends Component {
 
         {/* Description */}
         <View style={styles.description}>
-          <Text style={styles.descriptionText}>{this.props.name}</Text>
+          <Text style={styles.h1}>{this.props.name}</Text>
           <Text style={styles.descriptionText}>Quantity: {this.props.quantity}</Text>
           <Text style={styles.descriptionText}>Price: ${this.props.price}</Text>
           <View style={styles.buttonBox}>
@@ -94,6 +94,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   descriptionText: {
+    marginBottom: 5,
+  },
+  h1: {
+    fontWeight: 'bold',
     marginBottom: 5,
   },
   buttonBox: {
