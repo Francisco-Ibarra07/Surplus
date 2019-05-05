@@ -69,6 +69,7 @@ export default class FoodItem extends Component {
       'item_quantity_desired': this.state.quantityDesired,
       'item_quantity_original': this.props.foodItemQuantity,
       'item_price': this.props.foodItemPrice,
+      'store_name': this.props.currentStoreName
     })
   }
 

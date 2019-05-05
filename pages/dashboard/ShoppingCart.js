@@ -21,7 +21,8 @@ export default class ShoppingCart extends Component {
     this.state = {
       isAnonymousUser: false,
       emptyTextView: false,
-      cartItemsList: [],
+      cartItemComponents: [],
+      individualCartItemsArray: [],
       tax: 0,
       total: 0,
       convenienceFee: 0,
@@ -51,7 +52,7 @@ export default class ShoppingCart extends Component {
           convenienceFee: 0,
           tax: 0,
           total: 0,
-          cartItemsList: []
+          cartItemComponents: []
         });
       }
       else {
@@ -93,16 +94,15 @@ export default class ShoppingCart extends Component {
         }
 
         const salesTax = 0.095
-        // const convenienceFee = 0.02
 
         const taxAmount = Math.round((sumOfAllPrices * salesTax) * 100) / 100
-        // const convenienceFeeAmount = Math.round((sumOfAllPrices * convenienceFee) * 100) / 100
         const totalAmountDue = Math.round((sumOfAllPrices + taxAmount) * 100) / 100
 
         activity.setState({
-          cartItemsList: cartItemComponents,
+          cartItemComponents: cartItemComponents,
           total: totalAmountDue,
-          tax: taxAmount
+          tax: taxAmount,
+          individualCartItemsArray: individualCartItems
         })
       } // end of 'else'
     }) // end of 'on'
@@ -110,7 +110,41 @@ export default class ShoppingCart extends Component {
 
   handleReservation = () => {
 
-    this.props.navigation.navigate('ConfirmationPage')
+    if (this.state.isAnonymousUser) {
+      alert('create an account to reserve food')
+      return
+    }
+    let shoppingCartItems = this.state.individualCartItemsArray
+
+    let quantityDesired;
+    let originalQuantity;
+    let quantityLeft;
+    let currentStoreName;
+    let currentItem;
+
+    let refToRestaurantOnlineFolder;
+    let storeOwnerId;
+
+    for (let i = 0; i < shoppingCartItems.length; i++) {
+      console.log(shoppingCartItems[i])
+      currentItem = shoppingCartItems[i]
+
+      originalQuantity = parseInt(currentItem.item_quantity_original)
+      quantityDesired = currentItem.item_quantity_desired
+      currentStoreName = currentItem.store_name
+
+      console.log("From store:", currentStoreName)
+      refToRestaurantOnlineFolder = firebase.database().ref('/online/' + currentStoreName)
+
+      refToRestaurantOnlineFolder.on('value', function (snapshot) {
+        const snap = snapshot.val()
+        storeOwnerId = snap['store_owner_id']
+        console.log("snap:", snap)
+        console.log("this food item: ", snap.items[currentItem.item_name])
+      })
+    }
+
+    // this.props.navigation.navigate('ConfirmationPage')
   }
 
   componentDidMount() {
@@ -137,7 +171,7 @@ export default class ShoppingCart extends Component {
         {this.state.emptyTextView && (<Text> You currently have no items in your shopping cart </Text>)}
 
         {/* This shows if the shopping cart folder is not empty */}
-        {!this.state.emptyTextView && this.state.cartItemsList}
+        {!this.state.emptyTextView && this.state.cartItemComponents}
 
         {!isAnonymousUser && (<View style={styles.totalBox}>
           {/* <Text style={styles.total}>Convenience Fee: ${this.state.convenienceFee}</Text> */}
