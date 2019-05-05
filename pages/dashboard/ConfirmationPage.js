@@ -41,6 +41,7 @@ export default class ConfirmationPage extends Component {
           <Text style={styles.h3}>Tax: $0.97</Text>
           <Text style={styles.h3}>Total: $2.97</Text>
           <Text style={styles.h3}>Pick up at: 123 here</Text>
+          <Text style={styles.warning}>⚠️ Show this screen when you pick up! ⚠️</Text>
         </View>
 
         {/* Top part: Text and Tree Image only shows if user is not anonymous*/}
@@ -93,5 +94,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#D33B32',
     padding: 15,
+  },
+  warning: {
+    marginTop: 20,
+    fontSize: 16,
   },
 })
