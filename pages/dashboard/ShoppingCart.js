@@ -118,11 +118,12 @@ export default class ShoppingCart extends Component {
   }
 
   render() {
+    const { isAnonymousUser } = this.state
     return (
       <ScrollView style={styles.container}>
 
-        {/* Top part: Text and Tree Image */}
-        <View style={styles.top}>
+        {/* Top part: Text and Tree Image only shows if user is not anonymous*/}
+        {!isAnonymousUser && (<View style={styles.top}>
           <View style={styles.title}>
             <Text style={styles.h1}>Yum! Enjoy your meal!</Text>
             <Text style={styles.h2}>Order Summary</Text>
@@ -130,7 +131,7 @@ export default class ShoppingCart extends Component {
           <Image style={styles.topImage}
             source={require('./resources/tree.jpg')}
           />
-        </View>
+        </View>)}
 
         {/* This shows if the cart is empty */}
         {this.state.emptyTextView && (<Text> You currently have no items in your shopping cart </Text>)}
@@ -138,14 +139,15 @@ export default class ShoppingCart extends Component {
         {/* This shows if the shopping cart folder is not empty */}
         {!this.state.emptyTextView && this.state.cartItemsList}
 
-        <View style={styles.totalBox}>
+        {!isAnonymousUser && (<View style={styles.totalBox}>
           {/* <Text style={styles.total}>Convenience Fee: ${this.state.convenienceFee}</Text> */}
           <Text style={styles.total}>Tax: ${this.state.tax}</Text>
           <Text style={styles.total}>Total: ${this.state.total}</Text>
-        </View>
+        </View>)}
 
-        <RedButton style={{ marginBottom: 16 }} onPress={this.handleReservation} buttonText='Reserve' />
+        {!isAnonymousUser && (<RedButton style={{ marginBottom: 16 }} onPress={this.handleReservation} buttonText='Reserve' />)}
 
+        {isAnonymousUser && (<Button title="Create an account to view a shopping cart!" onPress={() => this.props.navigation.navigate('CustomerSignUp')}></Button>)}
       </ScrollView >
     );
   }
