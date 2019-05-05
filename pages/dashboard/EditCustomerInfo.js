@@ -8,13 +8,105 @@ import {
   StyleSheet,
 } from 'react-native';
 import RedButton from '../components/RedButton';
+import firebase from 'react-native-firebase';
 
 export default class EditCustomerInfo extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAnonymousUser: false,
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      updatedFirstName: '',
+      updatedLastName: '',
+      updatedEmail: '',
+      updatedPhone: ''
+    }
+  }
+
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
     }
   }
+
+  populateUserInfo = () => {
+
+    // Check if the user is anonymous
+    if (firebase.auth().currentUser === null) {
+      this.setState({ isAnonymousUser: true })
+      return
+    }
+
+    const user_id = firebase.auth().currentUser.uid;
+    const refToCustomersInfo = firebase.database().ref('/customers/users/' + user_id);
+    const activity = this
+
+    refToCustomersInfo.on('value', function (snapshot) {
+      const snap = snapshot.val()
+
+      activity.setState({
+        firstName: snap['first_name'],
+        lastName: snap['last_name'],
+        email: snap['email'],
+        phone: snap['phone_number']
+      })
+    });
+  }
+
+  componentDidMount() {
+    this.populateUserInfo();
+  }
+
+  updateUserInfo = () => {
+
+    const { updatedFirstName, updatedLastName, updatedEmail, updatedPhone } = this.state;
+    const user_id = firebase.auth().currentUser.uid;
+    const refToOwnersAccountInfo = firebase.database().ref('/customers/users/' + user_id);
+
+    if (updatedFirstName === '' && updatedLastName === '' && updatedEmail === '' && updatedPhone === '') {
+      alert('Make a change to save changes!');
+      return;
+    }
+
+    if (updatedFirstName !== '') {
+      refToOwnersAccountInfo.update({
+        'first_name': updatedFirstName
+      })
+
+      this.setState({ firstName: updatedFirstName, updatedFirstName: '' });
+    }
+
+    if (updatedLastName !== '') {
+      refToOwnersAccountInfo.update({
+        'last_name': updatedLastName
+      })
+
+      this.setState({ lastName: updatedLastName, updatedLastName: '' });
+    }
+
+    if (updatedEmail !== '') {
+      refToOwnersAccountInfo.update({
+        'email': updatedEmail
+      })
+
+      this.setState({ email: updatedEmail, updatedEmail: '' });
+    }
+
+    if (updatedPhone !== '') {
+      refToOwnersAccountInfo.update({
+        'phone': updatedPhone
+      })
+
+      this.setState({ phone: updatedPhone, updatedPhone: '' });
+    }
+
+    alert('Information was updated!');
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -23,36 +115,37 @@ export default class EditCustomerInfo extends Component {
         <View style={styles.form}>
           <Text style={styles.p}>First Name</Text>
           <TextInput style={styles.input}
-            placeholder="Nhat"
+            onChangeText={updatedFirstName => this.setState({ updatedFirstName })}
+            placeholder={this.state.firstName}
             autoCorrect={false}
-          // autoCapitalize='none'
-          // onChangeText={
-          //   f_name => this.setState({ f_name })
-          // }
           />
 
           <Text style={styles.p}>Last Name</Text>
           <TextInput style={styles.input}
-            placeholder="Nguyen"
+            onChangeText={updatedLastName => this.setState({ updatedLastName })}
+            placeholder={this.state.lastName}
             autoCorrect={false}
           />
 
           <Text style={styles.p}>Email</Text>
           <TextInput style={styles.input}
+            onChangeText={updatedEmail => this.setState({ updatedEmail })}
             keyboardType="email-address"
-            placeholder="n@g.com"
+            placeholder={this.state.email}
             autoCorrect={false}
           />
 
           <Text style={styles.p}>Phone</Text>
           <TextInput style={styles.input}
+            onChangeText={updatedPhone => this.setState({ updatedPhone })}
+            placeholder={this.state.phone}
             keyboardType="number-pad"
-            placeholder="1234567890"
             autoCorrect={false}
           />
 
           <RedButton
             buttonText='Save Changes'
+            onPress={this.updateUserInfo}
           />
 
         </View>
