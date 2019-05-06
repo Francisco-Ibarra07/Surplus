@@ -45,6 +45,7 @@ export default class RestaurantFoods extends Component {
           navigation={this.props.navigation}
           anonymousFlag={this.state.isAnonymousUser}
           currentStoreName={this.state.currentStoreName}
+          ownerId={this.props.navigation.state.params.ownerId}
           foodItemName={foodItems[i].item_name}
           foodItemDescription={foodItems[i].item_description}
           foodItemImage={foodItems[i].item_image}

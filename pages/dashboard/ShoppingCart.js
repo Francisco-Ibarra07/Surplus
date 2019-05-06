@@ -23,6 +23,8 @@ export default class ShoppingCart extends Component {
       emptyTextView: false,
       cartItemComponents: [],
       individualCartItemsArray: [],
+      firstName: '',
+      lastName: '',
       tax: 0,
       total: 0,
       convenienceFee: 0,
@@ -40,9 +42,19 @@ export default class ShoppingCart extends Component {
       this.setState({ isAnonymousUser: true })
       return
     }
-    const userId = firebase.auth().currentUser.uid;
-    const refToShoppingCart = firebase.database().ref('/customers/users/' + userId + '/shoppingcart')
     const activity = this
+    const userId = firebase.auth().currentUser.uid;
+    const refToUsersFolder = firebase.database().ref('/customers/users/' + userId)
+    refToUsersFolder.on('value', function (snapshot) {
+      const snap = snapshot.val()
+
+      activity.setState({
+        firstName: snap['first_name'],
+        lastName: snap['last_name']
+      })
+    })
+
+    const refToShoppingCart = firebase.database().ref('/customers/users/' + userId + '/shoppingcart')
     refToShoppingCart.on('value', function (snapshot) {
 
       // If shopping cart is empty, display message and return
@@ -108,44 +120,55 @@ export default class ShoppingCart extends Component {
     }) // end of 'on'
   }
 
+  getPromise = () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 2000)
+    })
+  }
+
   handleReservation = () => {
 
     if (this.state.isAnonymousUser) {
       alert('create an account to reserve food')
       return
     }
+
     let shoppingCartItems = this.state.individualCartItemsArray
+    let currentItem
+    let arrayOfPromises = []
+    let newQuantityAmount
+    let ref
 
-    let quantityDesired;
-    let originalQuantity;
-    let quantityLeft;
-    let currentStoreName;
-    let currentItem;
-
-    let refToRestaurantOnlineFolder;
-    let storeOwnerId;
-
+    // Update the quantity value
     for (let i = 0; i < shoppingCartItems.length; i++) {
-      console.log(shoppingCartItems[i])
       currentItem = shoppingCartItems[i]
+      console.table(currentItem)
 
-      originalQuantity = parseInt(currentItem.item_quantity_original)
-      quantityDesired = currentItem.item_quantity_desired
-      currentStoreName = currentItem.store_name
+      newQuantityAmount = parseInt(currentItem.item_quantity_original) - currentItem.item_quantity_desired
 
-      console.log("From store:", currentStoreName)
-      refToRestaurantOnlineFolder = firebase.database().ref('/online/' + currentStoreName)
+      // Updated food quantity
+      if (newQuantityAmount !== 0) {
 
-      refToRestaurantOnlineFolder.on('value', function (snapshot) {
-        const snap = snapshot.val()
-        storeOwnerId = snap['store_owner_id']
-        console.log("snap:", snap)
-        console.log("this food item: ", snap.items[currentItem.item_name])
-      })
+        // Update the active item's quantity
+        ref = firebase.database().ref('/online/' + currentItem.store_name + '/items/' + currentItem.item_name).update({
+          'item_quantity': newQuantityAmount
+        })
+        arrayOfPromises.push(ref)
+
+        // Write the transaction onto the Owner's 'Sold' folder
+        const sessionId = new Date().getTime();
+        ref = firebase.database().ref('/business/owners/' + currentItem.owner_id + '/sold/' + sessionId).update({
+          'profit': parseInt(currentItem.item_price) * currentItem.item_quantity_desired,
+          'first_name': this.state.firstName,
+          'last_name': this.state.lastName
+        })
+        arrayOfPromises.push(ref)
+      }
     }
+    Promise.all(arrayOfPromises)
 
-    // this.props.navigation.navigate('ConfirmationPage')
   }
+  // this.props.navigation.navigate('ConfirmationPage')
 
   componentDidMount() {
     this.populateShoppingCart()
