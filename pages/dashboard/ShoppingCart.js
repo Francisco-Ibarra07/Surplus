@@ -120,7 +120,7 @@ export default class ShoppingCart extends Component {
   render() {
     const { isAnonymousUser } = this.state
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
 
         {/* Top part: Text and Tree Image only shows if user is not anonymous*/}
         {!isAnonymousUser && (<View style={styles.top}>
@@ -147,15 +147,16 @@ export default class ShoppingCart extends Component {
 
         {!isAnonymousUser && (<RedButton style={{ marginBottom: 16 }} onPress={this.handleReservation} buttonText='Reserve' />)}
 
-        <Text style={{
+        {isAnonymousUser && (<Text style={{
           fontSize: 20,
-          margin: 15,
+          marginTop: '65%',
+          marginBottom: 16,
           textAlign: 'center',
         }}>
           To add items and view shopping cart, create an account!
-        </Text>
+        </Text>)}
         {isAnonymousUser && (<RedButton buttonText="Create an account" onPress={() => this.props.navigation.navigate('GetStarted')} />)}
-      </View >
+      </ScrollView >
     );
   }
 }
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 15,
     marginRight: 15,
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
 
   // TOP SECTION
