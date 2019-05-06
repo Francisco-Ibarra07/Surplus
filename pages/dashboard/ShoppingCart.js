@@ -23,6 +23,7 @@ export default class ShoppingCart extends Component {
       emptyTextView: false,
       cartItemComponents: [],
       individualCartItemsArray: [],
+      refToShoppingCart: null,
       firstName: '',
       lastName: '',
       tax: 0,
@@ -114,7 +115,8 @@ export default class ShoppingCart extends Component {
           cartItemComponents: cartItemComponents,
           total: totalAmountDue,
           tax: taxAmount,
-          individualCartItemsArray: individualCartItems
+          individualCartItemsArray: individualCartItems,
+          refToShoppingCart: refToShoppingCart
         })
       } // end of 'else'
     }) // end of 'on'
@@ -132,7 +134,7 @@ export default class ShoppingCart extends Component {
     let arrayOfPromises = []
     let newQuantityAmount
     let ref
-    let listOfItemsToDelete = []
+
     // Update the quantity value
     for (let i = 0; i < shoppingCartItems.length; i++) {
       currentItem = shoppingCartItems[i]
@@ -164,14 +166,17 @@ export default class ShoppingCart extends Component {
         'last_name': this.state.lastName
       })
       arrayOfPromises.push(ref)
-      console.log("i:", i)
+
+      // Delete this cart item from the user's shopping cart
+      ref = this.state.refToShoppingCart.child(currentItem.item_name).remove()
+      arrayOfPromises.push(ref)
+
     }
 
     Promise.all(arrayOfPromises).then(() => {
       this.cleanup()
+      this.props.navigation.navigate('ConfirmationPage', { shoppingCartItems: shoppingCartItems })
     })
-
-    // this.props.navigation.navigate('ConfirmationPage')
   }
 
   cleanup = () => {

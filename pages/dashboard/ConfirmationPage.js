@@ -22,6 +22,10 @@ export default class ConfirmationPage extends Component {
     this.props.navigation.navigate('CustomerDashboard')
   }
 
+  componentDidMount() {
+    console.log(this.props.navigation.state.params.shoppingCartItems)
+  }
+
 
   render() {
     return (
