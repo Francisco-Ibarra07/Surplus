@@ -120,12 +120,6 @@ export default class ShoppingCart extends Component {
     }) // end of 'on'
   }
 
-  getPromise = () => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, 2000)
-    })
-  }
-
   handleReservation = () => {
 
     if (this.state.isAnonymousUser) {
@@ -138,7 +132,7 @@ export default class ShoppingCart extends Component {
     let arrayOfPromises = []
     let newQuantityAmount
     let ref
-
+    let listOfItemsToDelete = []
     // Update the quantity value
     for (let i = 0; i < shoppingCartItems.length; i++) {
       currentItem = shoppingCartItems[i]
@@ -154,21 +148,58 @@ export default class ShoppingCart extends Component {
           'item_quantity': newQuantityAmount
         })
         arrayOfPromises.push(ref)
+      }
+      // If this user is buying out the whole quantity
+      else {
+        ref = firebase.database().ref('/online/' + currentItem.store_name + '/items').child(currentItem.item_name).remove()
 
-        // Write the transaction onto the Owner's 'Sold' folder
-        const sessionId = new Date().getTime();
-        ref = firebase.database().ref('/business/owners/' + currentItem.owner_id + '/sold/' + sessionId).update({
-          'profit': parseInt(currentItem.item_price) * currentItem.item_quantity_desired,
-          'first_name': this.state.firstName,
-          'last_name': this.state.lastName
-        })
         arrayOfPromises.push(ref)
       }
-    }
-    Promise.all(arrayOfPromises)
 
+      // Write the transaction onto the Owner's 'Sold' folder
+      const sessionId = new Date().getTime();
+      ref = firebase.database().ref('/business/owners/' + currentItem.owner_id + '/sold/' + sessionId).update({
+        'profit': parseInt(currentItem.item_price) * currentItem.item_quantity_desired,
+        'first_name': this.state.firstName,
+        'last_name': this.state.lastName
+      })
+      arrayOfPromises.push(ref)
+      console.log("i:", i)
+    }
+
+    Promise.all(arrayOfPromises).then(() => {
+      this.cleanup()
+    })
+
+    // this.props.navigation.navigate('ConfirmationPage')
   }
-  // this.props.navigation.navigate('ConfirmationPage')
+
+  cleanup = () => {
+    const refToOnlineFolder = firebase.database().ref('/online')
+
+    refToOnlineFolder.once('value').then(function (snapshot) {
+      const snap = snapshot.val()
+
+      let storeNames = []
+
+      for (let store in snap) {
+        if (store !== '_PLACEHOLDER_') {
+          storeNames.push(store)
+        }
+      }
+
+      let currentStore
+      for (let i = 0; i < storeNames.length; i++) {
+        currentStore = snap[storeNames[i]]
+
+        // If the restaurant folder does not have an 'items' folder, delete that restaurant
+        if (currentStore.items === null || currentStore.items === undefined) {
+          refToOnlineFolder.child(storeNames[i]).remove()
+        }
+      }
+    })
+  }
+
 
   componentDidMount() {
     this.populateShoppingCart()
