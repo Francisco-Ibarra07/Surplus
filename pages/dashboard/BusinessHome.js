@@ -42,13 +42,13 @@ export default class BusinessHome extends Component {
 
     const userObjectRef = firebase.database().ref('/business/owners/' + id);
     const activity = this;
-    userObjectRef.on('value', function (snapshot) {
+    userObjectRef.once('value').then(function (snapshot) {
 
       const snap = snapshot.val();
       activity.setState({ businessOwnerObject: snap });
 
       activity.populateActiveItems(activity.state.businessOwnerObject.restaurant.store_name, activity);
-    });
+    })
   }
 
   /**
