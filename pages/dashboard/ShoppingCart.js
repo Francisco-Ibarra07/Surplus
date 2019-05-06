@@ -183,7 +183,8 @@ export default class ShoppingCart extends Component {
 
         {isAnonymousUser && (<Text style={{
           fontSize: 20,
-          margin: 15,
+          marginTop: '65%',
+          marginBottom: 16,
           textAlign: 'center',
         }}>
           To add items and view shopping cart, create an account!
