@@ -128,8 +128,8 @@ export default class FoodItem extends Component {
                   <TouchableOpacity style={styles.quantityCenter} onPress={this.incrementQuantity}>
                     <Text style={styles.quantity}>+</Text>
                   </TouchableOpacity>
-
                 </View>
+                {cartItemIsAdded && (<Text style={{ color: '#D33B32', fontSize: 16 }} >Added to cart!</Text>)}
 
 
                 {/* <View style={styles.button}>
@@ -141,7 +141,6 @@ export default class FoodItem extends Component {
           </View>
           <View style={styles.button}>
             {!cartItemIsAdded && <Text style={styles.addToCart} onPress={this.addItemToCartFolder}>Add to cart</Text>}
-            {cartItemIsAdded && (<Text style={{ color: 'white', fontSize: 16 }} >Added to cart!</Text>)}
           </View>
         </View>
       </View>
