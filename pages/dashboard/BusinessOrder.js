@@ -9,16 +9,82 @@ import {
   Image,
 } from 'react-native';
 import { CheckBox } from 'react-native-elements';
-
+import firebase from 'react-native-firebase'
 export default class BusinessMenu extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
+      solidItems: [],
+      pendingItemsComponents: [],
+      pendingItemsIsEmpty: true,
+      fulfilledItemsComponents: [],
       checked1: false,
       checked2: false,
     };
+  }
+
+  populateItems = () => {
+
+    const ownerID = firebase.auth().currentUser.uid
+
+    const refToSoldFolder = firebase.database().ref('/business/owners/' + ownerID + '/sold')
+    const activity = this
+    refToSoldFolder.on('value', function (snapshot) {
+
+      const snap = snapshot.val()
+
+      if (snap === null || snap === undefined) {
+        console.log("No items sold")
+        activity.setState({ pendingItemsIsEmpty: true })
+        return
+      }
+
+      console.log("Snap of sold:", snap)
+
+      let soldItemTags = []
+      for (let tag in snap) {
+        soldItemTags.push(tag)
+      }
+
+      let checkBoxComponents = []
+      let currentSoldItem = undefined
+      let nameOfPerson = ''
+      let titleOfComponent = ''
+      for (let i = 0; i < soldItemTags.length; i++) {
+        currentSoldItem = snap[soldItemTags[i]]
+
+        nameOfPerson = currentSoldItem.first_name + ' ' + currentSoldItem.last_name
+
+        titleOfComponent = 'Order #' + i.toString() + ': ' + nameOfPerson
+        console.log(titleOfComponent)
+
+        checkBoxComponents.push(
+          <CheckBox
+            key={i}
+            title={titleOfComponent}
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor='#D33B32'
+            containerStyle={{
+              backgroundColor: 'transparent',
+              borderWidth: 0,
+              borderBottomWidth: 1,
+              borderBottomColor: 'lightgray'
+            }}
+          />
+        )
+      }
+
+      console.log(checkBoxComponents)
+      activity.setState({ pendingItemsComponents: checkBoxComponents, pendingItemsIsEmpty: false })
+    })
+
+  }
+
+  componentDidMount() {
+    this.populateItems()
   }
 
   render() {
@@ -30,22 +96,9 @@ export default class BusinessMenu extends Component {
           <View style={styles.title}>
             <Text>Pending Items</Text>
           </View>
-          <CheckBox
-            checkedIcon='dot-circle-o'
-            uncheckedIcon='circle-o'
-            title='Order #80: Julie Foster'
-            // checked={this.state.checked}
-            // onPress={() => this.setState({ checked: !this.state.checked })}
-            checked={this.state.checked1}
-            onPress={() => this.setState({ checked1: !this.state.checked1 })}
-            checkedColor='#D33B32'
-            containerStyle={{
-              backgroundColor: 'transparent',
-              borderWidth: 0,
-              borderBottomWidth: 1,
-              borderBottomColor: 'lightgray'
-            }}
-          />
+          {!this.state.pendingItemsIsEmpty && this.state.pendingItemsComponents}
+          {this.state.pendingItemsIsEmpty && (<Text>There are currently no pending items</Text>)}
+
           <CheckBox
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
