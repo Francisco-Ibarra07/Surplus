@@ -184,7 +184,14 @@ export default class AddFood extends Component {
             }
           />
 
-          <Button title="Upload photo" onPress={this.handlePhotoUpload} />
+          <View style={{
+            borderWidth: 1,
+            borderColor: '#147efb',
+            borderRadius: 5,
+            marginBottom: 8,
+          }}>
+            <Button title="Upload Photo" onPress={this.handlePhotoUpload} />
+          </View>
           <RedButton buttonText='Done' onPress={this.handleNewFoodItem} disabled={!this.state.formIsCompleted} />
 
         </View>
