@@ -6,6 +6,7 @@ import {
   Button,
 } from 'react-native';
 import RedButton from '../components/RedButton';
+import firebase from 'react-native-firebase'
 
 export default class BusinessWallet extends Component {
   constructor(props) {
@@ -14,20 +15,51 @@ export default class BusinessWallet extends Component {
       day: '',
       month: '',
       year: '',
-      moneyMadeToday: 5,
+      moneyMadeToday: 0,
     }
   }
 
   componentDidMount() {
-    const date = new Date().getDate()
-    const month = new Date().getMonth() + 1
-    const year = new Date().getFullYear(); //Current Year
-
-    this.setState({ day: date, month: month, year: year })
+    this.populateWalletInfo()
   }
 
   populateWalletInfo = () => {
+    const ownerID = firebase.auth().currentUser.uid
+    const refToSoldFolder = firebase.database().ref('/business/owners/' + ownerID + '/sold')
+    const activity = this
 
+    refToSoldFolder.once('value').then(function (snapshot) {
+      const snap = snapshot.val()
+
+      if (snap === null || snap === undefined) {
+        console.log("No items sold")
+        activity.setState({ moneyMadeToday: 0 })
+        return
+      }
+
+      let soldItemTags = []
+      for (let tag in snap) {
+        soldItemTags.push(tag)
+      }
+
+      let currentSoldItem = undefined
+      let totalProfit = 0
+      for (let i = 0; i < soldItemTags.length; i++) {
+        currentSoldItem = snap[soldItemTags[i]]
+        totalProfit += currentSoldItem.profit
+      }
+
+      const date = new Date().getDate()
+      const month = new Date().getMonth() + 1
+      const year = new Date().getFullYear(); //Current Year
+
+      activity.setState({
+        day: date,
+        month: month,
+        year: year,
+        moneyMadeToday: totalProfit
+      })
+    })
   }
 
   render() {
