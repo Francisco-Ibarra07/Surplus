@@ -59,7 +59,7 @@ export default class ActiveItem extends Component {
 const styles = StyleSheet.create({
   activeItemContainer: {
     // borderWidth: 1,
-    height: 60,
+    height: 70,
     paddingBottom: 8,
     justifyContent: 'center',
   },
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     borderBottomWidth: .5,
+    paddingTop: 8,
     borderColor: 'lightgray',
   },
 });

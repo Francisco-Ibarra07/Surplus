@@ -133,7 +133,7 @@ export default class BusinessHome extends Component {
         </View>
 
         <ScrollView>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 14 }}>
             {this.state.emptyTextView && (<Text> You currently have no active items </Text>)}
           </View>
           {!this.state.emptyTextView && this.state.activeItemsView}
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     borderColor: 'lightgray',
     paddingTop: 8,
     paddingBottom: 8,
-    marginBottom: 8,
+    // marginBottom: 8,
   },
   addButton: {
     height: 30,
