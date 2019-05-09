@@ -221,8 +221,16 @@ export default class EditRestaurantInfo extends Component {
             </View>
           )}
 
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <Button title="Upload new logo" onPress={this.handlePhotoUpload} />
+          <View style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderWidth: 1,
+            borderColor: '#147efb',
+            marginTop: 5,
+            marginBottom: 5,
+            borderRadius: 5,
+          }}>
+            <Button title="Upload New Logo" onPress={this.handlePhotoUpload} />
           </View>
 
           <RedButton
