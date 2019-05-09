@@ -54,8 +54,12 @@ export default class CartItem extends Component {
           </View>
 
           <View style={styles.buttonBox}>
-            <Button title="Update" onPress={this.handleEdit} />
-            <Button title="Delete" onPress={this.handleDelete} />
+            <View style={styles.button}>
+              <Button title="Update" onPress={this.handleEdit} />
+            </View>
+            <View style={styles.button2}>
+              <Button title="Delete" onPress={this.handleDelete} />
+            </View>
           </View>
         </View>
       </View>
@@ -149,5 +153,18 @@ const styles = StyleSheet.create({
     color: 'white',
     position: 'relative',
     bottom: 2,
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: '#147efb',
+    borderRadius: 5,
+    marginTop: 14,
+  },
+  button2: {
+    borderWidth: 1,
+    borderColor: '#147efb',
+    marginLeft: 5,
+    borderRadius: 5,
+    marginTop: 14,
   },
 })
