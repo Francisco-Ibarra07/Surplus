@@ -196,8 +196,16 @@ export default class BusinessClaim extends Component {
             </View>
           </View>
 
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <Button title="Upload restaurant logo" onPress={this.handlePhotoUpload} />
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderWidth: 1,
+              borderColor: '#147efb',
+              borderRadius: 5,
+              marginTop: 16,
+            }}>
+            <Button title="Upload Restaurant Logo" onPress={this.handlePhotoUpload} />
           </View>
           {photo && (
             <View style={styles.imageBox}>
@@ -250,7 +258,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 8,
     textAlign: 'left',
-    width: '30%',
+    width: '50%',
     borderBottomWidth: 1
   },
   button: {
