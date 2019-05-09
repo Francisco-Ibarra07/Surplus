@@ -226,7 +226,6 @@ export const Nav = createAppContainer(
         headerStyle: {
           borderBottomWidth: 0,
         },
-        title: 'Editing Food Item',
         headerTintColor: '#D33B32',
       }),
     },
