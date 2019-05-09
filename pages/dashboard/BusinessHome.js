@@ -133,8 +133,8 @@ export default class BusinessHome extends Component {
         </View>
 
         <ScrollView>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 14 }}>
-            {this.state.emptyTextView && (<Text> You currently have no active items </Text>)}
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            {this.state.emptyTextView && (<Text style={{ marginTop: 14 }}> You currently have no active items </Text>)}
           </View>
           {!this.state.emptyTextView && this.state.activeItemsView}
 
