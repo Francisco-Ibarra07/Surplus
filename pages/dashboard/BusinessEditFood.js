@@ -205,7 +205,14 @@ export default class BusinessEditFood extends Component {
             }
           />
 
-          <Button title="Upload New Photo" onPress={this.handlePhotoUpload} />
+          <View style={{
+            borderWidth: 1,
+            borderColor: '#147efb',
+            borderRadius: 5,
+            marginBottom: 10,
+          }}>
+            <Button title="Upload New Photo" onPress={this.handlePhotoUpload} />
+          </View>
           <RedButton onPress={this.updateFoodInfo} buttonText='Save Changes' />
         </View>
 
