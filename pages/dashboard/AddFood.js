@@ -67,7 +67,7 @@ export default class AddFood extends Component {
     const activity = this;
 
     // Update all variables of this food item on the database
-    refToOwnersAccountInfo.on('value', function (snapshot) {
+    refToOwnersAccountInfo.once('value').then(function (snapshot) {
       activity.setState({ ownersAccountInfo: snapshot.val() });
       const storeName = activity.state.ownersAccountInfo.restaurant.store_name;
 

@@ -28,7 +28,7 @@ export default class BusinessWallet extends Component {
     const refToSoldFolder = firebase.database().ref('/business/owners/' + ownerID + '/sold')
     const activity = this
 
-    refToSoldFolder.once('value').then(function (snapshot) {
+    refToSoldFolder.on('value', function (snapshot) {
       const snap = snapshot.val()
 
       if (snap === null || snap === undefined) {
