@@ -199,14 +199,14 @@ export default class BusinessMenu extends Component {
             <Text>Pending Items</Text>
           </View>
           {!this.state.pendingItemsIsEmpty && this.state.pendingItemsComponents}
-          {this.state.pendingItemsIsEmpty && (<Text style={{ textAlign: 'center' }}>There are currently no pending items</Text>)}
+          {this.state.pendingItemsIsEmpty && (<Text style={{ textAlign: 'center', marginTop: 14 }}>There are currently no pending items</Text>)}
 
           {/* Fulfilled Items */}
           <View style={styles.title2}>
             <Text>Fulfilled Items</Text>
-            {!this.state.fulfilledItemsIsEmpty && this.state.fulfilledItemsComponents}
-            {this.state.fulfilledItemsIsEmpty && (<Text style={{ textAlign: 'center' }}>There are currently no fulfilled items</Text>)}
           </View>
+          {!this.state.fulfilledItemsIsEmpty && this.state.fulfilledItemsComponents}
+          {this.state.fulfilledItemsIsEmpty && (<Text style={{ textAlign: 'center', marginTop: 14 }}>There are currently no fulfilled items</Text>)}
 
         </ScrollView>
 
