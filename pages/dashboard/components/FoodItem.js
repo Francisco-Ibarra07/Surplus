@@ -198,6 +198,8 @@ const styles = StyleSheet.create({
     // borderColor: 'red',
     paddingTop: 5,
     paddingLeft: 5,
+    marginBottom: 16,
+    marginTop: 10,
   },
   foodItemDescription: {
     height: '100%',
