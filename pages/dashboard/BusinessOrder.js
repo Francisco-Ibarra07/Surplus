@@ -17,7 +17,6 @@ export default class BusinessMenu extends Component {
 
     this.state = {
       solidItems: [],
-      checkBoxComponents: [],
       pendingItemsComponents: [],
       pendingItemsIsEmpty: true,
       fulfilledItemsComponents: [],
@@ -27,42 +26,108 @@ export default class BusinessMenu extends Component {
     };
   }
 
-  handleCheckBoxPress = (index) => {
+  // This function is used specifically for returning the index of a CheckBox element in an array containing CheckBox components
+  findIndexOfCheckbox = (targetTitle, listToCheckFrom) => {
+    let currentCheckBox
+    for (let i = 0; i < listToCheckFrom.length; i++) {
+      currentCheckBox = listToCheckFrom[i]
 
-    console.log("Handle Check box press")
-    console.log("All components:", this.state.checkBoxComponents)
-    console.log("Index pressed:", index)
-    console.log("fulfilled section:", this.state.fulfilledItemsComponents)
-    const components = this.state.checkBoxComponents
+      if (targetTitle === currentCheckBox['props'].title) {
+        return i // Return the index of this element from this list
+      }
+    }
 
-    let targetComponent = components[index]
-    const bool = targetComponent['props'].checked
-    const name = targetComponent['props'].title
+    // Return undefined if the the element was not found
+    return undefined
+  }
 
-    console.log("Target:", targetComponent)
 
-    let updatedCheckbox = (<CheckBox
-      key={index}
-      title={name}
-      checkedIcon='dot-circle-o'
-      uncheckedIcon='circle-o'
-      checked={!bool}
-      onPress={() => this.handleCheckBoxPress(index)}
-      checkedColor='#D33B32'
-      containerStyle={{
-        backgroundColor: 'transparent',
-        borderWidth: 0,
-        borderBottomWidth: 1,
-        borderBottomColor: 'lightgray'
-      }}
-    />)
+  handleCheckBoxPress = (titleOfComponent, nameOfListThatItCameFrom) => {
 
-    console.log("Updated:", updatedCheckbox)
-    components[index] = updatedCheckbox
-    components.push(updatedCheckbox)
-    components.push(updatedCheckbox)
-    console.log("new array:", components)
-    this.setState({ fulfilledItemsComponents: components })
+    let listOfComponents
+    if (nameOfListThatItCameFrom === 'PENDING_ITEMS') {
+
+      // Grab the current list of pending items
+      listOfComponents = this.state.pendingItemsComponents
+
+      // Find the index of the pressed checkbox
+      const indexOfTarget = this.findIndexOfCheckbox(titleOfComponent, listOfComponents)
+      if (indexOfTarget === undefined) {
+        console.log("This checkbox is not in this list")
+        return
+      }
+
+      // Calculate the new index for this CheckBox to be placed in the fulfilled items list
+      const newIndex = this.state.fulfilledItemsComponents.length
+
+      // Create the new checkbox element with the updated boolean
+      let updatedCheckboxObject = (<CheckBox
+        key={newIndex}
+        title={titleOfComponent}
+        checkedIcon='dot-circle-o'
+        uncheckedIcon='circle-o'
+        checked={true}
+        onPress={() => this.handleCheckBoxPress(titleOfComponent, 'FULFILLED_ITEMS')}
+        checkedColor='#D33B32'
+        containerStyle={{
+          backgroundColor: 'transparent',
+          borderWidth: 0,
+          borderBottomWidth: 1,
+          borderBottomColor: 'lightgray'
+        }}
+      />)
+
+      // Remove the element from pending items list
+      this.state.pendingItemsComponents.splice(indexOfTarget)
+
+      // Check to see if pending items is empty
+      const listIsEmpty = this.state.pendingItemsComponents.length === 0
+
+      // Add the new checkbox into the fulfulled items list
+      this.state.fulfilledItemsComponents.push(updatedCheckboxObject)
+      this.setState({ fulfilledItemsIsEmpty: false, pendingItemsIsEmpty: listIsEmpty })
+    }
+    else if (nameOfListThatItCameFrom === 'FULFILLED_ITEMS') {
+      // Grab the current list of pending items
+      listOfComponents = this.state.fulfilledItemsComponents
+
+      // Find the index of the pressed checkbox
+      const indexOfTarget = this.findIndexOfCheckbox(titleOfComponent, listOfComponents)
+      if (indexOfTarget === undefined) {
+        console.log("This checkbox is not in this list")
+        return
+      }
+
+      // Calculate the new index for this CheckBox to be placed back into the pending items list
+      const newIndex = this.state.pendingItemsComponents.length
+
+      // Create the new checkbox element with the updated boolean
+      let updatedCheckboxObject = (<CheckBox
+        key={newIndex}
+        title={titleOfComponent}
+        checkedIcon='dot-circle-o'
+        uncheckedIcon='circle-o'
+        checked={false}
+        onPress={() => this.handleCheckBoxPress(titleOfComponent, 'PENDING_ITEMS')}
+        checkedColor='#D33B32'
+        containerStyle={{
+          backgroundColor: 'transparent',
+          borderWidth: 0,
+          borderBottomWidth: 1,
+          borderBottomColor: 'lightgray'
+        }}
+      />)
+
+      // Remove the element from fulfilled items list
+      this.state.fulfilledItemsComponents.splice(indexOfTarget)
+
+      // Check to see if fulfilled items list is now empty after the splice
+      const listIsEmpty = this.state.fulfilledItemsComponents.length === 0
+
+      // Add the new checkbox back into the pending items list
+      this.state.pendingItemsComponents.push(updatedCheckboxObject)
+      this.setState({ pendingItemsIsEmpty: false, fulfilledItemsIsEmpty: listIsEmpty })
+    }
   }
 
   populateItems = () => {
@@ -104,7 +169,7 @@ export default class BusinessMenu extends Component {
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             checked={false}
-            onPress={() => activity.handleCheckBoxPress(i)}
+            onPress={() => activity.handleCheckBoxPress(titleOfComponent, 'PENDING_ITEMS')}
             checkedColor='#D33B32'
             containerStyle={{
               backgroundColor: 'transparent',
@@ -116,7 +181,7 @@ export default class BusinessMenu extends Component {
         )
       }
 
-      activity.setState({ checkBoxComponents: checkBoxComponents, pendingItemsComponents: checkBoxComponents, pendingItemsIsEmpty: false })
+      activity.setState({ pendingItemsComponents: checkBoxComponents, pendingItemsIsEmpty: false })
     })
   }
 
@@ -133,23 +198,8 @@ export default class BusinessMenu extends Component {
           <View style={styles.title}>
             <Text>Pending Items</Text>
           </View>
-          {!this.state.pendingItemsIsEmpty && this.state.checkBoxComponents}
-          {this.state.pendingItemsIsEmpty && (<Text>There are currently no pending items</Text>)}
-
-          {/* <CheckBox
-            checkedIcon='dot-circle-o'
-            uncheckedIcon='circle-o'
-            title='Sold Order #81: Pamela McDonald '
-            checked={this.state.checked2}
-            onPress={() => this.setState({ checked2: !this.state.checked2 })}
-            checkedColor='#D33B32'
-            containerStyle={{
-              backgroundColor: 'transparent',
-              borderWidth: 0,
-              borderBottomWidth: 1,
-              borderBottomColor: 'lightgray'
-            }}
-          /> */}
+          {!this.state.pendingItemsIsEmpty && this.state.pendingItemsComponents}
+          {this.state.pendingItemsIsEmpty && (<Text style={{ textAlign: 'center' }}>There are currently no pending items</Text>)}
 
           {/* Fulfilled Items */}
           <View style={styles.title2}>
