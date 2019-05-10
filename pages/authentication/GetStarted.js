@@ -6,88 +6,93 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import firebase from 'react-native-firebase';
+import RedButton from '../components/RedButton';
+import WhiteButton from '../components/WhiteButton';
 
 export default class GetStarted extends Component {
+
   static navigationOptions = {
     header: null
   }
+
+  handleAnonymousSignUp = () => {
+    console.log("Start signInAnonmyously()");
+    // Call Firebase anonymous sign in
+    // firebase.auth().signInAnonymously().catch(function (error) {
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   console.log(errorMessage, errorCode);
+    // });
+
+    this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: true, });
+  }
+
   render() {
     return (
       <View style={styles.container}>
 
-        <Text style={styles.title}>Save BIG on</Text>
-        <Text style={styles.title}>your next meal!</Text>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://i.imgur.com/gij49Cq.png' }}
-        />
+        {/* Title and Spash Image */}
+        <View style={styles.containerTop}>
+          <Text style={styles.title}>Save BIG on</Text>
+          <Text style={styles.title}>your next meal!</Text>
+          <Image style={styles.image} source={{ uri: 'https://i.imgur.com/gij49Cq.png' }} />
+        </View>
 
-        {/* Red Button */}
-        <TouchableOpacity
-          style={styles.redButton}
-          onPress={() => this.props.navigation.navigate('WhoAreYou')} >
+        {/* All the buttons */}
+        <View style={styles.containerBottom}>
 
-          <Text style={{ color: '#fff' }}> Get Started </Text>
-        </TouchableOpacity>
+          {/* Get Started Button */}
+          <RedButton
+            style={{ marginBottom: 10 }}
+            buttonText='Get Started'
+            onPress={() => this.props.navigation.navigate('WhoAreYou')}
+          />
 
-        {/* White Button */}
-        <TouchableOpacity
-          style={styles.whiteButton}
-          onPress={() => this.props.navigation.navigate('DummySignUp')}
-        >
+          {/* Browse as Guest Button */}
+          <WhiteButton
+            style={{ marginBottom: 15 }}
+            buttonText='Browse as Guest'
+            onPress={this.handleAnonymousSignUp}
+          />
 
-          <Text style={{ color: '#000000' }}> Browse as Guest </Text>
-        </TouchableOpacity>
-        <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Already have an account?</Text>
+          {/* Already have an account Button */}
+          <Text style={styles.textButton} onPress={() => this.props.navigation.navigate('SignIn')}>Already have an account?</Text>
+        </View>
       </View>
     );
   }
 }
 
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
+    flex: 1,
+    padding: 25,
     justifyContent: 'center',
-    paddingTop: 150
+  },
+  containerTop: {
+    marginBottom: 50,
   },
   title: {
+    color: '#505050',
     fontSize: 25,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   image: {
-    marginBottom: 50,
+    height: 200,
     width: 300,
-    height: 200
   },
-  redButton: {
+  containerBottom: {
     alignItems: 'center',
-    alignSelf: 'stretch',
-    backgroundColor: '#D33B32',
-    height: 45,
+    bottom: '4%',
+    flex: 1,
+    position: 'absolute',
     justifyContent: 'center',
-    marginRight: 25,
-    marginLeft: 25,
-    marginBottom: 10,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#D33B32'
-  },
-  whiteButton: {
-    alignItems: 'center',
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    height: 45,
-    justifyContent: 'center',
-    marginRight: 25,
-    marginLeft: 25,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#777777',
-    marginBottom: 15
+    width: '100%',
   },
   textButton: {
     color: '#3366BB',
-    marginTop: 10,
   },
 });

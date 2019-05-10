@@ -7,8 +7,10 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import firebase from 'react-native-firebase';
+import RedButton from '../components/RedButton';
 
-export default class WhoAreYou extends Component {
+export default class CustomerSignUp extends Component {
   static navigationOptions = {
     headerStyle: {
       borderBottomWidth: 0,
@@ -23,96 +25,177 @@ export default class WhoAreYou extends Component {
       email: '',
       phone: '',
       password: '',
+      account_type: 'CUSTOMER',
     }
   }
 
-  validate = () => {
-    const { f_name, l_name, email, phone, password } = this.state;
+  // Create an account: Validates user input and if correct, sends info to Firebase
+  handleSignUp = () => {
+
+    // Get user input variables
+    const { f_name, l_name, email, phone, password, account_type } = this.state;
+
+    // Make sure all fields are filled in
     if (f_name == "") {
       alert('Please fill in your first name.')
+      return false;
     } else if (l_name == "") {
       alert('Please fill in your last name.')
+      return false;
     } else if (email == "") {
       alert('Please fill in your email.')
+      return false;
     } else if (phone == "") {
       alert('Please fill in your phone.')
+      return false;
     } else if (password == "") {
       alert('Please fill in your password.')
+      return false;
     }
+
+    // Sends user input to Firebase. If successful, routes user to customer home page
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(() => {
+
+        // Get database reference to correct folder
+        user_id = firebase.auth().currentUser.uid;
+        const ref = firebase.database().ref('customers/users/' + user_id);
+
+        // Update user properties
+        ref.update({
+          'email': email,
+          'first_name': f_name,
+          'last_name': l_name,
+          'phone_number': phone,
+          'account_type': account_type,
+        });
+
+        this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: false, });
+        return true;
+      })
+      .catch((error) => {
+        // Handle error code
+        switch (error.code) {
+          case "auth/invalid-email":
+            alert("Your email is formatted incorrectly");
+            break;
+          case "auth/weak-password":
+            alert("Strong passwords have at least 6 characters and a mix of letters and numbers");
+            break;
+          case "auth/email-already-in-use":
+            alert("That email already exists");
+            break;
+          case "auth/network-request-failed":
+            alert("No internet connection");
+            break;
+          default:
+            alert("Unhandled error case. Developers fucked up");
+            console.log(error.code);
+            break;
+        }
+
+        return false;
+      })
   }
 
   render() {
     return (
       <View style={styles.container} >
-        <Image style={styles.image} source={require('./resources/Logo.jpg')} />
-        {/* Inputs */}
-        <TextInput style={styles.input}
-          placeholder="First Name"
-          onChangeText={
-            f_name => this.setState({ f_name })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Last Name"
-          onChangeText={
-            l_name => this.setState({ l_name })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Email"
-          onChangeText={
-            email => this.setState({ email })
-          }
-        />
-        <TextInput style={styles.input}
-          placeholder="Phone"
-          onChangeText={
-            phone => this.setState({ phone })
-          }
-        />
-        <TextInput style={styles.input} secureTextEntry={true}
-          placeholder="Password"
-          onChangeText={
-            password => this.setState({ password })
-          }
-        />
+        <View style={styles.containerA}>
+          {/* Logo */}
+          <View style={styles.logo}>
+            <Image style={styles.image} source={require('./resources/Logo.jpg')} />
+          </View>
 
-        {/* Sign Up */}
-        <TouchableOpacity onPress={this.validate}
-          style={styles.button}
-        >
-          <Text style={{ color: 'white' }}>Sign Up</Text>
-        </TouchableOpacity>
+          {/* Form */}
+          <View style={styles.form}>
+            {/* Inputs */}
+            <TextInput style={styles.input}
+              placeholder="First Name"
+              autoCorrect={false}
+              onChangeText={
+                f_name => this.setState({ f_name })
+              }
+            />
+            <TextInput style={styles.input}
+              placeholder="Last Name"
+              autoCorrect={false}
+              onChangeText={
+                l_name => this.setState({ l_name })
+              }
+            />
+            <TextInput style={styles.input}
+              keyboardType="email-address"
+              placeholder="Email"
+              autoCorrect={false}
+              autoCapitalize='none'
+              onChangeText={
+                email => this.setState({ email })
+              }
+            />
+            <TextInput style={styles.input}
+              keyboardType="number-pad"
+              placeholder="Phone"
+              autoCorrect={false}
+              onChangeText={
+                phone => this.setState({ phone })
+              }
+            />
+            <TextInput style={styles.input}
+              secureTextEntry={true}
+              placeholder="Password"
+              autoCorrect={false}
+              onChangeText={
+                password => this.setState({ password })
+              }
+            />
+          </View>
+        </View>
 
-        {/* Sign up with FB */}
-        <TouchableOpacity style={styles.whiteButton}>
-          <Image
-            source={require('./resources/facebooklogo.png')}
-            style={styles.ImageIconStyle}
-          />
-          <Text style={{ color: '#D33B32' }}>Continue with Facebook</Text>
-        </TouchableOpacity>
+        <View style={styles.containerB}>
+          {/* Buttons */}
+          <View style={styles.buttons} >
 
-        {/* Sign up with G+ */}
-        <TouchableOpacity style={styles.whiteButton}>
-          <Image
-            source={require('./resources/googlelogo.png')}
-            style={styles.ImageIconStyle}
-          />
-          <Text style={{ color: '#D33B32' }}>Continue with Google</Text>
-        </TouchableOpacity>
+            {/* Sign Up */}
+            <RedButton
+              buttonText='Sign Up'
+              onPress={this.handleSignUp}
+            />
 
-        {/* Condition Statement */}
-        <Text style={styles.condition}>By tapping the Faebook icon, Google icon, or Signup button, you agree to our{" "}
-          <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
-            Terms and Conditions
+            {/* Sign up with FB */}
+            <TouchableOpacity style={styles.whiteButton}>
+              <Image
+                source={require('./resources/facebooklogo.png')}
+                style={styles.ImageIconStyle}
+              />
+              <Text style={{ color: '#D33B32' }}>Continue with Facebook</Text>
+            </TouchableOpacity>
+
+            {/* Sign up with G+ */}
+            <TouchableOpacity style={styles.whiteButton}>
+              <Image
+                source={require('./resources/googlelogo.png')}
+                style={styles.ImageIconStyle}
+              />
+              <Text style={{ color: '#D33B32' }}>Continue with Google</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Condition Statement */}
+          <View style={styles.condition}>
+            <Text style={styles.conditionText}>By tapping the Facebook icon, Google icon, or Signup button, you agree to our{" "}
+              <Text onPress={() => this.props.navigation.navigate('TermsAndConditions')} style={{ color: '#3366BB' }}>
+                Terms and Conditions
           </Text>
-          {" "}and
+              {" "}and
           <Text onPress={() => this.props.navigation.navigate('PrivacyStatement')} style={{ color: '#3366BB' }}>
-            {" "}Privacy Statement
+                {" "}Privacy Statement
           </Text>
-          .
+              .
         </Text>
+          </View>
+        </View>
+
       </View>
     );
   }
@@ -122,36 +205,66 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    // borderWidth: 1,
+    // borderColor: 'blue',
+    // height: '100%',
+    marginBottom: 25,
+    marginLeft: 25,
+    marginRight: 25,
+  },
+  containerA: {
+    width: '100%',
+
+  },
+  containerB: {
+    width: '100%',
+
   },
   input: {
-    height: 40,
-    width: '85%',
-    textAlign: 'right',
-    borderBottomWidth: 1
+    // width: '100%',
+    textAlign: 'left',
+    borderBottomWidth: 1,
+    paddingTop: 12,
+    paddingBottom: 8,
+    // borderWidth: 1,
+    // borderColor: 'blue',
+    width: '100%',
+    // height: 45,
+  },
+  buttons: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#D33B32',
     borderRadius: 10,
-    marginTop: 10,
-    padding: 10,
-    width: '85%',
+    // marginTop: 10,
+    // padding: 10,
+    height: 45,
+    width: '100%',
   },
   whiteButton: {
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     marginTop: 10,
-    padding: 10,
-    width: '85%',
+    // padding: 10,
+    height: 45,
+    width: '100%',
     borderWidth: 1,
     borderColor: '#777777',
   },
   image: {
-    height: 120,
+    height: 80,
     resizeMode: 'contain',
+    // borderWidth: 1,
+    // borderColor: 'orange',
   },
   ImageIconStyle: {
     padding: 10,
@@ -163,8 +276,26 @@ const styles = StyleSheet.create({
     left: 2,
   },
   condition: {
+    width: '100%',
+    paddingTop: 10,
+    // borderWidth: 1,
+    // borderColor: '#777777',
+  },
+  conditionText: {
     fontSize: 10,
-    width: '85%',
-    paddingTop: 15,
+  },
+
+  form: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    width: '100%',
+    alignItems: 'center',
   },
 });

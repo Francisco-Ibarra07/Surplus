@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  Button
 } from 'react-native';
 
 export default class WhoAreYou extends Component {
