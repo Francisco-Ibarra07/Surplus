@@ -55,7 +55,6 @@ export default class BusinessEditFood extends Component {
 
     // Get a reference to the folder of this food item
     const refToFoodItem = firebase.database().ref(refPath)
-    console.log("Result:", refToFoodItem)
 
     // If the name was updated, update the whole folder as well because the previous folder was deleted
     if (updatedItemName !== '') {
@@ -97,7 +96,6 @@ export default class BusinessEditFood extends Component {
   handlePhotoUpload = () => {
     const options = {};
     ImagePicker.launchImageLibrary(options, response => {
-      console.log("Response:", response);
       if (response.uri) {
 
         const user_id = firebase.auth().currentUser.uid;
@@ -129,7 +127,6 @@ export default class BusinessEditFood extends Component {
 
       const snap = snapshot.val()
       if (snap === null) { return } // Means item was already deleted
-      console.log("snap:", snap)
       activity.setState({
         itemName: snap['item_name'],
         foodDescription: snap['item_description'],

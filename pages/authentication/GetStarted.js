@@ -17,14 +17,6 @@ export default class GetStarted extends Component {
   }
 
   handleAnonymousSignUp = () => {
-    console.log("Start signInAnonmyously()");
-    // Call Firebase anonymous sign in
-    // firebase.auth().signInAnonymously().catch(function (error) {
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   console.log(errorMessage, errorCode);
-    // });
-
     this.props.navigation.navigate('CustomerDashboard', { anonymousFlag: true, });
   }
 

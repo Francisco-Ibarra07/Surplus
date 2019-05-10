@@ -63,7 +63,6 @@ export default class BusinessClaim extends Component {
       alert('Please add a photo of your restaurant logo');
       return false;
     }
-    console.log(this.state);
 
     // Sign up user
     firebase.auth().createUserWithEmailAndPassword(this.state.businessOwner.email_address, this.state.businessOwner.pwd)
@@ -128,7 +127,6 @@ export default class BusinessClaim extends Component {
   handlePhotoUpload = () => {
     const options = {};
     ImagePicker.launchImageLibrary(options, response => {
-      console.log("Response:", response);
       if (response.uri) {
         this.setState({ photo: response });
         alert('Photo successfully uploaded!');

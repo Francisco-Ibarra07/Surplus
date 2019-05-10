@@ -57,12 +57,6 @@ export default class EditRestaurantInfo extends Component {
         city: snap['city'],
         logoURL: snap['image']
       })
-
-      console.log("city:", snap['city'])
-      console.log(snap)
-      console.log(snapshot)
-
-
     });
   }
 
@@ -98,7 +92,6 @@ export default class EditRestaurantInfo extends Component {
     }
 
     if (updatedAddress !== '') {
-      console.log("new address", updatedAddress)
       refToRestaurantInfo.update({
         'address': updatedAddress
       })
@@ -133,7 +126,6 @@ export default class EditRestaurantInfo extends Component {
       this.setState({ city: updatedCity, updatedCity: '' });
     }
 
-    console.log(updatedLogoURL)
     if (updatedLogoURL !== null) {
       refToRestaurantInfo.update({
         'image': updatedLogoURL
@@ -147,7 +139,6 @@ export default class EditRestaurantInfo extends Component {
   handlePhotoUpload = () => {
     const options = {};
     ImagePicker.launchImageLibrary(options, response => {
-      console.log("Response:", response);
       if (response.uri) {
 
         const user_id = firebase.auth().currentUser.uid;

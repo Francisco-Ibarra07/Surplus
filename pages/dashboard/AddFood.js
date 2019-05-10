@@ -98,7 +98,6 @@ export default class AddFood extends Component {
   handlePhotoUpload = () => {
     const options = {};
     ImagePicker.launchImageLibrary(options, response => {
-      console.log("Response:", response);
       if (response.uri) {
         this.setState({ photo: response });
 
@@ -110,7 +109,6 @@ export default class AddFood extends Component {
           .then((msg) => {
 
             this.setState({ photoDownloadURL: msg.downloadURL });
-            console.log(this.state.photoDownloadURL);
             this.setState({ formIsCompleted: true });
             alert('Photo successfully uploaded!');
           })

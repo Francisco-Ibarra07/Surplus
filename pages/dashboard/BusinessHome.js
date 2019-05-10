@@ -61,7 +61,6 @@ export default class BusinessHome extends Component {
 
     onlineItemsRef.on('value', function (snapshot) {
       const snap = snapshot.val();
-      console.log("Items:", snap);
 
       // If there are no active items for this restaurant, delete it from the 'online' folder
       if (snap === null) {

@@ -37,7 +37,6 @@ export default class BusinessVerify extends Component {
     // Upload the image to Firebase Storage and store the download URL link of that image onto the restaurant folder in the database
     imageFolderRef.putFile(photo.uri)
       .then((msg) => {
-        console.log('Image uploaded:', msg.downloadURL);
         restaurant.update({
           'image': msg.downloadURL
         })

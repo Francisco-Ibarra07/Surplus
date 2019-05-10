@@ -129,16 +129,15 @@ export default class ShoppingCart extends Component {
       return
     }
 
-    let shoppingCartItems = this.state.individualCartItemsArray
-    let currentItem
-    let arrayOfPromises = []
-    let newQuantityAmount
-    let ref
+    let shoppingCartItems = this.state.individualCartItemsArray;
+    let currentItem;
+    let arrayOfPromises = [];
+    let newQuantityAmount;
+    let ref;
 
     // Update the quantity value
     for (let i = 0; i < shoppingCartItems.length; i++) {
       currentItem = shoppingCartItems[i]
-      console.table(currentItem)
 
       newQuantityAmount = parseInt(currentItem.item_quantity_original) - currentItem.item_quantity_desired
 
@@ -170,7 +169,6 @@ export default class ShoppingCart extends Component {
       // Delete this cart item from the user's shopping cart
       ref = this.state.refToShoppingCart.child(currentItem.item_name).remove()
       arrayOfPromises.push(ref)
-
     }
 
     Promise.all(arrayOfPromises).then(() => {
