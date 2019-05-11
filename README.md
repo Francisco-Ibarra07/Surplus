@@ -2,7 +2,7 @@
 
 Surplus is an application that prevents restaurants from losing money due to food waste and focuses on high Food Insecurity rates amongst college students. Restaurants post leftovers on our application that would otherwise be thrown away at a discounted price. Students are notified that a local restaurant is offering a special deal and have the opportunity to pay a lesser price for a meal while restaurants can make extra money. Restaurants are able to make some of their money back, students can grab a discounted meal — food doesn’t end up in the trash and students have the opportunity to have a meal.
 
-![Surplus](https://media.giphy.com/media/jSQs0TVjbQSe7RGaEt/giphy.gif)
+![Surplus](https://im3.ezgif.com/tmp/ezgif-3-d718fad228dc.gif)
 
 ## Prerequisites
 - Mac Mojave installed
