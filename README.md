@@ -3,6 +3,7 @@
 Surplus is an application that prevents restaurants from losing money due to food waste and focuses on high food insecurity rates amongst college students 
 
 ![Surplus](https://im3.ezgif.com/tmp/ezgif-3-d718fad228dc.gif)
+
 (Surplus: Get Started Screen)
 
 ## Inspiration
