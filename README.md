@@ -4,6 +4,33 @@ Surplus is an application that prevents restaurants from losing money due to foo
 
 ![Surplus](https://im3.ezgif.com/tmp/ezgif-3-d718fad228dc.gif)
 
+## Backlog
+
+| ID | Requirements                                                                                                                                | Priority  | Complete |
+|----|---------------------------------------------------------------------------------------------------------------------------------------------|-----------|----------|
+| 1  | As an unauthorized customer, I want to create a new account                                                                                 | Essential |     x    |
+| 2  | As an authorized customer, I want to retrieve all food options                                                                              | Essential |     x    |
+| 3  | As an authorized customer, I want to add food item(s) to the shopping cart and view items that have already been added to the shopping cart | Essential |     x    |
+| 4  | As an authorized customer, I want to edit my account information                                                                            | Essential |     x    |
+| 5  | As an authorized customer, I want to delete food item(s) from the shopping cart                                                             | Essential |     x    |
+| 6  | As an authorized customer, I want to reserve food item(s)                                                                                   | Essential |     x    |
+| 7  | As an unauthorized business owner, I want to create a new account and claim my business                                                     | Essential |     x    |
+| 8  | As an authorized business owner, I want to post new food item(s) into the menu                                                              | Essential |     x    |
+| 9  | As an authorized business owner, I want to edit food item(s) from the menu                                                                  | Essential |     x    |
+| 10 | As an authorized business owner, I want to delete food item(s) from the menu                                                                | Essential |     x    |
+| 11 | As an authorized business owner, I want to edit my personal information                                                                     | Essential |     x    |
+| 12 | As an authorized business owner, I want to edit my restaurant information                                                                   | Essential |     x    |
+| 13 | As a authorized customer, I want an email confirmation of my food reservation(s)                                                            | Desirable |          |
+| 14 | As a customer, I want to search for food items                                                                                              | Desirable |          |
+| 15 | Integrate a payment system (i.e. Paypal or Stripe)                                                                                          | Desirable |          |
+| 16 | As an authorized customer, I want to add/edit/remove credit card information                                                                | Desirable |          |
+| 17 | As an authorized business owner, I want to retrieve money made                                                                              | Desirable |          |
+| 18 | Create an account using Facebook or Google+                                                                                                 | Desirable |          |
+| 19 | Browse as guest                                                                                                                             | Desirable |     x    |
+| 20 | Include a reward system for loyal customers                                                                                                 | Optional  |          |
+| 21 | Add map for each restaurant to show the distance from current location                                                                      | Optional  |          |
+| 22 | As an authorized customer, I want to edit the quantity of food item(s) in the shopping cart                                                 | Optional  |          |
+
 ## Prerequisites
 - Mac Mojave installed
 - Xcode 10.0 or above installed
