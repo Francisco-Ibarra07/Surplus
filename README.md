@@ -14,7 +14,7 @@ LinkedIn: https://www.linkedin.com/company/surplusfoods/
 
 ## Backlog
 
-| ID | Requirements                                                                                                                                | Priority  | Complete |
+| ID | Requirement                                                                                                                                | Priority  | Complete |
 |----|---------------------------------------------------------------------------------------------------------------------------------------------|-----------|----------|
 | 1  | As an unauthorized customer, I want to create a new account                                                                                 | Essential |     x    |
 | 2  | As an authorized customer, I want to retrieve all food options                                                                              | Essential |     x    |
@@ -40,6 +40,7 @@ LinkedIn: https://www.linkedin.com/company/surplusfoods/
 | 22 | As an authorized customer, I want to edit the quantity of food item(s) in the shopping cart                                                 | Optional  |          |
 
 ## Prerequisites
+
 - Mac Mojave installed
 - Xcode 10.0 or above installed
 
@@ -50,6 +51,7 @@ rm -rf Surplus
 ```
 
 Or you can find the old Surplus folder in 'Finder' and delete it that way.
+
 ## Installation
 
 To install the project, clone this repository onto the home directory and run the installation bash script. To do this, open a terminal and run these commands:
@@ -71,6 +73,7 @@ The next step is to set the **Xcode command line tools**. This can be found in t
 The final step is to choose which iOS device to run the project on and hit the 'Play' button at the top left of the screen
 
 ## Contributing
+
 Make sure you are always developing on the correct branch. To check which branch you are on you can do this command:
 ```bash
 git branch
@@ -81,3 +84,10 @@ git checkout [NAMEOFBRANCH]
 ```
 
 Commit often and be sure the project builds on Xcode before pushing back to the repository!
+
+## Acknowledgement
+CalPal was created by 
+[Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading back-end and Firebase
+[Jasmine Mai](https://github.com/jasminemai97) : Spearheading front-end
+[Nhat Nguyen](https://github.com/nguyen-nhat) : Bridging full stack
+[Cong He](https://github.com/IWKUA) : UX and Writer
