@@ -43,7 +43,7 @@ LinkedIn: https://www.linkedin.com/company/surplusfoods/
 
 
 ## Installation Guide
-These are the installation instructions to install the Surplus ios application. 
+These are the installation instructions to install the Surplus iOS application. 
 
 To do the installation properly, make sure you have the correct dependencies first. The latest version of Mac Mojave MUST be installed. You will also need to have the LATEST version of Xcode. To install React Native and CocoaPods, follow the steps in the 'Prerequisites' section. 
 
