@@ -93,13 +93,19 @@ CocoaPods
 14. Hit the 'Play' button to start the Surplus app
 
 
-## External Tools
+## Technologies and Tools
 
-1. Adobe Xd:
+![Technologies](https://i.imgur.com/AoP5lOU.png)
+
+1. React Native: 
+
+We use React Native to develop applications for iOS. It enables developers to use React along with native platform capabilities.
+
+2. Adobe Xd:
 
 We used Adobe XD for wireframing and high fidelity mockups. It is important to have wireframe because we don’t want to code blindly. Also, it is easier to make edits on here than after coding.
 
-2. Firebase Database:
+3. Firebase Database:
 
 Firebase was our main database (Firebase Realtime Database) that was used. 
 
