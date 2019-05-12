@@ -85,7 +85,7 @@ CocoaPods
 
 ## Acknowledgement
 Surplus was developed by 
-- [Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading back-end and Firebase
-- [Jasmine Mai](https://github.com/jasminemai97) : Spearheading front-end and deliverable writer 
-- [Nhat Nguyen](https://github.com/nguyen-nhat) : Full stack - Bridging front-end and back-end
+- [Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading DevOps, **back-end** and database
+- [Jasmine Mai](https://github.com/jasminemai97) : Spearheading **front-end** and deliverable writer 
+- [Nhat Nguyen](https://github.com/nguyen-nhat) :  Bridging front-end and back-end - **full stack**
 - [Cong He](https://github.com/IWKUA) : UX and deliverable writer
