@@ -48,7 +48,7 @@ Surplus is an application that prevents restaurants from losing money due to foo
 
 ## Technologies and Tools
 
-![Technologies](https://i.imgur.com/AoP5lOU.png)
+![Technologies](https://i.imgur.com/QLu4cRm.png)
 
 **1. React Native:**
 
@@ -77,17 +77,14 @@ CocoaPods
 
 2. Install the latest React Native framework using Homebrew. Type these commands, IN ORDER, onto the terminal
 
-&nbsp;a. /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-&nbsp;b. brew install node
-
-&nbsp;c. brew install watchman
-
-&nbsp;d. brew install wget
-
-&nbsp;e. brew install yarn
-
-&nbsp;f. brew install -g react-native-cli
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew install node
+brew install watchman
+brew install wget
+brew install yarn
+brew install -g react-native-cli
+```
 
 ### Installation instructions: 
 1. Unzip the 'Surplus' folder onto the Desktop
