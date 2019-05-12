@@ -63,12 +63,17 @@ CocoaPods
 1. Install CocoaPods by typing in to the terminal: 'sudo gem install cocoapods'
 
 2. Install the latest React Native framework using Homebrew. Type these commands, IN ORDER, onto the terminal
-a. /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-b. brew install node
-c. brew install watchman
-d. brew install wget
-e. brew install yarn
-f. brew install -g react-native-cli
+&nbsp;a. /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+&nbsp;b. brew install node
+
+&nbsp;c. brew install watchman
+
+&nbsp;d. brew install wget
+
+&nbsp;e. brew install yarn
+
+&nbsp;f. brew install -g react-native-cli
 
 ### Installation instructions: 
 1. Unzip the 'Surplus' folder onto the Desktop
