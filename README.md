@@ -83,6 +83,15 @@ CocoaPods
 14. Hit the 'Play' button to start the Surplus app
 
 
+## External Tools
+
+1. Adobe Xd
+We used Adobe XD for wireframing and high fidelity mockups. It is important to have         wireframe because we don’t want to code blindly. Also, it is easier to make edits on here         than after coding.
+
+2. Firebase Database
+Firebase was our main database that was used. 
+
+
 ## Acknowledgement
 Surplus was developed by 
 - [Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading DevOps, **back-end** and database
