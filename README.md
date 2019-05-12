@@ -1,4 +1,4 @@
-# Surplus
+# Surplus 🍎
 
 Surplus is an application that prevents restaurants from losing money due to food waste and focuses on high food insecurity rates amongst college students 
 
@@ -53,37 +53,44 @@ rm -rf Surplus
 Or you can find the old Surplus folder in 'Finder' and delete it that way.
 
 ## Installation
+These are the installation instructions to install the Surplus ios application. 
 
-To install the project, clone this repository onto the home directory and run the installation bash script. To do this, open a terminal and run these commands:
+To do the installation properly, make sure you have the correct dependencies first. The latest version of Mac Mojave MUST be installed. You will also need to have the LATEST version of Xcode. To install React Native and CocoaPods, follow the steps in the 'Pre-requisites' section. 
 
-```bash
-cd ~
-git clone https://github.com/Francisco-Ibarra07/Surplus.git
-cd Surplus
-sh set_project_dependencies.sh
-```
-Accept any installation prompts that the terminal gives you by pressing the [ENTER] key.
+Once all of these dependencies AND Pre-requisites are done, THEN you may start the 'Installation instructions' section
 
-Once the script is finished, it should have installed all the necessary dependencies needed for this project (As of Feb 9, 2019), and opened up the 'Surplus.xcworkspace' file in Xcode. 
+### Dependencies:
+Mac Mojave installed
+Xcode 10.1 or above
+React Native version 0.58.3
+CocoaPods 
 
-The next step is to set the **Xcode command line tools**. This can be found in the XCode preferences menu. 
-- Go to Xcode -> preferences -> locations and set the Xcode command line tools to 'Xcode 10.1'
+### Pre-requisites:
+1. Install CocoaPods by typing in to the terminal: 'sudo gem install cocoapods'
 
+2. Install the latest React Native framework using Homebrew. Type these commands, IN ORDER, onto the terminal
+    a) /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    b) brew install node
+    c) brew install watchman
+    d) brew install wget
+    e) brew install yarn
+    f) brew install -g react-native-cli
 
-The final step is to choose which iOS device to run the project on and hit the 'Play' button at the top left of the screen
-
-## Contributing
-
-Make sure you are always developing on the correct branch. To check which branch you are on you can do this command:
-```bash
-git branch
-```
-To switch between branches do:
-```bash
-git checkout [NAMEOFBRANCH]
-```
-
-Commit often and be sure the project builds on Xcode before pushing back to the repository!
+### Installation instructions: 
+- Unzip the 'Surplus' folder onto the Desktop
+- Open up a terminal and 'cd' into the unzipped folder:
+- This can be done by typing in 'cd ~/Desktop/Surplus' onto the terminal
+- Once you are inside the Surplus folder, type 'npm install'
+- Open the XCode project file titled 'Surplus.xcworkspace'
+- Its located in 'Surplus/ios/Surplus.xcworkspace'
+- Once XCode opens, open up the XCode Preferences
+- This can be found under 'Xcode' in the menu bar
+- Once the Preferences are opened, Navigate to 'Locations'
+- Under 'Command Line Tools', make sure at least 'Xcode 10.1' or above is selected
+- Close the Preferences
+- Under 'Product' in the Xcode menu bar, select 'Build'
+- Once the project builds successfully, on the top left next to the 'Play' button, choose an iphone simulator
+- Hit the 'Play' button to start the Surplus app
 
 ## Acknowledgement
 Surplus was developed by 
