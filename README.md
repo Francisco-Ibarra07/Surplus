@@ -6,11 +6,13 @@ Surplus is an application that prevents restaurants from losing money due to foo
 
 (Surplus: Get Started Screen)
 
+
 ## Inspiration
 
 Surplus is an application that prevents restaurants from losing money due to food waste and focuses on high Food insecurity rates amongst college students. Restaurants post leftovers on our application that would otherwise be thrown away at a discounted price. Students are notified that a local restaurant is offering a special deal and have the opportunity to pay a lesser price for a meal while restaurants can make extra money. Restaurants are able to make some of their money back, students can grab a discounted meal — food doesn’t end up in the trash and students have the opportunity to have a meal.
 
 LinkedIn: https://www.linkedin.com/company/surplusfoods/
+
 
 ## Backlog
 
@@ -39,18 +41,6 @@ LinkedIn: https://www.linkedin.com/company/surplusfoods/
 | 21 | Add map for each restaurant to show the distance from current location                                                                      | Optional  |          |
 | 22 | As an authorized customer, I want to edit the quantity of food item(s) in the shopping cart                                                 | Optional  |          |
 
-## Prerequisites
-
-- Mac Mojave installed
-- Xcode 10.0 or above installed
-
-NOTE: Before installing, be sure to delete all previous clones of this repository. To delete old Surplus folders via terminal, run this command:
-
-```bash
-rm -rf Surplus
-```
-
-Or you can find the old Surplus folder in 'Finder' and delete it that way.
 
 ## Installation
 These are the installation instructions to install the Surplus ios application. 
@@ -77,28 +67,25 @@ CocoaPods
     f) brew install -g react-native-cli
 
 ### Installation instructions: 
-- Unzip the 'Surplus' folder onto the Desktop
-- Open up a terminal and 'cd' into the unzipped folder:
-- This can be done by typing in 'cd ~/Desktop/Surplus' onto the terminal
-- Once you are inside the Surplus folder, type 'npm install'
-- Open the XCode project file titled 'Surplus.xcworkspace'
-- Its located in 'Surplus/ios/Surplus.xcworkspace'
-- Once XCode opens, open up the XCode Preferences
-- This can be found under 'Xcode' in the menu bar
-- Once the Preferences are opened, Navigate to 'Locations'
-- Under 'Command Line Tools', make sure at least 'Xcode 10.1' or above is selected
-- Close the Preferences
-- Under 'Product' in the Xcode menu bar, select 'Build'
-- Once the project builds successfully, on the top left next to the 'Play' button, choose an iphone simulator
-- Hit the 'Play' button to start the Surplus app
+1. Unzip the 'Surplus' folder onto the Desktop
+2. Open up a terminal and 'cd' into the unzipped folder:
+3. This can be done by typing in 'cd ~/Desktop/Surplus' onto the terminal
+4. Once you are inside the Surplus folder, type 'npm install'
+5. Open the XCode project file titled 'Surplus.xcworkspace'
+6. Its located in 'Surplus/ios/Surplus.xcworkspace'
+7. Once XCode opens, open up the XCode Preferences
+8. This can be found under 'Xcode' in the menu bar
+9. Once the Preferences are opened, Navigate to 'Locations'
+10. Under 'Command Line Tools', make sure at least 'Xcode 10.1' or above is selected
+11. Close the Preferences
+12. Under 'Product' in the Xcode menu bar, select 'Build'
+13. Once the project builds successfully, on the top left next to the 'Play' button, choose an iphone simulator
+14. Hit the 'Play' button to start the Surplus app
+
 
 ## Acknowledgement
 Surplus was developed by 
-
-[Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading back-end and Firebase
-
-[Jasmine Mai](https://github.com/jasminemai97) : Spearheading front-end and deliverable writer 
-
-[Nhat Nguyen](https://github.com/nguyen-nhat) : Full stack - Bridging front-end and back-end
-
-[Cong He](https://github.com/IWKUA) : UX and deliverable writer
+- [Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading back-end and Firebase
+- [Jasmine Mai](https://github.com/jasminemai97) : Spearheading front-end and deliverable writer 
+- [Nhat Nguyen](https://github.com/nguyen-nhat) : Full stack - Bridging front-end and back-end
+- [Cong He](https://github.com/IWKUA) : UX and deliverable writer
