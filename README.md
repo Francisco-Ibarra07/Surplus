@@ -99,7 +99,7 @@ brew install -g react-native-cli
 10. Under 'Command Line Tools', make sure at least 'Xcode 10.1' or above is selected
 11. Close the Preferences
 12. Under 'Product' in the Xcode menu bar, select 'Build'
-13. Once the project builds successfully, on the top left next to the 'Play' button, choose an iphone simulator
+13. Once the project builds successfully, on the top left next to the 'Play' button, choose an iPhone simulator
 14. Hit the 'Play' button to start the Surplus app
 
 
