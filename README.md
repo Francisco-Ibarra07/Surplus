@@ -63,6 +63,7 @@ CocoaPods
 1. Install CocoaPods by typing in to the terminal: 'sudo gem install cocoapods'
 
 2. Install the latest React Native framework using Homebrew. Type these commands, IN ORDER, onto the terminal
+
 &nbsp;a. /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 &nbsp;b. brew install node
@@ -96,7 +97,7 @@ CocoaPods
 
 1. Adobe Xd:
 
-We used Adobe XD for wireframing and high fidelity mockups. It is important to have         wireframe because we don’t want to code blindly. Also, it is easier to make edits on here         than after coding.
+We used Adobe XD for wireframing and high fidelity mockups. It is important to have wireframe because we don’t want to code blindly. Also, it is easier to make edits on here than after coding.
 
 2. Firebase Database:
 
@@ -105,7 +106,7 @@ Firebase was our main database (Firebase Realtime Database) that was used.
 
 ## Acknowledgement
 Surplus was developed by 
-- [Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading DevOps, **back-end** and database
+- [Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading **back-end** and database
 - [Jasmine Mai](https://github.com/jasminemai97) : Spearheading **front-end** and deliverable writer 
 - [Nhat Nguyen](https://github.com/nguyen-nhat) :  Bridging front-end and back-end - **full stack**
 - [Cong He](https://github.com/IWKUA) : **User Experience** and deliverable writer
