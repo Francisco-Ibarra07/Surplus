@@ -86,8 +86,12 @@ git checkout [NAMEOFBRANCH]
 Commit often and be sure the project builds on Xcode before pushing back to the repository!
 
 ## Acknowledgement
-CalPal was created by 
+Surplus was developed by 
+
 [Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading back-end and Firebase
-[Jasmine Mai](https://github.com/jasminemai97) : Spearheading front-end
-[Nhat Nguyen](https://github.com/nguyen-nhat) : Bridging full stack
-[Cong He](https://github.com/IWKUA) : UX and Writer
+
+[Jasmine Mai](https://github.com/jasminemai97) : Spearheading front-end and deliverable writer 
+
+[Nhat Nguyen](https://github.com/nguyen-nhat) : Full stack - Bridging front-end and back-end
+
+[Cong He](https://github.com/IWKUA) : UX and deliverable writer
