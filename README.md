@@ -1,4 +1,4 @@
-# [Surplus](https://www.linkedin.com/company/surplusfoods/) 🍎
+# [Surplus](https://www.linkedin.com/company/surplusfoods/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](#) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](#) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
 
 Surplus is an application that prevents restaurants from losing money due to food waste and focuses on high food insecurity rates amongst college students
 
@@ -108,7 +108,7 @@ CocoaPods
 
 ## Acknowledgement
 Surplus was developed by 
-- [Francisco Ibarra](https://github.com/Francisco-Ibarra07) : Spearheading **back-end** and database
-- [Jasmine Mai](https://github.com/jasminemai97) : Spearheading **front-end** and deliverable writer 
-- [Nhat Nguyen](https://github.com/nguyen-nhat) :  Bridging front-end and back-end - **full stack**
-- [Cong He](https://github.com/IWKUA) : **User Experience** and deliverable writer
+- [**Francisco Ibarra**](https://github.com/Francisco-Ibarra07) : Spearheading **back-end** and database
+- [**Jasmine Mai**](https://github.com/jasminemai97) : Spearheading **front-end** and deliverable writer 
+- [**Nhat Nguyen**](https://github.com/nguyen-nhat) :  Bridging front-end and back-end - **full stack**
+- [**Cong He**](https://github.com/IWKUA) : **User Experience** and deliverable writer
