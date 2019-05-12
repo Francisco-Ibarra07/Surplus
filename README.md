@@ -4,7 +4,7 @@ Surplus is an application that prevents restaurants from losing money due to foo
 
 LinkedIn: https://www.linkedin.com/company/surplusfoods/
 
-![Surplus](https://im3.ezgif.com/tmp/ezgif-3-d718fad228dc.gif)
+![Surplus](https://i.imgur.com/S4vv5Xd.gif)
 
 (Surplus: Get Started Screen)
 
