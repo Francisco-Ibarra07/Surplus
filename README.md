@@ -42,12 +42,12 @@ LinkedIn: https://www.linkedin.com/company/surplusfoods/
 | 22 | As an authorized customer, I want to edit the quantity of food item(s) in the shopping cart                                                 | Optional  |          |
 
 
-## Installation
+## Installation Guide
 These are the installation instructions to install the Surplus ios application. 
 
-To do the installation properly, make sure you have the correct dependencies first. The latest version of Mac Mojave MUST be installed. You will also need to have the LATEST version of Xcode. To install React Native and CocoaPods, follow the steps in the 'Pre-requisites' section. 
+To do the installation properly, make sure you have the correct dependencies first. The latest version of Mac Mojave MUST be installed. You will also need to have the LATEST version of Xcode. To install React Native and CocoaPods, follow the steps in the 'Prerequisites' section. 
 
-Once all of these dependencies AND Pre-requisites are done, THEN you may start the 'Installation instructions' section
+Once all of these dependencies AND Prerequisites are done, THEN you may start the 'Installation instructions' section
 
 ### Dependencies:
 Mac Mojave installed
@@ -55,7 +55,7 @@ Xcode 10.1 or above
 React Native version 0.58.3
 CocoaPods 
 
-### Pre-requisites:
+### Prerequisites:
 1. Install CocoaPods by typing in to the terminal: 'sudo gem install cocoapods'
 
 2. Install the latest React Native framework using Homebrew. Type these commands, IN ORDER, onto the terminal
