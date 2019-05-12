@@ -89,11 +89,13 @@ CocoaPods
 
 ## External Tools
 
-1. Adobe Xd
+1. Adobe Xd:
+
 We used Adobe XD for wireframing and high fidelity mockups. It is important to have         wireframe because we don’t want to code blindly. Also, it is easier to make edits on here         than after coding.
 
-2. Firebase Database
-Firebase was our main database that was used. 
+2. Firebase Database:
+
+Firebase was our main database (Firebase Realtime Database) that was used. 
 
 
 ## Acknowledgement
