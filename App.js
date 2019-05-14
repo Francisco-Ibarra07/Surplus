@@ -27,36 +27,35 @@ import {
 import firebase from 'react-native-firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-// Auth Screens Import ---------------------------------- /
-import GetStarted from './pages/authentication/GetStarted';
-import WhoAreYou from './pages/authentication/WhoAreYou';
-import CustomerSignUp from './pages/authentication/CustomerSignUp';
-import BusinessSignUp from './pages/authentication/BusinessSignUp';
-import BusinessClaim from './pages/authentication/BusinessClaim';
-import SignIn from './pages/authentication/SignIn';
-import TermsAndConditions from './pages/authentication/TermsAndConditions';
-import PrivacyStatement from './pages/authentication/PrivacyStatement';
-import ForgotPassword from './pages/authentication/ForgotPassword';
+// Authentication Screens Import ---------------------------------- /
+import GetStarted from './pages/authentication_screens/GetStarted';
+import WhoAreYou from './pages/authentication_screens/WhoAreYou';
+import CustomerSignUp from './pages/authentication_screens/CustomerSignUp';
+import BusinessSignUp from './pages/authentication_screens/BusinessSignUp';
+import BusinessClaim from './pages/authentication_screens/BusinessClaim';
+import BusinessVerify from './pages/authentication_screens/BusinessVerify';
+import SignIn from './pages/authentication_screens/SignIn';
+import TermsAndConditions from './pages/authentication_screens/TermsAndConditions';
+import PrivacyStatement from './pages/authentication_screens/PrivacyStatement';
+import ForgotPassword from './pages/authentication_screens/ForgotPassword';
 
 // Dash Screens ----------------------------------------- /
 // Customer's
-import CustomerDashboard from './pages/dashboard/CustomerDashboard';
-import ShoppingCart from './pages/dashboard/ShoppingCart';
-import RestaurantFoods from './pages/dashboard/RestaurantFoods';
-import EditCustomerInfo from './pages/dashboard/EditCustomerInfo';
-import ConfirmationPage from './pages/dashboard/ConfirmationPage';
+import CustomerDashboard from './pages/customer_screens/CustomerDashboard';
+import ShoppingCart from './pages/customer_screens/ShoppingCart';
+import RestaurantFoods from './pages/customer_screens/RestaurantFoods';
+import EditCustomerInfo from './pages/customer_screens/EditCustomerInfo';
+import ConfirmationPage from './pages/customer_screens/ConfirmationPage';
 
 // Business Owner's
-import AddFood from './pages/dashboard/AddFood';
-import BusinessEditFood from './pages/dashboard/BusinessEditFood'
-import BusinessVerify from './pages/dashboard/BusinessVerify';
-import BusinessHome from './pages/dashboard/BusinessHome';
-import BusinessOrders from './pages/dashboard/BusinessOrder';
-import BusinessSettings from './pages/dashboard/BusinessSettings';
-import BusinessWallet from './pages/dashboard/BusinessWallet';
-import EditRestaurantInfo from './pages/dashboard/EditRestaurantInfo';
-import EditOwnersInfo from './pages/dashboard/EditOwnersInfo';
-
+import AddFood from './pages/business_screens/AddFood';
+import BusinessEditFood from './pages/business_screens/BusinessEditFood'
+import BusinessHome from './pages/business_screens/BusinessHome';
+import BusinessOrders from './pages/business_screens/BusinessOrder';
+import BusinessSettings from './pages/business_screens/BusinessSettings';
+import BusinessWallet from './pages/business_screens/BusinessWallet';
+import EditRestaurantInfo from './pages/business_screens/EditRestaurantInfo';
+import EditOwnersInfo from './pages/business_screens/EditOwnersInfo';
 
 // Customer Drawer Navigation --------------------------- /
 const CustomerDrawer = createDrawerNavigator({
@@ -83,12 +82,12 @@ const CustomerDrawer = createDrawerNavigator({
     navigationOptions: ({ navigation }) => ({
       headerLeft: (
         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-          <Image style={styles.hamburgerLogo} source={require('./pages/dashboard/resources/logo.jpg')} />
+          <Image style={styles.hamburgerLogo} source={require('./pages/customer_screens/resources/logo.jpg')} />
         </TouchableOpacity>
       ),
       headerRight: (
         <TouchableOpacity onPress={() => navigation.navigate('ShoppingCart')}>
-          <Image style={styles.rightLogos} source={require('./pages/dashboard/resources/shoppingcart.png')} />
+          <Image style={styles.rightLogos} source={require('./pages/customer_screens/resources/shoppingcart.png')} />
         </TouchableOpacity>
       ),
       title: 'surplus',
@@ -200,7 +199,7 @@ export const Nav = createAppContainer(
       navigationOptions: ({ navigation }) => ({
         headerRight: (
           <TouchableOpacity onPress={() => navigation.navigate('ShoppingCart')}>
-            <Image style={styles.rightLogos} source={require('./pages/dashboard/resources/shoppingcart.png')} />
+            <Image style={styles.rightLogos} source={require('./pages/customer_screens/resources/shoppingcart.png')} />
           </TouchableOpacity>
         ),
         headerTintColor: '#D33B32',

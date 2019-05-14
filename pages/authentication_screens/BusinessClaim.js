@@ -105,7 +105,7 @@ export default class BusinessClaim extends Component {
             alert("No internet connection");
             break;
           default:
-            alert("pages/dashboard/BC.js#default");
+            alert("pages/business_screens/BC.js#default");
             console.log(error.code);
             break;
         }
