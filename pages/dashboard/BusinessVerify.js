@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Image,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { Image, View, Text, StyleSheet, TouchableOpacity, } from 'react-native';
 import firebase from 'react-native-firebase';
 
 export default class BusinessVerify extends Component {

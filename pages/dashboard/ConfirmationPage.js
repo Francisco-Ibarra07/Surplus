@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Image,
-  Button,
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import { Image, View, Text, StyleSheet } from 'react-native';
 import RedButton from '../components/RedButton';
 
 export default class ConfirmationPage extends Component {
@@ -16,12 +7,10 @@ export default class ConfirmationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
     }
   }
 
   handleButtonPress = () => {
-
     this.props.navigation.navigate('CustomerDashboard')
   }
 

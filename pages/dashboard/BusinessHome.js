@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, } from 'react-native';
 import firebase from 'react-native-firebase';
 import ActiveItem from './components/ActiveItem';
 import Swipeout from 'react-native-swipeout';

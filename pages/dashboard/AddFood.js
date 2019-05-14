@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View,
-  TextInput,
-  Text,
-  StyleSheet,
-  Image,
-  Button,
-  ActivityIndicator,
-} from 'react-native';
+import { View, TextInput, Text, StyleSheet, Image, Button, } from 'react-native';
 import firebase from 'react-native-firebase';
 import ImagePicker from 'react-native-image-picker'
 import RedButton from '../components/RedButton';
@@ -125,7 +117,6 @@ export default class AddFood extends Component {
     const { photo } = this.state;
     return (
       <View style={styles.container}>
-        {/* <Text style={styles.title}>Add New Item</Text> */}
         {/* Form */}
         <View style={styles.form}>
           <View style={styles.form1}>
@@ -195,7 +186,6 @@ export default class AddFood extends Component {
         </View>
 
       </View>
-
     );
   }
 }

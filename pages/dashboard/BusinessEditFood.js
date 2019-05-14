@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View,
-  TextInput,
-  Text,
-  StyleSheet,
-  Image,
-  Button
-} from 'react-native';
+import { View, TextInput, Text, StyleSheet, Image, Button } from 'react-native';
 import firebase from 'react-native-firebase';
 import RedButton from '../components/RedButton';
 import ImagePicker from 'react-native-image-picker'

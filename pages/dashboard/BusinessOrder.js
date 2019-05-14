@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import firebase from 'react-native-firebase'
+
 export default class BusinessMenu extends Component {
 
   constructor(props) {

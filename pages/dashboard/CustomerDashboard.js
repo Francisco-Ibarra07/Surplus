@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, ScrollView, StyleSheet, } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-
 import RestaurantItem from './components/RestaurantItem';
 import firebase from 'react-native-firebase';
 

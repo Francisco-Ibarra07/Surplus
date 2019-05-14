@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Button,
-  Image,
-  ImageBackground,
-} from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image } from 'react-native';
 import firebase from 'react-native-firebase';
-// import { Button } from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker'
 
 export default class BusinessClaim extends Component {

@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import RedButton from '../components/RedButton';
 import firebase from 'react-native-firebase'
 
