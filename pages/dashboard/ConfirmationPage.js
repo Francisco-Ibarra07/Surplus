@@ -15,6 +15,9 @@ export default class ConfirmationPage extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+
+    }
   }
 
   handleButtonPress = () => {
@@ -23,7 +26,7 @@ export default class ConfirmationPage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.navigation.state.params.shoppingCartItems)
+
   }
 
 
@@ -42,9 +45,10 @@ export default class ConfirmationPage extends Component {
         </View>
 
         <View style={styles.summary}>
-          <Text style={styles.h3}>Tax: $0.97</Text>
-          <Text style={styles.h3}>Total: $2.97</Text>
-          <Text style={styles.h3}>Pick up at: 123 here</Text>
+          <Text style={styles.h3}>Tax: $0.38</Text>
+          <Text style={styles.h3}>Total: $4.38</Text>
+          <Text style={styles.h3}>Pick up at: 4th St San Carlos, San Jose 95866, CA</Text>
+          <Text style={styles.h3}>Confirmation: #1JH56487</Text>
           <Text style={styles.warning}>⚠️ Show this screen when you pick up! ⚠️</Text>
         </View>
 

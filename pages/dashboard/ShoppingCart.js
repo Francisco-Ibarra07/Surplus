@@ -90,7 +90,7 @@ export default class ShoppingCart extends Component {
           currentItem = individualCartItems[i]
 
           // sum = sum + (price * quantity)
-          sumOfAllPrices = Math.round((sumOfAllPrices + (parseInt(currentItem.item_price) * parseInt(currentItem.item_quantity_desired))) * 100) / 100
+          sumOfAllPrices = Math.round((sumOfAllPrices + (parseFloat(currentItem.item_price) * parseFloat(currentItem.item_quantity_desired))) * 100) / 100
 
           // name, quantity, price
           cartItemComponents.push(
@@ -135,11 +135,12 @@ export default class ShoppingCart extends Component {
     let newQuantityAmount;
     let ref;
 
+    console.table(shoppingCartItems)
     // Update the quantity value
     for (let i = 0; i < shoppingCartItems.length; i++) {
       currentItem = shoppingCartItems[i]
 
-      newQuantityAmount = parseInt(currentItem.item_quantity_original) - currentItem.item_quantity_desired
+      newQuantityAmount = parseFloat(currentItem.item_quantity_original) - currentItem.item_quantity_desired
 
       // Updated food quantity
       if (newQuantityAmount !== 0) {
@@ -160,7 +161,7 @@ export default class ShoppingCart extends Component {
       // Write the transaction onto the Owner's 'Sold' folder
       const sessionId = new Date().getTime();
       ref = firebase.database().ref('/business/owners/' + currentItem.owner_id + '/sold/' + sessionId).update({
-        'profit': parseInt(currentItem.item_price) * currentItem.item_quantity_desired,
+        'profit': parseFloat(currentItem.item_price) * currentItem.item_quantity_desired,
         'first_name': this.state.firstName,
         'last_name': this.state.lastName
       })
@@ -173,7 +174,14 @@ export default class ShoppingCart extends Component {
 
     Promise.all(arrayOfPromises).then(() => {
       this.cleanup()
-      this.props.navigation.navigate('ConfirmationPage', { shoppingCartItems: shoppingCartItems })
+      this.props.navigation.navigate('ConfirmationPage',
+        {
+          shoppingCartItems: shoppingCartItems,
+          storeName: shoppingCartItems[0].store_name,
+          itemPrice: shoppingCartItems[0].item_price,
+          itemName: shoppingCartItems[0].item_name,
+          itemQuantity: shoppingCartItems[0].item_quantity,
+        })
     })
   }
 

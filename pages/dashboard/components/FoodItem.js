@@ -75,7 +75,7 @@ export default class FoodItem extends Component {
   }
 
   incrementQuantity = () => {
-    const max = parseInt(this.props.foodItemQuantity)
+    const max = parseFloat(this.props.foodItemQuantity)
     if (this.state.quantityDesired === max) {
       return
     }
