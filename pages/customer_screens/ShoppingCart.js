@@ -120,6 +120,11 @@ export default class ShoppingCart extends Component {
       return
     }
 
+    if (this.state.emptyTextView) {
+      alert('Shopping cart is empty!')
+      return
+    }
+
     let shoppingCartItems = this.state.individualCartItemsArray;
     let currentItem;
     let arrayOfPromises = [];
