@@ -108,4 +108,4 @@ Surplus was developed by
 - [**Francisco Ibarra**](https://github.com/Francisco-Ibarra07) : Spearheading **back-end** and database
 - [**Jasmine Mai**](https://github.com/jasminemai97) : Spearheading **front-end** and deliverable writer 
 - [**Nhat Nguyen**](https://github.com/nguyen-nhat) :  JavaScript consultant and **full stack**
-- [**Cong He**](https://github.com/IWKUA) : **User Experience** and deliverable writer
+- [**Cong He**](https://github.com/IWKUA) : **User Experience**, **front-end** and deliverable writer
